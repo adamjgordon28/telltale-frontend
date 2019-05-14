@@ -1,12 +1,17 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { EditorState, RichUtils } from 'draft-js';
 import Editor from 'draft-js-plugins-editor';
 import createEmojiPlugin from 'draft-js-emoji-plugin';
+import createHighlightPlugin from './highlightPlugin';
 import 'draft-js-emoji-plugin/lib/plugin.css'
 
 const emojiPlugin = createEmojiPlugin();
 
 const { EmojiSuggestions } = emojiPlugin;
+
+const highlightPlugin = createHighlightPlugin({
+  background: 'orange'
+});
 
 class App extends React.Component {
   constructor(props){
@@ -92,11 +97,14 @@ handleKeyCommand = (command, editorState) => {
     return (
     <div>
     <button onClick={() => {this.makeBold()}}>Bold</button>
+    <button onClick={() => {this.makeUnderlined()}}>Underline</button>
+    <button onClick={() => {this.makeItalic()}}>Italicize</button>
+    <button onClick={() => {this.makeHighlighted()}}>Highlight</button>
     <Editor
     onChange={(editorState) => {this.onChange(editorState)}}
     editorState={this.state.editorState}
     handleKeyCommand={this.handleKeyCommand}
-    plugins={[emojiPlugin]}
+    plugins={[highlightPlugin, emojiPlugin]}
     />
     <EmojiSuggestions/>
     </div>
