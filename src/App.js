@@ -1,6 +1,12 @@
-import React from 'react';
-import {Editor, EditorState, RichUtils} from "draft-js";
-import './App.css';
+import React, { Component } from 'react';
+import { EditorState, RichUtils } from 'draft-js';
+import Editor from 'draft-js-plugins-editor';
+import createEmojiPlugin from 'draft-js-emoji-plugin';
+import 'draft-js-emoji-plugin/lib/plugin.css'
+
+const emojiPlugin = createEmojiPlugin();
+
+const { EmojiSuggestions } = emojiPlugin;
 
 class App extends React.Component {
   constructor(props){
@@ -60,7 +66,7 @@ class App extends React.Component {
 
  createNote = (noteContent) => {
   fetch("http://localhost:4000/api/v1/entries", {
-   method: "post",
+   method: "POST",
    headers: { "Content-Type": "application/json", "Accepts": "application/json" },
    body: JSON.stringify({ content: JSON.stringify(noteContent) })
   })
@@ -85,12 +91,14 @@ handleKeyCommand = (command, editorState) => {
   render() {
     return (
     <div>
-    <button onClick={() => {this.makeBold();}}>Bold</button>
+    <button onClick={() => {this.makeBold()}}>Bold</button>
     <Editor
     onChange={(editorState) => {this.onChange(editorState)}}
     editorState={this.state.editorState}
     handleKeyCommand={this.handleKeyCommand}
+    plugins={[emojiPlugin]}
     />
+    <EmojiSuggestions/>
     </div>
   )};
 
