@@ -1,9 +1,10 @@
 import React from 'react';
-import { EditorState, RichUtils } from 'draft-js';
+import { EditorState, RichUtils, convertToRaw, convertFromRaw } from 'draft-js';
 import Editor from 'draft-js-plugins-editor';
 import createEmojiPlugin from 'draft-js-emoji-plugin';
 import createHighlightPlugin from './highlightPlugin';
-import 'draft-js-emoji-plugin/lib/plugin.css'
+import 'draft-js-emoji-plugin/lib/plugin.css';
+import debounce from 'lodash/debounce';
 
 const emojiPlugin = createEmojiPlugin();
 
@@ -13,14 +14,13 @@ const highlightPlugin = createHighlightPlugin({
   background: 'orange'
 });
 
+const entryId = 3;
+
 class App extends React.Component {
-  constructor(props){
-    super(props);
-    this.state = {
-      editorState: EditorState.createEmpty()
-    }
-    this.handleKeyCommand = this.handleKeyCommand.bind(this);
-  }
+  constructor(props) {
+  super(props);
+  this.state = {};
+}
 
   makeBold(){
     this.onChange(RichUtils.toggleInlineStyle(
@@ -50,8 +50,22 @@ class App extends React.Component {
     ))
   }
 
+saveContent = (noteContent) => {
+   fetch("http://localhost:4000/api/v1/entries/" + `${entryId}`, {
+    method: "PATCH",
+    headers: { "Content-Type": "application/json", "Accepts": "application/json" },
+    body: JSON.stringify({ id:`${entryId}`, content: JSON.stringify(convertToRaw(this.state.editorState.getCurrentContent())) })
+   })
+    .then(response => response.json())
+    .then(json => {
+     console.log(json)
+    })
+  }
+
 
   onChange =(editorState) => {
+    const contentState = editorState.getCurrentContent();
+    this.saveContent(contentState)
     this.setState({
       editorState: editorState
     })
@@ -69,17 +83,7 @@ class App extends React.Component {
   }
 
 
- createNote = (noteContent) => {
-  fetch("http://localhost:4000/api/v1/entries", {
-   method: "POST",
-   headers: { "Content-Type": "application/json", "Accepts": "application/json" },
-   body: JSON.stringify({ content: JSON.stringify(noteContent) })
-  })
-   .then(response => response.json())
-   .then(json => {
-    console.log(json)
-   })
-}
+
 
 handleKeyCommand = (command, editorState) => {
     const newState = RichUtils.handleKeyCommand(editorState, command);
@@ -91,9 +95,28 @@ handleKeyCommand = (command, editorState) => {
   }
 
 
+ componentDidMount = (number) => {
+  fetch("http://localhost:4000/api/v1/entries/" + `${3}`)
+   .then(response => response.json())
+   .then(json => {
 
+     if(json) {
+    this.setState({
+      editorState: EditorState.createWithContent(convertFromRaw(JSON.parse(json.content)))
+    })
+    }
+    else {
+      this.setState({ editorState: EditorState.createEmpty() })
+    }
+   })
+ }
 
   render() {
+    if (!this.state.editorState) {
+    return (
+      <h3 className="loading">Loading...</h3>
+    );
+  }
     return (
     <div>
     <button onClick={() => {this.makeBold()}}>Bold</button>
