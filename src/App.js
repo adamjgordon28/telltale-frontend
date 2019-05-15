@@ -1,6 +1,7 @@
 import React from 'react';
 import { EditorState, RichUtils, convertToRaw, convertFromRaw } from 'draft-js';
 import Editor from 'draft-js-plugins-editor';
+import CreateUserForm from './containers/CreateUserForm.js'
 import createEmojiPlugin from 'draft-js-emoji-plugin';
 import createHighlightPlugin from './highlightPlugin';
 import 'draft-js-emoji-plugin/lib/plugin.css';
@@ -62,7 +63,6 @@ saveContent = (noteContent) => {
    })
     .then(response => response.json())
     .then(json => {
-     console.log(json)
     })
     }
   }
@@ -71,18 +71,17 @@ saveContent = (noteContent) => {
      fetch("http://localhost:4000/api/v1/entries", {
       method: "POST",
       headers: { "Content-Type": "application/json", "Accepts": "application/json" },
-      body: JSON.stringify({content: JSON.stringify(convertToRaw(this.state.editorState.getCurrentContent())) })
+      body: JSON.stringify({user_id: 1, content: JSON.stringify(convertToRaw(this.state.editorState.getCurrentContent())) })
      })
       .then(response => response.json())
       .then(json => {
-       console.log(json)
+        console.log(json)
       })
     }
 
 
   onChange =(editorState) => {
     const contentState = editorState.getCurrentContent();
-    console.log(contentState)
     this.saveContent(contentState)
     this.setState({
       editorState: editorState
@@ -113,26 +112,25 @@ handleKeyCommand = (command, editorState) => {
   }
 
 
- componentDidMount = (entryId) => {
-  fetch("http://localhost:4000/api/v1/entries/1")
-   .then(response => response.json())
-   .then(json => {
-
-     if(json) {
-       console.log(JSON.parse(json.content))
-    this.setState({
-
-      editorState: EditorState.createWithContent(convertFromRaw(JSON.parse(json.content))),
-      fetched: true
-    })
-    }
-    else {
-      this.setState({
-        fetched: true
-      })
-    }
-   })
- }
+ // componentDidMount = (entryId) => {
+ //  fetch("http://localhost:4000/api/v1/entries/1")
+ //   .then(response => response.json())
+ //   .then(json => {
+ //
+ //     if(json) {
+ //    this.setState({
+ //
+ //      editorState: EditorState.createWithContent(convertFromRaw(JSON.parse(json.content))),
+ //      fetched: true
+ //    })
+ //    }
+ //    else {
+ //      this.setState({
+ //        fetched: true
+ //      })
+ //    }
+ //   })
+ // }
 
   render() {
     if (!this.state.editorState) {
@@ -153,6 +151,7 @@ handleKeyCommand = (command, editorState) => {
     handleKeyCommand={this.handleKeyCommand}
     plugins={[highlightPlugin, emojiPlugin]}
     />
+    <CreateUserForm/>
     <EmojiSuggestions/>
     </div>
   )};
