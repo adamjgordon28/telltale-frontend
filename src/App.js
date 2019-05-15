@@ -1,6 +1,9 @@
 import React from 'react';
 import { EditorState, RichUtils } from 'draft-js';
 import Editor from 'draft-js-plugins-editor';
+import CreateUserForm from './containers/CreateUserForm.js'
+import CreateCharacterForm from './containers/CreateCharacterForm.js'
+import CreateSettingForm from './containers/CreateSettingForm.js'
 import createEmojiPlugin from 'draft-js-emoji-plugin';
 import createHighlightPlugin from './highlightPlugin';
 import 'draft-js-emoji-plugin/lib/plugin.css'
