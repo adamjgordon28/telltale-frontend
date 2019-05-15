@@ -5,6 +5,7 @@ import createEmojiPlugin from 'draft-js-emoji-plugin';
 import createHighlightPlugin from '../highlightPlugin';
 import 'draft-js-emoji-plugin/lib/plugin.css';
 import debounce from 'lodash/debounce';
+import '../App.css'
 
 const emojiPlugin = createEmojiPlugin();
 
@@ -142,11 +143,14 @@ handleKeyCommand = (command, editorState) => {
   }
     return (
     <div>
-    <button onClick={() => {this.makeBold()}}>Bold</button>
-    <button onClick={() => {this.makeUnderlined()}}>Underline</button>
-    <button onClick={() => {this.makeItalic()}}>Italicize</button>
-    <button onClick={() => {this.makeHighlighted()}}>Highlight</button>
-    <button onClick={() => {this.createContent()}}>Submit</button>
+      <h1>Continue Writing Your MasterPiece Here!</h1>
+      <div className="toolbar">
+      <button onClick={() => {this.makeBold()}}>Bold</button>
+      <button onClick={() => {this.makeUnderlined()}}>Underline</button>
+      <button onClick={() => {this.makeItalic()}}>Italicize</button>
+      <button onClick={() => {this.makeHighlighted()}}>Highlight</button>
+      <button onClick={() => {this.createContent()}}>Submit</button>
+      </div>
     <Editor
     onChange={(editorState) => {this.onChange(editorState)}}
     editorState={this.state.editorState}
