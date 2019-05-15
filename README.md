@@ -66,3 +66,11 @@ This section has moved here: https://facebook.github.io/create-react-app/docs/de
 ### `npm run build` fails to minify
 
 This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+
+
+
+<button onClick={() => {this.makeBold()}}>Bold</button>
+<button onClick={() => {this.makeUnderlined()}}>Underline</button>
+<button onClick={() => {this.makeItalic()}}>Italicize</button>
+<button onClick={() => {this.makeHighlighted()}}>Highlight</button>
+<button onClick={() => {this.createContent()}}>Submit</button>
