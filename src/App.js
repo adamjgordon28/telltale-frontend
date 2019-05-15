@@ -19,7 +19,10 @@ const entryId = 3;
 class App extends React.Component {
   constructor(props) {
   super(props);
-  this.state = {};
+  this.state = {
+    editorState: EditorState.createEmpty(),
+    fetched: false
+  };
 }
 
   makeBold(){
@@ -51,6 +54,7 @@ class App extends React.Component {
   }
 
 saveContent = (noteContent) => {
+  if (this.state.fetched){
    fetch("http://localhost:4000/api/v1/entries/" + `${entryId}`, {
     method: "PATCH",
     headers: { "Content-Type": "application/json", "Accepts": "application/json" },
@@ -60,11 +64,25 @@ saveContent = (noteContent) => {
     .then(json => {
      console.log(json)
     })
+    }
   }
+
+  createContent = (noteContent) => {
+     fetch("http://localhost:4000/api/v1/entries", {
+      method: "POST",
+      headers: { "Content-Type": "application/json", "Accepts": "application/json" },
+      body: JSON.stringify({content: JSON.stringify(convertToRaw(this.state.editorState.getCurrentContent())) })
+     })
+      .then(response => response.json())
+      .then(json => {
+       console.log(json)
+      })
+    }
 
 
   onChange =(editorState) => {
     const contentState = editorState.getCurrentContent();
+    console.log(contentState)
     this.saveContent(contentState)
     this.setState({
       editorState: editorState
@@ -95,18 +113,23 @@ handleKeyCommand = (command, editorState) => {
   }
 
 
- componentDidMount = (number) => {
-  fetch("http://localhost:4000/api/v1/entries/" + `${3}`)
+ componentDidMount = (entryId) => {
+  fetch("http://localhost:4000/api/v1/entries/1")
    .then(response => response.json())
    .then(json => {
 
      if(json) {
+       console.log(JSON.parse(json.content))
     this.setState({
-      editorState: EditorState.createWithContent(convertFromRaw(JSON.parse(json.content)))
+
+      editorState: EditorState.createWithContent(convertFromRaw(JSON.parse(json.content))),
+      fetched: true
     })
     }
     else {
-      this.setState({ editorState: EditorState.createEmpty() })
+      this.setState({
+        fetched: true
+      })
     }
    })
  }
@@ -123,6 +146,7 @@ handleKeyCommand = (command, editorState) => {
     <button onClick={() => {this.makeUnderlined()}}>Underline</button>
     <button onClick={() => {this.makeItalic()}}>Italicize</button>
     <button onClick={() => {this.makeHighlighted()}}>Highlight</button>
+    <button onClick={() => {this.createContent()}}>Submit</button>
     <Editor
     onChange={(editorState) => {this.onChange(editorState)}}
     editorState={this.state.editorState}
