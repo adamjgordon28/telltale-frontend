@@ -1,9 +1,10 @@
 import React from 'react';
-import { EditorState, RichUtils } from 'draft-js';
+import { EditorState, RichUtils, convertToRaw, convertFromRaw } from 'draft-js';
 import Editor from 'draft-js-plugins-editor';
 import createEmojiPlugin from 'draft-js-emoji-plugin';
 import createHighlightPlugin from './highlightPlugin';
-import 'draft-js-emoji-plugin/lib/plugin.css'
+import 'draft-js-emoji-plugin/lib/plugin.css';
+import debounce from 'lodash/debounce';
 
 const emojiPlugin = createEmojiPlugin();
 
@@ -13,14 +14,16 @@ const highlightPlugin = createHighlightPlugin({
   background: 'orange'
 });
 
+const entryId = 3;
+
 class App extends React.Component {
-  constructor(props){
-    super(props);
-    this.state = {
-      editorState: EditorState.createEmpty()
-    }
-    this.handleKeyCommand = this.handleKeyCommand.bind(this);
-  }
+  constructor(props) {
+  super(props);
+  this.state = {
+    editorState: EditorState.createEmpty(),
+    fetched: false
+  };
+}
 
   makeBold(){
     this.onChange(RichUtils.toggleInlineStyle(
@@ -50,8 +53,37 @@ class App extends React.Component {
     ))
   }
 
+saveContent = (noteContent) => {
+  if (this.state.fetched){
+   fetch("http://localhost:4000/api/v1/entries/" + `${entryId}`, {
+    method: "PATCH",
+    headers: { "Content-Type": "application/json", "Accepts": "application/json" },
+    body: JSON.stringify({ id:`${entryId}`, content: JSON.stringify(convertToRaw(this.state.editorState.getCurrentContent())) })
+   })
+    .then(response => response.json())
+    .then(json => {
+     console.log(json)
+    })
+    }
+  }
+
+  createContent = (noteContent) => {
+     fetch("http://localhost:4000/api/v1/entries", {
+      method: "POST",
+      headers: { "Content-Type": "application/json", "Accepts": "application/json" },
+      body: JSON.stringify({content: JSON.stringify(convertToRaw(this.state.editorState.getCurrentContent())) })
+     })
+      .then(response => response.json())
+      .then(json => {
+       console.log(json)
+      })
+    }
+
 
   onChange =(editorState) => {
+    const contentState = editorState.getCurrentContent();
+    console.log(contentState)
+    this.saveContent(contentState)
     this.setState({
       editorState: editorState
     })
@@ -69,17 +101,7 @@ class App extends React.Component {
   }
 
 
- createNote = (noteContent) => {
-  fetch("http://localhost:4000/api/v1/entries", {
-   method: "POST",
-   headers: { "Content-Type": "application/json", "Accepts": "application/json" },
-   body: JSON.stringify({ content: JSON.stringify(noteContent) })
-  })
-   .then(response => response.json())
-   .then(json => {
-    console.log(json)
-   })
-}
+
 
 handleKeyCommand = (command, editorState) => {
     const newState = RichUtils.handleKeyCommand(editorState, command);
@@ -91,15 +113,40 @@ handleKeyCommand = (command, editorState) => {
   }
 
 
+ componentDidMount = (entryId) => {
+  fetch("http://localhost:4000/api/v1/entries/1")
+   .then(response => response.json())
+   .then(json => {
 
+     if(json) {
+       console.log(JSON.parse(json.content))
+    this.setState({
+
+      editorState: EditorState.createWithContent(convertFromRaw(JSON.parse(json.content))),
+      fetched: true
+    })
+    }
+    else {
+      this.setState({
+        fetched: true
+      })
+    }
+   })
+ }
 
   render() {
+    if (!this.state.editorState) {
+    return (
+      <h3 className="loading">Loading...</h3>
+    );
+  }
     return (
     <div>
     <button onClick={() => {this.makeBold()}}>Bold</button>
     <button onClick={() => {this.makeUnderlined()}}>Underline</button>
     <button onClick={() => {this.makeItalic()}}>Italicize</button>
     <button onClick={() => {this.makeHighlighted()}}>Highlight</button>
+    <button onClick={() => {this.createContent()}}>Submit</button>
     <Editor
     onChange={(editorState) => {this.onChange(editorState)}}
     editorState={this.state.editorState}
