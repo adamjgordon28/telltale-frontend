@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {Component} from 'react';
 import { EditorState, RichUtils, convertToRaw, convertFromRaw } from 'draft-js';
 import Editor from 'draft-js-plugins-editor';
 import createEmojiPlugin from 'draft-js-emoji-plugin';
@@ -6,27 +6,87 @@ import createHighlightPlugin from '../highlightPlugin';
 import 'draft-js-emoji-plugin/lib/plugin.css';
 import debounce from 'lodash/debounce';
 import '../App.css'
-
+import { Provider, connect } from 'react-redux';
+import {createStore} from 'redux';
 const entryId =6;
-
 const emojiPlugin = createEmojiPlugin();
-
 const { EmojiSuggestions } = emojiPlugin;
-
 const highlightPlugin = createHighlightPlugin({
   background: 'orange'
 });
 
+const defaultState = {
+  editorState: EditorState.createEmpty(),
+  fetched: false
+};
 
 
-class EntryEditor extends React.Component {
-  constructor(props) {
-  super(props);
-  this.state = {
-    editorState: EditorState.createEmpty(),
-    fetched: false
+const editorReducer = (state = defaultState, { payload, type}) => {
+    if (type === 'UPDATE_EDITOR_STATE'){
+      console.log('redux action:', type, payload.getCurrentContent().getPlainText());
+      return {
+        ...state,
+        editorState: payload,
+      };
+    }
+    else if (type === 'UPDATE_TO_FETCHED'){
+      return {
+        ...state,
+        fetched: true
+      }
+    }
+    return state;
+  }
+
+  const store = createStore(editorReducer);
+
+  class AppEditor extends React.Component{
+
+    handleKeyCommand = (command) => {
+   const newState = RichUtils.handleKeyCommand(this.state.editorState, command);
+
+   if (newState) {
+     this.onChange(newState);
+     return 'handled';
+   }
+
+   return 'not-handled';
+ }
+
+
+    render(){
+    return (
+    <Editor
+    editorState={this.props.editorState}
+    onChange={this.props.onSaveEditorState}
+    handleKeyCommand={this.handleKeyCommand}
+    plugins={[highlightPlugin, emojiPlugin]}
+    />)
+    }
   };
-}
+
+const mapStateToProps = ({ editorState }) => ({ editorState });
+
+const mapDispatchToProps = (dispatch) => ({
+  onSaveEditorState: (editorState) => {
+    dispatch({
+      type: 'UPDATE_EDITOR_STATE',
+      payload: editorState
+    })
+  }
+})
+
+const ConnectedEditor = connect(
+  mapStateToProps,
+  mapDispatchToProps,
+)(AppEditor);
+
+
+
+
+
+
+class EntryEditor extends Component {
 
   makeBold(){
     this.onChange(RichUtils.toggleInlineStyle(
@@ -80,28 +140,11 @@ saveContent = () => {
     })
   }
 
-  handleKeyCommand = (command) => {
-    const newState = RichUtils.handleKeyCommand(this.state.editorState, command);
-
-    if (newState) {
-      this.onChange(newState);
-      return 'handled';
-    }
-
-    return 'not-handled';
-  }
 
 
 
 
-handleKeyCommand = (command, editorState) => {
-    const newState = RichUtils.handleKeyCommand(editorState, command);
-    if (newState) {
-      this.onChange(newState);
-      return 'handled';
-    }
-    return 'not-handled';
-  }
+
 
 
  componentDidMount = (entryId) => {
@@ -116,19 +159,19 @@ handleKeyCommand = (command, editorState) => {
     })
     }
     else {
-      this.setState({
-        fetched: true
+      store.dispatch({
+        type: 'UPDATE_TO_FETCHED'
       })
     }
    })
  }
 
   render() {
-    if (!this.state.editorState) {
-    return (
-      <h3 className="loading">Loading...</h3>
-    );
-  }
+  //   if (!this.props.editorState) {
+  //   return (
+  //     <h3 className="loading">Loading...</h3>
+  //   );
+  // }
     return (
     <div>
       <h1>Continue Writing Your MasterPiece Here!</h1>
@@ -138,12 +181,9 @@ handleKeyCommand = (command, editorState) => {
       <button onClick={() => {this.makeItalic()}}>Italicize</button>
       <button onClick={() => {this.makeHighlighted()}}>Highlight</button>
       </div>
-    <Editor
-    onChange={(editorState) => {this.onChange(editorState)}}
-    editorState={this.state.editorState}
-    handleKeyCommand={this.handleKeyCommand}
-    plugins={[highlightPlugin, emojiPlugin]}
-    />
+      <Provider store={store}>
+        <ConnectedEditor/>
+      </Provider>
     <EmojiSuggestions/>
     </div>
   )};
