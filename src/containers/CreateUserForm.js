@@ -37,7 +37,7 @@ class CreateUserForm extends React.Component {
 
   render(){
     return(
-      <form className="ui" onSubmit = {this.handleSubmit}>
+      <form className="ui form" onSubmit = {this.handleSubmit}>
         <h1>Welcome to TellTale - create an account here!</h1>
         <div  className="ui form">
           <div class="fields">
