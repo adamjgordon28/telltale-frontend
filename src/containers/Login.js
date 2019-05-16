@@ -1,11 +1,9 @@
 import React from 'react';
 
 
-class CreateUserForm extends React.Component {
+class Login extends React.Component {
 
   state = {
-    username: "",
-    password: "",
     name: "",
     age: "",
     location: "",
@@ -28,7 +26,7 @@ class CreateUserForm extends React.Component {
        fetch("http://localhost:4000/api/v1/users", {
         method: "POST",
         headers: { "Content-Type": "application/json", "Accepts": "application/json" },
-        body: JSON.stringify({username: info.username, password: info.password, name: info.name, bio: info.bio, location: info.location, age: info.age})
+        body: JSON.stringify({name: info.name, bio: info.bio, location: info.location, age: info.age})
        })
         .then(response => response.json())
         .then(json => {
@@ -47,14 +45,6 @@ class CreateUserForm extends React.Component {
 
           <form onSubmit={this.handleSubmit}>
           <div className="ui form">
-            <div className="field">
-              <label>Username</label>
-              <input type="text" placeholder="Username" name="username" onChange={this.handleChange} required />
-              </div>
-            <div className="field">
-              <label>Password</label>
-              <input type="password" placeholder="Password" name="password" onChange={this.handleChange} required />
-              </div>
             <div className="field">
               <label>Name</label>
               <input type="text" placeholder="Name" name="name" onChange={this.handleChange} required />
@@ -80,4 +70,4 @@ class CreateUserForm extends React.Component {
 
 }
 
-export default CreateUserForm
+export default Login
