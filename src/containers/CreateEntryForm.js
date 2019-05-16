@@ -50,11 +50,11 @@ class CreateEntryForm extends React.Component {
           <div className="ui form">
             <div className="field">
               <label>Title</label>
-              <input type="text" placeholder="Title" name="title" onChange={this.handleChange}/>
+              <input type="text" placeholder="Title" name="title" onChange={this.handleChange} required />
               </div>
               <div class="field">
                   <label>Genre</label>
-                  <select onChange={this.handleChange} name = "genre">
+                  <select onChange={this.handleChange} name = "genre" required >
                           <option label="Genre"></option>
                           <option value="adventure">Adventure</option>
                           <option value="comedy">Comedy</option>
@@ -72,7 +72,7 @@ class CreateEntryForm extends React.Component {
               </div>
               <div className="field">
               <label>Description</label>
-              <textarea type="text" placeholder="Description" name="description" onChange={this.handleChange}></textarea>
+              <textarea type="text" placeholder="Description" name="description" onChange={this.handleChange} required ></textarea>
               </div>
           <button className="ui button" style={{position:"relative", left: "16.5em", top: "1.5em"}} type="submit">Submit</button>
         </div>

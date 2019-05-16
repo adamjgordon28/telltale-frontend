@@ -47,19 +47,19 @@ class CreateUserForm extends React.Component {
           <div className="ui form">
             <div className="field">
               <label>Name</label>
-              <input type="text" placeholder="Name" name="name" onChange={this.handleChange}/>
+              <input type="text" placeholder="Name" name="name" onChange={this.handleChange} required />
               </div>
               <div className="field">
                 <label>Age</label>
-                <input type="number" placeholder="Age" name="age" onChange={this.handleChange}/>
+                <input type="number" placeholder="Age" name="age" onChange={this.handleChange} required />
                 </div>
               <div className="field">
                 <label>Location</label>
-                <input type="text" placeholder="Location" name="location" onChange={this.handleChange}/>
+                <input type="text" placeholder="Location" name="location" onChange={this.handleChange} required />
                 </div>
               <div className="field">
               <label>Bio</label>
-              <textarea type="text" placeholder="Bio" name="bio" onChange={this.handleChange}></textarea>
+              <textarea type="text" placeholder="Bio" name="bio" onChange={this.handleChange} required ></textarea>
               </div>
           <button className="ui button" style={{position:"relative", left: "16.5em", top: "1.5em"}} type="submit">Submit</button>
         </div>
