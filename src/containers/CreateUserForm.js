@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import history from '../history';
 
 
 class CreateUserForm extends React.Component {
@@ -37,6 +38,7 @@ class CreateUserForm extends React.Component {
           }
           this.props.setCurrentUser(json)
           localStorage.setItem("token", json.token)
+          history.push('/profile')
         })
   }
 

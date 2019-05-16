@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import React, { Fragment, Component} from 'react';
 import { connect } from 'react-redux';
 import { Route, Router } from 'react-router-dom'
 import history from './history';
@@ -6,7 +6,7 @@ import CreateUserForm from './containers/CreateUserForm.js'
 import Login from './containers/Login.js'
 import UserProfile from './containers/UserProfile.js'
 
-class App extends React.Component {
+class App extends Component {
 
   logOut = () => {
     localStorage.removeItem("token")
@@ -18,7 +18,6 @@ class App extends React.Component {
     const token = localStorage.getItem("token")
 
     if (token) {
-      console.log("Hello!")
       fetch("http://localhost:4000/api/v1/auto_login", {
         headers: {
           "Authorization": token
@@ -46,11 +45,11 @@ class App extends React.Component {
     return (
       <Fragment>
       <button onClick={this.logOut}>LogOut</button>
-          <Router history={history}/>
+          <Router history={history}>
             <Route exact path ="/signup" component={CreateUserForm}/>
             <Route exact path ="/login" component={Login}/>
             <Route exact path ="/profile" component={UserProfile}/>
-          <Router history={history}/>
+          </Router>
       </Fragment>
   )};
 
