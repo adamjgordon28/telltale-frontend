@@ -2,17 +2,16 @@ import React from 'react';
 import { createStore, combineReducers, applyMiddleware } from 'redux'
 import { Provider } from 'react-redux'
 import ReactDOM from 'react-dom';
-import { BrowserRouter as Router } from'react-router-dom'
+import { BrowserRouter as Router } from'react-router-dom';
+import { createBrowserHistory } from 'history';
 import './index.css';
 import { composeWithDevTools } from 'redux-devtools-extension'
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 import usersReducer from './reducers/usersReducer.js'
 
-const rootReducer = combineReducers({ usersReducer: usersReducer })
-const store = createStore(rootReducer)
+const store = createStore(usersReducer)
 
-console.log('%c INITAL REDUX STORE', 'color: purple', store.getState())
 
 ReactDOM.render(
   <Provider store ={store}>

@@ -8,6 +8,7 @@
     "draft-js-emoji-plugin": "^2.1.1",
     "draft-js-hashtag-plugin": "^2.0.3",
     "draft-js-plugins-editor": "^2.0.0-rc2",
+    "history": "^4.9.0",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "react-redux": "^7.0.3",

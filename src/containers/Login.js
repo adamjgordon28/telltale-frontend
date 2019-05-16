@@ -1,17 +1,20 @@
 import React from 'react';
+import { connect } from 'react-redux'
+import { withRouter, Redirect } from 'react-router'
+import { loginUser } from "../actions/user.js"
+import history from '../history';
 
 
 class Login extends React.Component {
 
   state = {
-    name: "",
+    username: "",
     password: ""
   }
 
   handleChange = (e) => {
     this.setState({
       [e.target.name]: e.target.value
-    },()=> {
     })
   }
 
@@ -24,11 +27,17 @@ class Login extends React.Component {
        fetch("http://localhost:4000/api/v1/login", {
         method: "POST",
         headers: { "Content-Type": "application/json", "Accepts": "application/json" },
-        body: JSON.stringify({username: info.name, password: info.password})
+        body: JSON.stringify({username: info.username, password: info.password})
        })
         .then(response => response.json())
         .then(json => {
-          console.log(json)
+          if (json.errors){
+            alert(json.errors)
+          } else {
+            this.props.setCurrentUser(json)
+            localStorage.setItem("token", json.token)
+            history.push('/profile')
+          }
         })
   }
 
@@ -60,4 +69,20 @@ class Login extends React.Component {
 
 }
 
-export default Login
+function mapDispatchToProps(dispatch) {
+  return {
+    setCurrentUser: (user) => {
+      // dispatch is our new setState and it takes an object with a type and a payload
+      dispatch({type: "SET_CURRENT_USER", payload: user})
+    }
+  }
+}
+
+function mapStateToProps(state) {
+  return {
+    currentUser: state.currentUser
+  }
+}
+
+
+export default connect(mapStateToProps, mapDispatchToProps)(Login);

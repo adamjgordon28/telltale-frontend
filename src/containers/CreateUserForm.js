@@ -1,4 +1,5 @@
 import React from 'react';
+import { connect } from 'react-redux';
 
 
 class CreateUserForm extends React.Component {
@@ -15,7 +16,6 @@ class CreateUserForm extends React.Component {
   handleChange = (e) => {
     this.setState({
       [e.target.name]: e.target.value
-    },()=> {
     })
   }
 
@@ -32,7 +32,11 @@ class CreateUserForm extends React.Component {
        })
         .then(response => response.json())
         .then(json => {
-          console.log(json)
+          if (json.errors){
+            alert(json.errors)
+          }
+          this.props.setCurrentUser(json)
+          localStorage.setItem("token", json.token)
         })
   }
 
@@ -80,4 +84,20 @@ class CreateUserForm extends React.Component {
 
 }
 
-export default CreateUserForm
+
+function mapDispatchToProps(dispatch) {
+  return {
+    setCurrentUser: (user) => {
+      // dispatch is our new setState and it takes an object with a type and a payload
+      dispatch({type: "SET_CURRENT_USER", payload: user})
+    }
+  }
+}
+
+function mapStateToProps(state) {
+  return {
+    currentUser: state.currentUser
+  }
+}
+
+export default connect(mapStateToProps,mapDispatchToProps)(CreateUserForm)
