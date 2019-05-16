@@ -1,5 +1,7 @@
-import React from 'react';
+import React, { Fragment } from 'react';
+import { Route, Switch, Redirect, withRouter } from 'react-router-dom'
 import CreateUserForm from './containers/CreateUserForm.js'
+import Login from './containers/Login.js'
 import CreateCharacterForm from './containers/CreateCharacterForm.js'
 import CreateSettingForm from './containers/CreateSettingForm.js'
 import AddInfoToStoryContainer from './containers/AddInfoToStoryContainer.js'
@@ -16,10 +18,14 @@ class App extends React.Component {
 
 
   render() {
+    console.log("%c APP Props: ", "color: firebrick", this.props)
     return (
-    <div>
-    <AddInfoToStoryContainer/>
-    </div>
+      <Fragment>
+        <Switch>
+          <Route exact path ="/signup" component={CreateUserForm}/>
+          <Route exact path ="/login" component={Login}/>
+        </Switch>
+      </Fragment>
   )};
 
 }

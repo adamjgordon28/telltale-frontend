@@ -5,9 +5,7 @@ class Login extends React.Component {
 
   state = {
     name: "",
-    age: "",
-    location: "",
-    bio: ""
+    password: ""
   }
 
   handleChange = (e) => {
@@ -19,14 +17,14 @@ class Login extends React.Component {
 
   handleSubmit = (e) => {
     e.preventDefault()
-   this.createUser(this.state)
+   this.createAuth(this.state)
   }
 
-  createUser = (info) => {
-       fetch("http://localhost:4000/api/v1/users", {
+  createAuth = (info) => {
+       fetch("http://localhost:4000/api/v1/login", {
         method: "POST",
         headers: { "Content-Type": "application/json", "Accepts": "application/json" },
-        body: JSON.stringify({name: info.name, bio: info.bio, location: info.location, age: info.age})
+        body: JSON.stringify({username: info.name, password: info.password})
        })
         .then(response => response.json())
         .then(json => {
@@ -36,32 +34,24 @@ class Login extends React.Component {
 
   render(){
     return(
-      <div className="ui raised card" style={{width: "60%", position: "relative", left: "25%", padding:"5em"}}>
+      <div className="ui raised card" style={{width: "55%", position: "relative", left: "25%", padding:"5em", top: "5em"}}>
       <div class="ui attached message" style={{position: "relative", bottom: "3em", textAlign: "center"}}>
         <div class="header">
-          <h2>Welcome to TellTale - Create an Account and get Writing Today!</h2>
+          <h2>Welcome Back to TellTale! Login to Keep on Writing!</h2>
         </div>
       </div>
 
           <form onSubmit={this.handleSubmit}>
           <div className="ui form">
             <div className="field">
-              <label>Name</label>
-              <input type="text" placeholder="Name" name="name" onChange={this.handleChange} required />
+              <label>Username</label>
+              <input type="text" placeholder="Username" name="username" onChange={this.handleChange} required />
               </div>
-              <div className="field">
-                <label>Age</label>
-                <input type="number" placeholder="Age" name="age" onChange={this.handleChange} required />
-                </div>
-              <div className="field">
-                <label>Location</label>
-                <input type="text" placeholder="Location" name="location" onChange={this.handleChange} required />
-                </div>
-              <div className="field">
-              <label>Bio</label>
-              <textarea type="text" placeholder="Bio" name="bio" onChange={this.handleChange} required ></textarea>
+            <div className="field">
+              <label>Password</label>
+              <input type="password" placeholder="Password" name="password" onChange={this.handleChange} required />
               </div>
-          <button className="ui button" style={{position:"relative", left: "16.5em", top: "1.5em"}} type="submit">Submit</button>
+          <button className="ui button" style={{position:"relative", left: "15.5em", top: "1.5em"}} type="submit">Login</button>
         </div>
         </form>
       </div>
