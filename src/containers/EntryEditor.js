@@ -5,7 +5,6 @@ import CodeUtils from 'draft-js-code';
 import createEmojiPlugin from 'draft-js-emoji-plugin';
 import createHighlightPlugin from '../highlightPlugin';
 import 'draft-js-emoji-plugin/lib/plugin.css';
-import debounce from 'lodash/debounce';
 import '../App.css'
 
 const emojiPlugin = createEmojiPlugin();
@@ -57,7 +56,7 @@ class EntryEditor extends React.Component {
 
 saveContent = (noteContent) => {
   if (this.state.fetched){
-   fetch("http://localhost:4000/api/v1/entries/" + `${entryId}`, {
+   fetch("http://localhost:4000/api/v1/entries?".concat(`${entryId}`), {
     method: "PATCH",
     headers: { "Content-Type": "application/json", "Accepts": "application/json" },
     body: JSON.stringify({ id:`${entryId}`, content: JSON.stringify(convertToRaw(this.state.editorState.getCurrentContent())) })

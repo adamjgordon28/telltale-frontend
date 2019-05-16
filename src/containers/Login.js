@@ -1,7 +1,5 @@
 import React from 'react';
 import { connect } from 'react-redux'
-import { withRouter, Redirect } from 'react-router'
-import { loginUser } from "../actions/user.js"
 import history from '../history';
 
 
@@ -44,8 +42,8 @@ class Login extends React.Component {
   render(){
     return(
       <div className="ui raised card" style={{width: "55%", position: "relative", left: "25%", padding:"5em", top: "5em"}}>
-      <div class="ui attached message" style={{position: "relative", bottom: "3em", textAlign: "center"}}>
-        <div class="header">
+      <div className="ui attached message" style={{position: "relative", bottom: "3em", textAlign: "center"}}>
+        <div className="header">
           <h2>Welcome Back to TellTale! Login to Keep on Writing!</h2>
         </div>
       </div>

@@ -1,15 +1,10 @@
 import React, { Fragment } from 'react';
 import { connect } from 'react-redux';
-import { Route, Router, Switch, Redirect, withRouter } from 'react-router-dom'
+import { Route, Router } from 'react-router-dom'
 import history from './history';
 import CreateUserForm from './containers/CreateUserForm.js'
 import Login from './containers/Login.js'
 import UserProfile from './containers/UserProfile.js'
-import CreateCharacterForm from './containers/CreateCharacterForm.js'
-import CreateSettingForm from './containers/CreateSettingForm.js'
-import AddInfoToStoryContainer from './containers/AddInfoToStoryContainer.js'
-import CreateEntryForm from './containers/CreateEntryForm.js'
-import EntryEditor from './containers/EntryEditor.js'
 
 class App extends React.Component {
 
@@ -48,7 +43,6 @@ class App extends React.Component {
 
 
   render() {
-    console.log(this.props)
     return (
       <Fragment>
       <button onClick={this.logOut}>LogOut</button>

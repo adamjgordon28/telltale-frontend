@@ -1,11 +1,9 @@
 import React from 'react';
-import { createStore, combineReducers, applyMiddleware } from 'redux'
+import { createStore } from 'redux'
 import { Provider } from 'react-redux'
 import ReactDOM from 'react-dom';
 import { BrowserRouter as Router } from'react-router-dom';
-import { createBrowserHistory } from 'history';
 import './index.css';
-import { composeWithDevTools } from 'redux-devtools-extension'
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 import usersReducer from './reducers/usersReducer.js'
