@@ -39,26 +39,45 @@ class CreateEntryForm extends React.Component {
 
   render(){
     return(
-      <form className="ui" onSubmit = {this.handleSubmit}>
-        <h1>Create a New Entry!</h1>
-        <div  className="ui form">
-          <div class="fields">
-            <div class="field">
+      <div className="ui raised card" style={{width: "60%", position: "relative", left: "25%", padding:"5em"}}>
+      <div class="ui attached message" style={{position: "relative", bottom: "3em", textAlign: "center"}}>
+        <div class="header">
+          <h2>Start Working on Your New Masterpiece Today!</h2>
+        </div>
+      </div>
+
+          <form onSubmit={this.handleSubmit}>
+          <div className="ui form">
+            <div className="field">
               <label>Title</label>
               <input type="text" placeholder="Title" name="title" onChange={this.handleChange}/>
-            </div>
-            <div class="field">
-              <label>Brief Description</label>
-              <input type="text" placeholder="Brief Description" name="description" onChange={this.handleChange}/>
-            </div>
-            <div class="field">
-              <label>Genre</label>
-              <input type="text" placeholder="Genre" name="genre" onChange={this.handleChange}/>
-            </div>
-            </div>
-          </div>
-          <button class="ui button" type="submit">Submit</button>
+              </div>
+              <div class="field">
+                  <label>Genre</label>
+                  <select onChange={this.handleChange} name = "genre">
+                          <option label="Genre"></option>
+                          <option value="adventure">Adventure</option>
+                          <option value="comedy">Comedy</option>
+                          <option value="drama">Drama</option>
+                          <option value="fantasy">Fantasy</option>
+                          <option value="historical-fiction">Historical Fiction</option>
+                          <option value="horror">Horror</option>
+                          <option value="mystery">Mystery</option>
+                          <option value="non-fiction">Non-Fiction</option>
+                          <option value="romance">Romance</option>
+                          <option value="science-fiction">Science Fiction</option>
+                          <option value="western">Western</option>
+                          <option value="other">Other</option>
+                      </select>
+              </div>
+              <div className="field">
+              <label>Description</label>
+              <textarea type="text" placeholder="Description" name="description" onChange={this.handleChange}></textarea>
+              </div>
+          <button className="ui button" style={{position:"relative", left: "16.5em", top: "1.5em"}} type="submit">Submit</button>
+        </div>
         </form>
+      </div>
     )
   }
 
