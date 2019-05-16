@@ -34,16 +34,21 @@ class CreateCharacterForm extends React.Component {
   render(){
     return(
       <div>
-      <h1>Let's Create Another Character for Your Story!</h1>
-          <form className="ui" onSubmit = {this.handleSubmit}>
-
-
-              <input type="text" placeholder="Name" name="name" onChange={this.handleChange}/>
-
-              <input type="text" placeholder="Description" name="description" onChange={this.handleChange}/>
-          <button class="ui button" type="submit">Submit</button>
-        </form>
+       <h1>Add a New Character</h1>
+          <form onSubmit={this.handleSubmit}>
+          <div className="ui form" >
+            <div className="field">
+              <label>Name</label>
+              <input type="text" placeholder="Name" name="name" onChange={this.handleChange} required/>
+              </div>
+              <div className="field">
+              <label>Description</label>
+              <textarea type="text" placeholder="Description" name="description" onChange={this.handleChange} required ></textarea>
+              </div>
+          <button className="ui button" style={{position:"relative", left: "8.5em", top: "1.5em"}} type="submit">Submit</button>
         </div>
+        </form>
+      </div>
     )
   }
 
