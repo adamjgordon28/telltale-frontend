@@ -14,7 +14,6 @@ class CreateUserForm extends React.Component {
     this.setState({
       [e.target.name]: e.target.value
     },()=> {
-      console.log(this.state)
     })
   }
 
@@ -37,30 +36,35 @@ class CreateUserForm extends React.Component {
 
   render(){
     return(
-      <form className="ui form" onSubmit = {this.handleSubmit}>
-        <h1>Welcome to TellTale - create an account here!</h1>
-        <div  className="ui form">
-          <div class="fields">
-            <div class="field">
+      <div className="ui raised card" style={{width: "60%", position: "relative", left: "25%", padding:"5em"}}>
+      <div class="ui attached message" style={{position: "relative", bottom: "3em", textAlign: "center"}}>
+        <div class="header">
+          <h2>Welcome to TellTale - Create an Account and get Writing Today!</h2>
+        </div>
+      </div>
+
+          <form onSubmit={this.handleSubmit}>
+          <div className="ui form">
+            <div className="field">
               <label>Name</label>
               <input type="text" placeholder="Name" name="name" onChange={this.handleChange}/>
-            </div>
-            <div class="field">
-              <label>Age</label>
-              <input type="number" placeholder="Age" name="age" onChange={this.handleChange}/>
-            </div>
-            <div class="field">
-              <label>Location</label>
-              <input type="text" placeholder="Location" name="location" onChange={this.handleChange}/>
-            </div>
-            <div class="field">
-              <label>Inspirational Quote</label>
-              <input type="text" placeholder="Inspirational Quote" name="bio" onChange={this.handleChange}/>
-            </div>
-            </div>
-          </div>
-          <button class="ui button" type="submit">Submit</button>
+              </div>
+              <div className="field">
+                <label>Age</label>
+                <input type="number" placeholder="Age" name="age" onChange={this.handleChange}/>
+                </div>
+              <div className="field">
+                <label>Location</label>
+                <input type="text" placeholder="Location" name="location" onChange={this.handleChange}/>
+                </div>
+              <div className="field">
+              <label>Bio</label>
+              <textarea type="text" placeholder="Bio" name="bio" onChange={this.handleChange}></textarea>
+              </div>
+          <button className="ui button" style={{position:"relative", left: "16.5em", top: "1.5em"}} type="submit">Submit</button>
+        </div>
         </form>
+      </div>
     )
   }
 
