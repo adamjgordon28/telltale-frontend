@@ -6,6 +6,8 @@ import createEmojiPlugin from 'draft-js-emoji-plugin';
 import createHighlightPlugin from '../highlightPlugin';
 import 'draft-js-emoji-plugin/lib/plugin.css';
 import '../App.css'
+import history from '../history.js'
+import { connect } from 'react-redux'
 
 const emojiPlugin = createEmojiPlugin();
 
@@ -15,7 +17,7 @@ const highlightPlugin = createHighlightPlugin({
   background: 'orange'
 });
 
-const entryId = 9;
+const entryId = 1;
 
 class EntryEditor extends React.Component {
   constructor(props) {
@@ -56,7 +58,7 @@ class EntryEditor extends React.Component {
 
 saveContent = (noteContent) => {
   if (this.state.fetched){
-   fetch("http://localhost:4000/api/v1/entries?".concat(`${entryId}`), {
+   fetch("http://localhost:4000/api/v1/entries/".concat(`${entryId}`), {
     method: "PATCH",
     headers: { "Content-Type": "application/json", "Accepts": "application/json" },
     body: JSON.stringify({ id:`${entryId}`, content: JSON.stringify(convertToRaw(this.state.editorState.getCurrentContent())) })
@@ -123,8 +125,8 @@ handleKeyCommand = (command, editorState) => {
 
 
 
- componentDidMount = (entryId) => {
-  fetch("http://localhost:4000/api/v1/entries/9")
+ componentDidMount = () => {
+  fetch("http://localhost:4000/api/v1/entries/".concat(`${entryId}`))
    .then(response => response.json())
    .then(json => {
 
@@ -145,12 +147,14 @@ handleKeyCommand = (command, editorState) => {
  }
 
   render() {
+    console.log(this.props.currentUser)
     if (!this.state.editorState) {
     return (
       <h3 className="loading">Loading...</h3>
     );
   }
     return (
+
     <div>
       <h1>Continue Writing Your MasterPiece Here!</h1>
       <div className="toolbar">
@@ -173,4 +177,12 @@ handleKeyCommand = (command, editorState) => {
 
 }
 
-export default EntryEditor;
+
+
+const mapStateToProps = (state) => {
+  return {
+    currentUser: state.currentUser
+  }
+}
+
+export default connect(mapStateToProps)(EntryEditor)

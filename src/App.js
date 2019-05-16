@@ -5,6 +5,8 @@ import history from './history';
 import CreateUserForm from './containers/CreateUserForm.js'
 import Login from './containers/Login.js'
 import UserProfile from './containers/UserProfile.js'
+import EntryEditor from './containers/EntryEditor.js'
+import CreateEntryForm from './containers/CreateEntryForm.js'
 
 class App extends Component {
 
@@ -49,6 +51,8 @@ class App extends Component {
             <Route exact path ="/signup" component={CreateUserForm}/>
             <Route exact path ="/login" component={Login}/>
             <Route exact path ="/profile" component={UserProfile}/>
+            <Route exact path ="/editor" component={EntryEditor}/>
+            <Route exact path ="/create-entry" component={CreateEntryForm}/>
           </Router>
       </Fragment>
   )};
