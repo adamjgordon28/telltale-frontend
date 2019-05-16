@@ -32,7 +32,7 @@ class Login extends React.Component {
           if (json.errors){
             alert(json.errors)
           } else {
-            this.props.setCurrentUser(json)
+            this.props.setCurrentUser(json.user)
             localStorage.setItem("token", json.token)
             history.push('/profile')
           }

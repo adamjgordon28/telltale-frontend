@@ -45,8 +45,8 @@ class CreateUserForm extends React.Component {
   render(){
     return(
       <div className="ui raised card" style={{width: "60%", position: "relative", left: "25%", padding:"5em"}}>
-      <div class="ui attached message" style={{position: "relative", bottom: "3em", textAlign: "center"}}>
-        <div class="header">
+      <div className="ui attached message" style={{position: "relative", bottom: "3em", textAlign: "center"}}>
+        <div className="header">
           <h2>Welcome to TellTale - Create an Account and get Writing Today!</h2>
         </div>
       </div>
