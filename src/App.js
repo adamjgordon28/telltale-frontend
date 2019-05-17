@@ -46,13 +46,12 @@ class App extends Component {
   render() {
     return (
       <Fragment>
-      <button onClick={this.logOut}>LogOut</button>
           <Router history={history}>
-            <Route exact path ="/signup" component={CreateUserForm}/>
-            <Route exact path ="/login" component={Login}/>
-            <Route exact path ="/profile" component={UserProfile}/>
-            <Route exact path ="/editor" component={EntryEditor}/>
-            <Route exact path ="/create-entry" component={CreateEntryForm}/>
+            <Route exact path ="/signup" render = {(routeProps) => <CreateUserForm {...routeProps}/>}/>
+            <Route exact path ="/login" render = {(routeProps) => <Login {...routeProps}/>}/>
+            <Route exact path ="/profile" render = {(routeProps) => <UserProfile logOut={this.logOut}{...routeProps}/>}/>
+            <Route exact path ="/editor" render = {(routeProps) => <EntryEditor {...routeProps}/>}/>
+            <Route exact path ="/create-entry" render = {(routeProps) => <CreateEntryForm {...routeProps}/>}/>
           </Router>
       </Fragment>
   )};

@@ -6,7 +6,6 @@ import createEmojiPlugin from 'draft-js-emoji-plugin';
 import createHighlightPlugin from '../highlightPlugin';
 import 'draft-js-emoji-plugin/lib/plugin.css';
 import '../App.css'
-import history from '../history.js'
 import { connect } from 'react-redux'
 
 const emojiPlugin = createEmojiPlugin();
