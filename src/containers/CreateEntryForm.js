@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import history from "../history.js"
 
 const user_id =1;
 const emptyContent = "{\"blocks\":[{\"key\":\"dpilv\",\"text\":\"\",\"type\":\"unstyled\",\"depth\":0,\"inlineStyleRanges\":[],\"entityRanges\":[],\"data\":{}}],\"entityMap\":{}}"
@@ -33,7 +34,7 @@ class CreateEntryForm extends React.Component {
        })
         .then(response => response.json())
         .then(json => {
-          
+          history.push("/editor")
         })
   }
 
