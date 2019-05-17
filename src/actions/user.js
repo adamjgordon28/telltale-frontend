@@ -23,7 +23,6 @@ export const loginUser = (username, password) => {
       }
     })
     .then(json => {
-      console.log('%c INSIDE YE OLDE .THEN', 'color: navy')
       localStorage.setItem('jwt', json.jwt)//the magic place to keep our token
       dispatch({ type: "SET_CURRENT_USER", payload: json.user})
     })

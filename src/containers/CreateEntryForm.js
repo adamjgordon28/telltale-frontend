@@ -1,4 +1,5 @@
 import React from 'react';
+import { connect } from 'react-redux';
 
 const user_id =1;
 const emptyContent = "{\"blocks\":[{\"key\":\"dpilv\",\"text\":\"\",\"type\":\"unstyled\",\"depth\":0,\"inlineStyleRanges\":[],\"entityRanges\":[],\"data\":{}}],\"entityMap\":{}}"
@@ -16,7 +17,6 @@ class CreateEntryForm extends React.Component {
     this.setState({
       [e.target.name]: e.target.value
     },()=> {
-      console.log(this.state)
     })
   }
 
@@ -29,11 +29,11 @@ class CreateEntryForm extends React.Component {
        fetch("http://localhost:4000/api/v1/entries", {
         method: "POST",
         headers: { "Content-Type": "application/json", "Accepts": "application/json" },
-        body: JSON.stringify({title: info.title, description: info.description, genre: info.genre, content: emptyContent, user_id: `${user_id}`})
+        body: JSON.stringify({title: info.title, description: info.description, genre: info.genre, content: emptyContent, user_id: `${this.props.currentUser.id}`})
        })
         .then(response => response.json())
         .then(json => {
-          console.log(json)
+          
         })
   }
 
@@ -83,4 +83,10 @@ class CreateEntryForm extends React.Component {
 
 }
 
-export default CreateEntryForm
+const mapStateToProps = (state) => {
+  return {
+    currentUser: state.currentUser
+  }
+}
+
+export default connect(mapStateToProps)(CreateEntryForm)

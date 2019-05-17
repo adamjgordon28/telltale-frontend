@@ -1,20 +1,21 @@
 import React, { Component, Fragment } from 'react';
-import { Link } from 'react-router-dom';
+import { Link } from 'react-router-dom'
 
 
 class ProfileNav extends Component {
 
   render(){
-    console.log(this.props)
     return (
     <Fragment>
-  <div  className="ui labeled icon menu">
-    <Link to={"/create-entry"}>
+  <div className="ui labeled icon menu">
     <div>
-    <i className="pencil alternate icon"></i>
+    <a className="item">
+    <Link to ={"/create-entry"}>
+    <i className="pencil alternate icon" onClick={this.props.logOut}></i>
     Start a New Entry
-    </div>
     </Link>
+    </a>
+    </div>
     <div>
     <a className="item">
     <i className="paper plane icon"></i>

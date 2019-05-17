@@ -64,7 +64,7 @@ saveContent = (noteContent) => {
    })
     .then(response => response.json())
     .then(json => {
-     console.log(json)
+
     })
     }
   }
@@ -77,14 +77,13 @@ saveContent = (noteContent) => {
      })
       .then(response => response.json())
       .then(json => {
-       console.log(json)
+
       })
     }
 
 
   onChange =(editorState) => {
     const contentState = editorState.getCurrentContent();
-    console.log(contentState)
     this.saveContent(contentState)
     this.setState({
       editorState: editorState
@@ -130,7 +129,6 @@ handleKeyCommand = (command, editorState) => {
    .then(json => {
 
      if(json) {
-       console.log(JSON.parse(json.content))
     this.setState({
 
       editorState: EditorState.createWithContent(convertFromRaw(JSON.parse(json.content))),
@@ -146,7 +144,6 @@ handleKeyCommand = (command, editorState) => {
  }
 
   render() {
-    console.log(this.props.currentUser)
     if (!this.state.editorState) {
     return (
       <h3 className="loading">Loading...</h3>
