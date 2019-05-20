@@ -1,9 +1,10 @@
 const defaultState = {
-  currentUser: null
+  currentUser: null,
+
 
 }
 
-  const usersReducer = (state=defaultState, action) => {
+  const mainReducer = (state=defaultState, action) => {
     switch(action.type){
       case 'SET_CURRENT_USER':
       //action.payload { username: 'Chandler Bing', bio: 'my user bio', age: 'age'}
@@ -11,6 +12,7 @@ const defaultState = {
         default:
         return state
     }
+
   }
 
-  export default usersReducer
+  export default mainReducer

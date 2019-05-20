@@ -6,9 +6,9 @@ import { BrowserRouter } from'react-router-dom';
 import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
-import usersReducer from './reducers/usersReducer.js'
+import mainReducer from './reducers/mainReducer.js'
 
-const store = createStore(usersReducer)
+const store = createStore(mainReducer)
 
 
 ReactDOM.render(
