@@ -52,6 +52,7 @@ class App extends Component {
             <Route exact path ="/profile" render = {(routeProps) => <UserProfile logOut={this.logOut}{...routeProps}/>}/>
             <Route exact path ="/editor" render = {(routeProps) => <EntryEditor {...routeProps}/>}/>
             <Route exact path ="/create-entry" render = {(routeProps) => <CreateEntryForm {...routeProps}/>}/>
+            // <Route exact path ="/" render = {(routeProps) => <CreateEntryForm {...routeProps}/>}/>
           </Router>
       </Fragment>
   )};
