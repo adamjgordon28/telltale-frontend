@@ -1,5 +1,6 @@
 const defaultState = {
   currentUser: null
+
 }
 
   const usersReducer = (state=defaultState, action) => {

@@ -7,6 +7,7 @@ import createHighlightPlugin from '../highlightPlugin';
 import 'draft-js-emoji-plugin/lib/plugin.css';
 import '../App.css'
 import { connect } from 'react-redux'
+import history from "../history.js"
 
 const emojiPlugin = createEmojiPlugin();
 
@@ -144,12 +145,16 @@ handleKeyCommand = (command, editorState) => {
  }
 
   render() {
+    if(this.props.currentUser === -1){
+      history.push("/login")
+    }
     if (!this.state.editorState) {
     return (
       <h3 className="loading">Loading...</h3>
     );
   }
     return (
+
 
     <div>
       <h1>Continue Writing Your MasterPiece Here!</h1>

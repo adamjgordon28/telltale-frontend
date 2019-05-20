@@ -39,6 +39,9 @@ class CreateEntryForm extends React.Component {
   }
 
   render(){
+    if(this.props.currentUser === -1){
+      history.push("/login")
+    }
     return(
       <div className="ui raised card" style={{width: "60%", position: "relative", left: "25%", padding:"5em"}}>
       <div class="ui attached message" style={{position: "relative", bottom: "3em", textAlign: "center"}}>

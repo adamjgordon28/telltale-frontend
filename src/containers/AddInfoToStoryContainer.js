@@ -1,6 +1,8 @@
 import React from 'react';
 import CreateCharacterForm from './CreateCharacterForm.js'
 import CreateSettingForm from './CreateSettingForm.js'
+import history from "../history.js"
+import { connect } from 'react-redux';
 
 class AddInfoToStoryContainer extends React.Component {
   constructor(props) {
@@ -12,6 +14,9 @@ class AddInfoToStoryContainer extends React.Component {
 
 
   render() {
+    if(!this.props.currentUser){
+      history.push("/login")
+    }
     return (
 
   <div className="ui raised card"style={{ width: "80%", position: "relative", left: "10%"}} >
@@ -48,4 +53,10 @@ class AddInfoToStoryContainer extends React.Component {
 
 }
 
-export default AddInfoToStoryContainer;
+const mapStateToProps = (state) => {
+  return {
+    currentUser: state.currentUser
+  }
+}
+
+export default connect(mapStateToProps)(AddInfoToStoryContainer)

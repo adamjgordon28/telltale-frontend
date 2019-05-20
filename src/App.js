@@ -7,12 +7,14 @@ import Login from './containers/Login.js'
 import UserProfile from './containers/UserProfile.js'
 import EntryEditor from './containers/EntryEditor.js'
 import CreateEntryForm from './containers/CreateEntryForm.js'
+import NavBar from './containers/NavBar.js'
+import Logout from './containers/Logout.js'
 
 class App extends Component {
 
   logOut = () => {
     localStorage.removeItem("token")
-    this.props.setCurrentUser({currentUser: null})
+    this.props.setCurrentUser(-1)
     history.push('/login')
   }
 
@@ -27,32 +29,40 @@ class App extends Component {
 
       })
       .then(res => res.json())
-      .then((response) => {
-        this.props.setCurrentUser(response)
+      .then((user) => {
+        if (user.errors) {
+          this.props.setCurrentUser(-1)
+        } else {
+          this.props.setCurrentUser(user)
+        }
       })
     }
   }
-
-  setCurrentUser = (response) => {
-   this.setState({
-     currentUser: response.user
-   }, () => {
-     localStorage.setItem("token", response.token)
-     this.props.history.push(`/profile`)
-   })
- }
+ //
+ //  setCurrentUser = (response) => {
+ //    debugger
+ //   this.setState({
+ //     currentUser: response.user
+ //   }, () => {
+ //     localStorage.setItem("token", response.token)
+ //     this.props.history.push(`/profile`)
+ //   })
+ // }
 
 
   render() {
     return (
       <Fragment>
+
           <Router history={history}>
+            <NavBar/>
             <Route exact path ="/signup" render = {(routeProps) => <CreateUserForm {...routeProps}/>}/>
             <Route exact path ="/login" render = {(routeProps) => <Login {...routeProps}/>}/>
             <Route exact path ="/profile" render = {(routeProps) => <UserProfile logOut={this.logOut}{...routeProps}/>}/>
             <Route exact path ="/editor" render = {(routeProps) => <EntryEditor {...routeProps}/>}/>
             <Route exact path ="/create-entry" render = {(routeProps) => <CreateEntryForm {...routeProps}/>}/>
-            // <Route exact path ="/" render = {(routeProps) => <CreateEntryForm {...routeProps}/>}/>
+            <Route exact path ="/logout" render = {(routeProps) => <Logout logOut = {this.logOut} {...routeProps}/>}/>
+            <Route exact path ="/" render = {(routeProps) => <CreateEntryForm {...routeProps}/>}/>
           </Router>
       </Fragment>
   )};
