@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component} from 'react';
 import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
 
@@ -10,17 +10,21 @@ class NavBar extends Component {
     return (
 
   <div className="ui menu">
+  <Link to ={"/create-entry"}>
     <div className = "item">
-      <Link to ={"/create-entry"}>
       Start a New Entry
-      </Link>
     </div>
+    </Link>
+    <Link to="/entries">
     <div className="item">
     See Your Entries
     </div>
+    </Link>
+    <Link to ={"/profile"}>
     <div className="item">
-    View the Feed
+    View Your Profile
     </div>
+      </Link>
     <Link to="/logout">
       <div className="item">
     Logout

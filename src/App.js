@@ -9,6 +9,7 @@ import EntryEditor from './containers/EntryEditor.js'
 import CreateEntryForm from './containers/CreateEntryForm.js'
 import NavBar from './containers/NavBar.js'
 import Logout from './containers/Logout.js'
+import EntryContainer from './containers/EntryContainer.js'
 
 class App extends Component {
 
@@ -40,7 +41,7 @@ class App extends Component {
   }
  //
  //  setCurrentUser = (response) => {
- //    debugger
+ //
  //   this.setState({
  //     currentUser: response.user
  //   }, () => {
@@ -62,6 +63,7 @@ class App extends Component {
             <Route exact path ="/editor" render = {(routeProps) => <EntryEditor {...routeProps}/>}/>
             <Route exact path ="/create-entry" render = {(routeProps) => <CreateEntryForm {...routeProps}/>}/>
             <Route exact path ="/logout" render = {(routeProps) => <Logout logOut = {this.logOut} {...routeProps}/>}/>
+            <Route exact path ="/entries" render = {(routeProps) => <EntryContainer {...routeProps}/>}/>
             <Route exact path ="/" render = {(routeProps) => <CreateEntryForm {...routeProps}/>}/>
           </Router>
       </Fragment>
