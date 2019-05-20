@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import history from "../history.js"
 
-const user_id =1;
+
 const emptyContent = "{\"blocks\":[{\"key\":\"dpilv\",\"text\":\"\",\"type\":\"unstyled\",\"depth\":0,\"inlineStyleRanges\":[],\"entityRanges\":[],\"data\":{}}],\"entityMap\":{}}"
 class CreateEntryForm extends React.Component {
 
@@ -45,8 +45,8 @@ class CreateEntryForm extends React.Component {
     }
     return(
       <div className="ui raised card" style={{width: "60%", position: "relative", left: "25%", padding:"5em"}}>
-      <div class="ui attached message" style={{position: "relative", bottom: "3em", textAlign: "center"}}>
-        <div class="header">
+      <div className="ui attached message" style={{position: "relative", bottom: "3em", textAlign: "center"}}>
+        <div className="header">
           <h2>Start Working on Your New Masterpiece Today!</h2>
         </div>
       </div>
@@ -57,7 +57,7 @@ class CreateEntryForm extends React.Component {
               <label>Title</label>
               <input type="text" placeholder="Title" name="title" onChange={this.handleChange} required />
               </div>
-              <div class="field">
+              <div className="field">
                   <label>Genre</label>
                   <select onChange={this.handleChange} name = "genre" required >
                           <option label="Genre"></option>
