@@ -1,5 +1,7 @@
 import React from 'react'
 import EntryCard from "../components/EntryCard.js"
+import EntryEditor from "./EntryEditor.js"
+import { BrowserRouter, Route, Link  } from 'react-router-dom'
 import { connect } from 'react-redux'
 import history from "../history.js"
 
@@ -10,7 +12,7 @@ class EntryContainer extends React.Component {
   renderEntryCards = () => {
     if (this.props.currentUser && this.props.currentUser.entries){
     let entryCardComponentArray = this.props.currentUser.entries.map((entry)=>{
-      return <EntryCard entry={entry}/>
+      return <Link key={Math.random()} to={`/editor/${entry.id}`}><EntryCard entry={entry}/></Link>
     })
     return entryCardComponentArray
     }
@@ -23,7 +25,11 @@ class EntryContainer extends React.Component {
     }
     return (
       <div>
-      {this.renderEntryCards()}
+      <BrowserRouter>
+        <Route path='/editor/:id' component={EntryEditor}>
+        {this.renderEntryCards()}
+        </Route>
+      </BrowserRouter>
       </div>
     )
   }
@@ -33,10 +39,14 @@ class EntryContainer extends React.Component {
 
 }
 
+
+
+
+
 const mapStateToProps = (state) => {
   return {
     currentUser: state.currentUser
   }
 }
 
-export default connect(mapStateToProps) (EntryContainer)
+export default connect(mapStateToProps)(EntryContainer)

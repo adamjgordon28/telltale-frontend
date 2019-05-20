@@ -17,7 +17,8 @@ const highlightPlugin = createHighlightPlugin({
   background: 'orange'
 });
 
-const entryId = 1;
+
+
 
 class EntryEditor extends React.Component {
   constructor(props) {
@@ -58,10 +59,10 @@ class EntryEditor extends React.Component {
 
 saveContent = (noteContent) => {
   if (this.state.fetched){
-   fetch("http://localhost:4000/api/v1/entries/".concat(`${entryId}`), {
+   fetch("http://localhost:4000/api/v1/entries/".concat(`${this.props.currentEntryId}`), {
     method: "PATCH",
     headers: { "Content-Type": "application/json", "Accepts": "application/json" },
-    body: JSON.stringify({ id:`${entryId}`, content: JSON.stringify(convertToRaw(this.state.editorState.getCurrentContent())) })
+    body: JSON.stringify({ id:`${this.props.currentEntryId}`, content: JSON.stringify(convertToRaw(this.state.editorState.getCurrentContent())) })
    })
     .then(response => response.json())
     .then(json => {
@@ -125,7 +126,7 @@ handleKeyCommand = (command, editorState) => {
 
 
  componentDidMount = () => {
-  fetch("http://localhost:4000/api/v1/entries/".concat(`${entryId}`))
+  fetch("http://localhost:4000/api/v1/entries/".concat(`${this.props.currentEntryId}`))
    .then(response => response.json())
    .then(json => {
 
@@ -145,7 +146,8 @@ handleKeyCommand = (command, editorState) => {
  }
 
   render() {
-    if(this.props.currentUser === -1){
+    console.log(this.props)
+    if(this.props.currentUser === -1 || !this.props.currentEntryId){
       history.push("/login")
     }
     if (!this.state.editorState) {
@@ -182,7 +184,8 @@ handleKeyCommand = (command, editorState) => {
 
 const mapStateToProps = (state) => {
   return {
-    currentUser: state.currentUser
+    currentUser: state.currentUser,
+    currentEntryId: state.currentEntryId
   }
 }
 
