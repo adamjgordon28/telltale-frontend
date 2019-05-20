@@ -34,6 +34,7 @@ class CreateEntryForm extends React.Component {
        })
         .then(response => response.json())
         .then(json => {
+          this.props.addPostToUser(json)
           history.push("/editor")
         })
   }
@@ -87,10 +88,18 @@ class CreateEntryForm extends React.Component {
 
 }
 
+function mapDispatchToProps(dispatch) {
+  return {
+    addPostToUser: (entry) => {
+      dispatch({type: "ADD_POST_TO_USER", payload: entry})
+    }
+  }
+}
+
 const mapStateToProps = (state) => {
   return {
     currentUser: state.currentUser
   }
 }
 
-export default connect(mapStateToProps)(CreateEntryForm)
+export default connect(mapStateToProps, mapDispatchToProps)(CreateEntryForm)

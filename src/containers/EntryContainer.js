@@ -7,12 +7,14 @@ import history from "../history.js"
 class EntryContainer extends React.Component {
 
 
-  // renderEntryCards = () => {
-  //   let entryCardComponentArray = this.props.currentUser.entries.map((entry)=>{
-  //     return <EntryCard entry={entry}/>
-  //   })
-  //   return entryCardComponentArray
-  // }
+  renderEntryCards = () => {
+    if (this.props.currentUser){
+    let entryCardComponentArray = this.props.currentUser.entries.map((entry)=>{
+      return <EntryCard entry={entry}/>
+    })
+    return entryCardComponentArray
+    }
+  }
 
   render(){
     if(this.props.currentUser === -1){
@@ -20,8 +22,7 @@ class EntryContainer extends React.Component {
     }
     return (
       <div>
-      Hello
-    
+      {this.renderEntryCards()}
       </div>
     )
   }
