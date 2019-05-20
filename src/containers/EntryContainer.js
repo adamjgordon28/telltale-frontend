@@ -8,7 +8,7 @@ class EntryContainer extends React.Component {
 
 
   renderEntryCards = () => {
-    if (this.props.currentUser){
+    if (this.props.currentUser && this.props.currentUser.entries){
     let entryCardComponentArray = this.props.currentUser.entries.map((entry)=>{
       return <EntryCard entry={entry}/>
     })
@@ -17,6 +17,7 @@ class EntryContainer extends React.Component {
   }
 
   render(){
+    console.log(this.props.currentUser)
     if(this.props.currentUser === -1){
       history.push("/login")
     }
