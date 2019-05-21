@@ -9,27 +9,27 @@ class NavBar extends Component {
   render(){
     return (
 
-  <div className="ui pointing menu">
+  <div className="ui menu" >
   <Link to ={"/create-entry"}>
     <div className = "item">
-      Start a New Entry
+      <h3>Start a New Entry</h3>
     </div>
     </Link>
     <Link to="/entries">
     <div className="item">
-    Your Entries
+    <h3>Your Entries</h3>
     </div>
     </Link>
     <Link to ={"/profile"}>
     <div className="item">
-    View Your Profile
+    <h3>View Your Profile</h3>
     </div>
       </Link>
     {this.props.currentUser === -1 || this.props.currentUser === null ?
-      <Fragment><Link to="/signup"><div className="item">Sign Up</div></Link><Link to="/login"><div className="item">Login</div></Link></Fragment> :
+      <Fragment><Link to="/signup"><div className="item"><h3>Sign Up</h3></div></Link><Link to="/login"><div className="item"><h3>Login</h3></div></Link></Fragment> :
       <Link to="/logout">
       <div className="item">
-    Logout
+    <h3>Logout</h3>
       </div>
     </Link> }
   </div>

@@ -7,7 +7,7 @@ import { connect  } from 'react-redux';
 class EntryCard extends React.Component {
   render() {
     return (
-      <div style={{width: "95%", height: "18em", position: "relative", left: "2.5%"}} className="ui raised link card">
+      <div style={{width: "50em", height: "18em", position: "relative", left: "2.5em", marginTop: "2.5em"}} className="ui raised link card">
   <div className="content">
     <div className="header">{this.props.entry.title}</div>
     <div className="description">

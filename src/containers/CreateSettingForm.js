@@ -28,6 +28,7 @@ class CreateSettingForm extends React.Component {
         .then(response => response.json())
         .then(setting => {
           this.props.addSettingToEntry(setting)
+          history.push("/storyboards/".concat(`${this.props.currentEntry.id}`))
         })
   }
 

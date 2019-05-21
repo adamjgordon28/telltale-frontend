@@ -28,6 +28,7 @@ class CreateCharacterForm extends React.Component {
         .then(response => response.json())
         .then(character => {
           this.props.addCharacterToEntry(character)
+          history.push("/storyboards/".concat(`${this.props.currentEntry.id}`))
         })
   }
 

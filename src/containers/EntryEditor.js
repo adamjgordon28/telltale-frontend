@@ -1,5 +1,6 @@
 import React from 'react';
 import { EditorState, RichUtils, convertToRaw, convertFromRaw } from 'draft-js';
+import { Link } from 'react-router-dom';
 import Editor from 'draft-js-plugins-editor';
 import CodeUtils from 'draft-js-code';
 import createEmojiPlugin from 'draft-js-emoji-plugin';
@@ -174,6 +175,7 @@ handleKeyCommand = (command, editorState) => {
     plugins={[highlightPlugin, emojiPlugin]}
     onTab={this.onTab}
     />
+    <Link key={Math.random()} to={`/storyboards/${this.state.entry.id}`}><button style = {{position: "relative", left: "4.75em", top: "3.5em"}} className="ui blue button">View Storyboard</button></Link>
     <EmojiSuggestions/>
     </div>
   )};
