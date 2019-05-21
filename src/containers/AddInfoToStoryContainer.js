@@ -28,19 +28,8 @@ componentDidMount = () => {
     return (
 
   <div className="ui raised card"style={{ width: "80%", position: "relative", left: "10%"}} >
-  <div className="ui inverted segment">
-  <div  className="ui inverted secondary menu">
-    <a className="item">
-      <h3>Edit Story Info</h3>
-    </a>
-    <a className="item">
-      <h3>See Storyboard</h3>
-    </a>
-    <a className="item">
-      <h3>Browse Your Feed</h3>
-    </a>
-  </div>
-</div>
+
+
   <div className="ui attached message">
     <div className="header">
       <h1 style={{fontSize: "3em"}}>Add Info To Your Story!</h1>
@@ -51,10 +40,15 @@ componentDidMount = () => {
   </div>
   <div className="content" style={{width:"40%", float: "right", position:"relative", left: "55%", bottom: "27.5em"}} className="content">
   <CreateCharacterForm/>
-  <button style={{width: "14em", fontSize:"1.5em", background: "lightgreen", position:"relative",top: "2.5em", left: "2.5em"}} className="ui right labeled icon button">
-  <i className="right arrow icon"></i>
+  <div className="button-div" style={{display: "inline-block"}}>
+  <button style={{width: "14em", fontSize:"1.5em", position:"relative",top: "4.5em", left: "4.5em", display:"inline-block"}} className="ui button positive">
   Return to Writing
 </button>
+<button style={{width: "14em", fontSize:"1.5em", background: "lightblue", position:"relative",top: "4.5em", left: "4.5em", display:"inline-block"}} className="ui button">
+Return to StoryBoard
+</button>
+  
+</div>
   </div>
     </div>
   )};

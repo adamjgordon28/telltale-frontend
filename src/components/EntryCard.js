@@ -1,10 +1,12 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-import { connect  } from 'react-redux';
+import { connect } from 'react-redux';
 
 
 class EntryCard extends React.Component {
+
+
   render() {
     return (
       <div style={{width: "50em", height: "18em", position: "relative", left: "2.5em", marginTop: "2.5em"}} className="ui raised link card">
@@ -15,7 +17,7 @@ class EntryCard extends React.Component {
     </div>
   </div>
   <div className="extra content">
-  <Link key={Math.random()} to={`/storyboards/${this.props.entry.id}`}><button style = {{position: "relative", left: ".5em"}} className="ui blue button">View Storyboard</button></Link>
+  <Link key={Math.random()} to={`/storyboards/${this.props.entry.id}`}><button style = {{position: "relative", left: ".5em", marginRight: "1em"}} className="ui blue button">View Storyboard</button></Link>
     <div className="right floated genre">
       <img className="ui avatar image" src="/images/avatar/small/matt.jpg" alt =""/>Genre: {this.props.entry.genre}
     </div>

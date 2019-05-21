@@ -17,6 +17,14 @@ const defaultState = {
           entries: [...state.currentUser.entries, action.payload]
         }
       }
+      case 'REMOVE_POST_FROM_USER':
+      return {
+        ...state,
+        currentUser: {
+          ...state.currentUser,
+          entries: state.currentUser.entries.filter(entry => action.payload !== entry.id )
+        }
+      }
       case 'SET_CURRENT_ENTRY':
       return {...state, currentEntry: action.payload}
       case 'ADD_CHARACTER_TO_ENTRY':
