@@ -2,21 +2,22 @@ import React from 'react';
 import { EditorState, RichUtils, convertToRaw, convertFromRaw } from 'draft-js';
 import { Link } from 'react-router-dom';
 import Editor from 'draft-js-plugins-editor';
-import CodeUtils from 'draft-js-code';
 import createEmojiPlugin from 'draft-js-emoji-plugin';
 import createHighlightPlugin from '../highlightPlugin';
 import 'draft-js-emoji-plugin/lib/plugin.css';
 import '../App.css'
 import { connect } from 'react-redux'
 import history from "../history.js"
+import 'draft-js/dist/Draft.css';
 
-const emojiPlugin = createEmojiPlugin();
+const emojiPlugin = createEmojiPlugin()
 
 const { EmojiSuggestions } = emojiPlugin;
 
 const highlightPlugin = createHighlightPlugin({
   background: 'orange'
 });
+
 
 
 
@@ -116,14 +117,19 @@ handleKeyCommand = (command, editorState) => {
     return 'not-handled';
   }
 
-  onTab = (e) => {
-    const { editorState } = this.state;
-    if (!CodeUtils.hasSelectionInBlock(editorState)) return 'not-handled';
-
-    this.onChange(CodeUtils.onTab(e, editorState));
-    return 'handled';
-  }
-
+  onKeyPressed = (event) => {
+  		if (event.key === 'Tab') {
+  			const newEditorState = RichUtils.onTab(
+  				event,
+  				this.state.editorState,
+  				40 /* maxDepth */
+  			);
+  			if (newEditorState !== this.state.editorState) {
+  				this.onChange(newEditorState);
+  			}
+  			event.preventDefault();
+  		}
+  	}
 
 
  componentDidMount = () => {
@@ -169,6 +175,7 @@ handleKeyCommand = (command, editorState) => {
       <button onClick={() => {this.makeItalic()}}>Italicize</button>
       <button onClick={() => {this.makeHighlighted()}}>Highlight</button>
       </div>
+    <div onKeyDown={this.onKeyPressed}>
     <Editor
     onChange={(editorState) => {this.onChange(editorState)}}
     editorState={this.state.editorState}
@@ -176,6 +183,7 @@ handleKeyCommand = (command, editorState) => {
     plugins={[highlightPlugin, emojiPlugin]}
     onTab={this.onTab}
     />
+    </div>
 
     <Link key={Math.random()} to={`/storyboards/${this.state.entry.id}`}><button style = {{position: "relative", left: "10.25em", top: "3.5em"}} className="ui blue button">View Storyboard</button></Link>
     </div>

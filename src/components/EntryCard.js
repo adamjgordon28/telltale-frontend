@@ -9,7 +9,7 @@ class EntryCard extends React.Component {
 
   render() {
     return (
-      <div style={{width: "40%", height: "18em", position: "relative", marginLeft: "5%", marginTop: "2.5em", display: "inline-block"}} className="ui card">
+      <div style={{width: "40%", minWidth: "25em", height: "18em", position: "relative", marginLeft: "5%", marginTop: "2.5em", display: "inline-block"}} className="ui card">
   <div className="content">
     <div className="header">{this.props.entry.title}</div>
     <div className="description">

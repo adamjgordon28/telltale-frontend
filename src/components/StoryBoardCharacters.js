@@ -10,7 +10,7 @@ class StoryBoardCharacters extends Component {
 render () {
 
   return(
-    <div className="ui raised card" style={{width: "35%", position: "relative", left: "15%", bottom: ".75em", minHeight:"30em", display: "inline-block"}}>
+    <div className="ui raised card" style={{width: "35%", position: "s", left: "15%", bottom: ".75em", minHeight:"30em", display: "inline-block"}}>
     <h3 style={{textAlign:"center"}} >Characters</h3>
     <ul>{this.renderCharacters()}</ul>
     </div>

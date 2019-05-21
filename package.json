@@ -5,9 +5,10 @@
   "dependencies": {
     "draft-js": "^0.10.5",
     "draft-js-code": "^0.3.0",
+    "draft-js-counter-plugin": "^2.0.1",
     "draft-js-emoji-plugin": "^2.1.1",
     "draft-js-hashtag-plugin": "^2.0.3",
-    "draft-js-plugins-editor": "^2.0.0-rc2",
+    "draft-js-plugins-editor": "^2.1.1",
     "history": "^4.9.0",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
@@ -38,5 +39,9 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "css-loader": "^2.1.1",
+    "style-loader": "^0.23.1"
   }
 }
