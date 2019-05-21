@@ -11,6 +11,7 @@ class CreateUserForm extends React.Component {
     name: "",
     age: "",
     location: "",
+    img_url: "",
     bio: ""
   }
 
@@ -29,7 +30,7 @@ class CreateUserForm extends React.Component {
        fetch("http://localhost:4000/api/v1/users", {
         method: "POST",
         headers: { "Content-Type": "application/json", "Accepts": "application/json" },
-        body: JSON.stringify({username: info.username, password: info.password, name: info.name, bio: info.bio, location: info.location, age: info.age})
+        body: JSON.stringify({username: info.username, password: info.password, name: info.name, bio: info.bio, location: info.location, age: info.age, img_url: info.img_url})
        })
         .then(response => response.json())
         .then(json => {
@@ -73,6 +74,10 @@ class CreateUserForm extends React.Component {
                 <label>Location</label>
                 <input type="text" placeholder="Location" name="location" onChange={this.handleChange} required />
                 </div>
+              <div className="field">
+                <label>Image URL</label>
+                <input onChange={this.handleChange} placeholder="Image URL" name="img_url" type="url" required/>
+              </div>
               <div className="field">
               <label>Bio</label>
               <textarea type="text" placeholder="Bio" name="bio" onChange={this.handleChange} required ></textarea>

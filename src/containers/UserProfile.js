@@ -13,8 +13,8 @@ class UserProfile extends React.Component {
 
     return (
       <div>
-      {this.props.currentUser ? <h1>This is the profile of {this.props.currentUser.name}</h1>: null}
-      <img src="https://pbs.twimg.com/media/DiT-EjmUYAMLkCS.jpg" alt=""/>
+      {this.props.currentUser ? <div><h1>Welcome back, {this.props.currentUser.name}!</h1>
+      <img src={this.props.currentUser.img_url} alt=""/> </div>: null}
       </div>
     )
   }
