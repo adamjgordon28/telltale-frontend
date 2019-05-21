@@ -16,7 +16,7 @@ class EntryCard extends React.Component {
   </div>
   <div className="extra content">
   <Link key={Math.random()} to={`/entries/${this.props.entry.id}`}><button className="positive ui button">Keep Writing </button></Link>
-  <Link key={Math.random()} to={`/storyboards/${this.props.entry.id}`}><button style = {{position: "relative", left: "1em"}} className="ui blue button">View Storyboard</button></Link>
+  <Link key={Math.random()} to={`/storyboards/${this.props.entry.id}`}><button style = {{position: "relative", left: ".5em"}} className="ui blue button">View Storyboard</button></Link>
     <div className="right floated genre">
       <img className="ui avatar image" src="/images/avatar/small/matt.jpg" alt =""/>Genre: {this.props.entry.genre}
     </div>

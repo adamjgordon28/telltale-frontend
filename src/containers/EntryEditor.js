@@ -16,7 +16,6 @@ const { EmojiSuggestions } = emojiPlugin;
 const highlightPlugin = createHighlightPlugin({
   background: 'orange'
 });
-let title;
 
 
 
@@ -25,7 +24,8 @@ class EntryEditor extends React.Component {
   super(props);
   this.state = {
     editorState: EditorState.createEmpty(),
-    fetched: false
+    fetched: false,
+    entry: null
   };
 }
 
@@ -129,13 +129,14 @@ handleKeyCommand = (command, editorState) => {
   fetch("http://localhost:4000/api/v1/entries/".concat(`${this.props.match.params.id}`))
    .then(response => response.json())
    .then(json => {
-     title = json.title
+
 
      if(json) {
     this.setState({
 
       editorState: EditorState.createWithContent(convertFromRaw(JSON.parse(json.content))),
-      fetched: true
+      fetched: true,
+      entry: json
     })
     }
     else {
@@ -147,11 +148,11 @@ handleKeyCommand = (command, editorState) => {
  }
 
   render() {
-    console.log(this.props)
+
     if(this.props.currentUser === -1){
       history.push("/login")
     }
-    if (!this.state.editorState) {
+    if (!this.state.editorState || !this.state.entry) {
     return (
       <h3 className="loading">Loading...</h3>
     );
@@ -159,7 +160,7 @@ handleKeyCommand = (command, editorState) => {
     return (
 
     <div>
-      <h1>Continue Writing "{title}" Here!</h1>
+      <h1>Continue Writing "{this.state.entry.title}" Here!</h1>
       <div className="toolbar">
       <button onClick={() => {this.makeBold()}}>Bold</button>
       <button onClick={() => {this.makeUnderlined()}}>Underline</button>
