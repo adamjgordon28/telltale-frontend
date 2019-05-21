@@ -17,7 +17,7 @@ class NavBar extends Component {
     </Link>
     <Link to="/entries">
     <div className="item">
-    See Your Entries
+    Your Entries
     </div>
     </Link>
     <Link to ={"/profile"}>

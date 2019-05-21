@@ -1,7 +1,7 @@
 import React from 'react'
 import EntryCard from "../components/EntryCard.js"
 import EntryEditor from "./EntryEditor.js"
-import { Route, Link, Switch  } from 'react-router-dom'
+import { Route, Switch  } from 'react-router-dom'
 import { connect } from 'react-redux'
 import history from "../history.js"
 
@@ -12,7 +12,7 @@ class EntryContainer extends React.Component {
   renderEntryCards = () => {
     if (this.props.currentUser && this.props.currentUser.entries){
     let entryCardComponentArray = this.props.currentUser.entries.map((entry)=>{
-      return <Link key={Math.random()} to={`/entries/${entry.id}`}><EntryCard entry={entry}/></Link>
+      return <EntryCard key={Math.random()} entry={entry}/>
     })
     return entryCardComponentArray
     }

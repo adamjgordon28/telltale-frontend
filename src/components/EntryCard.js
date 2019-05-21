@@ -1,26 +1,22 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
-import { connect  } from 'react-redux'
+import { connect  } from 'react-redux';
 
 
 class EntryCard extends React.Component {
-  handleClick = () => {
-    this.props.setCurrentEntry(this.props.entry.id)
-  }
   render() {
     return (
       <div style={{width: "95%", height: "18em", position: "relative", left: "2.5%"}} className="ui raised link card">
   <div className="content">
     <div className="header">{this.props.entry.title}</div>
-    <div className="meta">
-      <span className="category">Animals</span>
-    </div>
     <div className="description">
-      <p>{this.props.entry.description}</p>
+      <p> Description: {this.props.entry.description}</p>
     </div>
   </div>
   <div className="extra content">
-  <button onClick = {this.handleClick} className="positive ui button">Keep Writing </button>
+  <Link key={Math.random()} to={`/entries/${this.props.entry.id}`}><button className="positive ui button">Keep Writing </button></Link>
+  <Link key={Math.random()} to={`/storyboards/${this.props.entry.id}`}><button style = {{position: "relative", left: "1em"}} className="ui blue button">View Storyboard</button></Link>
     <div className="right floated genre">
       <img className="ui avatar image" src="/images/avatar/small/matt.jpg" alt =""/>Genre: {this.props.entry.genre}
     </div>

@@ -9,6 +9,7 @@ import CreateEntryForm from './containers/CreateEntryForm.js'
 import NavBar from './containers/NavBar.js'
 import Logout from './containers/Logout.js'
 import EntryContainer from './containers/EntryContainer.js'
+import StoryBoard from './components/StoryBoard.js'
 
 class App extends Component {
 
@@ -38,7 +39,7 @@ class App extends Component {
       })
     }
   }
- 
+
 
 
   render() {
@@ -54,6 +55,9 @@ class App extends Component {
             <Route exact path ="/logout" render = {(routeProps) => <Logout logOut = {this.logOut} {...routeProps}/>}/>
             <Route path ="/entries" component={EntryContainer}/>
             <Route exact path ="/" render = {(routeProps) => <CreateEntryForm {...routeProps}/>}/>
+            <Route path='/storyboards/:id' render={(props)=> {
+              return <StoryBoard {...props}/>}}>
+            </Route>
           </Router>
       </Fragment>
   )};
