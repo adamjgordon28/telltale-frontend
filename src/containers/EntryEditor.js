@@ -59,10 +59,10 @@ class EntryEditor extends React.Component {
 
 saveContent = (noteContent) => {
   if (this.state.fetched){
-   fetch("http://localhost:4000/api/v1/entries/".concat(`${this.props.currentEntryId}`), {
+   fetch("http://localhost:4000/api/v1/entries/".concat(`${this.props.match.params.id}`), {
     method: "PATCH",
     headers: { "Content-Type": "application/json", "Accepts": "application/json" },
-    body: JSON.stringify({ id:`${this.props.currentEntryId}`, content: JSON.stringify(convertToRaw(this.state.editorState.getCurrentContent())) })
+    body: JSON.stringify({ id:`${this.props.match.params.id}`, content: JSON.stringify(convertToRaw(this.state.editorState.getCurrentContent())) })
    })
     .then(response => response.json())
     .then(json => {
@@ -126,7 +126,7 @@ handleKeyCommand = (command, editorState) => {
 
 
  componentDidMount = () => {
-  fetch("http://localhost:4000/api/v1/entries/".concat(`${this.props.currentEntryId}`))
+  fetch("http://localhost:4000/api/v1/entries/".concat(`${this.props.match.params.id}`))
    .then(response => response.json())
    .then(json => {
 
@@ -146,7 +146,8 @@ handleKeyCommand = (command, editorState) => {
  }
 
   render() {
-    if(this.props.currentUser === -1 || !this.props.currentEntryId){
+    console.log(this.props)
+    if(this.props.currentUser === -1){
       history.push("/login")
     }
     if (!this.state.editorState) {
@@ -155,7 +156,6 @@ handleKeyCommand = (command, editorState) => {
     );
   }
     return (
-
 
     <div>
       <h1>Continue Writing Your MasterPiece Here!</h1>

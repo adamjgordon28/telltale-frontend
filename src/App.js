@@ -60,10 +60,9 @@ class App extends Component {
             <Route exact path ="/signup" render = {(routeProps) => <CreateUserForm {...routeProps}/>}/>
             <Route exact path ="/login" render = {(routeProps) => <Login {...routeProps}/>}/>
             <Route exact path ="/profile" render = {(routeProps) => <UserProfile logOut={this.logOut}{...routeProps}/>}/>
-            <Route exact path ="/editor" render = {(routeProps) => <EntryEditor {...routeProps}/>}/>
             <Route exact path ="/create-entry" render = {(routeProps) => <CreateEntryForm {...routeProps}/>}/>
             <Route exact path ="/logout" render = {(routeProps) => <Logout logOut = {this.logOut} {...routeProps}/>}/>
-            <Route exact path ="/entries" render = {(routeProps) => <EntryContainer {...routeProps}/>}/>
+            <Route path ="/entries" component={EntryContainer}/>
             <Route exact path ="/" render = {(routeProps) => <CreateEntryForm {...routeProps}/>}/>
           </Router>
       </Fragment>
