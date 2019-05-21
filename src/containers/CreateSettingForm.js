@@ -1,6 +1,6 @@
 import React from 'react';
-
-const user_id = 1
+import { connect } from 'react-redux';
+import history from "../history.js"
 class CreateSettingForm extends React.Component {
 
   state = {
@@ -23,11 +23,11 @@ class CreateSettingForm extends React.Component {
        fetch("http://localhost:4000/api/v1/settings", {
         method: "POST",
         headers: { "Content-Type": "application/json", "Accepts": "application/json" },
-        body: JSON.stringify({name: info.name, description: info.description, entry_id: `${user_id}`})
+        body: JSON.stringify({name: info.name, description: info.description, entry_id: `${this.props.currentEntry.id}`})
        })
         .then(response => response.json())
-        .then(json => {
-      
+        .then(setting => {
+          this.props.addSettingToEntry(setting)
         })
   }
 
@@ -54,4 +54,20 @@ class CreateSettingForm extends React.Component {
 
 }
 
-export default CreateSettingForm
+function mapStateToProps(state) {
+  return {
+    currentUser: state.currentUser,
+    currentEntry: state.currentEntry
+  }
+}
+
+function mapDispatchToProps(dispatch) {
+  return {
+    addSettingToEntry: (setting) => {
+
+      dispatch({type: "ADD_SETTING_TO_ENTRY", payload: setting})
+    }
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(CreateSettingForm)

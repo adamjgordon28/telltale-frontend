@@ -12,9 +12,17 @@ class AddInfoToStoryContainer extends React.Component {
   };
 }
 
+componentDidMount = () => {
+ fetch("http://localhost:4000/api/v1/entries/".concat(`${this.props.match.params.id}`))
+  .then(response => response.json())
+  .then(json => {
+    this.props.setCurrentEntry(json)
+  })
+}
+
 
   render() {
-    if(!this.props.currentUser){
+    if(this.props.currentUser === -1){
       history.push("/login")
     }
     return (
@@ -33,18 +41,18 @@ class AddInfoToStoryContainer extends React.Component {
     </a>
   </div>
 </div>
-  <div class="ui attached message">
-    <div class="header">
+  <div className="ui attached message">
+    <div className="header">
       <h1 style={{fontSize: "3em"}}>Add Info To Your Story!</h1>
     </div>
   </div>
   <div className="content"  style={{width:"40%",  position:"relative", left: "5%", top: ".5em"}}>
   <CreateSettingForm/>
   </div>
-  <div className="content" style={{width:"40%", float: "right", position:"relative", left: "55%", bottom: "27.5em"}} class="content">
+  <div className="content" style={{width:"40%", float: "right", position:"relative", left: "55%", bottom: "27.5em"}} className="content">
   <CreateCharacterForm/>
-  <button style={{width: "14em", fontSize:"1.5em", background: "lightgreen", position:"relative",top: "2.5em", left: "2.5em"}} class="ui right labeled icon button">
-  <i class="right arrow icon"></i>
+  <button style={{width: "14em", fontSize:"1.5em", background: "lightgreen", position:"relative",top: "2.5em", left: "2.5em"}} className="ui right labeled icon button">
+  <i className="right arrow icon"></i>
   Return to Writing
 </button>
   </div>
@@ -59,4 +67,13 @@ const mapStateToProps = (state) => {
   }
 }
 
-export default connect(mapStateToProps)(AddInfoToStoryContainer)
+function mapDispatchToProps(dispatch) {
+  return {
+    setCurrentEntry: (entry) => {
+
+      dispatch({type: "SET_CURRENT_ENTRY", payload: entry})
+    }
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(AddInfoToStoryContainer)

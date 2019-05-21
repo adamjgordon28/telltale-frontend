@@ -10,6 +10,7 @@ import NavBar from './containers/NavBar.js'
 import Logout from './containers/Logout.js'
 import EntryContainer from './containers/EntryContainer.js'
 import StoryBoard from './components/StoryBoard.js'
+import AddInfoToStoryContainer from './containers/AddInfoToStoryContainer.js'
 
 class App extends Component {
 
@@ -57,6 +58,9 @@ class App extends Component {
             <Route exact path ="/" render = {(routeProps) => <CreateEntryForm {...routeProps}/>}/>
             <Route path='/storyboards/:id' render={(props)=> {
               return <StoryBoard {...props}/>}}>
+            </Route>
+            <Route path='/add-entry-info/:id' render={(props)=> {
+              return <AddInfoToStoryContainer{...props}/>}}>
             </Route>
           </Router>
       </Fragment>

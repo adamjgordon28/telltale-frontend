@@ -1,6 +1,6 @@
 import React from 'react';
-
-const user_id = 1
+import { connect } from 'react-redux';
+import history from "../history.js"
 class CreateCharacterForm extends React.Component {
 
   state = {
@@ -23,11 +23,11 @@ class CreateCharacterForm extends React.Component {
        fetch("http://localhost:4000/api/v1/characters", {
         method: "POST",
         headers: { "Content-Type": "application/json", "Accepts": "application/json" },
-        body: JSON.stringify({name: info.name, description: info.description, entry_id: `${user_id}`})
+        body: JSON.stringify({name: info.name, description: info.description, entry_id: `${this.props.currentEntry.id}`})
        })
         .then(response => response.json())
-        .then(json => {
-    
+        .then(character => {
+          this.props.addCharacterToEntry(character)
         })
   }
 
@@ -54,4 +54,22 @@ class CreateCharacterForm extends React.Component {
 
 }
 
-export default CreateCharacterForm
+
+
+function mapStateToProps(state) {
+  return {
+    currentUser: state.currentUser,
+    currentEntry: state.currentEntry
+  }
+}
+
+function mapDispatchToProps(dispatch) {
+  return {
+    addCharacterToEntry: (character) => {
+
+      dispatch({type: "ADD_CHARACTER_TO_ENTRY", payload: character})
+    }
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(CreateCharacterForm)

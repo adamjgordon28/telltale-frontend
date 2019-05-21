@@ -1,5 +1,6 @@
 const defaultState = {
-  currentUser: null
+  currentUser: null,
+  currentEntry: null
 }
 
   const mainReducer = (state=defaultState, action) => {
@@ -16,8 +17,26 @@ const defaultState = {
           entries: [...state.currentUser.entries, action.payload]
         }
       }
-        default:
-        return state
+      case 'SET_CURRENT_ENTRY':
+      return {...state, currentEntry: action.payload}
+      case 'ADD_CHARACTER_TO_ENTRY':
+      return {
+        ...state,
+        currentEntry: {
+          ...state.currentEntry,
+          characters: [...state.currentEntry.characters, action.payload]
+        }
+      }
+      case 'ADD_SETTING_TO_ENTRY':
+      return {
+        ...state,
+        currentEntry: {
+          ...state.currentEntry,
+          settings: [...state.currentEntry.settings, action.payload]
+        }
+      }
+      default:
+      return state
     }
 
   }
