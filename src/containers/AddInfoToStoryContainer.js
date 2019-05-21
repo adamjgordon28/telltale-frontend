@@ -1,4 +1,5 @@
 import React from 'react';
+import{ Link } from 'react-router-dom';
 import CreateCharacterForm from './CreateCharacterForm.js'
 import CreateSettingForm from './CreateSettingForm.js'
 import history from "../history.js"
@@ -22,6 +23,9 @@ componentDidMount = () => {
 
 
   render() {
+    if(!this.props.currentEntry){
+      return <h1>Loading...</h1>
+    }
     if(this.props.currentUser === -1){
       history.push("/login")
     }
@@ -41,13 +45,13 @@ componentDidMount = () => {
   <div className="content" style={{width:"40%", float: "right", position:"relative", left: "55%", bottom: "27.5em"}} className="content">
   <CreateCharacterForm/>
   <div className="button-div" style={{display: "inline-block"}}>
-  <button style={{width: "14em", fontSize:"1.5em", position:"relative",top: "4.5em", left: "4.5em", display:"inline-block"}} className="ui button positive">
+  <Link to={`/entries/${this.props.currentEntry.id}`}><button style={{width: "14em", fontSize:"1.5em", position:"relative",top: "2em", left: "6.5em", display:"inline-block"}} className="ui button positive">
   Return to Writing
-</button>
-<button style={{width: "14em", fontSize:"1.5em", background: "lightblue", position:"relative",top: "4.5em", left: "4.5em", display:"inline-block"}} className="ui button">
+</button></Link>
+<Link to={`/storyboards/${this.props.currentEntry.id}`}><button style={{width: "14em", fontSize:"1.5em", background: "lightblue", position:"relative",left: "6.5em", top: "2.5em", display:"inline-block"}} className="ui button">
 Return to StoryBoard
-</button>
-  
+</button></Link>
+
 </div>
   </div>
     </div>
@@ -57,7 +61,8 @@ Return to StoryBoard
 
 const mapStateToProps = (state) => {
   return {
-    currentUser: state.currentUser
+    currentUser: state.currentUser,
+    currentEntry: state.currentEntry
   }
 }
 

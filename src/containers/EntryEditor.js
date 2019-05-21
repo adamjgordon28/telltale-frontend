@@ -161,7 +161,7 @@ handleKeyCommand = (command, editorState) => {
     return (
 
     <div>
-      <h1>Continue Writing "{this.state.entry.title}" Here!</h1>
+      <h1>Welcome back, "{this.state.entry.title}" has been waiting for you!</h1>
       <div className="toolbar">
       <button onClick={() => {this.makeBold()}}>Bold</button>
       <button onClick={() => {this.makeUnderlined()}}>Underline</button>
