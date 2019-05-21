@@ -1,8 +1,5 @@
 const defaultState = {
-  currentUser: null,
-  currentEntryId: null
-
-
+  currentUser: null
 }
 
   const mainReducer = (state=defaultState, action) => {
@@ -18,10 +15,6 @@ const defaultState = {
           ...state.currentUser,
           entries: [...state.currentUser.entries, action.payload]
         }
-      }
-      case 'SET_CURRENT_ENTRY':
-      return {
-        ...state, currentEntryId: action.payload
       }
         default:
         return state

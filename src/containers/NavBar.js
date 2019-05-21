@@ -26,7 +26,7 @@ class NavBar extends Component {
     </div>
       </Link>
     {this.props.currentUser === -1 || this.props.currentUser === null ?
-      <Link to="/signup"><div className="item">Signup</div></Link> :
+      <Link to="/signup"><div className="item">Sign Up</div></Link> :
       <Link to="/logout">
       <div className="item">
     Logout

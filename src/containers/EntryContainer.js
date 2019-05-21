@@ -1,7 +1,7 @@
 import React from 'react'
 import EntryCard from "../components/EntryCard.js"
 import EntryEditor from "./EntryEditor.js"
-import { BrowserRouter, Route, Link, Switch  } from 'react-router-dom'
+import { Route, Link, Switch  } from 'react-router-dom'
 import { connect } from 'react-redux'
 import history from "../history.js"
 

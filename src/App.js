@@ -5,7 +5,6 @@ import history from './history';
 import CreateUserForm from './containers/CreateUserForm.js'
 import Login from './containers/Login.js'
 import UserProfile from './containers/UserProfile.js'
-import EntryEditor from './containers/EntryEditor.js'
 import CreateEntryForm from './containers/CreateEntryForm.js'
 import NavBar from './containers/NavBar.js'
 import Logout from './containers/Logout.js'
@@ -39,16 +38,7 @@ class App extends Component {
       })
     }
   }
- //
- //  setCurrentUser = (response) => {
- //
- //   this.setState({
- //     currentUser: response.user
- //   }, () => {
- //     localStorage.setItem("token", response.token)
- //     this.props.history.push(`/profile`)
- //   })
- // }
+ 
 
 
   render() {

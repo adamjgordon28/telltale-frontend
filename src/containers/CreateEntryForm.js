@@ -34,13 +34,14 @@ class CreateEntryForm extends React.Component {
        })
         .then(response => response.json())
         .then(json => {
+          console.log(json.id)
           this.props.addPostToUser(json)
-          history.push("/editor")
+          history.push(`entries/${json.id}`)
         })
   }
 
   render(){
-    if(this.props.currentUser === -1){
+    if(this.props.currentUser === -1|| this.props.currentUser === null){
       history.push("/login")
     }
     return(

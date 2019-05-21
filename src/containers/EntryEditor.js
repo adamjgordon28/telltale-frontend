@@ -16,7 +16,7 @@ const { EmojiSuggestions } = emojiPlugin;
 const highlightPlugin = createHighlightPlugin({
   background: 'orange'
 });
-
+let title;
 
 
 
@@ -129,6 +129,7 @@ handleKeyCommand = (command, editorState) => {
   fetch("http://localhost:4000/api/v1/entries/".concat(`${this.props.match.params.id}`))
    .then(response => response.json())
    .then(json => {
+     title = json.title
 
      if(json) {
     this.setState({
@@ -158,13 +159,12 @@ handleKeyCommand = (command, editorState) => {
     return (
 
     <div>
-      <h1>Continue Writing Your MasterPiece Here!</h1>
+      <h1>Continue Writing "{title}" Here!</h1>
       <div className="toolbar">
       <button onClick={() => {this.makeBold()}}>Bold</button>
       <button onClick={() => {this.makeUnderlined()}}>Underline</button>
       <button onClick={() => {this.makeItalic()}}>Italicize</button>
       <button onClick={() => {this.makeHighlighted()}}>Highlight</button>
-      <button onClick={() => {this.createContent()}}>Submit</button>
       </div>
     <Editor
     onChange={(editorState) => {this.onChange(editorState)}}
@@ -183,8 +183,7 @@ handleKeyCommand = (command, editorState) => {
 
 const mapStateToProps = (state) => {
   return {
-    currentUser: state.currentUser,
-    currentEntryId: state.currentEntryId
+    currentUser: state.currentUser
   }
 }
 
