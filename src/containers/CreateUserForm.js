@@ -45,7 +45,7 @@ class CreateUserForm extends React.Component {
 
   render(){
     return(
-      <div className="ui raised card" style={{width: "60%", position: "relative", left: "25%", padding:"5em"}}>
+      <div className="ui raised card" style={{width: "60%", position: "relative", left: "20%", padding:"5em"}}>
       <div className="ui attached message" style={{position: "relative", bottom: "3em", textAlign: "center"}}>
         <div className="header">
           <h2>Welcome to TellTale - Create an Account and get Writing Today!</h2>
@@ -82,7 +82,7 @@ class CreateUserForm extends React.Component {
               <label>Bio</label>
               <textarea type="text" placeholder="Bio" name="bio" onChange={this.handleChange} required ></textarea>
               </div>
-          <button className="ui button" style={{position:"relative", left: "22.5em", top: "1.5em"}} type="submit">Submit</button>
+          <button className="ui button" style={{position:"relative", left: "45%", top: "1.5em"}} type="submit">Submit</button>
         </div>
         </form>
       </div>

@@ -162,6 +162,7 @@ handleKeyCommand = (command, editorState) => {
 
     <div>
       <h1>Welcome back, "{this.state.entry.title}" has been waiting for you!</h1>
+      <div style={{position:"relative", top:"5em"}}>
       <div className="toolbar">
       <button onClick={() => {this.makeBold()}}>Bold</button>
       <button onClick={() => {this.makeUnderlined()}}>Underline</button>
@@ -175,7 +176,9 @@ handleKeyCommand = (command, editorState) => {
     plugins={[highlightPlugin, emojiPlugin]}
     onTab={this.onTab}
     />
-    <Link key={Math.random()} to={`/storyboards/${this.state.entry.id}`}><button style = {{position: "relative", left: "4.75em", top: "3.5em"}} className="ui blue button">View Storyboard</button></Link>
+
+    <Link key={Math.random()} to={`/storyboards/${this.state.entry.id}`}><button style = {{position: "relative", left: "10.25em", top: "3.5em"}} className="ui blue button">View Storyboard</button></Link>
+    </div>
     <EmojiSuggestions/>
     </div>
   )};

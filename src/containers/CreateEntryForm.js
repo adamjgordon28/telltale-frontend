@@ -44,7 +44,7 @@ class CreateEntryForm extends React.Component {
       history.push("/login")
     }
     return(
-      <div className="ui raised card" style={{width: "60%", position: "relative", left: "25%", padding:"5em"}}>
+      <div className="ui raised card" style={{width: "60%", position: "relative", left: "20%", padding:"5em"}}>
       <div className="ui attached message" style={{position: "relative", bottom: "3em", textAlign: "center"}}>
         <div className="header">
           <h2>Start Working on Your New Masterpiece Today!</h2>
@@ -79,7 +79,7 @@ class CreateEntryForm extends React.Component {
               <label>Description</label>
               <textarea type="text" placeholder="Description" name="description" onChange={this.handleChange} required ></textarea>
               </div>
-          <button className="ui button" style={{position:"relative", left: "16.5em", top: "1.5em"}} type="submit">Submit</button>
+          <button className="ui button" style={{position:"relative", left: "42.5%", top: "1.5em"}} type="submit">Submit</button>
         </div>
         </form>
       </div>

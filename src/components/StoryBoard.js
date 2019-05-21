@@ -36,13 +36,16 @@ class StoryBoard extends Component {
    }
    return (
      <div>
-     This is the tale of {this.props.currentEntry.title}
-     <StoryBoardCharacters entry={this.props.currentEntry}/>
-
+     <h1>Storyboard for "{this.props.currentEntry.title}"</h1>
+    <div>
      <StoryBoardSettings entry={this.props.currentEntry} />
-      <Link to={`/add-entry-info/${this.props.currentEntry.id}`}><button className="positive ui button">Add a Character or Setting!</button></Link>
-      <Link key={Math.random()} to={`/entries/${this.props.currentEntry.id}`}><button className="ui button blue">Keep Writing </button></Link>
-      <button className="ui button red" onClick={(e) => { if (window.confirm('Are you sure you wish to delete this item?')) this.deleteEntry(e) } }>Delete Entry</button>
+     <StoryBoardCharacters entry={this.props.currentEntry}/>
+     </div>
+     <div className="button-div" style={{position: "relative", left: "30%", top: "2em"}}>
+     <Link to={`/add-entry-info/${this.props.currentEntry.id}`}><button className="positive ui button">Add a Character or Setting!</button></Link>
+     <Link key={Math.random()} to={`/entries/${this.props.currentEntry.id}`}><button className="ui button blue">Keep Writing </button></Link>
+     <button className="ui button red" onClick={(e) => { if (window.confirm('Are you sure you wish to delete this item?')) this.deleteEntry(e) } }>Delete Entry</button>
+     </div>
      </div>
    )
  }

@@ -14,7 +14,7 @@ class UserProfile extends React.Component {
     return (
       <div>
       {this.props.currentUser ? <div><h1>Welcome back, {this.props.currentUser.name}!</h1>
-      <img src={this.props.currentUser.img_url} alt=""/> </div>: null}
+      <img style={{borderRadius: "50%", height: "12em"}} src={this.props.currentUser.img_url} alt=""/> </div>: null}
       </div>
     )
   }

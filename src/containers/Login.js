@@ -59,7 +59,7 @@ class Login extends React.Component {
               <label>Password</label>
               <input type="password" placeholder="Password" name="password" onChange={this.handleChange} required />
               </div>
-          <button className="ui button" style={{position:"relative", left: "15.5em", top: "1.5em"}} type="submit">Login</button>
+          <button className="ui button" style={{position:"relative", left: "20.5em", top: "1.5em"}} type="submit">Login</button>
         </div>
         </form>
       </div>

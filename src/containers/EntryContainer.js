@@ -23,6 +23,7 @@ class EntryContainer extends React.Component {
       history.push("/login")
     }
     return (
+
       <Switch>
         <Route path='/entries/:id' render={(props)=> {
           return <EntryEditor {...props}/>}}>

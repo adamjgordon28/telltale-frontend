@@ -46,7 +46,7 @@ class CreateCharacterForm extends React.Component {
               <label>Description</label>
               <textarea type="text" placeholder="Description" name="description" onChange={this.handleChange} required ></textarea>
               </div>
-          <button className="ui button" style={{position:"relative", left: "12.5em", top: "1.5em"}} type="submit">Submit</button>
+          <button className="ui button" style={{position:"relative", top: "1.5em"}} type="submit">Submit</button>
         </div>
         </form>
       </div>
