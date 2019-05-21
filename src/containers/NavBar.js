@@ -25,11 +25,13 @@ class NavBar extends Component {
     View Your Profile
     </div>
       </Link>
-    <Link to="/logout">
+    {this.props.currentUser === -1 || this.props.currentUser === null ?
+      <Link to="/signup"><div className="item">Signup</div></Link> :
+      <Link to="/logout">
       <div className="item">
     Logout
       </div>
-    </Link>
+    </Link> }
   </div>
     )
   }

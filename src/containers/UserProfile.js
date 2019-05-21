@@ -6,10 +6,11 @@ import history from '../history.js';
 class UserProfile extends React.Component {
 
   render(){
-    console.log(this.props.currentUser)
+
     if(this.props.currentUser === -1){
       history.push("/login")
     }
+    console.log(this.props.currentUser)
     return (
       <div>
       {this.props.currentUser ? <h1>This is the profile of {this.props.currentUser.name}</h1>: null}

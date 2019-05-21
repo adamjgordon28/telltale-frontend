@@ -1,12 +1,11 @@
 import React from 'react';
 
 import { connect  } from 'react-redux'
-import history from '../history';
+
 
 class EntryCard extends React.Component {
   handleClick = () => {
     this.props.setCurrentEntry(this.props.entry.id)
-    history.push("/editor")
   }
   render() {
     return (
@@ -27,6 +26,7 @@ class EntryCard extends React.Component {
     </div>
   </div>
 </div>
+
     )
   }
 

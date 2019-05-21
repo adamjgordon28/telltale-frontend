@@ -91,7 +91,7 @@ function mapDispatchToProps(dispatch) {
   return {
     setCurrentUser: (user) => {
       // dispatch is our new setState and it takes an object with a type and a payload
-      dispatch({type: "SET_CURRENT_USER", payload: user})
+      dispatch({type: "SET_CURRENT_USER", payload: user.user})
     }
   }
 }

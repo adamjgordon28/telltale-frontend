@@ -19,14 +19,14 @@ class EntryContainer extends React.Component {
   }
 
   render(){
-    console.log(this.props.currentUser)
     if(this.props.currentUser === -1){
       history.push("/login")
     }
     return (
       <div>
       <BrowserRouter>
-        <Route path='/editor/:id' component={EntryEditor}>
+        <Route path='editor/:id' render={(props)=> {
+          return <EntryEditor {...props}/>}}>
         {this.renderEntryCards()}
         </Route>
       </BrowserRouter>
