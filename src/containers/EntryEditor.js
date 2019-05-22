@@ -220,11 +220,13 @@ handleKeyCommand = (command, editorState) => {
 
     <div>
       <h1>Welcome back, "{this.state.entry.title}" has been waiting for you!</h1>
+      <EmojiSelect/>
       <div style={{position:"relative", top:"2em"}}>
       <div className="toolbar">
+
       <Toolbar>
               {
-                // may be use React.Fragment instead of div to improve perfomance after React 16
+
                 (externalProps) => (
                   <div>
                     <UndoButton />
@@ -247,7 +249,7 @@ handleKeyCommand = (command, editorState) => {
 
       </div>
     <div onKeyDown={this.onKeyPressed}>
-    
+
     <Editor
     onChange={(editorState) => {this.onChange(editorState)}}
     editorState={this.state.editorState}
@@ -255,6 +257,7 @@ handleKeyCommand = (command, editorState) => {
     plugins={[highlightPlugin, sideToolbarPlugin, toolbarPlugin, undoPlugin, counterPlugin, linkifyPlugin, emojiPlugin]}
     onTab={this.onTab}
     placeholder="Write your story here..."
+    spellCheck={true}
 
     />
     <EmojiSuggestions />
@@ -267,7 +270,7 @@ handleKeyCommand = (command, editorState) => {
       </div>
     </div>
 
-    <Link key={Math.random()} to={`/storyboards/${this.state.entry.id}`}><button style = {{position: "relative", left: "10.25em", top: "3.5em"}} className="ui blue button">View Storyboard</button></Link>
+    <Link key={Math.random()} to={`/storyboards/${this.state.entry.id}`}><button style = {{position: "relative", left: "10.25em", top: "1em"}} className="ui blue button">View Storyboard</button></Link>
     </div>
 
     </div>
