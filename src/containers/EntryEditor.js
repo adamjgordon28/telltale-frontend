@@ -8,6 +8,7 @@ import createToolbarPlugin, { Separator } from 'draft-js-static-toolbar-plugin';
 import createCounterPlugin from 'draft-js-counter-plugin';
 import createUndoPlugin from 'draft-js-undo-plugin';
 import createLinkifyPlugin from 'draft-js-linkify-plugin';
+import createEmojiPlugin from 'draft-js-emoji-plugin';
 
 import '../App.css'
 import { connect } from 'react-redux'
@@ -19,6 +20,7 @@ import 'last-draft-js-toolbar-plugin/lib/plugin.css'
 import editorStyles from '../editorStyles.css';
 import buttonStyles from '../buttonStyles.css';
 import 'draft-js-counter-plugin/lib/plugin.css';
+import 'draft-js-emoji-plugin/lib/plugin.css';
 
 import {
   ItalicButton,
@@ -33,7 +35,7 @@ import {
 
 
 const highlightPlugin = createHighlightPlugin({
-  background: 'yellow'
+  background: '#f8de7e'
 });
 
 const sideToolbarPlugin = createSideToolbarPlugin();
@@ -61,6 +63,9 @@ const undoPlugin = createUndoPlugin({
 const { UndoButton, RedoButton } = undoPlugin;
 
 const linkifyPlugin = createLinkifyPlugin();
+
+const emojiPlugin = createEmojiPlugin();
+const { EmojiSuggestions, EmojiSelect } = emojiPlugin;
 
 
 
@@ -242,15 +247,18 @@ handleKeyCommand = (command, editorState) => {
 
       </div>
     <div onKeyDown={this.onKeyPressed}>
+    
     <Editor
     onChange={(editorState) => {this.onChange(editorState)}}
     editorState={this.state.editorState}
     handleKeyCommand={this.handleKeyCommand}
-    plugins={[highlightPlugin, sideToolbarPlugin, toolbarPlugin, undoPlugin, counterPlugin, linkifyPlugin]}
+    plugins={[highlightPlugin, sideToolbarPlugin, toolbarPlugin, undoPlugin, counterPlugin, linkifyPlugin, emojiPlugin]}
     onTab={this.onTab}
     placeholder="Write your story here..."
 
     />
+    <EmojiSuggestions />
+
     <div style={{position: "absolute", right: "10%", fontWeight: "bold"}}>
       <div><CharCounter /> characters</div>
           <div><WordCounter /> words</div>
