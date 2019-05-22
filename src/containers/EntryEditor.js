@@ -35,7 +35,7 @@ import {
 
 
 const highlightPlugin = createHighlightPlugin({
-  background: '#f8de7e'
+  background: 'lightblue'
 });
 
 const sideToolbarPlugin = createSideToolbarPlugin();

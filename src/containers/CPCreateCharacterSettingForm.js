@@ -2,6 +2,12 @@ import React, { Component } from 'react'
 
 class CPCreateCharacterSettingForm extends Component {
 
+    state = {
+      setting_id: "0",
+      chapter: "",
+      description: ""
+    }
+
   renderRows = () => {
     if(this.props.currentEntry){
     let settingOptionsArray = this.props.currentEntry.settings.map((setting)=>{
@@ -9,21 +15,37 @@ class CPCreateCharacterSettingForm extends Component {
     })
     return settingOptionsArray
     }
-
   }
+
+
   handleChange=(e)=> {
-    console.log(e.target.value)
+    this.setState({
+      [e.target.name]: e.target.value
+    })
+  }
+
+  handleSubmit = (e) => {
+    console.log("Hello!")
   }
 
   render(){
-    console.log(this.props.currentEntry)
+    console.log(this.state)
+    if (!this.props.currentEntry){
+      return <h1>Loading...</h1>
+    }
     return (
       <div>
-      This is the Create Character Setting Form - it belongs on the Character Page!
-      <select onChange={this.handleChange} className="ui dropdown">
-      <option label="Select a Setting!"></option>
-        {this.renderRows()}
-      </select>
+        {this.props.currentEntry.settings.length &&
+        <div>
+        Where does the {this.props.character.name} appear at in your story? Detail it here!
+            <form className="ui form" onSubmit={this.handleSubmit}>
+              <select onChange={this.handleChange} className="ui dropdown" value={this.state.setting_id} name="setting_id" required>
+              <option value="0" label="Select a Setting!"></option>
+                {this.renderRows()}
+              </select>
+              <button className="ui button" type="submit">Submit</button>
+            </form>
+        </div>}
       </div>
     )
   }

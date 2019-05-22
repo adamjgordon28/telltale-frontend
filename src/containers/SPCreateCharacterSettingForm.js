@@ -19,8 +19,8 @@ class SPCreateCharacterSettingForm extends Component {
   render(){
     return (
       <div>
-      This is the Create Character Setting Form - it belongs on the Setting Page!
-      <select onChange={this.handleChange} className="ui dropdown">
+      Which characters appear at {this.props.setting.name} in your story? Detail it here!
+      <select onChange={this.handleChange} className="ui dropdown" required >
       <option label="Select a Character!"></option>
         {this.renderRows()}
       </select>

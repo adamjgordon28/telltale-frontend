@@ -38,7 +38,7 @@ class CharacterPage extends Component {
     return (
       <div>
       This is the Page for {this.state.character.name}
-      <CPCreateCharacterSettingForm currentEntry={this.props.currentEntry}/>
+      <CPCreateCharacterSettingForm currentEntry={this.props.currentEntry} character={this.state.character}/>
 
       <Link to={`/storyboards/${this.state.character.entry_id}`}><button className="ui button positive">Return To Storyboard</button></Link>
       </div>

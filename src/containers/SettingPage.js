@@ -32,7 +32,7 @@ class SettingPage extends Component {
     return (
       <div>
       This is the page for {this.state.setting.name}
-      <SPCreateCharacterSettingForm currentEntry={this.props.currentEntry}/>
+      <SPCreateCharacterSettingForm currentEntry={this.props.currentEntry} setting={this.state.setting}/>
       <Link to={`/storyboards/${this.state.setting.entry_id}`}><button className="ui button positive">Return To Storyboard</button></Link>
       </div>
     )
