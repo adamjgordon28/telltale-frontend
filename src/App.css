@@ -64,6 +64,7 @@ div.toolbar button {
   color:white;
   position: relative;
   bottom:.75em;
+  right: .25em;
 }
 
 div.mini-toolbar button {
@@ -73,4 +74,15 @@ div.mini-toolbar button {
   right: 25em;
   top: 1.35em;
   display: inline-block;
+}
+
+
+
+
+div.draftJsToolbar__toolbar__dNtBH {
+  background: lightsteelblue;
+  width: 82.5em;
+  position: relative;
+  right: 1.5em;
+  top: .4em;
 }

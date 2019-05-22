@@ -238,7 +238,6 @@ handleKeyCommand = (command, editorState) => {
                     <ItalicButton {...externalProps} />
                     <UnderlineButton {...externalProps} />
                     <CodeButton {...externalProps} />
-                    <Separator {...externalProps} />
                     <UnorderedListButton {...externalProps} />
                     <OrderedListButton {...externalProps} />
                     <BlockquoteButton {...externalProps} />
