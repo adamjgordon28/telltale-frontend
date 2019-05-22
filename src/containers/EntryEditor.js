@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import Editor from 'draft-js-plugins-editor';
 import createHighlightPlugin from '../highlightPlugin';
 import createSideToolbarPlugin from 'draft-js-side-toolbar-plugin';
-import createToolbarPlugin, { Separator } from 'draft-js-static-toolbar-plugin';
+import createToolbarPlugin from 'draft-js-static-toolbar-plugin';
 import createCounterPlugin from 'draft-js-counter-plugin';
 import createUndoPlugin from 'draft-js-undo-plugin';
 import createLinkifyPlugin from 'draft-js-linkify-plugin';

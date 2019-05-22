@@ -11,6 +11,8 @@ import Logout from './containers/Logout.js'
 import EntryContainer from './containers/EntryContainer.js'
 import StoryBoard from './components/StoryBoard.js'
 import AddInfoToStoryContainer from './containers/AddInfoToStoryContainer.js'
+import SettingPage from './containers/SettingPage.js'
+import CharacterPage from './containers/CharacterPage.js'
 
 class App extends Component {
 
@@ -60,7 +62,13 @@ class App extends Component {
               return <StoryBoard {...props}/>}}>
             </Route>
             <Route path='/add-entry-info/:id' render={(props)=> {
-              return <AddInfoToStoryContainer{...props}/>}}>
+              return <AddInfoToStoryContainer {...props}/>}}>
+            </Route>
+            <Route path='/settings/:id' render={(props)=> {
+              return <SettingPage {...props}/>}}>
+            </Route>
+            <Route path='/characters/:id' render={(props)=> {
+              return <CharacterPage {...props}/>}}>
             </Route>
           </Router>
       </Fragment>

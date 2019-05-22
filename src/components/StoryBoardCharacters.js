@@ -1,18 +1,19 @@
-import React, {Component, Fragment} from 'react'
+import React, {Component} from 'react'
+import CharacterCard from './CharacterCard.js'
 
 class StoryBoardCharacters extends Component {
   renderCharacters = () => {
     let charactersArray = this.props.entry.characters.map((character)=>{
-      return <li key={Math.random()}><h4>{character.name}</h4></li>
+      return <CharacterCard character={character} key={Math.random()}/>
     })
     return charactersArray
   }
 render () {
 
   return(
-    <div className="ui raised card" style={{width: "35%", position: "s", left: "15%", bottom: ".75em", minHeight:"30em", display: "inline-block"}}>
+    <div className="ui raised card" style={{width: "35%", position: "s", left: "15%", bottom: ".75em", minHeight:"30em", maxHeight:"30em", overflowY: "scroll", display: "inline-block"}}>
     <h3 style={{textAlign:"center"}} >Characters</h3>
-    <ul>{this.renderCharacters()}</ul>
+    {this.renderCharacters()}
     </div>
   )
 }
