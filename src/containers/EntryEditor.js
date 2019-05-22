@@ -5,12 +5,28 @@ import Editor from 'draft-js-plugins-editor';
 import createEmojiPlugin from 'draft-js-emoji-plugin';
 import createHighlightPlugin from '../highlightPlugin';
 import createSideToolbarPlugin from 'draft-js-side-toolbar-plugin';
-import 'draft-js-emoji-plugin/lib/plugin.css';
+import createToolbarPlugin, { Separator } from 'draft-js-static-toolbar-plugin';
 import '../App.css'
 import { connect } from 'react-redux'
 import history from "../history.js"
 import 'draft-js/dist/Draft.css';
-import 'draft-js-side-toolbar-plugin/lib/plugin.css'
+import 'draft-js-emoji-plugin/lib/plugin.css';
+import 'draft-js-side-toolbar-plugin/lib/plugin.css';
+import 'draft-js-static-toolbar-plugin/lib/plugin.css';
+
+import {
+  ItalicButton,
+  BoldButton,
+  UnderlineButton,
+  CodeButton,
+  HeadlineOneButton,
+  HeadlineTwoButton,
+  HeadlineThreeButton,
+  UnorderedListButton,
+  OrderedListButton,
+  BlockquoteButton,
+  CodeBlockButton,
+} from 'draft-js-buttons';
 
 
 const emojiPlugin = createEmojiPlugin()
@@ -23,6 +39,13 @@ const highlightPlugin = createHighlightPlugin({
 
 const sideToolbarPlugin = createSideToolbarPlugin();
 const { SideToolbar } = sideToolbarPlugin;
+
+const toolbarPlugin = createToolbarPlugin();
+const { Toolbar } = toolbarPlugin;
+
+
+
+
 
 
 
@@ -176,17 +199,32 @@ handleKeyCommand = (command, editorState) => {
       <h1>Welcome back, "{this.state.entry.title}" has been waiting for you!</h1>
       <div style={{position:"relative", top:"2em"}}>
       <div className="toolbar">
-      <button onClick={() => {this.makeBold()}}>Bold</button>
-      <button onClick={() => {this.makeUnderlined()}}>Underline</button>
-      <button onClick={() => {this.makeItalic()}}>Italicize</button>
-      <button onClick={() => {this.makeHighlighted()}}>Highlight</button>
+      <Toolbar>
+              {
+                // may be use React.Fragment instead of div to improve perfomance after React 16
+                (externalProps) => (
+                  <div>
+                    <BoldButton {...externalProps} />
+                    <ItalicButton {...externalProps} />
+                    <UnderlineButton {...externalProps} />
+                    <CodeButton {...externalProps} />
+                    <Separator {...externalProps} />
+                    <UnorderedListButton {...externalProps} />
+                    <OrderedListButton {...externalProps} />
+                    <BlockquoteButton {...externalProps} />
+                    <CodeBlockButton {...externalProps} />
+                  </div>
+                )
+              }
+            </Toolbar>
+
       </div>
     <div onKeyDown={this.onKeyPressed}>
     <Editor
     onChange={(editorState) => {this.onChange(editorState)}}
     editorState={this.state.editorState}
     handleKeyCommand={this.handleKeyCommand}
-    plugins={[highlightPlugin, emojiPlugin, sideToolbarPlugin]}
+    plugins={[highlightPlugin, emojiPlugin, sideToolbarPlugin, toolbarPlugin]}
     onTab={this.onTab}
     placeholder="Write your story here..."
 
@@ -196,7 +234,7 @@ handleKeyCommand = (command, editorState) => {
     <Link key={Math.random()} to={`/storyboards/${this.state.entry.id}`}><button style = {{position: "relative", left: "10.25em", top: "3.5em"}} className="ui blue button">View Storyboard</button></Link>
     </div>
     <EmojiSuggestions/>
-    <SideToolbar />
+
     </div>
   )};
 
