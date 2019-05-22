@@ -168,7 +168,7 @@ handleKeyCommand = (command, editorState) => {
 
     <div>
       <h1>Welcome back, "{this.state.entry.title}" has been waiting for you!</h1>
-      <div style={{position:"relative", top:"5em"}}>
+      <div style={{position:"relative", top:"2em"}}>
       <div className="toolbar">
       <button onClick={() => {this.makeBold()}}>Bold</button>
       <button onClick={() => {this.makeUnderlined()}}>Underline</button>
@@ -182,6 +182,7 @@ handleKeyCommand = (command, editorState) => {
     handleKeyCommand={this.handleKeyCommand}
     plugins={[highlightPlugin, emojiPlugin]}
     onTab={this.onTab}
+
     />
     </div>
 
