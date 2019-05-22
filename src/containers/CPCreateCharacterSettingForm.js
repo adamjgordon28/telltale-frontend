@@ -1,9 +1,10 @@
 import React, { Component } from 'react'
+import history from "../history"
 
 class CPCreateCharacterSettingForm extends Component {
 
     state = {
-      setting_id: "0",
+      setting_id: "",
       chapter: "",
       description: ""
     }
@@ -25,7 +26,21 @@ class CPCreateCharacterSettingForm extends Component {
   }
 
   handleSubmit = (e) => {
-    console.log("Hello!")
+    e.preventDefault()
+    this.createCharacterSetting(this.state)
+  }
+
+  createCharacterSetting = (info) => {
+    fetch("http://localhost:4000/api/v1/character_settings", {
+      method: "POST",
+      headers: { "Content-Type": "application/json", "Accepts": "application/json" },
+      body: JSON.stringify({character_id:`${this.props.character.id}`, setting_id: info.setting_id, description: info.description, chapter:info.chapter})
+     })
+     .then(res=>res.json())
+     .then(characterSetting=>{
+       console.log(characterSetting)
+     })
+     history.push("/storyboards/".concat(`${this.props.currentEntry.id}`))
   }
 
   render(){
@@ -35,14 +50,20 @@ class CPCreateCharacterSettingForm extends Component {
     }
     return (
       <div>
-        {this.props.currentEntry.settings.length &&
+        {!!this.props.currentEntry.settings.length &&
         <div>
-        Where does the {this.props.character.name} appear at in your story? Detail it here!
+        Where does {this.props.character.name} appear at in your story? Detail it here!
             <form className="ui form" onSubmit={this.handleSubmit}>
-              <select onChange={this.handleChange} className="ui dropdown" value={this.state.setting_id} name="setting_id" required>
-              <option value="0" label="Select a Setting!"></option>
+              <select required onChange={this.handleChange} className="ui dropdown" value={this.state.setting_id} name="setting_id" >
+              <option label="Select a Setting!"></option>
                 {this.renderRows()}
               </select>
+              <label>Chapter</label>
+              <input onChange={this.handleChange} type="number" name="chapter" value={this.state.chapter} min={0} placeholder="Chapter" required/>
+              <div className ="field">
+                <label>Description</label>
+                <textarea onChange={this.handleChange} name="description" placeholder="Description" value={this.state.description} required ></textarea >
+              </div>
               <button className="ui button" type="submit">Submit</button>
             </form>
         </div>}
