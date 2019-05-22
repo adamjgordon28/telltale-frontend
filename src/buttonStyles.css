@@ -1,0 +1,50 @@
+.button {
+  border: 1px solid #bbb;
+  height: 40px;
+  color: #888;
+  border-radius: 2px;
+  cursor: pointer;
+  position: relative;
+  background-color: #fff;
+  margin-right: 10px;
+}
+
+.button:focus {
+  background-color: #eee;
+  color: #999;
+  outline: 0; /* reset for :focus */
+}
+
+.button:hover {
+  background-color: #eee;
+  color: #999;
+}
+
+.button:active {
+  background-color: #ddd;
+  color: #777;
+}
+
+.button:disabled {
+  background-color: #F5F5F5;
+  color: #ccc;
+}
+editorStyles.css
+.editor {
+  box-sizing: border-box;
+  border: 1px solid #ddd;
+  cursor: text;
+  padding: 16px;
+  border-radius: 2px;
+  margin-bottom: 2em;
+  box-shadow: inset 0px 1px 8px -3px #ABABAB;
+  background: #fefefe;
+}
+
+.editor :global(.public-DraftEditor-content) {
+  min-height: 140px;
+}
+
+.options {
+  margin-bottom: 20px;
+}
