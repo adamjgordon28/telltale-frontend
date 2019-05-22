@@ -4,11 +4,14 @@ import { Link } from 'react-router-dom';
 import Editor from 'draft-js-plugins-editor';
 import createEmojiPlugin from 'draft-js-emoji-plugin';
 import createHighlightPlugin from '../highlightPlugin';
+import createSideToolbarPlugin from 'draft-js-side-toolbar-plugin';
 import 'draft-js-emoji-plugin/lib/plugin.css';
 import '../App.css'
 import { connect } from 'react-redux'
 import history from "../history.js"
 import 'draft-js/dist/Draft.css';
+import 'draft-js-side-toolbar-plugin/lib/plugin.css'
+
 
 const emojiPlugin = createEmojiPlugin()
 
@@ -17,6 +20,9 @@ const { EmojiSuggestions } = emojiPlugin;
 const highlightPlugin = createHighlightPlugin({
   background: 'orange'
 });
+
+const sideToolbarPlugin = createSideToolbarPlugin();
+const { SideToolbar } = sideToolbarPlugin;
 
 
 
@@ -180,8 +186,9 @@ handleKeyCommand = (command, editorState) => {
     onChange={(editorState) => {this.onChange(editorState)}}
     editorState={this.state.editorState}
     handleKeyCommand={this.handleKeyCommand}
-    plugins={[highlightPlugin, emojiPlugin]}
+    plugins={[highlightPlugin, emojiPlugin, sideToolbarPlugin]}
     onTab={this.onTab}
+    placeholder="Write your story here..."
 
     />
     </div>
@@ -189,6 +196,7 @@ handleKeyCommand = (command, editorState) => {
     <Link key={Math.random()} to={`/storyboards/${this.state.entry.id}`}><button style = {{position: "relative", left: "10.25em", top: "3.5em"}} className="ui blue button">View Storyboard</button></Link>
     </div>
     <EmojiSuggestions/>
+    <SideToolbar />
     </div>
   )};
 
