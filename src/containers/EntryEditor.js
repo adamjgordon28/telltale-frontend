@@ -2,17 +2,17 @@ import React from 'react';
 import { EditorState, RichUtils, convertToRaw, convertFromRaw } from 'draft-js';
 import { Link } from 'react-router-dom';
 import Editor from 'draft-js-plugins-editor';
-import createEmojiPlugin from 'draft-js-emoji-plugin';
 import createHighlightPlugin from '../highlightPlugin';
 import createSideToolbarPlugin from 'draft-js-side-toolbar-plugin';
 import createToolbarPlugin, { Separator } from 'draft-js-static-toolbar-plugin';
 import createCounterPlugin from 'draft-js-counter-plugin';
 import createUndoPlugin from 'draft-js-undo-plugin';
+import createLinkifyPlugin from 'draft-js-linkify-plugin';
+
 import '../App.css'
 import { connect } from 'react-redux'
 import history from "../history.js"
 import 'draft-js/dist/Draft.css';
-import 'draft-js-emoji-plugin/lib/plugin.css';
 import 'draft-js-side-toolbar-plugin/lib/plugin.css';
 import 'draft-js-static-toolbar-plugin/lib/plugin.css';
 import 'last-draft-js-toolbar-plugin/lib/plugin.css'
@@ -32,12 +32,8 @@ import {
 } from 'draft-js-buttons';
 
 
-const emojiPlugin = createEmojiPlugin()
-
-const { EmojiSuggestions } = emojiPlugin;
-
 const highlightPlugin = createHighlightPlugin({
-  background: 'orange'
+  background: 'yellow'
 });
 
 const sideToolbarPlugin = createSideToolbarPlugin();
@@ -63,6 +59,8 @@ const undoPlugin = createUndoPlugin({
   theme,
 });
 const { UndoButton, RedoButton } = undoPlugin;
+
+const linkifyPlugin = createLinkifyPlugin();
 
 
 
@@ -226,6 +224,7 @@ handleKeyCommand = (command, editorState) => {
                   <div>
                     <UndoButton />
                     <RedoButton />
+                    <button onClick={() => {this.makeHighlighted()}}>Highlight</button>
                     <BoldButton {...externalProps} />
                     <ItalicButton {...externalProps} />
                     <UnderlineButton {...externalProps} />
@@ -235,6 +234,7 @@ handleKeyCommand = (command, editorState) => {
                     <OrderedListButton {...externalProps} />
                     <BlockquoteButton {...externalProps} />
                     <CodeBlockButton {...externalProps} />
+
                   </div>
                 )
               }
@@ -246,7 +246,7 @@ handleKeyCommand = (command, editorState) => {
     onChange={(editorState) => {this.onChange(editorState)}}
     editorState={this.state.editorState}
     handleKeyCommand={this.handleKeyCommand}
-    plugins={[highlightPlugin, emojiPlugin, sideToolbarPlugin, toolbarPlugin, undoPlugin, counterPlugin]}
+    plugins={[highlightPlugin, sideToolbarPlugin, toolbarPlugin, undoPlugin, counterPlugin, linkifyPlugin]}
     onTab={this.onTab}
     placeholder="Write your story here..."
 
@@ -261,7 +261,6 @@ handleKeyCommand = (command, editorState) => {
 
     <Link key={Math.random()} to={`/storyboards/${this.state.entry.id}`}><button style = {{position: "relative", left: "10.25em", top: "3.5em"}} className="ui blue button">View Storyboard</button></Link>
     </div>
-    <EmojiSuggestions/>
 
     </div>
   )};
