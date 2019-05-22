@@ -50,16 +50,27 @@ div.DraftEditor-root {
 div.toolbar {
   position: relative;
   width: 80%;
-  background-color: lightsteelblue;
   padding: 10px 20px;
   margin: auto;
   top: .25em;
   text-align: right;
 }
+
 div.toolbar button {
   border: 1px solid black;
   padding:5px;
   margin-right:4px;
   background-color:black;
   color:white;
+  position: relative;
+  bottom:.75em;
+}
+
+div.mini-toolbar button {
+  background: black;
+  color: lightgray;
+  position: relative;
+  right: 25em;
+  top: 1.35em;
+  display: inline-block;
 }

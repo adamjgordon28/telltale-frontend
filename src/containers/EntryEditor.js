@@ -221,17 +221,19 @@ handleKeyCommand = (command, editorState) => {
     <div>
       <h1>Welcome back, "{this.state.entry.title}" has been waiting for you!</h1>
       <EmojiSelect/>
-      <div style={{position:"relative", top:"2em"}}>
+      <div>
       <div className="toolbar">
 
       <Toolbar>
               {
 
                 (externalProps) => (
-                  <div>
-                    <UndoButton />
-                    <RedoButton />
-                    <button onClick={() => {this.makeHighlighted()}}>Highlight</button>
+                  <div className = "middle-toolbar">
+                    <div className="mini-toolbar">
+                      <UndoButton />
+                      <RedoButton />
+                      <button onClick={() => {this.makeHighlighted()}}>Highlight</button>
+                    </div>
                     <BoldButton {...externalProps} />
                     <ItalicButton {...externalProps} />
                     <UnderlineButton {...externalProps} />
