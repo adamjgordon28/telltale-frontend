@@ -6,9 +6,7 @@ import history from "../history.js"
 import { connect } from 'react-redux';
 
 class AddInfoToStoryContainer extends React.Component {
-  constructor(props) {
-  super(props);
-}
+
 
 componentDidMount = () => {
  fetch("http://localhost:4000/api/v1/entries/".concat(`${this.props.match.params.id}`))

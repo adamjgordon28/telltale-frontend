@@ -17,7 +17,7 @@ class CharacterPage extends Component {
     .then(character => {
       this.setState({
         character: character
-      }, () => {fetch("http://localhost:4000/api/v1/entries/".concat(`${this.state.character.entry_id}`))
+      }, () => {fetch("http://localhost:4000/api/v1/entries/".concat(`${this.state.character.entry.id}`))
        .then(response => response.json())
        .then(json => {
          this.props.setCurrentEntry(json)
@@ -38,7 +38,7 @@ class CharacterPage extends Component {
       <div>
       This is the Page for {this.state.character.name}
       <CPCreateCharacterSettingForm currentEntry={this.props.currentEntry} character={this.state.character}/>
-
+      <Link to={`/edit-character/${this.state.character.id}`}><button className="ui button blue">Edit this Character</button></Link>
       <Link to={`/storyboards/${this.state.character.entry_id}`}><button className="ui button positive">Return To Storyboard</button></Link>
       <CPCharacterSettingList character={this.state.character}/>
       </div>

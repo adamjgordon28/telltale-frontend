@@ -4,7 +4,7 @@ import history from '../history.js'
 
 
 
-class CharacterSettingEditForm extends Component {
+class EditCharacterSettingForm extends Component {
 
   state = {
     setting_id: "",
@@ -31,20 +31,7 @@ class CharacterSettingEditForm extends Component {
     }
   }
 
-  componentDidMount = () => {
-    fetch("http://localhost:4000/api/v1/character_settings/".concat(`${this.props.match.params.id}`))
-    .then(res=>res.json())
-    .then(charSet=>{
-      this.props.setCurrentEntry(charSet.entry)
-      this.setState({
-        setting_id: charSet.setting_id,
-        character_id: charSet.character_id,
-        chapter: charSet.chapter,
-        description: charSet.description
-      })
-    })
 
-  }
 
   updateCharacterSetting = (charSet) => {
     fetch("http://localhost:4000/api/v1/character_settings/".concat(`${this.props.match.params.id}`), {
@@ -66,6 +53,30 @@ class CharacterSettingEditForm extends Component {
     })
   }
 
+  deleteCharacterSetting = () => {
+      fetch("http://localhost:4000/api/v1/character_settings/".concat(`${this.props.match.params.id}`),
+    {
+      method: 'DELETE'
+    })
+    history.push(`/storyboards/${this.props.currentEntry.id}`)
+  }
+
+
+  componentDidMount = () => {
+    fetch("http://localhost:4000/api/v1/character_settings/".concat(`${this.props.match.params.id}`))
+    .then(res=>res.json())
+    .then(charSet=>{
+      this.props.setCurrentEntry(charSet.entry)
+      this.setState({
+        setting_id: charSet.setting_id,
+        character_id: charSet.character_id,
+        chapter: charSet.chapter,
+        description: charSet.description
+      })
+    })
+
+  }
+
 
     handleSubmit = (e) => {
       e.preventDefault()
@@ -81,6 +92,7 @@ class CharacterSettingEditForm extends Component {
 
 
   render(){
+    console.log(this.props.currentEntry)
     return(
       <div>
       <h1>Edit This Character-Setting!</h1>
@@ -101,6 +113,7 @@ class CharacterSettingEditForm extends Component {
         </div>
         <button className="ui button" type="submit">Submit</button>
       </form>}
+      <button style={{position:"absolute",left:"7.5%", top: "58.8%"}} onClick={(e) => { if (window.confirm('Are you sure you wish to delete this item?')) this.deleteCharacterSetting(e) } }className="ui button negative">Delete Character Setting</button>
       </div>
     )
   }
@@ -125,4 +138,4 @@ function mapStateToProps(state) {
 
 
 
-export default connect(mapStateToProps, mapDispatchToProps)(CharacterSettingEditForm)
+export default connect(mapStateToProps, mapDispatchToProps)(EditCharacterSettingForm)

@@ -7,7 +7,7 @@ import logo from './TellTaleLogo.png'
 
 class NavBar extends Component {
   render(){
-    let logged_in = this.props.currentUser && this.props.currentUser != -1
+    let logged_in = this.props.currentUser && this.props.currentUser !== -1
     return (
 
 

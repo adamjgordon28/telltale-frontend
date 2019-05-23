@@ -40,11 +40,11 @@ class CreateCharacterForm extends React.Component {
           <div className="ui form" >
             <div className="field">
               <label>Name</label>
-              <input type="text" placeholder="Name" name="name" onChange={this.handleChange} required/>
+              <input type="text" placeholder="Name" value={this.state.name} name="name" onChange={this.handleChange} required/>
               </div>
               <div className="field">
               <label>Description</label>
-              <textarea type="text" placeholder="Description" name="description" onChange={this.handleChange} required ></textarea>
+              <textarea type="text" placeholder="Description" name="description" value={this.state.description} onChange={this.handleChange} required ></textarea>
               </div>
           <button className="ui button" style={{position:"relative", top: "1.5em"}} type="submit">Submit</button>
         </div>

@@ -11,13 +11,14 @@ class CPCharacterSettingList extends Component {
     return charSetArray
     }
     else {
-      return <h4>This character has't been detailed at any settings yet!</h4>
+      return <h4>This character hasn't been detailed at any settings yet!</h4>
     }
   }
   render(){
     return (
-      <div>This is a list of this character's character-settings!
-      <ul>{this.renderCharacterSettings()}</ul>
+      <div className="ui raised card" style={{width: "28%", position: "absolute", left: "36%", minHeight:"30em", maxHeight:"30em", overflowY: "scroll", display: "inline-block"}}>
+      <h3 style={{textAlign:"center"}} >Places This Character Has Been: </h3>
+      {this.renderCharacterSettings()}
       </div>
     )
   }

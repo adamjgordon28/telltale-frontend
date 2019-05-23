@@ -15,8 +15,9 @@ class SPCharacterSettingList extends Component {
   }
   render(){
     return (
-      <div>This is a list of this setting's character-settings!
-      <ul>{this.renderCharacterSettings()}</ul>
+      <div className="ui raised card" style={{width: "28%", position: "absolute", left: "36%", minHeight:"30em", maxHeight:"30em", overflowY: "scroll", display: "inline-block"}}>
+      <h3 style={{textAlign:"center"}} >Characters Who Have Been To This Place: </h3>
+      {this.renderCharacterSettings()}
       </div>
     )
   }
