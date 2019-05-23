@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 class CharacterCard extends Component {
   render (){
     return (
-      <div className="ui raised card" style={{position: "absolute", left: "13.5%"}}>
+      <div className="ui raised card">
   <div className="content">
     <div className="header">{this.props.character.name}</div>
     <div className="meta">

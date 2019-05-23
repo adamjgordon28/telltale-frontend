@@ -15,7 +15,6 @@ class CPCharacterSettingList extends Component {
     }
   }
   render(){
-    console.log(this.props.character.character_settings)
     return (
       <div>This is a list of this character's character-settings!
       <ul>{this.renderCharacterSettings()}</ul>

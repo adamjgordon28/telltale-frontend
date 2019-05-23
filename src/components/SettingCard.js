@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 class SettingCard extends Component {
   render (){
     return (
-      <div style={{position: "absolute", left: "13.5%"}} className="ui raised card">
+      <div className="ui raised card">
   <div className="content">
     <div className="header">{this.props.setting.name}</div>
     <div className="meta">
