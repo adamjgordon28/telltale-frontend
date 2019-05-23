@@ -40,7 +40,7 @@ class CreateEntryForm extends React.Component {
   }
 
   render(){
-    if(this.props.currentUser === -1|| this.props.currentUser === null){
+    if(this.props.currentUser === -1){
       history.push("/login")
     }
     return(

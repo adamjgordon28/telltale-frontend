@@ -1,12 +1,11 @@
 import React, { Component } from 'react';
-import { Link } from 'react-redux'
+import { Link } from 'react-router-dom';
 
 
 class CharacterSettingCard extends Component {
   render (){
-    console.log(this.props.charSet)
     return(
-            <div className="ui raised card">
+            <div className="ui raised card" style={{position: "absolute", left: "13.5%"}} >
         <div className="content">
           <div className="header">{this.props.charSet.character.name} at {this.props.charSet.setting.name}</div>
           <div className="meta">
@@ -19,7 +18,7 @@ class CharacterSettingCard extends Component {
         </div>
         <div className="extra content">
         <div className="right floated">
-          <button className="ui button">Edit</button>
+          <Link to={`/character-setting-edit/${this.props.charSet.id}`}><button className="ui button">Edit</button></Link>
         </div>
         </div>
       </div>

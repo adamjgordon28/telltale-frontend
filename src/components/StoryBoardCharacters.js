@@ -6,7 +6,12 @@ class StoryBoardCharacters extends Component {
     let charactersArray = this.props.entry.characters.map((character)=>{
       return <CharacterCard character={character} key={Math.random()}/>
     })
-    return charactersArray
+    if (charactersArray.length){
+      return charactersArray
+    }
+    else {
+      return <h1>No characters yet!</h1>
+    }
   }
 render () {
 

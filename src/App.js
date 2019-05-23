@@ -2,17 +2,18 @@ import React, { Fragment, Component} from 'react';
 import { connect } from 'react-redux';
 import { Route, Router } from 'react-router-dom'
 import history from './history';
-import CreateUserForm from './containers/CreateUserForm.js'
-import Login from './containers/Login.js'
-import UserProfile from './containers/UserProfile.js'
-import CreateEntryForm from './containers/CreateEntryForm.js'
-import NavBar from './containers/NavBar.js'
-import Logout from './containers/Logout.js'
-import EntryContainer from './containers/EntryContainer.js'
-import StoryBoard from './components/StoryBoard.js'
-import AddInfoToStoryContainer from './containers/AddInfoToStoryContainer.js'
-import SettingPage from './containers/SettingPage.js'
-import CharacterPage from './containers/CharacterPage.js'
+import CreateUserForm from './containers/CreateUserForm.js';
+import Login from './containers/Login.js';
+import UserProfile from './containers/UserProfile.js';
+import CreateEntryForm from './containers/CreateEntryForm.js';
+import NavBar from './containers/NavBar.js';
+import Logout from './containers/Logout.js';
+import EntryContainer from './containers/EntryContainer.js';
+import StoryBoard from './components/StoryBoard.js';
+import AddInfoToStoryContainer from './containers/AddInfoToStoryContainer.js';
+import SettingPage from './containers/SettingPage.js';
+import CharacterPage from './containers/CharacterPage.js';
+import CharacterSettingEditForm from './containers/CharacterSettingEditForm.js';
 
 class App extends Component {
 
@@ -69,6 +70,9 @@ class App extends Component {
             </Route>
             <Route path='/characters/:id' render={(props)=> {
               return <CharacterPage {...props}/>}}>
+            </Route>
+            <Route path='/character-setting-edit/:id' render={(props)=> {
+              return <CharacterSettingEditForm{...props}/>}}>
             </Route>
           </Router>
       </Fragment>
