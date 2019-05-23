@@ -1,6 +1,7 @@
 import React, { Component, Fragment} from 'react';
-import { Link} from 'react-router-dom'
-import { connect } from 'react-redux'
+import { Link} from 'react-router-dom';
+import { connect } from 'react-redux';
+import logo from './TellTaleLogo.png'
 
 
 
@@ -32,6 +33,7 @@ class NavBar extends Component {
     <h3>Logout</h3>
       </div>
     </Link> }
+    <Link to="/entries"><img alt="" src={logo} style={{height: "45px", position: "absolute", right: "3em"}}/></Link>
   </div>
     )
   }
