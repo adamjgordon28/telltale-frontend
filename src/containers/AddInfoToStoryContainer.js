@@ -8,9 +8,6 @@ import { connect } from 'react-redux';
 class AddInfoToStoryContainer extends React.Component {
   constructor(props) {
   super(props);
-  this.state = {
-
-  };
 }
 
 componentDidMount = () => {
@@ -36,7 +33,7 @@ componentDidMount = () => {
 
   <div className="ui attached message">
     <div className="header">
-      <h1 style={{fontSize: "3em"}}>Add Info To Your Story!</h1>
+      <h1 style={{fontSize: "3em"}}>Add Info To "{this.props.currentEntry.title}"!</h1>
     </div>
   </div>
   <div className="content"  style={{width:"40%",  position:"relative", left: "5%", top: ".5em"}}>

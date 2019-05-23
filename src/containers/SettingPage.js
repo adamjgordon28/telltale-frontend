@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import SPCreateCharacterSettingForm from './SPCreateCharacterSettingForm.js'
+import SPCreateCharacterSettingForm from './SPCreateCharacterSettingForm.js';
+import SPCharacterSettingList from './SPCharacterSettingList.js'
 
 class SettingPage extends Component {
 
@@ -33,6 +34,7 @@ class SettingPage extends Component {
       This is the page for {this.state.setting.name}
       <SPCreateCharacterSettingForm currentEntry={this.props.currentEntry} setting={this.state.setting}/>
       <Link to={`/storyboards/${this.state.setting.entry_id}`}><button className="ui button positive">Return To Storyboard</button></Link>
+      <SPCharacterSettingList setting={this.state.setting}/>
       </div>
     )
   }

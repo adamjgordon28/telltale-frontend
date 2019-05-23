@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import  CPCreateCharacterSettingForm from './CPCreateCharacterSettingForm.js'
-
+import CPCharacterSettingList from './CPCharacterSettingList.js'
 
 
 class CharacterPage extends Component {
@@ -40,6 +40,7 @@ class CharacterPage extends Component {
       <CPCreateCharacterSettingForm currentEntry={this.props.currentEntry} character={this.state.character}/>
 
       <Link to={`/storyboards/${this.state.character.entry_id}`}><button className="ui button positive">Return To Storyboard</button></Link>
+      <CPCharacterSettingList character={this.state.character}/>
       </div>
     )
   }
