@@ -25,7 +25,6 @@ class SettingPage extends Component {
   }
 
   render (){
-    console.log(this.props.currentEntry)
     if (!this.state.setting) {
       return <h1>Loading...</h1>
     }

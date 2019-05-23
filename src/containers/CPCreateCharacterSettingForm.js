@@ -38,13 +38,11 @@ class CPCreateCharacterSettingForm extends Component {
      })
      .then(res=>res.json())
      .then(characterSetting=>{
-       console.log(characterSetting)
      })
      history.push("/storyboards/".concat(`${this.props.currentEntry.id}`))
   }
 
   render(){
-    console.log(this.state)
     if (!this.props.currentEntry){
       return <h1>Loading...</h1>
     }
@@ -54,7 +52,7 @@ class CPCreateCharacterSettingForm extends Component {
         <div>
         Where does {this.props.character.name} appear at in your story? Detail it here!
             <form className="ui form" onSubmit={this.handleSubmit}>
-              <select required onChange={this.handleChange} className="ui dropdown" value={this.state.setting_id} name="setting_id" >
+              <select onChange={this.handleChange} className="ui dropdown" value={this.state.setting_id} name="setting_id" required>
               <option label="Select a Setting!"></option>
                 {this.renderRows()}
               </select>
