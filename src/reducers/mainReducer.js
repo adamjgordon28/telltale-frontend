@@ -1,6 +1,8 @@
 const defaultState = {
   currentUser: null,
-  currentEntry: null
+  currentEntry: null,
+  currentCharacter: null,
+  currentSetting: null
 }
 
   const mainReducer = (state=defaultState, action) => {
@@ -43,6 +45,8 @@ const defaultState = {
           settings: [...state.currentEntry.settings, action.payload]
         }
       }
+
+
       default:
       return state
     }

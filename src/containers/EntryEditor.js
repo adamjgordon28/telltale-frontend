@@ -220,7 +220,7 @@ handleKeyCommand = (command, editorState) => {
 
     <div>
       <h1>Welcome back, "{this.state.entry.title}" has been waiting for you!</h1>
-      <EmojiSelect/>
+        <EmojiSelect/>
       <div>
       <div className="toolbar">
 
@@ -230,8 +230,10 @@ handleKeyCommand = (command, editorState) => {
                 (externalProps) => (
                   <div className = "middle-toolbar">
                     <div className="mini-toolbar">
+
                       <UndoButton />
                       <RedoButton />
+
                       <button onClick={() => {this.makeHighlighted()}}>Highlight</button>
                     </div>
                     <BoldButton {...externalProps} />
@@ -243,14 +245,17 @@ handleKeyCommand = (command, editorState) => {
                     <BlockquoteButton {...externalProps} />
                     <CodeBlockButton {...externalProps} />
 
+
                   </div>
+
                 )
+
               }
+
             </Toolbar>
 
       </div>
     <div onKeyDown={this.onKeyPressed}>
-
     <Editor
     onChange={(editorState) => {this.onChange(editorState)}}
     editorState={this.state.editorState}

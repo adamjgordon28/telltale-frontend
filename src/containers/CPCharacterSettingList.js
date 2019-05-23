@@ -1,12 +1,18 @@
-import React, {Component} from 'react'
+import React, {Component} from 'react';
+import CharacterSettingCard from '../components/CharacterSettingCard.js';
 
 
 class CPCharacterSettingList extends Component {
   renderCharacterSettings = () => {
     let charSetArray = this.props.character.character_settings.map((charSet) => {
-      return <li key={Math.random()}> Chapter {charSet.chapter}-{charSet.setting.name}: {charSet.description}</li>
+      return <CharacterSettingCard key={Math.random()} charSet={charSet}/>
     })
+    if (charSetArray.length){
     return charSetArray
+    }
+    else {
+      return <h4>This character has't been detailed at any settings yet!</h4>
+    }
   }
   render(){
     console.log(this.props.character.character_settings)
