@@ -56,25 +56,29 @@ class CreateEntryForm extends React.Component {
           <div className="ui form">
             <div className="field">
               <label>Title</label>
-              <input type="text" placeholder="Title" name="title" onChange={this.handleChange} required />
+              <input type="text" placeholder="Title" value={this.state.title} name="title" onChange={this.handleChange} required />
               </div>
               <div className="field">
                   <label>Genre</label>
-                  <select onChange={this.handleChange} name = "genre" required >
-                          <option label="Genre"></option>
-                          <option value="adventure">Adventure</option>
-                          <option value="comedy">Comedy</option>
-                          <option value="drama">Drama</option>
-                          <option value="fantasy">Fantasy</option>
-                          <option value="historical-fiction">Historical Fiction</option>
-                          <option value="horror">Horror</option>
-                          <option value="mystery">Mystery</option>
-                          <option value="non-fiction">Non-Fiction</option>
-                          <option value="romance">Romance</option>
-                          <option value="science-fiction">Science Fiction</option>
-                          <option value="western">Western</option>
-                          <option value="other">Other</option>
-                      </select>
+                  <div className="ui fluid selection dropdown" onChange={this.handleChange} name = "genre" value={this.state.genre} required >
+                    <input type="hidden" name="genre"/>
+                      <i className="dropdown icon"></i>
+                      <div className="default text">Genre</div>
+                        <div className="menu">
+                            <div className="item" data-value="adventure"><img className="ui mini avatar image" alt="" src="/icons/Adventure.png"/>Adventure</div>
+                            <div className="item" data-value="comedy">Comedy</div>
+                            <div className="item" data-value="drama">Drama</div>
+                            <div className="item" data-value="fantasy">Fantasy</div>
+                            <div className="item" data-value="historical-fiction">Historical Fiction</div>
+                            <div className="item" data-value="horror">Horror</div>
+                            <div className="item" data-value="mystery">Mystery</div>
+                            <div className="item" data-value="non-fiction">Non-Fiction</div>
+                            <div className="item" data-value="romance">Romance</div>
+                            <div className="item" data-value="science-fiction">Science Fiction</div>
+                            <div className="item" data-value="western">Western</div>
+                            <div className="item" data-value="other">Other</div>
+                        </div>
+                      </div>
               </div>
               <div className="field">
               <label>Description</label>
