@@ -49,6 +49,7 @@ class EditCharacterSettingForm extends Component {
     })
     .then(res=>res.json())
     .then(newCharSet=>{
+      this.props.updateCharacterSettingInEntry(newCharSet)
       history.push(`/storyboards/${this.props.currentEntry.id}`)
     })
   }
@@ -72,6 +73,11 @@ class EditCharacterSettingForm extends Component {
         character_id: charSet.character_id,
         chapter: charSet.chapter,
         description: charSet.description
+      })
+      fetch("http://localhost:4000/api/v1/entries/".concat(`${charSet.entry.id}`))
+      .then(res=>res.json())
+      .then(entry=>{
+      this.props.setCurrentEntry(entry)
       })
     })
 
@@ -124,6 +130,9 @@ function mapDispatchToProps(dispatch) {
     setCurrentEntry: (entry) => {
 
       dispatch({type: 'SET_CURRENT_ENTRY', payload: entry})
+    },
+    updateCharacterSettingInEntry: (characterSetting) => {
+      dispatch({type:'UPDATE_CHARACTER_SETTING_IN_ENTRY', payload: characterSetting })
     }
   }
 }

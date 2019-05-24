@@ -1,8 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-import { connect } from 'react-redux';
-
 
 class EntryCard extends React.Component {
 
@@ -31,16 +29,5 @@ class EntryCard extends React.Component {
 }
 
 
-function mapDispatchToProps(dispatch) {
-  return {
-    setCurrentEntry: (id) => {
-      // dispatch is our new setState and it takes an object with a type and a payload
 
-
-      dispatch({type: "SET_CURRENT_ENTRY", payload: id})
-    }
-  }
-}
-
-
-export default connect (null, mapDispatchToProps)(EntryCard)
+export default EntryCard

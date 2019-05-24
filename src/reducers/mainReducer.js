@@ -49,7 +49,6 @@ const defaultState = {
           characters: updatedCharacterArray
         }
       }
-      //NEEDS WORK
       case 'REMOVE_CHARACTER_FROM_ENTRY':
       return {
         ...state,
@@ -82,35 +81,41 @@ const defaultState = {
           settings: updatedSettingArray
         }
       }
-      //NEEDS WORK
       case 'REMOVE_SETTING_FROM_ENTRY':
       return {
         ...state,
         currentEntry: {
           ...state.currentEntry,
-          characters: [...state.currentEntry.characters, action.payload]
+          settings: state.currentEntry.settings.filter(setting=>action.payload.id !== setting.id)
         }
       }
-      //NEEDS WORK
       case 'ADD_CHARACTER_SETTING_TO_ENTRY':
       return {
         ...state,
         currentEntry: {
           ...state.currentEntry,
-          characters: [...state.currentEntry.characters, action.payload]
+          character_settings: [...state.currentEntry.character_settings, action.payload]
         }
       }
       //NEEDS WORK
       case 'UPDATE_CHARACTER_SETTING_IN_ENTRY':
+      let updatedCharSetArray = state.currentEntry.character_settings.map((charSet) => {
+        if (charSet.id === action.payload.id){
+          return action.payload
+        }
+        else {
+          return charSet
+        }
+      })
       return {
         ...state,
         currentEntry: {
           ...state.currentEntry,
-          characters: [...state.currentEntry.characters, action.payload]
+          characters_settings: updatedCharSetArray
         }
       }
       //NEEDS WORK
-      case 'DELETE_CHARACTER_SETTING_FROM_ENTRY':
+      case 'REMOVE_CHARACTER_SETTING_FROM_ENTRY':
       return {
         ...state,
         currentEntry: {

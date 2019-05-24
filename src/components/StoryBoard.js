@@ -19,6 +19,7 @@ class StoryBoard extends Component {
     .then(json => {
       this.props.setCurrentEntry(json)
     })
+
   }
 
   deleteEntry = () => {

@@ -1,5 +1,6 @@
-import React, { Component } from 'react'
-import history from "../history"
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import history from "../history";
 
 class CPCreateCharacterSettingForm extends Component {
 
@@ -38,6 +39,7 @@ class CPCreateCharacterSettingForm extends Component {
      })
      .then(res=>res.json())
      .then(characterSetting=>{
+       this.props.addCharacterSettingToEntry(characterSetting)
      })
      history.push("/storyboards/".concat(`${this.props.currentEntry.id}`))
   }
@@ -70,4 +72,19 @@ class CPCreateCharacterSettingForm extends Component {
   }
 }
 
-export default CPCreateCharacterSettingForm
+function mapStateToProps(state) {
+  return {
+    currentUser: state.currentUser,
+    currentEntry: state.currentEntry
+  }
+}
+
+function mapDispatchToProps(dispatch) {
+  return {
+    addCharacterSettingToEntry: (characterSetting) => {
+      dispatch({type: "ADD_CHARACTER_SETTING_TO_ENTRY", payload: characterSetting})
+    }
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(CPCreateCharacterSettingForm)

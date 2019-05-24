@@ -46,6 +46,10 @@ class EditSettingForm extends Component {
     {
       method: 'DELETE'
     })
+    .then(res=>res.json())
+    .then(setting => {
+      this.props.removeSettingFromEntry(setting)
+    })
     history.push(`/storyboards/${this.props.currentEntry.id}`)
   }
 
@@ -98,6 +102,9 @@ function mapDispatchToProps(dispatch) {
     updateSettingInEntry: (setting) => {
       dispatch({type: 'UPDATE_SETTING_IN_ENTRY',
     payload: setting})
+    },
+    removeSettingFromEntry: (setting) =>{
+      dispatch({type: 'REMOVE_SETTING_FROM_ENTRY', payload: setting})
     }
   }
 }

@@ -4,8 +4,11 @@ import { Link } from 'react-router-dom';
 
 class CharacterSettingCard extends Component {
   render (){
-
+    if (!this.props.charSet){
+      return <h1>Loading...</h1>
+    }
     return(
+
             <div className="ui raised card">
         <div className="content">
           <div className="header">{this.props.charSet.character.name} at {this.props.charSet.setting.name}</div>
