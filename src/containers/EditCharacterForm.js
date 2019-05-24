@@ -46,6 +46,10 @@ class EditCharacterForm extends Component {
     {
       method: 'DELETE'
     })
+    .then(res=>res.json())
+    .then(character => {
+     this.props.removeCharacterFromEntry(character)
+    })
     history.push(`/storyboards/${this.props.currentEntry.id}`)
   }
 
@@ -98,6 +102,9 @@ function mapDispatchToProps(dispatch) {
     updateCharacterInEntry: (character) => {
       dispatch({type: 'UPDATE_CHARACTER_IN_ENTRY',
     payload: character})
+    },
+    removeCharacterFromEntry: (character) => {
+      dispatch({type: 'REMOVE_CHARACTER_FROM_ENTRY', payload: character})
     }
   }
 }

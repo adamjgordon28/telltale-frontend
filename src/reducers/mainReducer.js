@@ -6,10 +6,8 @@ const defaultState = {
   const mainReducer = (state=defaultState, action) => {
     switch(action.type){
       case 'SET_CURRENT_USER':
-      //action.payload { username: 'Chandler Bing', bio: 'my user bio', age: 'age'}
       return {...state, currentUser: action.payload}
       case 'ADD_POST_TO_USER':
-      //action.payload { username: 'Chandler Bing', bio: 'my user bio', age: 'age'}
       return {
         ...state,
         currentUser: {
@@ -35,7 +33,6 @@ const defaultState = {
           characters: [...state.currentEntry.characters, action.payload]
         }
       }
-      //NEEDS WORK
       case 'UPDATE_CHARACTER_IN_ENTRY':
       let updatedCharacterArray = state.currentEntry.characters.map((character)=> {
         if (character.id === action.payload.id){
@@ -58,7 +55,7 @@ const defaultState = {
         ...state,
         currentEntry: {
           ...state.currentEntry,
-          characters: [...state.currentEntry.characters, action.payload]
+          characters: state.currentEntry.characters.filter(character=>action.payload.id !== character.id)
         }
       }
       case 'ADD_SETTING_TO_ENTRY':
@@ -86,7 +83,7 @@ const defaultState = {
         }
       }
       //NEEDS WORK
-      case 'REMOVE_CHARACTER_FROM_ENTRY':
+      case 'REMOVE_SETTING_FROM_ENTRY':
       return {
         ...state,
         currentEntry: {
