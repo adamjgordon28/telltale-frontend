@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
 import CharacterCard from './CharacterCard.js'
 
-class StoryBoardCharacters extends Component {
+class StoryBoardCharacterList extends Component {
   renderCharacters = () => {
     let charactersArray = this.props.entry.characters.map((character)=>{
       return <CharacterCard character={character} key={Math.random()}/>
@@ -18,10 +18,10 @@ render () {
   return(
     <div className="ui raised card" style={{width: "28%", position: "absolute", left: "36%", minHeight:"30em", maxHeight:"30em", overflowY: "scroll", display: "inline-block"}}>
     <h3 style={{textAlign:"center"}} >Characters</h3>
-    {this.renderCharacters()}
+    {this.props.entry.characters && this.renderCharacters()}
     </div>
   )
 }
 }
 
-export default StoryBoardCharacters
+export default StoryBoardCharacterList

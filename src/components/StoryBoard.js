@@ -2,8 +2,8 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import history from "../history.js"
 import { Link } from 'react-router-dom'
-import StoryBoardCharacters from './StoryBoardCharacters.js'
-import StoryBoardSettings from './StoryBoardSettings.js'
+import StoryBoardCharacterList from './StoryBoardCharacterList.js'
+import StoryBoardSettingList from './StoryBoardSettingList.js'
 import StoryBoardCharacterSettingList from '../containers/StoryBoardCharacterSettingList.js'
 
 
@@ -39,14 +39,15 @@ class StoryBoard extends Component {
      <h1>Storyboard for "{this.props.currentEntry.title}"</h1>
     <div style={{width:"100%", position:"relative"}}>
 
-       <StoryBoardSettings entry={this.props.currentEntry} />
-       <StoryBoardCharacters entry={this.props.currentEntry}/>
+       <StoryBoardSettingList entry={this.props.currentEntry} />
+       <StoryBoardCharacterList entry={this.props.currentEntry}/>
        <StoryBoardCharacterSettingList entry={this.props.currentEntry}/>
 
      </div>
        <div className="button-div" style={{position: "absolute", top: "90%", left: "32%"}}>
        <Link to={`/add-entry-info/${this.props.currentEntry.id}`}><button className="positive ui button">Add a Character or Setting!</button></Link>
        <Link key={Math.random()} to={`/entries/${this.props.currentEntry.id}`}><button className="ui button blue">Keep Writing </button></Link>
+       <button className="ui button gray">Edit Other Entry Details</button>
        <button className="ui button red" onClick={(e) => { if (window.confirm('Are you sure you wish to delete this item?')) this.deleteEntry(e) } }>Delete Entry</button>
        </div>
      </div>

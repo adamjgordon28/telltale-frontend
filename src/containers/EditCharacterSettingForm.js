@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import {connect} from 'react-redux';
-import history from '../history.js'
+import { connect } from 'react-redux';
+import {Link} from 'react-router-dom';
+import history from '../history.js';
 
 
 
@@ -48,7 +49,6 @@ class EditCharacterSettingForm extends Component {
     })
     .then(res=>res.json())
     .then(newCharSet=>{
-      console.log(newCharSet)
       history.push(`/storyboards/${this.props.currentEntry.id}`)
     })
   }
@@ -92,7 +92,6 @@ class EditCharacterSettingForm extends Component {
 
 
   render(){
-    console.log(this.props.currentEntry)
     return(
       <div>
       <h1>Edit This Character-Setting!</h1>
@@ -113,6 +112,7 @@ class EditCharacterSettingForm extends Component {
         </div>
         <button className="ui button" type="submit">Submit</button>
       </form>}
+      {this.props.currentEntry && <Link to={"/storyboards/".concat(`${this.props.currentEntry.id}`)}><button className="ui button positive">Return to StoryBoard</button></Link>}
       <button style={{position:"absolute",left:"7.5%", top: "58.8%"}} onClick={(e) => { if (window.confirm('Are you sure you wish to delete this item?')) this.deleteCharacterSetting(e) } }className="ui button negative">Delete Character Setting</button>
       </div>
     )

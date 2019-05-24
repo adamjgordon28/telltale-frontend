@@ -15,6 +15,7 @@ import SettingPage from './containers/SettingPage.js';
 import CharacterPage from './containers/CharacterPage.js';
 import EditCharacterSettingForm from './containers/EditCharacterSettingForm.js';
 import EditCharacterForm from './containers/EditCharacterForm.js';
+import EditSettingForm from './containers/EditSettingForm.js';
 
 class App extends Component {
 
@@ -74,6 +75,9 @@ class App extends Component {
             </Route>
             <Route path='/edit-character/:id' render={(props)=> {
               return <EditCharacterForm{...props}/>}}>
+            </Route>
+            <Route path='/edit-setting/:id' render={(props)=> {
+              return <EditSettingForm{...props}/>}}>
             </Route>
             <Route path='/character-setting-edit/:id' render={(props)=> {
               return <EditCharacterSettingForm{...props}/>}}>

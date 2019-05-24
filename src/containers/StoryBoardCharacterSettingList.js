@@ -10,7 +10,12 @@ class StoryBoardCharacterSettingList extends Component {
     let charSetArray = this.props.entry.character_settings.map((charSet)=> {
       return <CharacterSettingCard key={Math.random()} charSet={charSet}/>
     })
-    return charSetArray
+    if (charSetArray.length){
+      return charSetArray
+    }
+    else {
+      return <h1>No character settings yet!</h1>
+    }
   }
   render(){
     return(

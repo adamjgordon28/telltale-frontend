@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 
 class CharacterSettingCard extends Component {
   render (){
+
     return(
             <div className="ui raised card">
         <div className="content">

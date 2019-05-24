@@ -46,7 +46,6 @@ class CPCreateCharacterSettingForm extends Component {
     if (!this.props.currentEntry){
       return <h1>Loading...</h1>
     }
-    console.log(this.props.currentEntry)
     return (
       <div>
         {!!this.props.currentEntry.settings.length &&

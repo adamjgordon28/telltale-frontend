@@ -39,7 +39,7 @@ class CharacterPage extends Component {
       This is the Page for {this.state.character.name}
       <CPCreateCharacterSettingForm currentEntry={this.props.currentEntry} character={this.state.character}/>
       <Link to={`/edit-character/${this.state.character.id}`}><button className="ui button blue">Edit this Character</button></Link>
-      <Link to={`/storyboards/${this.state.character.entry_id}`}><button className="ui button positive">Return To Storyboard</button></Link>
+      <Link to={`/storyboards/${this.state.character.entry.id}`}><button className="ui button positive">Return To Storyboard</button></Link>
       <CPCharacterSettingList character={this.state.character}/>
       </div>
     )

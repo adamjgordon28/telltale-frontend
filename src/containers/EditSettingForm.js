@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import history from '../history.js';
 
 
-class EditCharacterForm extends Component {
+class EditSettingForm extends Component {
 
 
   state = {
@@ -20,29 +20,29 @@ class EditCharacterForm extends Component {
 
   handleSubmit = (e) => {
     e.preventDefault()
-   this.updateCharacter(this.state)
+   this.updateSetting(this.state)
   }
 
-  updateCharacter = (character) => {
-    fetch("http://localhost:4000/api/v1/characters/".concat(`${this.props.match.params.id}`),{
+  updateSetting = (setting) => {
+    fetch("http://localhost:4000/api/v1/settings/".concat(`${this.props.match.params.id}`),{
       method: "PATCH",
       headers: {
             'Content-Type': 'application/json'
         },
       body: JSON.stringify({
-        name: character.name,
-        description: character.description
+        name: setting.name,
+        description: setting.description
       })
     })
     .then(res=>res.json())
-    .then(newCharacter => {
-    this.props.updateCharacterInEntry(newCharacter)
+    .then(newSetting => {
+    this.props.updateSettingInEntry(newSetting)
     })
     history.push(`/storyboards/${this.props.currentEntry.id}`)
   }
 
-  deleteCharacter = () => {
-      fetch("http://localhost:4000/api/v1/characters/".concat(`${this.props.match.params.id}`),
+  deleteSetting = () => {
+      fetch("http://localhost:4000/api/v1/settings/".concat(`${this.props.match.params.id}`),
     {
       method: 'DELETE'
     })
@@ -50,13 +50,13 @@ class EditCharacterForm extends Component {
   }
 
   componentDidMount = () => {
-    fetch("http://localhost:4000/api/v1/characters/".concat(`${this.props.match.params.id}`))
+    fetch("http://localhost:4000/api/v1/settings/".concat(`${this.props.match.params.id}`))
     .then(res=>res.json())
-    .then(character => {
-      this.props.setCurrentEntry(character.entry)
+    .then(setting => {
+      this.props.setCurrentEntry(setting.entry)
       this.setState({
-        name: character.name,
-        description: character.description
+        name: setting.name,
+        description: setting.description
       })
     })
   }
@@ -64,7 +64,7 @@ class EditCharacterForm extends Component {
 
   render(){
     return(
-      <div>Edit Character Form
+      <div>Edit Setting Form
 
         <form onSubmit={this.handleSubmit}>
         <div className="ui form" >
@@ -80,7 +80,7 @@ class EditCharacterForm extends Component {
       </div>
       </form>
       {this.props.currentEntry && <Link to={"/storyboards/".concat(`${this.props.currentEntry.id}`)}><button className="ui button blue">Return to StoryBoard</button></Link>}
-      <button className="ui button negative" onClick={(e) => { if (window.confirm('Are you sure you wish to delete this character?')) this.deleteCharacter(e) } }>Delete Character></button>
+      <button className="ui button negative" onClick={(e) => { if (window.confirm('Are you sure you wish to delete this setting?')) this.deleteSetting(e) } }>Delete Setting</button>
     </div>
     )
   }
@@ -95,9 +95,9 @@ function mapDispatchToProps(dispatch) {
 
       dispatch({type: 'SET_CURRENT_ENTRY', payload: entry})
     },
-    updateCharacterInEntry: (character) => {
-      dispatch({type: 'UPDATE_CHARACTER_IN_ENTRY',
-    payload: character})
+    updateSettingInEntry: (setting) => {
+      dispatch({type: 'UPDATE_SETTING_IN_ENTRY',
+    payload: setting})
     }
   }
 }
@@ -112,4 +112,4 @@ function mapStateToProps(state) {
 
 
 
-export default connect(mapStateToProps, mapDispatchToProps)(EditCharacterForm)
+export default connect(mapStateToProps, mapDispatchToProps)(EditSettingForm)

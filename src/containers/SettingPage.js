@@ -17,7 +17,7 @@ class SettingPage extends Component {
     .then(setting => {
       this.setState({
         setting: setting
-      }, () => {fetch("http://localhost:4000/api/v1/entries/".concat(`${this.state.setting.entry_id}`))
+      }, () => {fetch("http://localhost:4000/api/v1/entries/".concat(`${this.state.setting.entry.id}`))
        .then(response => response.json())
        .then(json => {
          this.props.setCurrentEntry(json)
@@ -33,7 +33,8 @@ class SettingPage extends Component {
       <div>
       This is the page for {this.state.setting.name}
       <SPCreateCharacterSettingForm currentEntry={this.props.currentEntry} setting={this.state.setting}/>
-      <Link to={`/storyboards/${this.state.setting.entry_id}`}><button className="ui button positive">Return To Storyboard</button></Link>
+      <Link to={`/edit-setting/${this.state.setting.id}`}><button className="ui button blue">Edit this Setting</button></Link>
+      <Link to={`/storyboards/${this.state.setting.entry.id}`}><button className="ui button positive">Return To Storyboard</button></Link>
       <SPCharacterSettingList setting={this.state.setting}/>
       </div>
     )
