@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 
 class CharacterSettingCard extends Component {
   render (){
-    if (!this.props.charSet){
+    if (!this.props.charSet.character || !this.props.charSet.setting){
       return <h1>Loading...</h1>
     }
     return(
