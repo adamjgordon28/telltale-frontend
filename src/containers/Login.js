@@ -45,7 +45,8 @@ class Login extends React.Component {
       <div className="ui raised card" style={{width: "55%", position: "relative", left: "25%", padding:"5em", top: "5em"}}>
       <div className="ui attached message" style={{position: "relative", bottom: "3em", textAlign: "center"}}>
         <div className="header">
-          <h2>Welcome Back to TellTale! Login to Keep on Writing!</h2>
+          <img style={{height:"5em", background: "white", border:".25em solid gray", borderRadius:"2.5em"}} alt="" src='./TellTaleLogo.png'/>
+          <h2>Welcome Back! Login to Keep on Writing!</h2>
         </div>
       </div>
 

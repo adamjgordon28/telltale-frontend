@@ -48,39 +48,44 @@ class CreateUserForm extends React.Component {
       <div className="ui raised card" style={{width: "60%", position: "relative", left: "20%", padding:"5em"}}>
       <div className="ui attached message" style={{position: "relative", bottom: "3em", textAlign: "center"}}>
         <div className="header">
+        <img style={{height:"5em", background: "white", border:".25em solid gray", borderRadius:"2.5em"}} alt="" src='./TellTaleLogo.png'/>
           <h2>Welcome to TellTale - Create an Account and get Writing Today!</h2>
         </div>
       </div>
 
           <form onSubmit={this.handleSubmit}>
           <div className="ui form">
-            <div className="field">
+            <div className="required field">
               <label>Username</label>
-              <input type="text" placeholder="Username" name="username" onChange={this.handleChange} required />
+              <input type="text" placeholder="Username" name="username" onChange={this.handleChange} />
               </div>
-            <div className="field">
+            <div className="required field">
               <label>Password</label>
-              <input type="password" placeholder="Password" name="password" onChange={this.handleChange} required />
+              <input type="password" placeholder="Password" name="password" onChange={this.handleChange} />
               </div>
-            <div className="field">
+          <div className="fields">
+            <div className="eight wide required field">
               <label>Name</label>
-              <input type="text" placeholder="Name" name="name" onChange={this.handleChange} required />
+              <input type="text" placeholder="Name" name="name" onChange={this.handleChange}  />
               </div>
-              <div className="field">
+              <div className="eight wide required field">
                 <label>Age</label>
-                <input type="number" placeholder="Age" name="age" onChange={this.handleChange} required />
+                <input type="number" placeholder="Age" name="age" onChange={this.handleChange} />
                 </div>
-              <div className="field">
+          </div>
+          <div className="fields">
+              <div className="eight wide required field">
                 <label>Location</label>
-                <input type="text" placeholder="Location" name="location" onChange={this.handleChange} required />
+                <input type="text" placeholder="Location" name="location" onChange={this.handleChange}  />
                 </div>
-              <div className="field">
+              <div className="eight wide required field">
                 <label>Image URL</label>
-                <input onChange={this.handleChange} placeholder="Image URL" name="img_url" type="url" required/>
+                <input onChange={this.handleChange} placeholder="Image URL" name="img_url" type="url" />
               </div>
-              <div className="field">
+          </div>
+              <div className="required field">
               <label>Bio</label>
-              <textarea type="text" placeholder="Bio" name="bio" onChange={this.handleChange} required ></textarea>
+              <textarea type="text" placeholder="Bio" name="bio" onChange={this.handleChange}  ></textarea>
               </div>
           <button className="ui button" style={{position:"relative", left: "45%", top: "1.5em"}} type="submit">Submit</button>
         </div>
