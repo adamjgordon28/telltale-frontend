@@ -6,7 +6,7 @@ class SettingCard extends Component {
     return (
       <div className="ui raised card" style={{width: "80%", margin: "10%"}}>
   <div className="content">
-    <div className="header">{this.props.setting.name}</div>
+    <div  style={{overflowX: "hidden", textOverflow: "ellipsis"}} className="header">{this.props.setting.name}</div>
     <div className="meta">
       <span className="category">Animals</span>
     </div>
@@ -16,7 +16,7 @@ class SettingCard extends Component {
   </div>
   <div className="extra content">
     <div className="right floated">
-      <Link to={`/settings/${this.props.setting.id}`}><button className="ui button">View Setting Page</button></Link>
+      <Link to={`/settings/${this.props.setting.id}`}><button style={{position:"relative", right: "12%"}} className="ui button">View Setting Page</button></Link>
     </div>
   </div>
 </div>

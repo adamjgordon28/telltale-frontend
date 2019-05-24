@@ -48,8 +48,9 @@ class SPCreateCharacterSettingForm extends Component {
     if (!this.props.currentEntry){
       return <h1>Loading...</h1>
     }
+
     return (
-      <div>
+      <div className="ui raised card" style={{width: "25%", padding: "2%", position: "absolute",left: "5%", top: "20%"}}>
       {!!this.props.currentEntry.characters.length &&
       <div>
       Which characters appear at {this.props.setting.name} in your story? Detail it here!
@@ -66,6 +67,7 @@ class SPCreateCharacterSettingForm extends Component {
         </div>
         <button className="ui button" type="submit">Submit</button>
       </form>
+
       </div>}
       </div>
     )

@@ -6,7 +6,7 @@ class CharacterCard extends Component {
     return (
       <div className="ui raised card" style={{width: "80%", margin: "10%"}}>
   <div className="content">
-    <div className="header">{this.props.character.name}</div>
+    <div style={{overflowX: "hidden", textOverflow: "ellipsis"}} className="header">{this.props.character.name}</div>
     <div className="meta">
       <span className="category">Animals</span>
     </div>
@@ -16,7 +16,7 @@ class CharacterCard extends Component {
   </div>
   <div className="extra content">
   <div className="right floated">
-    <Link to={`/characters/${this.props.character.id}`}><button className="ui button">View Character Page</button></Link>
+    <Link to={`/characters/${this.props.character.id}`}><button style={{position:"relative", right: "8%"}} className="ui button">View Character Page</button></Link>
   </div>
   </div>
 </div>

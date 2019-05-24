@@ -15,14 +15,14 @@ class CharacterSettingCard extends Component {
           <div className="meta">
             <span className="category">Chapter {this.props.charSet.chapter}</span>
           </div>
-          <div className="description">
+          <div style={{position: "absolute", top: "40%"}} className="description">
           <h3>Description:</h3>
             <p>{this.props.charSet.description}</p>
           </div>
         </div>
         <div className="extra content">
         <div className="right floated">
-          <Link to={`/edit-character-setting/${this.props.charSet.id}`}><button className="ui button">Edit</button></Link>
+          <Link to={`/edit-character-setting/${this.props.charSet.id}`}><button style = {{position: "absolute", right: "2%", top: "80%"}} className="ui button">Edit</button></Link>
         </div>
         </div>
       </div>
