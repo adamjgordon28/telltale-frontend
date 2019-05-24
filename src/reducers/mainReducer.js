@@ -97,7 +97,6 @@ const defaultState = {
           character_settings: [...state.currentEntry.character_settings, action.payload]
         }
       }
-      //NEEDS WORK
       case 'UPDATE_CHARACTER_SETTING_IN_ENTRY':
       let updatedCharSetArray = state.currentEntry.character_settings.map((charSet) => {
         if (charSet.id === action.payload.id){
@@ -114,13 +113,12 @@ const defaultState = {
           characters_settings: updatedCharSetArray
         }
       }
-      //NEEDS WORK
       case 'REMOVE_CHARACTER_SETTING_FROM_ENTRY':
       return {
         ...state,
         currentEntry: {
           ...state.currentEntry,
-          characters: [...state.currentEntry.characters, action.payload]
+          character_settings: state.currentEntry.character_settings.filter(character_setting=>action.payload.id !== character_setting.id)
         }
       }
 

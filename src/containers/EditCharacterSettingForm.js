@@ -59,6 +59,10 @@ class EditCharacterSettingForm extends Component {
     {
       method: 'DELETE'
     })
+    .then(res=>res.json())
+    .then(setting => {
+      this.props.removeCharacterSettingFromEntry(setting)
+    })
     history.push(`/storyboards/${this.props.currentEntry.id}`)
   }
 
@@ -132,7 +136,10 @@ function mapDispatchToProps(dispatch) {
       dispatch({type: 'SET_CURRENT_ENTRY', payload: entry})
     },
     updateCharacterSettingInEntry: (characterSetting) => {
-      dispatch({type:'UPDATE_CHARACTER_SETTING_IN_ENTRY', payload: characterSetting })
+      dispatch({type:'UPDATE_CHARACTER_SETTING_IN_ENTRY', payload: characterSetting})
+    },
+    removeCharacterSettingFromEntry: (characterSetting) => {
+      dispatch({type:'REMOVE_CHARACTER_SETTING_FROM_ENTRY', payload: characterSetting})
     }
   }
 }
