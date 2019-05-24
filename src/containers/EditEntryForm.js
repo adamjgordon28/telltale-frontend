@@ -57,8 +57,7 @@ class EditEntryForm extends Component {
       console.log(newEntry)
     this.props.updateEntryInfo(newEntry)
     })
-      history.push(`/entries`)
-    // history.push(`/storyboards/${this.props.currentEntry.id}`)
+    history.push(`/entries`)
   }
 
 
