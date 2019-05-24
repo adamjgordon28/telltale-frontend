@@ -189,7 +189,7 @@ handleKeyCommand = (command, editorState) => {
    .then(response => response.json())
    .then(json => {
 
-
+  console.log(json)
      if(json) {
     this.setState({
 

@@ -23,6 +23,21 @@ const defaultState = {
           entries: state.currentUser.entries.filter(entry => action.payload !== entry.id )
         }
       }
+      case 'UPDATE_ENTRY_INFO':
+      return {
+        ...state,
+        currentUser: {
+          ...state.currentUser,
+          entries: state.currentUser.entries.map(entry=>{
+            if (entry.id === action.payload.id){
+              return action.payload
+            }
+            else {
+              return entry
+            }
+          })
+        }
+      }
       case 'SET_CURRENT_ENTRY':
       return {...state, currentEntry: action.payload}
       case 'ADD_CHARACTER_TO_ENTRY':

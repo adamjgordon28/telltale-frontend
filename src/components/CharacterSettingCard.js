@@ -22,7 +22,7 @@ class CharacterSettingCard extends Component {
         </div>
         <div className="extra content">
         <div className="right floated">
-          <Link to={`/character-setting-edit/${this.props.charSet.id}`}><button className="ui button">Edit</button></Link>
+          <Link to={`/edit-character-setting/${this.props.charSet.id}`}><button className="ui button">Edit</button></Link>
         </div>
         </div>
       </div>

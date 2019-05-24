@@ -1,17 +1,13 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import history from "../history.js"
+import history from '../history.js'
 
-
-const emptyContent = "{\"blocks\":[{\"key\":\"dpilv\",\"text\":\"\",\"type\":\"unstyled\",\"depth\":0,\"inlineStyleRanges\":[],\"entityRanges\":[],\"data\":{}}],\"entityMap\":{}}"
-class CreateEntryForm extends React.Component {
-
-
-
+class EditEntryForm extends Component {
   state = {
     title: "",
     genre: "",
-    description: ""
+    description: "",
+    content: "",
 
   }
 
@@ -23,31 +19,55 @@ class CreateEntryForm extends React.Component {
 
   handleSubmit = (e) => {
     e.preventDefault()
-   this.createEntry(this.state)
+   this.updateEntry(this.state)
   }
 
-  createEntry = (info) => {
-       fetch("http://localhost:4000/api/v1/entries", {
-        method: "POST",
-        headers: { "Content-Type": "application/json", "Accepts": "application/json" },
-        body: JSON.stringify({title: info.title, description: info.description, genre: info.genre, content: emptyContent, user_id: `${this.props.currentUser.id}`})
-       })
-        .then(response => response.json())
-        .then(json => {
-          this.props.addPostToUser(json)
-          history.push(`entries/${json.id}`)
-        })
+  componentDidMount = () => {
+    fetch("http://localhost:4000/api/v1/entries/".concat(`${this.props.match.params.id}`))
+    .then(res=>res.json())
+    .then(entry => {
+      console.log(entry)
+      this.props.setCurrentEntry(entry)
+      this.setState({
+        title: entry.title,
+        genre: entry.genre,
+        description: entry.description,
+        content: entry.content
+
+      })
+    })
   }
+
+
+  updateEntry = (entry) => {
+    fetch("http://localhost:4000/api/v1/entries/".concat(`${this.props.currentEntry.id}`),{
+      method: "PATCH",
+      headers: {
+            'Content-Type': 'application/json'
+        },
+      body: JSON.stringify({
+        title: entry.title,
+        genre: entry.genre,
+        description: entry.description,
+        content: entry.content
+      })
+    })
+    .then(res=>res.json())
+    .then(newEntry => {
+      console.log(newEntry)
+    this.props.updateEntryInfo(newEntry)
+    })
+      history.push(`/entries`)
+    // history.push(`/storyboards/${this.props.currentEntry.id}`)
+  }
+
 
   render(){
-    if(this.props.currentUser === -1){
-      history.push("/login")
-    }
-    return(
+    return (
       <div className="ui raised card" style={{width: "60%", position: "relative", left: "20%", padding:"5em"}}>
       <div className="ui attached message" style={{position: "relative", bottom: "3em", textAlign: "center"}}>
         <div className="header">
-          <h2>Start Working on Your New Masterpiece Today!</h2>
+          <h2>Edit Your Story Details Here!</h2>
         </div>
       </div>
 
@@ -55,11 +75,11 @@ class CreateEntryForm extends React.Component {
           <div className="ui form">
             <div className="field">
               <label>Title</label>
-              <input type="text" placeholder="Title" name="title" onChange={this.handleChange} required />
+              <input type="text" placeholder="Title" name="title" onChange={this.handleChange} value={this.state.title} required />
               </div>
               <div className="field">
                   <label>Genre</label>
-                  <select onChange={this.handleChange} name = "genre" required >
+                  <select onChange={this.handleChange} name = "genre" value={this.state.genre} required >
                           <option label="Genre"></option>
                           <option value="adventure">Adventure</option>
                           <option value="comedy">Comedy</option>
@@ -77,7 +97,7 @@ class CreateEntryForm extends React.Component {
               </div>
               <div className="field">
               <label>Description</label>
-              <textarea type="text" placeholder="Description" name="description" onChange={this.handleChange} required ></textarea>
+              <textarea type="text" placeholder="Description" name="description" value={this.state.description} onChange={this.handleChange} required ></textarea>
               </div>
           <button className="ui button" style={{position:"relative", left: "42.5%", top: "1.5em"}} type="submit">Submit</button>
         </div>
@@ -85,21 +105,24 @@ class CreateEntryForm extends React.Component {
       </div>
     )
   }
-
 }
 
 function mapDispatchToProps(dispatch) {
   return {
-    addPostToUser: (entry) => {
-      dispatch({type: "ADD_POST_TO_USER", payload: entry})
+    setCurrentEntry: (entry) => {
+      dispatch({type: 'SET_CURRENT_ENTRY', payload: entry})
+    },
+    updateEntryInfo: (entry) => {
+      dispatch({type: 'UPDATE_ENTRY_INFO', payload: entry})
     }
   }
 }
 
 const mapStateToProps = (state) => {
   return {
-    currentUser: state.currentUser
+    currentUser: state.currentUser,
+    currentEntry: state.currentEntry
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(CreateEntryForm)
+export default connect(mapStateToProps, mapDispatchToProps)(EditEntryForm)

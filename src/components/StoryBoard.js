@@ -48,7 +48,7 @@ class StoryBoard extends Component {
        <div className="button-div" style={{position: "absolute", top: "90%", left: "32%"}}>
        <Link to={`/add-entry-info/${this.props.currentEntry.id}`}><button className="positive ui button">Add a Character or Setting!</button></Link>
        <Link key={Math.random()} to={`/entries/${this.props.currentEntry.id}`}><button className="ui button blue">Keep Writing </button></Link>
-       <button className="ui button gray">Edit Other Entry Details</button>
+       <Link to={`/edit-entry/${this.props.currentEntry.id}`}><button className="ui button gray">Edit Other Entry Details</button></Link>
        <button className="ui button red" onClick={(e) => { if (window.confirm('Are you sure you wish to delete this item?')) this.deleteEntry(e) } }>Delete Entry</button>
        </div>
      </div>
