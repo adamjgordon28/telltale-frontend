@@ -16,7 +16,7 @@ class CPCharacterSettingList extends Component {
   }
   render(){
     return (
-      <div className="ui raised card" style={{width: "28%", position: "absolute", left: "36%", minHeight:"30em", maxHeight:"30em", overflowY: "scroll", display: "inline-block"}}>
+      <div className="ui raised card ui grid" style={{width: "60%", position: "absolute", right: "5%", top: "18%", padding: "2%",minHeight:"20%em", maxHeight:"50%", overflowY: "scroll"}}>
       <h3 style={{textAlign:"center"}} >Places This Character Has Been: </h3>
       {this.renderCharacterSettings()}
       </div>

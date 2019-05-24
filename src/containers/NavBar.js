@@ -37,7 +37,7 @@ class NavBar extends Component {
     <h3>Logout</h3>
       </div>
     </Link> }
-    <img alt="" src={logo} style={{height: "45px", position: "absolute", right: "3em"}}/>
+    <Fragment><img alt="" src={logo} style={{height: "45px", position: "absolute", right: "3em"}}/></Fragment>
   </div>
     )
   }

@@ -1,12 +1,13 @@
-import React from 'react'
+import React, { Component, Fragment } from 'react'
 import EntryCard from "../components/EntryCard.js"
 import EntryEditor from "./EntryEditor.js"
+// import UserEntryFilter from "./UserEntryFilter.js"
 import { Route, Switch, Link } from 'react-router-dom'
 import { connect } from 'react-redux'
 import history from "../history.js"
 
 
-class EntryContainer extends React.Component {
+class EntryContainer extends Component {
 
 
   renderEntryCards = () => {
@@ -28,7 +29,8 @@ class EntryContainer extends React.Component {
       history.push("/login")
     }
     return (
-
+     <Fragment>
+      
       <Switch>
         <Route path='/entries/:id' render={(props)=> {
           return <EntryEditor {...props}/>}}>
@@ -37,6 +39,7 @@ class EntryContainer extends React.Component {
         </Route>
 
       </Switch>
+      </Fragment>
     )
   }
 

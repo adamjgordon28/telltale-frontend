@@ -45,7 +45,7 @@ class StoryBoard extends Component {
        <StoryBoardCharacterSettingList entry={this.props.currentEntry}/>
 
      </div>
-       <div className="button-div" style={{position: "absolute", top: "90%", left: "32%"}}>
+       <div className="button-div" style={{position: "absolute", top: "92%", left: "30%"}}>
        <Link to={`/add-entry-info/${this.props.currentEntry.id}`}><button className="positive ui button">Add a Character or Setting!</button></Link>
        <Link key={Math.random()} to={`/entries/${this.props.currentEntry.id}`}><button className="ui button blue">Keep Writing </button></Link>
        <Link to={`/edit-entry/${this.props.currentEntry.id}`}><button className="ui button gray">Edit Other Entry Details</button></Link>

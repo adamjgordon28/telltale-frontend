@@ -9,7 +9,7 @@ class CharacterSettingCard extends Component {
     }
     return(
 
-            <div className="ui raised card">
+            <div className="ui card three wide column" style={{position: "relative",left:"6%", display: "inline-block", width: "40%", height: "16em", margin: "2%" }}>
         <div className="content">
           <div className="header">{this.props.charSet.character.name} at {this.props.charSet.setting.name}</div>
           <div className="meta">

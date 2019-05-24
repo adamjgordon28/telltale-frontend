@@ -49,7 +49,7 @@ class CPCreateCharacterSettingForm extends Component {
       return <h1>Loading...</h1>
     }
     return (
-      <div>
+      <div className="ui raised card" style={{width: "25%", padding: "2%", position: "absolute",left: "5%", top: "20%"}}>
         {!!this.props.currentEntry.settings.length &&
         <div>
         Where does {this.props.character.name} appear at in your story? Detail it here!

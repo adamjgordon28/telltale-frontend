@@ -19,7 +19,7 @@ class StoryBoardCharacterSettingList extends Component {
   }
   render(){
     return(
-      <div className="ui raised card" style={{width: "28%", position: "absolute", left:"68%", minHeight:"30em", maxHeight:"30em", overflowY: "scroll", display: "inline-block"}}>
+      <div className="ui raised card" style={{width: "40%", position: "absolute", left:"55%", minHeight:"38em" , maxHeight: "38em", overflowY: "scroll", display: "inline-block"}}>
       <h3 style={{textAlign:"center"}}>Character Settings</h3>
       {this.props.entry.character_settings && this.renderCharacterSettings()}
       </div>
