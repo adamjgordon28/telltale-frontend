@@ -35,7 +35,8 @@ class CreateSettingForm extends React.Component {
   render(){
     return(
       <div>
-       <h1>Add a New Setting</h1>
+       <h1 style={{position:"relative", right:"15%"}}>Add a New Setting</h1>
+       <img alt="" src={'/icons/pyramids.png'} style={{position: "absolute", bottom:"82.5%", left: "70%", height:"5em"}}/>
           <form onSubmit={this.handleSubmit}>
           <div className="ui form" >
             <div className="field">
