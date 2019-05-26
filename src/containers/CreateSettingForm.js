@@ -41,7 +41,7 @@ class CreateSettingForm extends React.Component {
           <div className="ui form" >
             <div className="field">
               <label>Name</label>
-              <input type="text" placeholder="Name" name="name" onChange={this.handleChange} required />
+              <input type="text" placeholder="Name" name="name" onChange={this.handleChange} maxLength="32" required />
               </div>
               <div className="field">
               <label>Description</label>

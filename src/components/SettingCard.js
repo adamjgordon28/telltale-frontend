@@ -6,7 +6,7 @@ class SettingCard extends Component {
     return (
       <div className="ui raised card" style={{width: "80%", margin: "10%"}}>
   <div className="content">
-    <div  style={{overflowX: "hidden", overflowY: "auto", minHeight: "1em", maxHeight: "1em", textOverflow: "ellipsis"}} className="header">{this.props.setting.name}</div>
+    <div  style={{overflowX: "hidden", overflowY: "auto", minHeight: "1.25em", maxHeight: "1.25em", textOverflow: "ellipsis"}} className="header">{this.props.setting.name}</div>
     <div className="meta">
       <span className="category">Animals</span>
     </div>

@@ -41,7 +41,7 @@ class CreateCharacterForm extends React.Component {
           <div className="ui form" >
             <div className="field">
               <label>Name</label>
-              <input type="text" placeholder="Name" value={this.state.name} name="name" onChange={this.handleChange} required/>
+              <input type="text" placeholder="Name" value={this.state.name} name="name" onChange={this.handleChange} maxLength="32" required/>
               </div>
               <div className="field">
               <label>Description</label>

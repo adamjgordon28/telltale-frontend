@@ -74,7 +74,7 @@ class EditCharacterForm extends Component {
         <div className="ui form" >
           <div className="field">
             <label>Name</label>
-            <input type="text" placeholder="Name" name="name" onChange={this.handleChange} value = {this.state.name} required/>
+            <input type="text" placeholder="Name" name="name" onChange={this.handleChange} value = {this.state.name} maxLength="32" required/>
             </div>
             <div className="field">
             <label>Description</label>
