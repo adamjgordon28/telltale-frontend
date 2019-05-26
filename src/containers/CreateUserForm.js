@@ -48,7 +48,7 @@ class CreateUserForm extends React.Component {
       <div className="ui raised card" style={{width: "60%", position: "relative", left: "20%", padding:"5em"}}>
       <div className="ui attached message" style={{position: "relative", bottom: "3em", textAlign: "center"}}>
         <div className="header">
-        <img style={{height:"5em", background: "white", border:".25em solid gray", borderRadius:"2.5em"}} alt="" src='./TellTaleLogo.png'/>
+        <img style={{height:"5em", background: "white", border:".25em solid gray", borderRadius:"2.5em", position: "relative", top: ".75em"}} alt="" src='./TellTaleLogo.png'/>
           <h2>Welcome to TellTale - Create an Account and get Writing Today!</h2>
         </div>
       </div>

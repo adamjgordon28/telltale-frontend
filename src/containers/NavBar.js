@@ -36,7 +36,7 @@ class NavBar extends Component {
     <h3>Logout</h3>
       </div>
     </Link> }
-    <Fragment><img alt="" src={'./TellTaleLogo.png'} style={{height: "45px", position: "absolute", right: "3em"}}/></Fragment>
+    <Fragment><img alt="" src={'/icons/TellTaleLogo.png'} style={{height: "45px", position: "absolute", right: "3em"}}/></Fragment>
   </div>
     )
   }

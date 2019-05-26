@@ -6,7 +6,7 @@ class CharacterCard extends Component {
     return (
       <div className="ui raised card" style={{width: "80%", margin: "10%"}}>
   <div className="content">
-    <div style={{overflowX: "hidden", textOverflow: "ellipsis"}} className="header">{this.props.character.name}</div>
+      <div  style={{overflowX: "hidden", overflowY: "auto", minHeight: "1em", maxHeight: "1em", textOverflow: "ellipsis"}} className="header">{this.props.character.name}</div>
     <div className="meta">
       <span className="category">Animals</span>
     </div>
