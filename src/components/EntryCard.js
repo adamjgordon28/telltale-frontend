@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 
 const logoMatcher = {
-  "adventure":"/icons/Adventure-2.png",
+  "adventure":"/icons/Adventure.png",
   "comedy":"/icons/Comedy.png",
   "drama":"/icons/Drama.png",
   "fantasy":"/icons/Fantasy.png",
