@@ -1,10 +1,10 @@
 import React, {Component} from 'react';
-import CharacterSettingCard from '../components/CharacterSettingCard.js';
+import PageCharacterSettingCard from '../components/PageCharacterSettingCard.js';
 
 class SPCharacterSettingList extends Component {
   renderCharacterSettings = () => {
     let charSetArray = this.props.setting.character_settings.map((charSet) => {
-      return <CharacterSettingCard key={Math.random()} charSet={charSet}/>
+      return <PageCharacterSettingCard key={Math.random()} charSet={charSet}/>
     })
     if (charSetArray.length){
     return charSetArray

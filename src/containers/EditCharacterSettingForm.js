@@ -121,12 +121,12 @@ class EditCharacterSettingForm extends Component {
           <label>Description</label>
           <textarea onChange={this.handleChange} name="description" placeholder="Description" value={this.state.description} required ></textarea >
         </div>
-        <button style={{position: "absolute", left: "37.5%", top: "92.5%"}} className="ui button" type="submit">Submit</button>
+        <button style={{position: "absolute", left: "40%", top: "92.5%"}} className="ui button" type="submit">Submit</button>
       </form>}
 
       </div>
       {this.props.currentEntry && <Link to={"/storyboards/".concat(`${this.props.currentEntry.id}`)}><button style={{position: "absolute", top: "87.5%", left: "30%"}} className="ui button positive">Return to StoryBoard</button></Link>}
-      <button style={{position:"absolute",left:"50%", top: "87.5%", left: "56%", width:"14.5em"}} onClick={(e) => { if (window.confirm('Are you sure you wish to delete this item?')) this.deleteCharacterSetting(e) } }className="ui button negative">Delete Character Setting</button>
+      <button style={{position:"absolute", top: "87.5%", left: "56%", width:"14.5em"}} onClick={(e) => { if (window.confirm('Are you sure you wish to delete this item?')) this.deleteCharacterSetting(e) } }className="ui button negative">Delete Character Setting</button>
       </Fragment>
     )
   }

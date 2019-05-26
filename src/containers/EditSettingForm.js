@@ -37,6 +37,9 @@ class EditSettingForm extends Component {
     .then(res=>res.json())
     .then(newSetting => {
     this.props.updateSettingInEntry(newSetting)
+    newSetting.character_settings.forEach((character_setting)=> {
+    this.props.updateCharacterSettingInEntry(character_setting)
+      })
     })
     history.push(`/storyboards/${this.props.currentEntry.id}`)
   }
@@ -88,7 +91,7 @@ class EditSettingForm extends Component {
       </form>
     </div>
     {this.props.currentEntry && <Link to={"/storyboards/".concat(`${this.props.currentEntry.id}`)}><button style={{position: "absolute", top: "70%", left: "34%", width:"13em"}} className="ui button positive">Return to StoryBoard</button></Link>}
-    <button style={{position:"absolute",left:"50%", top: "70%", left: "53.5%", width:"13em"}} onClick={(e) => { if (window.confirm('Are you sure you wish to delete this item?')) this.deleteCharacter(e) } }className="ui button negative">Delete Character</button>
+    <button style={{position:"absolute", top: "70%", left: "53.5%", width:"13em"}} onClick={(e) => { if (window.confirm('Are you sure you wish to delete this item?')) this.deleteSetting(e) } }className="ui button negative">Delete Setting</button>
     </Fragment>
     )
   }
@@ -106,6 +109,10 @@ function mapDispatchToProps(dispatch) {
     updateSettingInEntry: (setting) => {
       dispatch({type: 'UPDATE_SETTING_IN_ENTRY',
     payload: setting})
+    },
+    updateCharacterSettingInEntry: (characterSetting) => {
+      dispatch({type: 'UPDATE_CHARACTER_SETTING_IN_ENTRY',
+    payload: characterSetting})
     },
     removeSettingFromEntry: (setting) =>{
       dispatch({type: 'REMOVE_SETTING_FROM_ENTRY', payload: setting})

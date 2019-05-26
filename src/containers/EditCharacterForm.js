@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment} from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import history from '../history.js';
@@ -47,8 +47,8 @@ class EditCharacterForm extends Component {
       method: 'DELETE'
     })
     .then(res=>res.json())
-    .then(character => {
-     this.props.removeCharacterFromEntry(character)
+    .then(chracter => {
+      this.props.removeCharacterFromEntry(chracter)
     })
     history.push(`/storyboards/${this.props.currentEntry.id}`)
   }
@@ -68,7 +68,10 @@ class EditCharacterForm extends Component {
 
   render(){
     return(
-      <div>Edit Character Form
+      <Fragment>
+        <div className="ui raised card" style={{width: "32%", position: "absolute", left: "34%", padding: "4%", height: "30em"}}>
+
+        <h2 style={{position:"absolute", top: "5%", left: "27.5%"}}> Edit This Character!</h2>
 
         <form onSubmit={this.handleSubmit}>
         <div className="ui form" >
@@ -80,12 +83,13 @@ class EditCharacterForm extends Component {
             <label>Description</label>
             <textarea type="text" placeholder="Description" name="description" onChange={this.handleChange} value ={this.state.description} required ></textarea>
             </div>
-        <button className="ui button" style={{position:"relative", top: "1.5em"}} type="submit">Submit</button>
+        <button style={{position: "absolute", left: "37.5%", top: "110%"}} className="ui button" type="submit">Submit</button>
       </div>
       </form>
-      {this.props.currentEntry && <Link to={"/storyboards/".concat(`${this.props.currentEntry.id}`)}><button className="ui button blue">Return to StoryBoard</button></Link>}
-      <button className="ui button negative" onClick={(e) => { if (window.confirm('Are you sure you wish to delete this character?')) this.deleteCharacter(e) } }>Delete Character></button>
     </div>
+    {this.props.currentEntry && <Link to={"/storyboards/".concat(`${this.props.currentEntry.id}`)}><button style={{position: "absolute", top: "70%", left: "34%", width:"13em"}} className="ui button positive">Return to StoryBoard</button></Link>}
+    <button style={{position:"absolute", top: "70%", left: "53.5%", width:"13em"}} onClick={(e) => { if (window.confirm('Are you sure you wish to delete this item?')) this.deleteCharacter(e) } }className="ui button negative">Delete Character</button>
+    </Fragment>
     )
   }
 
@@ -99,12 +103,12 @@ function mapDispatchToProps(dispatch) {
 
       dispatch({type: 'SET_CURRENT_ENTRY', payload: entry})
     },
-    updateCharacterInEntry: (character) => {
+    updateCharacterInEntry: (chracter) => {
       dispatch({type: 'UPDATE_CHARACTER_IN_ENTRY',
-    payload: character})
+    payload: chracter})
     },
-    removeCharacterFromEntry: (character) => {
-      dispatch({type: 'REMOVE_CHARACTER_FROM_ENTRY', payload: character})
+    removeCharacterFromEntry: (chracter) =>{
+      dispatch({type: 'REMOVE_CHARACTER_FROM_ENTRY', payload: chracter})
     }
   }
 }

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import CharacterSettingCard from '../components/CharacterSettingCard.js'
+import StoryBoardCharacterSettingCard from '../components/StoryBoardCharacterSettingCard.js'
 
 
 class StoryBoardCharacterSettingList extends Component {
@@ -8,19 +8,19 @@ class StoryBoardCharacterSettingList extends Component {
 
 
     let charSetArray = this.props.entry.character_settings.map((charSet)=> {
-      return <CharacterSettingCard key={Math.random()} charSet={charSet}/>
+      return <StoryBoardCharacterSettingCard key={Math.random()} charSet={charSet}/>
     })
     if (charSetArray.length){
       return charSetArray
     }
     else {
-      return <h1>No character settings yet!</h1>
+      return <h1>No notes yet!</h1>
     }
   }
   render(){
     return(
       <div className="ui raised card" style={{width: "40%", position: "absolute", left:"55%", minHeight:"38em" , maxHeight: "38em", overflowY: "scroll", display: "inline-block"}}>
-      <h3 style={{textAlign:"center"}}>Character Settings</h3>
+      <h3 style={{textAlign:"center"}}>Notes on Characters in Settings</h3>
       {this.props.entry.character_settings && this.renderCharacterSettings()}
       </div>
     )

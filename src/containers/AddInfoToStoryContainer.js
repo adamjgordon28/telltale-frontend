@@ -37,7 +37,7 @@ componentDidMount = () => {
   <div className="content"  style={{width:"40%",  position:"relative", left: "5%", top: ".5em"}}>
   <CreateSettingForm/>
   </div>
-  <div className="content" style={{width:"40%", float: "right", position:"relative", left: "55%", bottom: "27.5em"}} className="content">
+  <div className="content" style={{width:"40%", float: "right", position:"relative", left: "55%", bottom: "27.5em"}}>
   <CreateCharacterForm/>
   <div className="button-div" style={{display: "inline-block"}}>
   <Link to={`/entries/${this.props.currentEntry.id}`}><button style={{width: "12em", position:"absolute", left: "50%",  bottom:"-20%", padding:"2%"}} className="ui button positive">
