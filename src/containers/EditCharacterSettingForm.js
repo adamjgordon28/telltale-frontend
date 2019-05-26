@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
 import {Link} from 'react-router-dom';
 import history from '../history.js';
@@ -103,14 +103,15 @@ class EditCharacterSettingForm extends Component {
 
   render(){
     return(
-      <div>
+      <Fragment>
+      <div className="ui raised card" style={{width: "40%", position: "absolute", left: "30%", padding: "4%", height: "40em"}}>
       <h1>Edit This Character-Setting!</h1>
-      {<form className="ui form" onSubmit={this.handleSubmit}>
-        <select onChange={this.handleChange} className="ui dropdown" value={this.state.setting_id} name="setting_id" required>
+      {<form className="ui form" style={{height: "32em", borderRadius: "2%", padding: "10%"}} onSubmit={this.handleSubmit}>
+        <select style={{marginBottom: "5%"}} onChange={this.handleChange} className="ui dropdown" value={this.state.setting_id} name="setting_id" required>
         <option label="Select a Setting!"></option>
           {this.renderSettingRows()}
         </select>
-        <select onChange={this.handleChange} className="ui dropdown" value={this.state.character_id} name="character_id" required >
+        <select style={{marginBottom: "5%"}} onChange={this.handleChange} className="ui dropdown" value={this.state.character_id} name="character_id" required >
         <option label="Select a Character!"></option>
           {this.renderCharacterRows()}
         </select>
@@ -120,11 +121,13 @@ class EditCharacterSettingForm extends Component {
           <label>Description</label>
           <textarea onChange={this.handleChange} name="description" placeholder="Description" value={this.state.description} required ></textarea >
         </div>
-        <button className="ui button" type="submit">Submit</button>
+        <button style={{position: "absolute", left: "37.5%", top: "92.5%"}} className="ui button" type="submit">Submit</button>
       </form>}
-      {this.props.currentEntry && <Link to={"/storyboards/".concat(`${this.props.currentEntry.id}`)}><button className="ui button positive">Return to StoryBoard</button></Link>}
-      <button style={{position:"absolute",left:"7.5%", top: "58.8%"}} onClick={(e) => { if (window.confirm('Are you sure you wish to delete this item?')) this.deleteCharacterSetting(e) } }className="ui button negative">Delete Character Setting</button>
+
       </div>
+      {this.props.currentEntry && <Link to={"/storyboards/".concat(`${this.props.currentEntry.id}`)}><button style={{position: "absolute", top: "87.5%", left: "30%"}} className="ui button positive">Return to StoryBoard</button></Link>}
+      <button style={{position:"absolute",left:"50%", top: "87.5%", left: "56%", width:"14.5em"}} onClick={(e) => { if (window.confirm('Are you sure you wish to delete this item?')) this.deleteCharacterSetting(e) } }className="ui button negative">Delete Character Setting</button>
+      </Fragment>
     )
   }
 }

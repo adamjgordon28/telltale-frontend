@@ -15,7 +15,7 @@ class CharacterSettingCard extends Component {
           <div className="meta">
             <span className="category">Chapter {this.props.charSet.chapter}</span>
           </div>
-          <div style={{position: "absolute", top: "40%"}} className="description">
+          <div style={{position: "absolute", top: "36%", right: ".25%", maxHeight: "37.5%", minHeight: "37.5%", overflowY: "scroll", width: "100%", border:".125em beige solid"}} className="description">
           <h3>Description:</h3>
             <p>{this.props.charSet.description}</p>
           </div>

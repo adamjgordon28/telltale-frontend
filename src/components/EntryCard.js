@@ -34,7 +34,7 @@ class EntryCard extends React.Component {
 
   <div className="extra content">
 
-  <div style={{position:"absolute"}} className="description">
+  <div style={{position:"absolute", right: ".00001%", bottom: "25.5%", maxHeight: "55%", minHeight: "55%", overflowY: "scroll", width: "100%", border:".125em beige solid"}} className="description">
     <p> Description: {this.props.entry.description}</p>
   </div>
 
