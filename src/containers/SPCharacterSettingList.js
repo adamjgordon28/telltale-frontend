@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import PageCharacterSettingCard from '../components/PageCharacterSettingCard.js';
 
+
 class SPCharacterSettingList extends Component {
   renderCharacterSettings = () => {
     let charSetArray = this.props.setting.character_settings.map((charSet) => {
@@ -10,13 +11,13 @@ class SPCharacterSettingList extends Component {
     return charSetArray
     }
     else {
-      return <h4>No characters have been detailed at this setting yet!</h4>
+      return <h4 style={{textAlign:"center"}}>No characters have been detailed at this setting yet!</h4>
     }
   }
   render(){
     return (
-      <div className="ui raised card" style={{width: "28%", position: "absolute", left: "36%", minHeight:"30em", maxHeight:"30em", overflowY: "scroll", display: "inline-block"}}>
-      <h3 style={{textAlign:"center"}} >Characters Who Have Been To This Place: </h3>
+      <div className="ui raised card ui grid" style={{width: "40%", position: "absolute", left: "52.5%", top: "17%", padding: "2%",minHeight:"57.5%", maxHeight:"57.5%", overflowY: "scroll"}}>
+      <h3 style={{textAlign:"center", position:"relative", bottom:"1.25em"}} >Characters Who Have Been to This Place: </h3>
       {this.renderCharacterSettings()}
       </div>
     )

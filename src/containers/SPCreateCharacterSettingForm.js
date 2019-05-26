@@ -4,11 +4,11 @@ import history from "../history";
 
 class SPCreateCharacterSettingForm extends Component {
 
-  state = {
-    character_id: "",
-    chapter: "",
-    description: ""
-  }
+    state = {
+      character_id: "",
+      chapter: "",
+      description: ""
+    }
 
   renderRows = () => {
     if(this.props.currentEntry){
@@ -18,6 +18,7 @@ class SPCreateCharacterSettingForm extends Component {
     return characterOptionsArray
     }
   }
+
 
   handleChange=(e)=> {
     this.setState({
@@ -30,12 +31,11 @@ class SPCreateCharacterSettingForm extends Component {
     this.createCharacterSetting(this.state)
   }
 
-
   createCharacterSetting = (info) => {
     fetch("http://localhost:4000/api/v1/character_settings", {
       method: "POST",
       headers: { "Content-Type": "application/json", "Accepts": "application/json" },
-      body: JSON.stringify({character_id:info.character_id, setting_id:`${this.props.setting.id}`, description: info.description, chapter:info.chapter})
+      body: JSON.stringify({setting_id:`${this.props.setting.id}`, character_id: info.character_id, description: info.description, chapter:info.chapter})
      })
      .then(res=>res.json())
      .then(characterSetting=>{
@@ -48,27 +48,25 @@ class SPCreateCharacterSettingForm extends Component {
     if (!this.props.currentEntry){
       return <h1>Loading...</h1>
     }
-
     return (
-      <div className="ui raised card" style={{width: "25%", padding: "2%", position: "absolute",left: "5%", top: "20%"}}>
-      {!!this.props.currentEntry.characters.length &&
-      <div>
-      Which characters appear at {this.props.setting.name} in your story? Detail it here!
-      <form className="ui form" onSubmit={this.handleSubmit}>
-        <select onChange={this.handleChange} className="ui dropdown" value={this.state.character_id} name="character_id" required >
-        <option label="Select a Character!"></option>
-          {this.renderRows()}
-        </select>
-        <label>Chapter</label>
-        <input onChange={this.handleChange} type="number" name="chapter" value={this.state.chapter} min={0} placeholder="Chapter" required/>
-        <div className ="field">
-          <label>Description</label>
-          <textarea onChange={this.handleChange} name="description" placeholder="Description" value={this.state.description} required ></textarea >
-        </div>
-        <button className="ui button" type="submit">Submit</button>
-      </form>
-
-      </div>}
+      <div className="ui raised card" style={{width: "25%", padding: "2%", position: "absolute",left: "25%", top: "15%", height: "57.5%"}}>
+        {!!this.props.currentEntry.characters.length &&
+        <div>
+        <h3 style={{maxHeight:"2.75em", overflowY:"scroll", textAlign:"center", position:"relative", bottom:"1.25em"}}>Which Characters appear in {this.props.setting.name} in your story? Detail it here!</h3>
+            <form className="ui form" onSubmit={this.handleSubmit}>
+              <select style={{position:"relative", marginBottom:"1.5%"}} onChange={this.handleChange} className="ui dropdown" value={this.state.character_id} name="character_id" required>
+              <option label="Select a Character!"></option>
+                {this.renderRows()}
+              </select>
+              <label>Chapter</label>
+              <input style={{position:"relative", marginBottom:"1.5%"}} onChange={this.handleChange} type="number" name="chapter" value={this.state.chapter} min={0} placeholder="Chapter" required/>
+              <div className ="field">
+                <label>Description</label>
+                <textarea onChange={this.handleChange} name="description" placeholder="Description" value={this.state.description} required ></textarea >
+              </div>
+              <button style={{left:"35%", top:"0.75em"}} className="ui button" type="submit">Submit</button>
+            </form>
+        </div>}
       </div>
     )
   }
