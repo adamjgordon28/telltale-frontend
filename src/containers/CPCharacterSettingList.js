@@ -2,8 +2,6 @@ import React, {Component} from 'react';
 import PageCharacterSettingCard from '../components/PageCharacterSettingCard.js';
 
 
-
-
 class CPCharacterSettingList extends Component {
 
     state = {
@@ -33,7 +31,6 @@ class CPCharacterSettingList extends Component {
 
   renderCharacterSettings = () => {
     let charSetArray = this.sortAndFilterCharacterSettings(this.props.character.character_settings).map((charSet) => {
-      console.log("hello!")
       return <PageCharacterSettingCard key={Math.random()} charSet={charSet}/>
     })
     if (charSetArray.length){

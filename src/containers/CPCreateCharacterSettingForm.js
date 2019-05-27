@@ -53,7 +53,7 @@ class CPCreateCharacterSettingForm extends Component {
       <div className="ui raised card" style={{width: "25%", padding: "2%", position: "absolute",left: "26.25%", top: "15%", height: "66.5%"}}>
         {!!this.props.currentEntry.settings.length ?
         <div>
-        <div style={{background:"silver", height:"5em", width:"120%", position:"relative", right:"10%", bottom:"2.1em"}}>
+        <div style={{background:"silver", height:"5em", width:"120%", position:"relative", right:"10%", bottom:"2.1em", padding:"5%"}}>
         <h3 style={{maxHeight:"2.75em", overflowY:"scroll", textAlign:"center", position:"absolute", bottom: ".625em"}}>Where does {this.props.character.name} appear in your story? Detail it here!</h3>
         </div>
             <form style={{position:"relative"}} className="ui form" onSubmit={this.handleSubmit}>
@@ -67,7 +67,7 @@ class CPCreateCharacterSettingForm extends Component {
                 <label>Description</label>
                 <textarea onChange={this.handleChange} name="description" placeholder="Description" value={this.state.description} required ></textarea >
               </div>
-              <button style={{left:"35%", top:"0.75em"}} className="ui button" type="submit">Submit</button>
+              <button style={{left:"35%", top:"2.5em"}} className="ui button" type="submit">Submit</button>
             </form>
         </div> : <h3 style={{textAlign:"center"}}>No settings have been detailed yet for this entry. If you're interesting in creating one, you can do so <Link key={Math.random()} to={`/add-entry-info/${this.props.currentEntry.id}`}>here</Link>!</h3>}
       </div>
