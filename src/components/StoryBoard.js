@@ -45,12 +45,10 @@ class StoryBoard extends Component {
        <StoryBoardCharacterSettingList entry={this.props.currentEntry}/>
 
      </div>
-       <div className="button-div" style={{position: "absolute", top: "92%", left: "30%"}}>
-       <Link to={`/add-entry-info/${this.props.currentEntry.id}`}><button className="positive ui button">Add a Character or Setting!</button></Link>
-       <Link key={Math.random()} to={`/entries/${this.props.currentEntry.id}`}><button className="ui button blue">Keep Writing </button></Link>
-       <Link to={`/edit-entry/${this.props.currentEntry.id}`}><button className="ui button gray">Edit Other Entry Details</button></Link>
-       <button className="ui button red" onClick={(e) => { if (window.confirm('Are you sure you wish to delete this item?')) this.deleteEntry(e) } }>Delete Entry</button>
-       </div>
+       <Link to={`/add-entry-info/${this.props.currentEntry.id}`}><button className="positive ui button" style={{position:"absolute", width:"15%", top:"92.5%", left: "5%"}}>Add a Character or Setting!</button></Link>
+       <Link key={Math.random()} to={`/entries/${this.props.currentEntry.id}`}><button className="ui button blue" style={{position:"absolute", width:"10%", top:"92.5%", left: "25%"}}>Keep Writing </button></Link>
+       <Link to={`/edit-entry/${this.props.currentEntry.id}`}><button className="ui button black" style={{position:"absolute", width:"10%",top:"92.5%", left: "40%"}}>Edit Entry</button></Link>
+       <button className="ui button red" style={{position:"absolute", width:"10%", top:"92.5%", right: "20%"}} onClick={(e) => { if (window.confirm('Are you sure you wish to delete this item?')) this.deleteEntry(e) } }>Delete Entry</button>
      </div>
    )
  }
