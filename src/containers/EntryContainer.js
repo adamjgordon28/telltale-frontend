@@ -47,12 +47,13 @@ class EntryContainer extends Component {
 }
 
   render(){
+    console.log(this.props.match.params.id)
     if(this.props.currentUser === -1){
       history.push("/login")
     }
     return (
      <Fragment>
-     <div style={{background:"lightgray", position:"absolute", width:"100%", height:"3em", top:"5.75%"}}>
+     {typeof this.props.match.params.id === 'number' ? <div style={{ background:"lightgray", position:"absolute", width:"100%", height:"3em", top:"5.75%"}}>
       <input style={{position:"absolute", right:"10%", top: "10%", width:"22.5%", height: "80%"}} placeholder="Search Your Entries..." value={this.state.search} onChange={this.handleChange} name="typeSearch"/>
       <select style={{position:"absolute", right: "35%",top: "10%", background:"white", color:"gray", height: "80%", width:"15%"}} onChange={this.handleChange} name = "genreSearch" >
               <option label="Genre"></option>
@@ -69,7 +70,7 @@ class EntryContainer extends Component {
               <option value="western">Western</option>
               <option value="other">Other</option>
           </select>
-        </div>
+        </div> : null}
       <Switch>
         <Route path='/entries/:id' render={(props)=> {
           return <EntryEditor {...props}/>}}>

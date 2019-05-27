@@ -188,8 +188,6 @@ handleKeyCommand = (command, editorState) => {
   fetch("http://localhost:4000/api/v1/entries/".concat(`${this.props.match.params.id}`))
    .then(response => response.json())
    .then(json => {
-
-  console.log(json)
      if(json) {
     this.setState({
 
@@ -207,7 +205,7 @@ handleKeyCommand = (command, editorState) => {
  }
 
   render() {
-
+    console.log(this.props.match.params.id)
     if(this.props.currentUser === -1){
       history.push("/login")
     }
@@ -218,7 +216,7 @@ handleKeyCommand = (command, editorState) => {
   }
     return (
 
-    <div>
+    <div style={{zIndex:1}}>
       <h1>Welcome back, "{this.state.entry.title}" has been waiting for you!</h1>
         <EmojiSelect/>
       <div>
