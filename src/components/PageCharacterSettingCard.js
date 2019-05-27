@@ -9,7 +9,7 @@ class PageCharacterSettingCard extends Component {
     }
     return(
 
-            <div className="ui card">
+            <div className="ui card" style={{position:"relative", bottom:"20em"}}>
           <div className="header"><h4 style={{fontSize:"1.25em", wordWrap:"break-word", overflowX: "hidden", overflowY: "hidden", minHeight: "30em", maxHeight:"30em"}}>{this.props.charSet.character.name} at {this.props.charSet.setting.name}</h4></div>
           <div style={{position: "absolute", top: "30.5%", color:"gray", fontWeight: "bold"}}><span className="category">Chapter {this.props.charSet.chapter}</span></div>
           <div style={{position: "absolute", top: "40%", right: ".25%", maxHeight: "37.5%", minHeight: "37.5%", overflowY: "scroll", width: "100%", border:".125em beige solid"}} className="description">

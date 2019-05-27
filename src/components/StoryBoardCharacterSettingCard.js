@@ -9,7 +9,7 @@ class StoryBoardCharacterSettingCard extends Component {
     }
     return(
 
-            <div className="ui card" style={{position: "relative",left:"6%", top:"1em", display: "inline-block", width: "40%", height: "16em", margin: "2%"}}>
+            <div className="ui card" style={{position: "relative",left:"6%", display: "inline-block", width: "40%", height: "16em", margin: "2%"}}>
           <div className="header"><h4 style={{fontSize:"1.25em", wordWrap:"break-word", overflowX: "hidden", overflowY: "hidden", minHeight: "3.5em", maxHeight:"3.5em", textAlign:"center", background:"silver", color:"white", padding:"5%"}}>{this.props.charSet.character.name} at {this.props.charSet.setting.name}</h4></div>
           <div style={{position: "absolute", top: "30.5%", color:"gray", fontWeight: "bold"}}><span className="category">Chapter {this.props.charSet.chapter}</span></div>
           <div style={{position: "absolute", top: "40%", right: ".25%", maxHeight: "37.5%", minHeight: "37.5%", overflowY: "scroll", width: "100%", border:".125em beige solid"}} className="description">
