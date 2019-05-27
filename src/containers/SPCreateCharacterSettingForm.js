@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import history from "../history";
 
@@ -50,7 +51,7 @@ class SPCreateCharacterSettingForm extends Component {
     }
     return (
       <div className="ui raised card" style={{width: "25%", padding: "2%", position: "absolute",left: "25%", top: "15%", height: "57.5%"}}>
-        {!!this.props.currentEntry.characters.length &&
+        {!!this.props.currentEntry.characters.length ?
         <div>
         <h3 style={{maxHeight:"2.75em", overflowY:"scroll", textAlign:"center", position:"relative", bottom:"1.25em"}}>Which Characters appear in {this.props.setting.name} in your story? Detail it here!</h3>
             <form className="ui form" onSubmit={this.handleSubmit}>
@@ -66,7 +67,7 @@ class SPCreateCharacterSettingForm extends Component {
               </div>
               <button style={{left:"35%", top:"0.75em"}} className="ui button" type="submit">Submit</button>
             </form>
-        </div>}
+        </div>: <h3 style={{textAlign:"center"}}>No characters have been detailed yet for this entry. If you're interesting in creating one, you can do so <Link key={Math.random()} to={`/add-entry-info/${this.props.currentEntry.id}`}>here</Link>!</h3>}
       </div>
     )
   }

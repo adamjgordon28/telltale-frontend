@@ -16,7 +16,7 @@ class SPCharacterSettingList extends Component {
   }
   render(){
     return (
-      <div className="ui raised card ui grid" style={{width: "40%", position: "absolute", left: "52.5%", top: "17%", padding: "2%",minHeight:"57.5%", maxHeight:"57.5%", overflowY: "scroll"}}>
+      <div className="ui raised card" style={{width: "40%", position: "absolute", left: "52.5%", top: "17%", padding: "2%",minHeight:"57.5%", maxHeight:"57.5%", overflowY: "scroll"}}>
       <h3 style={{textAlign:"center", position:"relative", bottom:"1.25em"}} >Characters Who Have Been to This Place: </h3>
       {this.renderCharacterSettings()}
       </div>
