@@ -50,11 +50,13 @@ class CPCreateCharacterSettingForm extends Component {
       return <h1>Loading...</h1>
     }
     return (
-      <div className="ui raised card" style={{width: "25%", padding: "2%", position: "absolute",left: "25%", top: "15%", height: "57.5%"}}>
+      <div className="ui raised card" style={{width: "25%", padding: "2%", position: "absolute",left: "26.25%", top: "15%", height: "66.5%"}}>
         {!!this.props.currentEntry.settings.length ?
         <div>
-        <h3 style={{maxHeight:"2.75em", overflowY:"scroll", textAlign:"center", position:"relative", bottom:"1.25em"}}>Where does {this.props.character.name} appear in your story? Detail it here!</h3>
-            <form className="ui form" onSubmit={this.handleSubmit}>
+        <div style={{background:"silver", height:"5em", width:"120%", position:"relative", right:"10%", bottom:"2.1em"}}>
+        <h3 style={{maxHeight:"2.75em", overflowY:"scroll", textAlign:"center", position:"absolute", bottom: ".625em"}}>Where does {this.props.character.name} appear in your story? Detail it here!</h3>
+        </div>
+            <form style={{position:"relative"}} className="ui form" onSubmit={this.handleSubmit}>
               <select style={{position:"relative", marginBottom:"1.5%"}} onChange={this.handleChange} className="ui dropdown" value={this.state.setting_id} name="setting_id" required>
               <option label="Select a Setting!"></option>
                 {this.renderRows()}

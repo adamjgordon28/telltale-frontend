@@ -45,10 +45,10 @@ class StoryBoardCharacterSettingList extends Component {
   render(){
     return(
       <div className="ui raised card" style={{width: "40%", position: "absolute", left:"55%", minHeight:"41.25em" , maxHeight: "41.25em", overflowY: "scroll", display: "inline-block"}}>
-      <div style={{background:"silver"}}>
-      <h3 style={{textAlign:"center"}}>Notes on Characters in Settings</h3>
+      <div style={{background:"silver", height:"5em"}}>
+      <h3 style={{textAlign:"center", position:"absolute", top:"4.5%", left:"5%"}}>Notes on Characters in Settings</h3>
         <div className="ui search">
-          <input className="prompt" style={{position: "relative", left:"35%", bottom:".75em"}} onChange={this.handleChange} name="chapter" value={this.state.chapter} type="number" placeholder="Search by Chapter..." min={0} />
+          <input className="prompt" style={{position: "relative", left:"52.5%", top:"1.25em", width:"38.5%"}} onChange={this.handleChange} name="chapter" value={this.state.chapter} type="number" placeholder="Search by Chapter..." min={0} />
         </div>
       </div>
       {this.props.entry.character_settings && this.renderCharacterSettings()}
