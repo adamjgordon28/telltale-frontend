@@ -10,13 +10,15 @@ class StoryBoardSettingList extends Component {
       return settingsArray
     }
     else {
-      return <h1>No settings yet!</h1>
+      return <h1 style={{position: "absolute", left: "12.5%", top: "15%"}}>No settings yet!</h1>
     }
   }
 render () {
   return(
-    <div className="ui raised card" style={{width: "20%", position: "absolute", left: "5%", top: "1em", minHeight:"38em" , maxHeight: "38em", overflowY: "scroll", display: "inline-block"}}>
-    <h3 style={{textAlign:"center"}}>Settings</h3>
+    <div className="ui raised card" style={{width: "20%", position: "absolute", left: "5%", top: "1em", minHeight:"41.25em" , maxHeight: "41.25em", overflowY: "scroll", display: "inline-block"}}>
+    <div style={{background:"silver", height:"5em"}}>
+    <h2 style={{textAlign:"center", position:"relative", top:".75em"}}>Settings</h2>
+    </div>
     {this.props.entry.settings && this.renderSettings()}
     </div>
   )
