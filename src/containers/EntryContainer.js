@@ -47,35 +47,35 @@ class EntryContainer extends Component {
 }
 
   render(){
-    console.log(this.props.match.params.id)
+    console.log(typeof this.props.match.params.id === 'number')
     if(this.props.currentUser === -1){
       history.push("/login")
     }
     return (
      <Fragment>
-     {typeof this.props.match.params.id === 'number' ? <div style={{ background:"lightgray", position:"absolute", width:"100%", height:"3em", top:"5.75%"}}>
-      <input style={{position:"absolute", right:"10%", top: "10%", width:"22.5%", height: "80%"}} placeholder="Search Your Entries..." value={this.state.search} onChange={this.handleChange} name="typeSearch"/>
-      <select style={{position:"absolute", right: "35%",top: "10%", background:"white", color:"gray", height: "80%", width:"15%"}} onChange={this.handleChange} name = "genreSearch" >
-              <option label="Genre"></option>
-              <option value="adventure">Adventure</option>
-              <option value="comedy">Comedy</option>
-              <option value="drama">Drama</option>
-              <option value="fantasy">Fantasy</option>
-              <option value="historical-fiction">Historical Fiction</option>
-              <option value="horror">Horror</option>
-              <option value="mystery">Mystery</option>
-              <option value="non-fiction">Non-Fiction</option>
-              <option value="romance">Romance</option>
-              <option value="science-fiction">Science Fiction</option>
-              <option value="western">Western</option>
-              <option value="other">Other</option>
-          </select>
-        </div> : null}
       <Switch>
         <Route path='/entries/:id' render={(props)=> {
           return <EntryEditor {...props}/>}}>
         </Route>
-        <Route path='/entries' render={()=> this.renderEntryCards()} >
+        <Route path='/entries' render={()=><Fragment><div style={{ background:"lightgray", position:"absolute", width:"100%", height:"3em", top:"5.75%"}}>
+         <input style={{position:"absolute", right:"10%", top: "10%", width:"22.5%", height: "80%"}} placeholder="Search Your Entries..." value={this.state.search} onChange={this.handleChange} name="typeSearch"/>
+         <select style={{position:"absolute", right: "35%",top: "10%", background:"white", color:"gray", height: "80%", width:"15%"}} onChange={this.handleChange} name = "genreSearch" >
+                 <option label="Genre"></option>
+                 <option value="adventure">Adventure</option>
+                 <option value="comedy">Comedy</option>
+                 <option value="drama">Drama</option>
+                 <option value="fantasy">Fantasy</option>
+                 <option value="historical-fiction">Historical Fiction</option>
+                 <option value="horror">Horror</option>
+                 <option value="mystery">Mystery</option>
+                 <option value="non-fiction">Non-Fiction</option>
+                 <option value="romance">Romance</option>
+                 <option value="science-fiction">Science Fiction</option>
+                 <option value="western">Western</option>
+                 <option value="other">Other</option>
+             </select>
+             {this.renderEntryCards()}
+           </div> </Fragment>} >
         </Route>
 
       </Switch>
