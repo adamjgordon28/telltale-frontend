@@ -1,5 +1,5 @@
 import React from 'react';
-import { EditorState, RichUtils, convertToRaw, convertFromRaw } from 'draft-js';
+import { EditorState, RichUtils, convertToRaw, convertFromRaw, Modifier} from 'draft-js';
 import { Link } from 'react-router-dom';
 import Editor from 'draft-js-plugins-editor';
 import createHighlightPlugin from '../highlightPlugin';
@@ -65,7 +65,7 @@ const linkifyPlugin = createLinkifyPlugin();
 const emojiPlugin = createEmojiPlugin();
 const { EmojiSuggestions, EmojiSelect } = emojiPlugin;
 
-
+const tabCharacter = "    ";
 
 
 
@@ -192,7 +192,24 @@ handleKeyCommand = (command, editorState) => {
    })
  }
 
+ onTab = (e) => {
+    e.preventDefault();
+
+    let currentState = this.state.editorState;
+    let newContentState = Modifier.replaceText(
+      currentState.getCurrentContent(),
+      currentState.getSelection(),
+      tabCharacter
+    );
+
+    this.setState({
+      editorState: EditorState.push(currentState, newContentState, 'insert-characters')
+    });
+  }
+
   render() {
+
+
 
     if(this.props.currentUser === -1){
       history.push("/login")
