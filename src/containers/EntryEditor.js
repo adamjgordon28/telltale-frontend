@@ -17,7 +17,6 @@ import 'draft-js/dist/Draft.css';
 import 'draft-js-side-toolbar-plugin/lib/plugin.css';
 import 'draft-js-static-toolbar-plugin/lib/plugin.css';
 import 'last-draft-js-toolbar-plugin/lib/plugin.css'
-import editorStyles from '../editorStyles.css';
 import buttonStyles from '../buttonStyles.css';
 import 'draft-js-counter-plugin/lib/plugin.css';
 import 'draft-js-emoji-plugin/lib/plugin.css';
@@ -39,7 +38,6 @@ const highlightPlugin = createHighlightPlugin({
 });
 
 const sideToolbarPlugin = createSideToolbarPlugin();
-const { SideToolbar } = sideToolbarPlugin;
 
 const toolbarPlugin = createToolbarPlugin();
 const { Toolbar } = toolbarPlugin;
@@ -125,17 +123,6 @@ saveContent = (noteContent) => {
     }
   }
 
-  createContent = (noteContent) => {
-     fetch("http://localhost:4000/api/v1/entries", {
-      method: "POST",
-      headers: { "Content-Type": "application/json", "Accepts": "application/json" },
-      body: JSON.stringify({content: JSON.stringify(convertToRaw(this.state.editorState.getCurrentContent())) })
-     })
-      .then(response => response.json())
-      .then(json => {
-
-      })
-    }
 
 
   onChange =(editorState) => {
@@ -188,6 +175,7 @@ handleKeyCommand = (command, editorState) => {
   fetch("http://localhost:4000/api/v1/entries/".concat(`${this.props.match.params.id}`))
    .then(response => response.json())
    .then(json => {
+
      if(json) {
     this.setState({
 
@@ -205,6 +193,7 @@ handleKeyCommand = (command, editorState) => {
  }
 
   render() {
+
     if(this.props.currentUser === -1){
       history.push("/login")
     }
@@ -215,7 +204,7 @@ handleKeyCommand = (command, editorState) => {
   }
     return (
 
-    <div style={{zIndex:1}}>
+    <div>
       <h1>Welcome back, "{this.state.entry.title}" has been waiting for you!</h1>
         <EmojiSelect/>
       <div>

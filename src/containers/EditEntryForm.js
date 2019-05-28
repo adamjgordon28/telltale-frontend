@@ -26,7 +26,6 @@ class EditEntryForm extends Component {
     fetch("http://localhost:4000/api/v1/entries/".concat(`${this.props.match.params.id}`))
     .then(res=>res.json())
     .then(entry => {
-      console.log(entry)
       this.props.setCurrentEntry(entry)
       this.setState({
         title: entry.title,
@@ -54,7 +53,6 @@ class EditEntryForm extends Component {
     })
     .then(res=>res.json())
     .then(newEntry => {
-      console.log(newEntry)
     this.props.updateEntryInfo(newEntry)
     })
     history.push(`/entries`)

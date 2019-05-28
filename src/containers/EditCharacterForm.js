@@ -108,12 +108,12 @@ function mapDispatchToProps(dispatch) {
 
       dispatch({type: 'SET_CURRENT_ENTRY', payload: entry})
     },
-    updateCharacterInEntry: (chracter) => {
+    updateCharacterInEntry: (character) => {
       dispatch({type: 'UPDATE_CHARACTER_IN_ENTRY',
-    payload: chracter})
+    payload: character})
     },
-    removeCharacterFromEntry: (chracter) =>{
-      dispatch({type: 'REMOVE_CHARACTER_FROM_ENTRY', payload: chracter})
+    removeCharacterFromEntry: (character) =>{
+      dispatch({type: 'REMOVE_CHARACTER_FROM_ENTRY', payload: character})
     },
     removeCharacterSettingFromEntry: (characterSetting) => {
       dispatch({

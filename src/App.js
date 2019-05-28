@@ -17,6 +17,8 @@ import EditCharacterSettingForm from './containers/EditCharacterSettingForm.js';
 import EditCharacterForm from './containers/EditCharacterForm.js';
 import EditSettingForm from './containers/EditSettingForm.js';
 import EditEntryForm from './containers/EditEntryForm.js';
+import TotalEntryContainer from './containers/TotalEntryContainer.js';
+
 
 class App extends Component {
 
@@ -85,6 +87,10 @@ class App extends Component {
             </Route>
             <Route path='/edit-character-setting/:id' render={(props)=> {
               return <EditCharacterSettingForm{...props}/>}}>
+            </Route>
+            <Route path='/total-entries' render={(props)=> {
+              return <TotalEntryContainer{...props}/>
+            }}>
             </Route>
           </Router>
       </Fragment>
