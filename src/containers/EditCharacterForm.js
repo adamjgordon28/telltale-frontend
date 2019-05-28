@@ -38,6 +38,9 @@ class EditCharacterForm extends Component {
     .then(res=>res.json())
     .then(newCharacter => {
     this.props.updateCharacterInEntry(newCharacter)
+    newCharacter.character_settings.forEach((character_setting)=> {
+      console.log(character_setting)
+    })
     })
     history.push(`/storyboards/${this.props.currentEntry.id}`)
   }
@@ -114,6 +117,9 @@ function mapDispatchToProps(dispatch) {
     },
     removeCharacterFromEntry: (character) =>{
       dispatch({type: 'REMOVE_CHARACTER_FROM_ENTRY', payload: character})
+    },
+    updateCharacterSettingInEntry: (character) =>{
+      dispatch({type: 'UPDATE_CHARACTER_SETTING_IN_ENTRY', payload: character})
     },
     removeCharacterSettingFromEntry: (characterSetting) => {
       dispatch({

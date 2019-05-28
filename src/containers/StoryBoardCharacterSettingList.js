@@ -33,7 +33,7 @@ class StoryBoardCharacterSettingList extends Component {
 
 
     let charSetArray = this.sortAndFilterCharacterSettings(this.props.entry.character_settings).map((charSet)=> {
-      return <StoryBoardCharacterSettingCard key={Math.random()} charSet={charSet}/>
+      return <StoryBoardCharacterSettingCard key={Math.random()} entry={this.props.entry} charSet={charSet}/>
     })
     if (charSetArray.length){
       return charSetArray
