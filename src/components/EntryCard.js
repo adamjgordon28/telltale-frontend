@@ -6,7 +6,7 @@ const logoMatcher = {
   "adventure":"/icons/Adventure.png",
   "comedy":"/icons/Comedy.png",
   "drama":"/icons/Drama.png",
-  "fantasy":"/icons/Fantasy.png",
+  "fantasy":"/icons/fantasy-3.png",
   "historical-fiction":"/icons/Historical-Fiction-3.png",
   "horror":"/icons/ghost.png",
   "mystery":"/icons/detective2.png",
