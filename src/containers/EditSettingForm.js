@@ -38,11 +38,9 @@ class EditSettingForm extends Component {
     .then(res=>res.json())
     .then(newSetting => {
     this.props.updateSettingInEntry(newSetting)
-    newSetting.character_settings.forEach((character_setting)=> {
-    this.props.updateCharacterSettingInEntry(character_setting)
-      })
+      history.push(`/storyboards/${this.props.currentEntry.id}`)
     })
-    history.push(`/storyboards/${this.props.currentEntry.id}`)
+
   }
 
   deleteSetting = () => {
