@@ -10,7 +10,7 @@ class CharacterCard extends Component {
   </div>
   <div className="extra content">
   <div className="right floated">
-    <Link to={`/characters/${this.props.character.id}`}><button style={{position:"relative", right: "8%"}} className="ui button">View Character Page</button></Link>
+    <Link to={`/characters/${this.props.character.id}`}><button style={{position:"relative", right: "3.25%"}} className="ui button">View Character Page</button></Link>
   </div>
   </div>
 </div>

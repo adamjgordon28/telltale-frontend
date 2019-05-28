@@ -50,7 +50,7 @@ class CPCreateCharacterSettingForm extends Component {
       return <h1>Loading...</h1>
     }
     return (
-      <div className="ui raised card" style={{width: "25%", padding: "2%", position: "absolute",left: "26.25%", top: "15%", height: "66.5%"}}>
+      <div className="ui raised card" style={{width: "25%", padding: "2%", position: "absolute",left: "26.25%", top: "15%", height: "72.5%"}}>
         {!!this.props.currentEntry.settings.length ?
         <div>
         <div style={{background:"silver", height:"5em", width:"120%", position:"relative", right:"10%", bottom:"2.1em", padding:"5%"}}>

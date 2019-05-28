@@ -75,9 +75,9 @@ class EditSettingForm extends Component {
   render(){
     return(
       <Fragment>
-        <div className="ui raised card" style={{width: "32%", position: "absolute", left: "34%", padding: "4%", height: "30em"}}>
+        <div className="ui raised card" style={{width: "32%", position: "relative", left: "34%", padding: "3%", height: "30em"}}>
 
-        <h2 style={{position:"absolute", top: "5%", left: "27.5%"}}> Edit This Setting!</h2>
+        <h2 style={{position:"relative", bottom:"3.5%", textAlign:"center", left:"2%"}}> Edit This Setting!</h2>
 
         <form onSubmit={this.handleSubmit}>
         <div className="ui form" >
@@ -89,12 +89,12 @@ class EditSettingForm extends Component {
             <label>Description</label>
             <textarea type="text" placeholder="Description" name="description" onChange={this.handleChange} value ={this.state.description} required ></textarea>
             </div>
-        <button style={{position: "absolute", left: "37.5%", top: "110%"}} className="ui button" type="submit">Submit</button>
+        <button style={{position: "relative", left: "37.5%"}} className="ui button" type="submit">Submit</button>
       </div>
       </form>
     </div>
-    {this.props.currentEntry && <Link to={"/storyboards/".concat(`${this.props.currentEntry.id}`)}><button style={{position: "absolute", top: "70%", left: "34%", width:"13em"}} className="ui button positive">Return to StoryBoard</button></Link>}
-    <button style={{position:"absolute", top: "70%", left: "53.5%", width:"13em"}} onClick={(e) => { if (window.confirm('Are you sure you wish to delete this item?')) this.deleteSetting(e) } }className="ui button negative">Delete Setting</button>
+    {this.props.currentEntry && <Link to={"/storyboards/".concat(`${this.props.currentEntry.id}`)}><button style={{position: "relative", left:"34%", top:"1.5em"}} className="ui button positive">Return to StoryBoard</button></Link>}
+    <button style={{position:"relative", left:"43%", top:"1.5em"}} onClick={(e) => { if (window.confirm('Are you sure you wish to delete this item?')) this.deleteSetting(e) } }className="ui button negative">Delete Setting</button>
     </Fragment>
     )
   }

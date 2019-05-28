@@ -45,6 +45,8 @@ div.DraftEditor-root {
   padding:4em;
   font-size: 18px;
   font-family: 'calibri', sans-serif;
+  position:relative;
+  bottom:1.25em
 }
 
 div.toolbar {
@@ -84,5 +86,5 @@ div.draftJsToolbar__toolbar__dNtBH {
   width: 110.5%;
   position: relative;
   right: 5.25%;
-  top: .4em;
+  bottom: 1em;
 }

@@ -36,7 +36,7 @@ class StoryBoard extends Component {
      return <h3>Loading...</h3>
    }
    return (
-     <div>
+     <div style={{flex:"auto", flexWrap:"wrap"}}>
      <h1>Storyboard for "{this.props.currentEntry.title}"</h1>
     <div style={{width:"100%", position:"relative"}}>
 
@@ -45,10 +45,12 @@ class StoryBoard extends Component {
        <StoryBoardCharacterSettingList entry={this.props.currentEntry}/>
 
      </div>
-       <Link to={`/add-entry-info/${this.props.currentEntry.id}`}><button className="positive ui button" style={{position:"absolute", width:"15%", top:"92.5%", right: "39.75%"}}>Add a Character or Setting!</button></Link>
-       <Link key={Math.random()} to={`/entries/${this.props.currentEntry.id}`}><button className="ui button blue" style={{position:"absolute", width:"10%", top:"92.5%", right: "28%"}}>Keep Writing </button></Link>
-       <Link to={`/edit-entry/${this.props.currentEntry.id}`}><button className="ui button black" style={{position:"absolute", width:"10%",top:"92.5%", right: "16.5%"}}>Edit Entry</button></Link>
-       <button className="ui button red" style={{position:"absolute", width:"10%", top:"92.5%", right: "5%"}} onClick={(e) => { if (window.confirm('Are you sure you wish to delete this item?')) this.deleteEntry(e) } }>Delete Entry</button>
+      <div style={{position:"relative", left:"49%"}}>
+       <Link to={`/add-entry-info/${this.props.currentEntry.id}`}><button className="positive ui button" style={{marginRight:"1.5%"}}>Add a Character or Setting!</button></Link>
+       <Link key={Math.random()} to={`/entries/${this.props.currentEntry.id}`}><button className="ui button blue" style={{marginRight:"1.5%"}}>Keep Writing </button></Link>
+       <Link to={`/edit-entry/${this.props.currentEntry.id}`}><button className="ui button black" style={{marginRight:"1.5%"}}>Edit Entry</button></Link>
+       <button className="ui button red" style={{marginRight:"1.5%"}} onClick={(e) => { if (window.confirm('Are you sure you wish to delete this item?')) this.deleteEntry(e) } }>Delete Entry</button>
+       </div>
      </div>
    )
  }

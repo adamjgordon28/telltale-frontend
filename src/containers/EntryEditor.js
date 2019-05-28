@@ -206,7 +206,6 @@ handleKeyCommand = (command, editorState) => {
 
     <div>
       <h1>Welcome back, "{this.state.entry.title}" has been waiting for you!</h1>
-        <EmojiSelect/>
       <div>
       <div className="toolbar">
 
@@ -254,15 +253,15 @@ handleKeyCommand = (command, editorState) => {
     />
     <EmojiSuggestions />
 
-    <div style={{position: "absolute", right: "10%", fontWeight: "bold"}}>
-      <div><CharCounter /> characters</div>
-          <div><WordCounter /> words</div>
-          <div><LineCounter /> lines</div>
+    <div style={{position: "relative", left: "82.5%", bottom:"1.5em", fontWeight: "bold", width:"10%", display: "inline"}}>
+      <div style={{display: "inline", position: "relative", right:"12.5%", top:"1em"}}><CharCounter /> characters</div>
+          <div style={{display: "inline", position: "relative", right:"10%", top:"1em"}}><WordCounter /> words</div>
+          <div style={{display: "inline", position: "relative", right:"7.5%", top:"1em"}}><LineCounter /> lines</div>
 
       </div>
     </div>
 
-    <Link key={Math.random()} to={`/storyboards/${this.state.entry.id}`}><button style = {{position: "relative", left: "10.25em", top: "1em"}} className="ui blue button">View Storyboard</button></Link>
+    <Link key={Math.random()} to={`/storyboards/${this.state.entry.id}`}><button style = {{position: "relative", left:"7.5%", bottom:"2em"}} className="ui blue button">View Storyboard</button></Link>
     </div>
 
     </div>

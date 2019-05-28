@@ -10,7 +10,7 @@ class SettingCard extends Component {
   </div>
   <div className="extra content">
     <div className="right floated">
-      <Link to={`/settings/${this.props.setting.id}`}><button style={{position:"relative", right: "12%"}} className="ui button">View Setting Page</button></Link>
+      <Link to={`/settings/${this.props.setting.id}`}><button style={{position:"relative", right: "8%"}} className="ui button">View Setting Page</button></Link>
     </div>
   </div>
 </div>

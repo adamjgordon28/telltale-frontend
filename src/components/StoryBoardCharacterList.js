@@ -10,13 +10,13 @@ class StoryBoardCharacterList extends Component {
       return charactersArray
     }
     else {
-      return <h1 style={{position: "absolute", left: "12.5%", top: "15%"}}>No characters yet!</h1>
+      return <h1 style={{}}>No characters yet!</h1>
     }
   }
 render () {
 
   return(
-    <div className="ui raised card" style={{width: "20%", position: "absolute", left: "30%", minHeight:"41em" , maxHeight: "41em", overflowY: "scroll", display: "inline-block"}}>
+    <div className="ui raised card" style={{position:"relative", bottom:".5em", width: "20%", marginLeft:"5%", minHeight:"40.5em", maxHeight: "40.5em", overflowY: "scroll", display: "inline-block"}}>
     <div style={{background:"silver", height:"5em"}}>
     <h2 style={{textAlign:"center", position:"relative", top:".75em"}}>Characters</h2>
     </div>
