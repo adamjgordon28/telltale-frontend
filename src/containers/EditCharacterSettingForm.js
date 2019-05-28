@@ -104,8 +104,8 @@ class EditCharacterSettingForm extends Component {
   render(){
     return(
       <Fragment>
-      <div className="ui raised card" style={{width: "40%", position: "absolute", left: "30%", padding: "4%", height: "40em"}}>
-      <h1>Edit This Character-Setting!</h1>
+      <div className="ui raised card" style={{width: "30%", position: "relative", left: "35%", padding: "4%", height: "40em"}}>
+      <h2>Edit This Character-Setting!</h2>
       {<form className="ui form" style={{height: "32em", borderRadius: "2%", padding: "10%"}} onSubmit={this.handleSubmit}>
         <select style={{marginBottom: "5%"}} onChange={this.handleChange} className="ui required dropdown" value={this.state.setting_id} name="setting_id" required>
         <option label="Select a Setting!"></option>
@@ -115,18 +115,20 @@ class EditCharacterSettingForm extends Component {
         <option label="Select a Character!"></option>
           {this.renderCharacterRows()}
         </select>
+        <div classNameß="required field">
         <label>Chapter</label>
         <input onChange={this.handleChange} type="number" name="chapter" value={this.state.chapter} min={0} placeholder="Chapter" required/>
+        </div>
         <div className ="required field">
           <label>Description</label>
           <textarea onChange={this.handleChange} name="description" placeholder="Description" value={this.state.description} required ></textarea >
         </div>
-        <button style={{position: "absolute", left: "40%", top: "92.5%"}} className="ui button" type="submit">Submit</button>
+        <button style={{position: "relative", left: "30%", top: "2em"}} className="ui button" type="submit">Submit</button>
       </form>}
 
       </div>
-      {this.props.currentEntry && <Link to={"/storyboards/".concat(`${this.props.currentEntry.id}`)}><button style={{position: "absolute", top: "87.5%", left: "30%"}} className="ui button positive">Return to StoryBoard</button></Link>}
-      <button style={{position:"absolute", top: "87.5%", left: "56%", width:"14.5em"}} onClick={(e) => { if (window.confirm('Are you sure you wish to delete this item?')) this.deleteCharacterSetting(e) } }className="ui button negative">Delete Character Setting</button>
+      {this.props.currentEntry && <Link to={"/storyboards/".concat(`${this.props.currentEntry.id}`)}><button style={{position: "relative", top: "87.5%", left: "35%"}} className="ui button positive">Return to StoryBoard</button></Link>}
+      <button style={{left:"37.25%"}} onClick={(e) => { if (window.confirm('Are you sure you wish to delete this item?')) this.deleteCharacterSetting(e) } }className="ui button negative">Delete Character Setting</button>
       </Fragment>
     )
   }

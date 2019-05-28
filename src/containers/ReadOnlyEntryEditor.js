@@ -74,18 +74,19 @@ onChange =(editorState) => {
     return (
     <div>
     <h1>Please Enjoy "{this.state.entry.title}" by {this.state.entry.user.username}</h1>
-    <Editor
+    <div style={{position:"relative", top:"2.5em"}}><Editor
     onChange={(editorState) => {this.onChange(editorState)}}
     editorState={this.state.editorState}
     plugins={[highlightPlugin, counterPlugin]}
     readOnly={true}
     />
-    <div style={{position: "absolute", right: "10%", fontWeight: "bold"}}>
-      <div><CharCounter /> characters</div>
-          <div><WordCounter /> words</div>
-          <div><LineCounter /> lines</div>
-
     </div>
+    <div style={{position: "relative", left: "82.5%", bottom:"1.5em", fontWeight: "bold", width:"10%", display: "inline"}}>
+      <div style={{display: "inline", position: "relative", right:"12.5%", top:"3em"}}><CharCounter /> characters</div>
+          <div style={{display: "inline", position: "relative", right:"10%", top:"3em"}}><WordCounter /> words</div>
+          <div style={{display: "inline", position: "relative", right:"7.5%", top:"3em"}}><LineCounter /> lines</div>
+
+      </div>
     </div>
   )};
 
