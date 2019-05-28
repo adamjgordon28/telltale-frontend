@@ -67,7 +67,7 @@ class CPCreateCharacterSettingForm extends Component {
                 <label>Description</label>
                 <textarea onChange={this.handleChange} name="description" placeholder="Description" value={this.state.description} required ></textarea >
               </div>
-              <button style={{left:"35%", top:"2.5em"}} className="ui button" type="submit">Submit</button>
+              <button style={{position:"relative", left:"35%", top:"2.5em"}} className="ui button" type="submit">Submit</button>
             </form>
         </div> : <h3 style={{textAlign:"center"}}>No settings have been detailed yet for this entry. If you're interesting in creating one, you can do so <Link key={Math.random()} to={`/add-entry-info/${this.props.currentEntry.id}`}>here</Link>!</h3>}
       </div>

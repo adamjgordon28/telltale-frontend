@@ -50,7 +50,7 @@ class SPCreateCharacterSettingForm extends Component {
       return <h1>Loading...</h1>
     }
     return (
-      <div className="ui raised card" style={{width: "25%", padding: "2%", position: "absolute",left: "26.25%", top: "15%", height: "66.5%"}}>
+      <div className="ui raised card" style={{width: "25%", padding: "2%", position: "absolute",left: "26.25%", top: "15%", height: "72.5%"}}>
         {!!this.props.currentEntry.characters.length ?
         <div>
         <div style={{background:"silver", height:"5em", width:"120%", position:"relative", right:"10%", bottom:"2.1em", padding:"5%"}}>
@@ -67,7 +67,7 @@ class SPCreateCharacterSettingForm extends Component {
                 <label>Description</label>
                 <textarea onChange={this.handleChange} name="description" placeholder="Description" value={this.state.description} required ></textarea >
               </div>
-              <button style={{left:"35%", top:"2.5em"}} className="ui button" type="submit">Submit</button>
+              <button style={{position:"relative", left:"35%", top:"2.5em"}} className="ui button" type="submit">Submit</button>
             </form>
         </div>: <h3 style={{textAlign:"center"}}>No characters have been detailed yet for this entry. If you're interesting in creating one, you can do so <Link key={Math.random()} to={`/add-entry-info/${this.props.currentEntry.id}`}>here</Link>!</h3>}
       </div>

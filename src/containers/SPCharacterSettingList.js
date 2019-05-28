@@ -42,11 +42,11 @@ class SPCharacterSettingList extends Component {
   }
   render(){
     return (
-      <div className="ui raised card" style={{width: "40%", position: "absolute", top:"15%", left:"55%", minHeight:"66.5%" , maxHeight: "66.5%", overflowY: "scroll", display: "inline-block"}}>
+      <div className="ui raised card" style={{width: "40%", position: "absolute", top:"15%", left:"55%", minHeight:"72.5%" , maxHeight: "72.5%", overflowY: "scroll", display: "inline-block"}}>
       <div style={{background:"silver", height:"5em"}}>
-      <h3 style={{textAlign:"center", position:"absolute", top:"4.5%", left:"2.5%"}}>Characters Who Have Been to this Place </h3>
+      <h3 style={{textAlign:"center", position:"absolute", top:"4.5%", left:"5%"}}>Characters Who Have Been to this Place </h3>
         <div className="ui search">
-          <input className="prompt" style={{position: "relative", left:"60.5%", top:"1em"}} onChange={this.handleChange} name="chapter" value={this.state.chapter} type="number" placeholder="Search by Chapter..." min={0} />
+          <input className="prompt" style={{position: "relative", left:"66%", top:"1em"}} onChange={this.handleChange} name="chapter" value={this.state.chapter} type="number" placeholder="Search by Chapter..." min={0} />
         </div>
       </div>
       {this.renderCharacterSettings()}

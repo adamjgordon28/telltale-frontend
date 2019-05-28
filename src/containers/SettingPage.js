@@ -37,15 +37,15 @@ class SettingPage extends Component {
     return (
       <div>
       <h1>This is the page for {this.state.setting.name}</h1>
-        <div className="ui raised card" style={{position: "absolute", top:"15%", left: "2.5%", minHeight: "66.5%", maxHeight: "6.5%", width: "20%"}}>
-        <div style={{background:"silver", height:"5em"}}>
-        <h3 style={{textAlign:"center", position:"relative", top:"0.5em"}}>Description:</h3>
+        <div className="ui raised card" style={{position: "absolute", top:"15%", left: "2.5%", minHeight: "72.5%", maxHeight: "72.5%", width: "20%"}}>
+        <div style={{position:"absolute", background:"silver", height:"5em", width:"100%"}}>
+        <h3 style={{position:"absolute", top:"30%", left:"30%"}}>Description</h3>
         </div>
-        <div style={{textAlign:"center", position: "relative", top:".8em", maxHeight:"30em", margin:"5%", minHeight:"30em", overflowY:"scroll", border:".25em beige solid", padding:".25em"}}>{this.state.setting.description}</div>
+        <div style={{textAlign:"center", position: "absolute", top:"5em", maxHeight:"80%", margin:"5%", minHeight:"80%", width:"90%", overflowY:"scroll", border:".25em beige solid", padding:".25em"}}>{this.state.setting.description}</div>
         </div>
       <SPCreateCharacterSettingForm currentEntry={this.props.currentEntry} setting={this.state.setting}/>
-        <Link to={`/edit-setting/${this.state.setting.id}`}><button style={{position: "absolute", left: "55%", top: "85%"}} className="ui button blue">Edit this Setting</button></Link>
-        <Link to={`/storyboards/${this.state.setting.entry.id}`}><button style={{position: "absolute", left: "67.5%", top: "85%"}} className="ui button positive">Return To Storyboard</button></Link>
+        <Link to={`/edit-setting/${this.state.setting.id}`}><button style={{position: "absolute", left: "55%", top: "92.5%"}} className="ui button blue">Edit this Setting</button></Link>
+        <Link to={`/storyboards/${this.state.setting.entry.id}`}><button style={{position: "absolute", left: "66.5%", top: "92.5%"}} className="ui button positive">Return To Storyboard</button></Link>
       <SPCharacterSettingList setting={this.state.setting}/>
       </div>
     )

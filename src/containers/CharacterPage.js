@@ -45,7 +45,7 @@ class CharacterPage extends Component {
         </div>
       <CPCreateCharacterSettingForm currentEntry={this.props.currentEntry} character={this.state.character}/>
         <Link to={`/edit-character/${this.state.character.id}`}><button style={{position: "absolute", left: "55%", top: "92.5%"}} className="ui button blue">Edit this Character</button></Link>
-        <Link to={`/storyboards/${this.state.character.entry.id}`}><button style={{position: "absolute", left: "81.75%", top: "92.5%"}} className="ui button positive">Return To Storyboard</button></Link>
+        <Link to={`/storyboards/${this.state.character.entry.id}`}><button style={{position: "absolute", left: "67.25%", top: "92.5%"}} className="ui button positive">Return To Storyboard</button></Link>
       <CPCharacterSettingList character={this.state.character}/>
       </div>
     )
