@@ -32,6 +32,7 @@ class StoryBoard extends Component {
   }
 
  render() {
+   console.log(this.props.currentEntry)
    if (!this.props.currentEntry){
      return <h3>Loading...</h3>
    }
