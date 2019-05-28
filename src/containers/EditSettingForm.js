@@ -9,7 +9,8 @@ class EditSettingForm extends Component {
 
   state = {
     name: "",
-    description: ""
+    description: "",
+    setting: null
   }
 
   handleChange = (e) => {
@@ -52,6 +53,9 @@ class EditSettingForm extends Component {
     .then(res=>res.json())
     .then(setting => {
       this.props.removeSettingFromEntry(setting)
+      this.state.setting.character_settings.forEach((character_setting)=> {
+        this.props.removeCharacterSettingFromEntry(character_setting)
+      })
     })
     history.push(`/storyboards/${this.props.currentEntry.id}`)
   }
@@ -63,7 +67,8 @@ class EditSettingForm extends Component {
       this.props.setCurrentEntry(setting.entry)
       this.setState({
         name: setting.name,
-        description: setting.description
+        description: setting.description,
+        setting: setting
       })
     })
   }
@@ -116,6 +121,12 @@ function mapDispatchToProps(dispatch) {
     },
     removeSettingFromEntry: (setting) =>{
       dispatch({type: 'REMOVE_SETTING_FROM_ENTRY', payload: setting})
+    },
+    removeCharacterSettingFromEntry: (characterSetting) => {
+      dispatch({
+        type: 'REMOVE_CHARACTER_SETTING_FROM_ENTRY',
+        payload: characterSetting
+      })
     }
   }
 }

@@ -9,7 +9,8 @@ class EditCharacterForm extends Component {
 
   state = {
     name: "",
-    description: ""
+    description: "",
+    character: null
   }
 
   handleChange = (e) => {
@@ -47,8 +48,11 @@ class EditCharacterForm extends Component {
       method: 'DELETE'
     })
     .then(res=>res.json())
-    .then(chracter => {
-      this.props.removeCharacterFromEntry(chracter)
+    .then(character => {
+      this.props.removeCharacterFromEntry(character)
+      this.state.character.character_settings.forEach((character_setting) => {
+        this.props.removeCharacterSettingFromEntry(character_setting)
+      })
     })
     history.push(`/storyboards/${this.props.currentEntry.id}`)
   }
@@ -60,7 +64,8 @@ class EditCharacterForm extends Component {
       this.props.setCurrentEntry(character.entry)
       this.setState({
         name: character.name,
-        description: character.description
+        description: character.description,
+        character: character
       })
     })
   }
@@ -109,6 +114,12 @@ function mapDispatchToProps(dispatch) {
     },
     removeCharacterFromEntry: (chracter) =>{
       dispatch({type: 'REMOVE_CHARACTER_FROM_ENTRY', payload: chracter})
+    },
+    removeCharacterSettingFromEntry: (characterSetting) => {
+      dispatch({
+        type: 'REMOVE_CHARACTER_SETTING_FROM_ENTRY',
+        payload: characterSetting
+      })
     }
   }
 }
