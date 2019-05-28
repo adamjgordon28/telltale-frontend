@@ -47,7 +47,6 @@ class EntryContainer extends Component {
 }
 
   render(){
-    console.log(typeof this.props.match.params.id === 'number')
     if(this.props.currentUser === -1){
       history.push("/login")
     }
