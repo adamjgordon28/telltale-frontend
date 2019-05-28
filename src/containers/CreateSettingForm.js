@@ -39,11 +39,11 @@ class CreateSettingForm extends React.Component {
        <img alt="" src={'/icons/pyramids.png'} style={{position: "absolute", bottom:"82.5%", left: "70%", height:"5em"}}/>
           <form onSubmit={this.handleSubmit}>
           <div className="ui form" >
-            <div className="field">
+            <div className="required field">
               <label>Name</label>
               <input type="text" placeholder="Name" name="name" onChange={this.handleChange} maxLength="32" required />
               </div>
-              <div className="field">
+              <div className="required field">
               <label>Description</label>
               <textarea type="text" placeholder="Description" name="description" onChange={this.handleChange} required ></textarea>
               </div>

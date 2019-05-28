@@ -83,11 +83,11 @@ class EditSettingForm extends Component {
 
         <form onSubmit={this.handleSubmit}>
         <div className="ui form" >
-          <div className="field">
+          <div className="required field">
             <label>Name</label>
             <input type="text" placeholder="Name" name="name" onChange={this.handleChange} value = {this.state.name} maxLength="32" required/>
             </div>
-            <div className="field">
+            <div className="required field">
             <label>Description</label>
             <textarea type="text" placeholder="Description" name="description" onChange={this.handleChange} value ={this.state.description} required ></textarea>
             </div>

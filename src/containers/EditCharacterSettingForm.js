@@ -107,17 +107,17 @@ class EditCharacterSettingForm extends Component {
       <div className="ui raised card" style={{width: "40%", position: "absolute", left: "30%", padding: "4%", height: "40em"}}>
       <h1>Edit This Character-Setting!</h1>
       {<form className="ui form" style={{height: "32em", borderRadius: "2%", padding: "10%"}} onSubmit={this.handleSubmit}>
-        <select style={{marginBottom: "5%"}} onChange={this.handleChange} className="ui dropdown" value={this.state.setting_id} name="setting_id" required>
+        <select style={{marginBottom: "5%"}} onChange={this.handleChange} className="ui required dropdown" value={this.state.setting_id} name="setting_id" required>
         <option label="Select a Setting!"></option>
           {this.renderSettingRows()}
         </select>
-        <select style={{marginBottom: "5%"}} onChange={this.handleChange} className="ui dropdown" value={this.state.character_id} name="character_id" required >
+        <select style={{marginBottom: "5%"}} onChange={this.handleChange} className="ui required dropdown" value={this.state.character_id} name="character_id" required >
         <option label="Select a Character!"></option>
           {this.renderCharacterRows()}
         </select>
         <label>Chapter</label>
         <input onChange={this.handleChange} type="number" name="chapter" value={this.state.chapter} min={0} placeholder="Chapter" required/>
-        <div className ="field">
+        <div className ="required field">
           <label>Description</label>
           <textarea onChange={this.handleChange} name="description" placeholder="Description" value={this.state.description} required ></textarea >
         </div>

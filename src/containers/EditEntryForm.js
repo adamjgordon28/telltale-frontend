@@ -70,11 +70,11 @@ class EditEntryForm extends Component {
 
           <form onSubmit={this.handleSubmit}>
           <div className="ui form">
-            <div className="field">
+            <div className="required field">
               <label>Title</label>
               <input type="text" placeholder="Title" name="title" onChange={this.handleChange} value={this.state.title} required />
               </div>
-              <div className="field">
+              <div className="required field">
                   <label>Genre</label>
                   <select onChange={this.handleChange} name = "genre" value={this.state.genre} required >
                           <option label="Genre"></option>
@@ -92,7 +92,7 @@ class EditEntryForm extends Component {
                           <option value="other">Other</option>
                       </select>
               </div>
-              <div className="field">
+              <div className="required field">
               <label>Description</label>
               <textarea type="text" placeholder="Description" name="description" value={this.state.description} onChange={this.handleChange} required ></textarea>
               </div>

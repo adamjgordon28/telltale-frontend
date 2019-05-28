@@ -47,17 +47,18 @@ class CreateEntryForm extends React.Component {
       <div className="ui raised card" style={{width: "60%", position: "relative", left: "20%", padding:"5em"}}>
       <div className="ui attached message" style={{position: "relative", bottom: "3em", textAlign: "center"}}>
         <div className="header">
+        <img style={{height:"5em", background: "white", border:".125em solid gray", borderRadius:"1.25em", position: "relative", top: ".75em"}} alt="" src='./icons/Other-2.png'/>
           <h2>Start Working on Your New Masterpiece Today!</h2>
         </div>
       </div>
 
           <form onSubmit={this.handleSubmit}>
           <div className="ui form">
-            <div className="field">
+            <div className="required field">
               <label>Title</label>
               <input type="text" placeholder="Title" name="title" onChange={this.handleChange} required />
               </div>
-              <div className="field">
+              <div className="required field">
                   <label>Genre</label>
                   <select onChange={this.handleChange} name = "genre" required >
                           <option label="Genre"></option>
@@ -75,7 +76,7 @@ class CreateEntryForm extends React.Component {
                           <option value="other">Other</option>
                       </select>
               </div>
-              <div className="field">
+              <div className="required field">
               <label>Description</label>
               <textarea type="text" placeholder="Description" name="description" onChange={this.handleChange} required ></textarea>
               </div>

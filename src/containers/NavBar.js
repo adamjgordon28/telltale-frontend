@@ -23,6 +23,11 @@ class NavBar extends Component {
           <h3>Your Entries</h3>
         </div>
       </Link>
+      <Link to="/total-entries">
+        <div className="item">
+          <h3>Other Entries</h3>
+        </div>
+      </Link>
       <Link to ={"/profile"}>
         <div className="item">
           <h3>View Your Profile</h3>

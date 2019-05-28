@@ -51,18 +51,18 @@ class Login extends React.Component {
 
 
 
-          
+
           <h2>Welcome Back! Login to Keep on Writing!</h2>
         </div>
       </div>
 
           <form onSubmit={this.handleSubmit}>
           <div className="ui form">
-            <div className="field">
+            <div className="required field">
               <label>Username</label>
               <input type="text" placeholder="Username" name="username" onChange={this.handleChange} required />
               </div>
-            <div className="field">
+            <div className="required field">
               <label>Password</label>
               <input type="password" placeholder="Password" name="password" onChange={this.handleChange} required />
               </div>

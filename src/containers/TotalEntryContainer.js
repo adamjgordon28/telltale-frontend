@@ -23,7 +23,7 @@ class TotalEntryContainer extends Component {
 
   filterEntries = (array) => {
     let singleFilteredArray = array.filter((entry)=> {
-      return entry.title.toLowerCase().includes(this.state.typeSearch.toLowerCase())
+      return (entry.title.toLowerCase().includes(this.state.typeSearch.toLowerCase())||entry.user.username.toLowerCase().includes(this.state.typeSearch.toLowerCase()))
     })
     let fullFilteredArray = singleFilteredArray.filter((entry1)=> {
       return entry1.genre.includes(this.state.genreSearch)

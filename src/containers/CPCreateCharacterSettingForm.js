@@ -57,13 +57,13 @@ class CPCreateCharacterSettingForm extends Component {
         <h3 style={{maxHeight:"2.75em", overflowY:"scroll", textAlign:"center", position:"absolute", bottom: ".625em"}}>Where does {this.props.character.name} appear in your story? Detail it here!</h3>
         </div>
             <form style={{position:"relative"}} className="ui form" onSubmit={this.handleSubmit}>
-              <select style={{position:"relative", marginBottom:"1.5%"}} onChange={this.handleChange} className="ui dropdown" value={this.state.setting_id} name="setting_id" required>
+              <select style={{position:"relative", marginBottom:"1.5%"}} onChange={this.handleChange} className="ui required dropdown" value={this.state.setting_id} name="setting_id" required>
               <option label="Select a Setting!"></option>
                 {this.renderRows()}
               </select>
               <label>Chapter</label>
               <input style={{position:"relative", marginBottom:"1.5%"}} onChange={this.handleChange} type="number" name="chapter" value={this.state.chapter} min={0} placeholder="Chapter" required/>
-              <div className ="field">
+              <div className ="required field">
                 <label>Description</label>
                 <textarea onChange={this.handleChange} name="description" placeholder="Description" value={this.state.description} required ></textarea >
               </div>
