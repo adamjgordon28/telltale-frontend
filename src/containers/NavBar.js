@@ -28,7 +28,7 @@ class NavBar extends Component {
           <h3>Other Entries</h3>
         </div>
       </Link>
-      <Link to ={"/profile"}>
+      <Link to={`/profiles/${this.props.currentUser.id}`}>
         <div className="item">
           <h3>View Your Profile</h3>
         </div>

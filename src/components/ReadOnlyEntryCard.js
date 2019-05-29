@@ -40,6 +40,7 @@ class EntryCard extends React.Component {
   </div>
 
   <Link key={Math.random()} to={`/total-entries/${this.props.entry.id}`}><button style = {{position: "absolute", left: "2%", top: "80%"}} className="ui blue button">Read Entry</button></Link>
+  <Link key={Math.random()} to={`/profiles/${this.props.entry.user.id}`}><button style = {{position: "absolute", left: "23.75%", top: "80%"}} className="ui button positive">View Author Profile</button></Link>
   </div>
 </div>
 

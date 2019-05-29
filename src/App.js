@@ -4,7 +4,7 @@ import { Route, Router } from 'react-router-dom'
 import history from './history';
 import CreateUserForm from './containers/CreateUserForm.js';
 import Login from './containers/Login.js';
-import UserProfile from './containers/UserProfile.js';
+import Profile from './containers/Profile.js';
 import CreateEntryForm from './containers/CreateEntryForm.js';
 import NavBar from './containers/NavBar.js';
 import Logout from './containers/Logout.js';
@@ -59,7 +59,7 @@ class App extends Component {
             <NavBar/>
             <Route exact path ="/signup" render = {(routeProps) => <CreateUserForm {...routeProps}/>}/>
             <Route exact path ="/login" render = {(routeProps) => <Login {...routeProps}/>}/>
-            <Route exact path ="/profile" render = {(routeProps) => <UserProfile logOut={this.logOut}{...routeProps}/>}/>
+            <Route path ='/profiles/:id' render = {(routeProps) => <Profile logOut={this.logOut}{...routeProps}/>}/>
             <Route exact path ="/create-entry" render = {(routeProps) => <CreateEntryForm {...routeProps}/>}/>
             <Route exact path ="/logout" render = {(routeProps) => <Logout logOut = {this.logOut} {...routeProps}/>}/>
             <Route path ="/entries" component={EntryContainer}/>
