@@ -1,6 +1,7 @@
 const defaultState = {
   currentUser: null,
-  currentEntry: null
+  currentEntry: null,
+  profileUser: null
 }
 
   const mainReducer = (state=defaultState, action) => {
@@ -136,6 +137,17 @@ const defaultState = {
           character_settings: state.currentEntry.character_settings.filter(character_setting=>action.payload.id !== character_setting.id)
         }
       }
+      case 'SET_PROFILE_USER':
+      return {...state, profileUser: action.payload}
+      case 'ADD_FOLLOW_TO_PROFILE_USER':
+      return {...state,
+              profileUser: {
+                ...state.profileUser,
+                  follows: [...state.profileUser.follows, action.payload]
+              }
+            }
+
+
 
       default:
       return state
