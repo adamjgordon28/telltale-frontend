@@ -10,7 +10,7 @@ class StoryBoardCharacterList extends Component {
       return charactersArray
     }
     else {
-      return <h1 style={{}}>No characters yet!</h1>
+      return <h1>No characters yet!</h1>
     }
   }
 render () {

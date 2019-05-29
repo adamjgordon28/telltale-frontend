@@ -28,11 +28,6 @@ class NavBar extends Component {
           <h3>Other Entries</h3>
         </div>
       </Link>
-      <Link to ={"/profile"}>
-        <div className="item">
-          <h3>View Your Profile</h3>
-        </div>
-      </Link>
     </Fragment> }
     {this.props.currentUser === -1 || this.props.currentUser === null ?
       <Fragment><Link to="/signup"><div className="item"><h3>Sign Up</h3></div></Link><Link to="/login"><div className="item"><h3>Login</h3></div></Link></Fragment> :
