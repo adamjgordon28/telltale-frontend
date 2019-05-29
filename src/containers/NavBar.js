@@ -25,7 +25,7 @@ class NavBar extends Component {
       </Link>
       <Link to="/following-entries">
         <div className="item">
-          <h3>Entries by Authors You're Following</h3>
+          <h3>Following Entries</h3>
         </div>
       </Link>
       <Link to="/total-entries">

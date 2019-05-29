@@ -154,6 +154,22 @@ const defaultState = {
           follows: state.profileUser.follows.filter(follow=>action.payload.id !== follow.id)
         }
       }
+      case 'ADD_FOLLOWING_TO_CURRENT_USER':
+      return {...state,
+              currentUser: {
+                ...state.currentUser,
+                  followings: [...state.currentUser.followings, action.payload]
+              }
+            }
+      //needs work
+      case 'REMOVE_FOLLOWING_FROM_CURRENT_USER':
+      return {
+        ...state,
+          currentUser: {
+          ...state.currentUser,
+          followings: state.currentUser.followings.filter(following=>action.payload.id !== following.id)
+        }
+      }
 
 
       default:

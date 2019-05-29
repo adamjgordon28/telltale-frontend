@@ -17,6 +17,7 @@ class Profile extends React.Component {
   .then(res=>res.json())
   .then(follow => {
     this.props.removeFollowFromProfileUser(deletedFollow)
+    this.props.removeFollowingFromCurrentUser(deletedFollow)
   })
 }
 
@@ -41,6 +42,7 @@ followAuthor = () => {
         .then(response => response.json())
         .then(follow => {
           this.props.addFollowToProfileUser(follow)
+          this.props.addFollowingToCurrentUser(follow)
         })
 
 }
@@ -122,10 +124,18 @@ function mapDispatchToProps(dispatch) {
       dispatch({type:'ADD_FOLLOW_TO_PROFILE_USER', payload: follow})
     },
     removeFollowFromProfileUser: (follow) => {
-      dispatch({type:'REMOVE_FOLLOW_FROM_PROFILE_USER', payload:follow})
+      dispatch({type:'REMOVE_FOLLOW_FROM_PROFILE_USER', payload: follow})
+    },
+    addFollowingToCurrentUser: (following) => {
+      dispatch({type:'ADD_FOLLOWING_TO_CURRENT_USER',
+      payload: following})
+    },
+    removeFollowingFromCurrentUser: (following) => {
+      dispatch({type: 'REMOVE_FOLLOWING_FROM_CURRENT_USER', payload:following})
     }
   }
 }
+
 
 
 const mapStateToProps = (state) => {
