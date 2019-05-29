@@ -39,7 +39,7 @@ class StoryBoardCharacterSettingList extends Component {
       return charSetArray
     }
     else {
-      return <h1 style={{position: "absolute", left: "12.5%", top: "15%"}}>No notes meet these specifications!</h1>
+      return <h3 style={{textAlign:"center", position: "relative", top: "5em"}}>No notes meet these specifications!</h3>
     }
   }
   render(){

@@ -48,13 +48,13 @@ followAuthor = () => {
 renderProperFollowInfo = () => {
   if (this.props.profileUser.id !== this.props.currentUser.id && this.followingThisUser()){
     return (<div>
-              <h3>Following this Author</h3>
+              <h3>You are Following this Author</h3>
               <button onClick={this.unFollowAuthor} className="ui button positive">Unfollow this Author</button>
             </div>)
   }
   else if (this.props.profileUser.id !== this.props.currentUser.id && !this.followingThisUser()){
     return (<div>
-              <h3>Not Following this Author</h3>
+              <h3>You are Not Following this Author</h3>
               <button onClick={this.followAuthor} className="ui button positive">Follow this Author</button>
             </div>)
   }
@@ -94,7 +94,13 @@ renderProperFollowInfo = () => {
       {this.props.profileUser ? <div>
       <img style={{borderRadius: "50%", height: "12em"}} src={this.props.profileUser.img_url} alt=""/>
       <h3>User Name: {this.props.profileUser.username}</h3>
+      <h3>Bio: {this.props.profileUser.bio} </h3>
+      <h3>Age: {this.props.profileUser.age} </h3>
+      <h3>Location: {this.props.profileUser.location} </h3>
       <h3>Follows: {this.props.profileUser.follows.length}</h3></div>: null}
+      <div>
+      <h3>Following: {this.props.profileUser.followings.length}</h3>
+      </div>
 
       <div>
       {this.renderProperFollowInfo()}

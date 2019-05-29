@@ -35,7 +35,7 @@ class EntryCard extends React.Component {
   <div className="extra content">
 
   <div style={{position:"absolute", right: ".00001%", bottom: "25.5%", maxHeight: "55%", minHeight: "55%", overflowY: "scroll", width: "100%", padding:"1%"}} className="description">
-    <p> Description: {this.props.entry.description}</p>
+    <p style={{margin:"1.75%"}}> Description: {this.props.entry.description}</p>
   </div>
 
   <Link key={Math.random()} to={`/storyboards/${this.props.entry.id}`}><button style = {{position: "absolute", left: "2%", top: "80%"}} className="ui blue button">View Storyboard</button></Link>

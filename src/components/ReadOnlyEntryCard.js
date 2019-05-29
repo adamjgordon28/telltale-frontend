@@ -35,8 +35,8 @@ class EntryCard extends React.Component {
   <div className="extra content">
 
   <div style={{position:"absolute", right: ".00001%", bottom: "25.5%", maxHeight: "55%", minHeight: "55%", overflowY: "scroll", width: "100%", padding:"1%"}} className="description">
-    <h4 style={{position:"relative", left:"2.5%", color:"black"}}>by {this.props.entry.user.username}</h4>
-    <p style={{margin:"2.5%"}}> Description: {this.props.entry.description}</p>
+    <h4 style={{position:"relative", left:"1.625%", color:"black"}}>by {this.props.entry.user.username}</h4>
+    <p style={{margin:"1.625%"}}> Description: {this.props.entry.description}</p>
   </div>
 
   <Link key={Math.random()} to={`/total-entries/${this.props.entry.id}`}><button style = {{position: "absolute", left: "2%", top: "80%"}} className="ui blue button">Read Entry</button></Link>

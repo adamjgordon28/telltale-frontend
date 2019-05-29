@@ -39,7 +39,7 @@ class CreateUserForm extends React.Component {
           }
           this.props.setCurrentUser(json)
           localStorage.setItem("token", json.token)
-          history.push('/profile')
+          history.push('/entries')
         })
   }
 
