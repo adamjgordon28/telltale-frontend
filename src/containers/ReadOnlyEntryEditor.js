@@ -80,7 +80,7 @@ onChange =(editorState) => {
     plugins={[highlightPlugin, counterPlugin]}
     readOnly={true}
     />
-      <Link key={Math.random()} to={`/profiles/${this.state.entry.user.id}`}><button className="ui button positive" style={{position:"relative", left:"7.5%"}}>Vie Author Profile</button></Link>
+      <Link key={Math.random()} to={`/profiles/${this.state.entry.user.id}`}><button className="ui button positive" style={{position:"relative", left:"7.5%"}}>View Author Profile</button></Link>
     </div>
     <div style={{position: "relative", left: "82.5%", bottom:"2.5em", fontWeight: "bold", width:"10%", display: "inline"}}>
       <div style={{display: "inline", position: "relative", right:"12.5%", top:"3em"}}><CharCounter /> characters</div>
