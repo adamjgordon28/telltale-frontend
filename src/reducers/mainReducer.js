@@ -146,7 +146,14 @@ const defaultState = {
                   follows: [...state.profileUser.follows, action.payload]
               }
             }
-
+      case 'REMOVE_FOLLOW_FROM_PROFILE_USER':
+      return {
+        ...state,
+          profileUser: {
+          ...state.profileUser,
+          follows: state.profileUser.follows.filter(follow=>action.payload.id !== follow.id)
+        }
+      }
 
 
       default:

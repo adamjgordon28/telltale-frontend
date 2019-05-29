@@ -7,6 +7,21 @@ import history from '../history.js';
 class Profile extends React.Component {
 
 
+  unFollowAuthor = () => {
+    let deletedFollow = this.props.profileUser.follows.find((follow)=> {
+      return follow.following_id === this.props.currentUser.id
+    })
+    fetch("http://localhost:4000/api/v1/follows/"+ `${deletedFollow.id}`, {
+    method: 'DELETE'
+  })
+  .then(res=>res.json())
+  .then(follow => {
+    this.props.removeFollowFromProfileUser(deletedFollow)
+  })
+}
+
+
+
 
 
 followingThisUser = () => {
@@ -99,6 +114,9 @@ function mapDispatchToProps(dispatch) {
     },
     addFollowToProfileUser: (follow) => {
       dispatch({type:'ADD_FOLLOW_TO_PROFILE_USER', payload: follow})
+    },
+    removeFollowFromProfileUser: (follow) => {
+      dispatch({type:'REMOVE_FOLLOW_FROM_PROFILE_USER', payload:follow})
     }
   }
 }
