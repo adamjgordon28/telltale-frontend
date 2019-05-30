@@ -1,10 +1,10 @@
-import React from 'react';
+import React, {Component, Fragment} from 'react';
 import { Link } from 'react-router-dom'
 import { connect } from 'react-redux';
 import history from '../history.js';
 
 
-class Profile extends React.Component {
+class Profile extends Component {
 
 
   unFollowAuthor = () => {
@@ -92,24 +92,37 @@ renderProperFollowInfo = () => {
     }
     return (
       <div>
-       {this.props.profileUser.id === this.props.currentUser.id ? <h1>Welcome back {this.props.profileUser.name}</h1> : <h1>This is the profile of {this.props.profileUser.name}</h1> }
-      {this.props.profileUser ? <div>
-      <img style={{borderRadius: "50%", height: "12em"}} src={this.props.profileUser.img_url} alt=""/>
-      <h3>User Name: {this.props.profileUser.username}</h3>
-      <h3>Bio: {this.props.profileUser.bio} </h3>
-      <h3>Age: {this.props.profileUser.age} </h3>
-      <h3>Location: {this.props.profileUser.location} </h3>
-      <h3>Follows: {this.props.profileUser.follows.length}</h3></div>: null}
+       {this.props.profileUser.id === this.props.currentUser.id ? <h1>Welcome back, {this.props.profileUser.username}!</h1> : <h1> {this.props.profileUser.username}'s Profile</h1> }
+      {this.props.profileUser ?<Fragment> <div style={{textAlign:"center"}}>
+      <img style={{border:".25em silver solid", borderRadius: "50%", height: "8.25em", margin:"0 auto"}} src={this.props.profileUser.img_url} alt=""/>
+      <div className="ui raised card" style={{position:"relative", width: "30%", height: "23.75em", left:"35%"}}>
+      <div className="extra content" style={{color:"black"}}>
+      <h3 style={{textAlign:"center"}}> {this.props.profileUser.name}</h3>
+      </div>
+      <div className="extra content" style={{color:"black"}}>
+      <h3 style={{textAlign:"center"}}> {this.props.profileUser.age} Years Old</h3>
+      </div>
+      <div className="extra content" style={{color:"black"}}>
+      <h3 style={{textAlign:"center"}}> {this.props.profileUser.location} </h3>
+      </div>
+      <div className="extra content" style={{color:"black"}} style={{maxHeight:"7.5em", minHeight:"7.5em", height:"7.5em", width:"100%", maxWidth: "100%", overflowWrap:"break-word", overflowY:"scroll"}}>
+      <h3 style={{textAlign:"center", color:"black"}}>Bio: </h3>{} {this.props.profileUser.bio}
+      </div>
+
+
+      <div className="extra content" style={{color:"black"}}>
+      <h3>Follows: {this.props.profileUser.follows.length}</h3>
       <div>
+      <div className="extra content" style={{color:"black"}}>
       <h3>Following: {this.props.profileUser.followings.length}</h3>
       </div>
-
-      <div>
-      {this.renderProperFollowInfo()}
+      </div>
+      </div>
       </div>
 
-
-
+          <div>
+          {this.renderProperFollowInfo()}
+          </div></div></Fragment>: null}
       </div>
     )
   }

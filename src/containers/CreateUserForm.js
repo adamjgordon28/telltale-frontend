@@ -85,7 +85,7 @@ class CreateUserForm extends React.Component {
           </div>
               <div className="required field">
               <label>Bio</label>
-              <textarea type="text" placeholder="Bio" name="bio" onChange={this.handleChange}  ></textarea>
+              <textarea type="text" placeholder="Bio" name="bio" onChange={this.handleChange}></textarea>
               </div>
           <button className="ui button" style={{position:"relative", left: "45%", top: "1.5em"}} type="submit">Submit</button>
         </div>
