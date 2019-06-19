@@ -41,7 +41,7 @@ class EntryContainer extends Component {
     return entryCardComponentArray
     }
     else {
-      return (<h1 style={{position: "absolute", textAlign: "center", left: "25%", top:"5em"}}>No entries meet these specifications! <Link to='/create-entry'>Create a new entry here</Link>!</h1>)
+      return (<h1 style={{position: "absolute", textAlign: "center", left: "25%", top:"5em"}}>No entries meet these specifications. <Link to='/create-entry'>Create a new entry here</Link>!</h1>)
     }
   }
 }

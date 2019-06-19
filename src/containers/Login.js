@@ -42,7 +42,7 @@ class Login extends React.Component {
 
   render(){
     return(
-      <div className="ui raised card" style={{width: "55%", position: "relative", left: "25%", padding:"5em", top: "5em"}}>
+      <div className="ui raised card" style={{width: "36%", position: "relative", left: "32%", padding:"5em", top: "5em"}}>
       <div className="ui attached message" style={{position: "relative", bottom: "3em", textAlign: "center"}}>
         <div className="header">
 
@@ -52,7 +52,7 @@ class Login extends React.Component {
 
 
 
-          <h2>Welcome Back! Login to Keep on Writing!</h2>
+          <h2>Welcome Back! Log In to Keep on Writing!</h2>
         </div>
       </div>
 
@@ -66,7 +66,7 @@ class Login extends React.Component {
               <label>Password</label>
               <input type="password" placeholder="Password" name="password" onChange={this.handleChange} required />
               </div>
-          <button className="ui button" style={{position:"relative", left: "20.5em", top: "1.5em"}} type="submit">Login</button>
+          <button className="ui button" style={{left:"40%", top:"1.75em"}} type="submit">Login</button>
         </div>
         </form>
       </div>

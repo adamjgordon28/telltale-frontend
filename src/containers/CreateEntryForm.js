@@ -44,7 +44,7 @@ class CreateEntryForm extends React.Component {
       history.push("/login")
     }
     return(
-      <div className="ui raised card" style={{width: "50%", position: "relative", left: "25%", padding:"5em"}}>
+      <div className="ui raised card" style={{width: "36%", position: "relative", left: "32%", padding:"5em", height: "50em"}}>
       <div className="ui attached message" style={{position: "relative", bottom: "3em", textAlign: "center"}}>
         <div className="header">
         <img style={{height:"5em", background: "white", border:".125em solid gray", borderRadius:"1.25em", position: "relative", top: ".75em"}} alt="" src='./icons/Other-2.png'/>
