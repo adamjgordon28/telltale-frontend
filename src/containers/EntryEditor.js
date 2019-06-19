@@ -64,7 +64,7 @@ const { UndoButton, RedoButton } = undoPlugin;
 const linkifyPlugin = createLinkifyPlugin();
 
 const emojiPlugin = createEmojiPlugin();
-const { EmojiSuggestions, EmojiSelect } = emojiPlugin;
+const { EmojiSuggestions} = emojiPlugin;
 
 const tabCharacter = "    ";
 

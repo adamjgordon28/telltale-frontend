@@ -10,7 +10,7 @@ class StoryBoardSettingList extends Component {
       return settingsArray
     }
     else {
-      return <h1 style={{}}>No settings yet!</h1>
+      return <h3 style={{textAlign: "center", position: "relative", top: "5em"}}>No settings yet!</h3>
     }
   }
 render () {

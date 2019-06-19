@@ -39,13 +39,13 @@ class CreateUserForm extends React.Component {
           }
           this.props.setCurrentUser(json)
           localStorage.setItem("token", json.token)
-          history.push('/profile')
+          history.push(`/profiles/${json.user.id}`)
         })
   }
 
   render(){
     return(
-      <div className="ui raised card" style={{width: "60%", position: "relative", left: "20%", padding:"5em"}}>
+      <div className="ui raised card" style={{width: "40%", position: "relative", left: "30%", padding:"5em"}}>
       <div className="ui attached message" style={{position: "relative", bottom: "3em", textAlign: "center"}}>
         <div className="header">
         <img style={{height:"5em", background: "white", border:".25em solid gray", borderRadius:"2.5em", position: "relative", top: ".75em"}} alt="" src='./icons/TellTaleLogo.png'/>
@@ -85,7 +85,7 @@ class CreateUserForm extends React.Component {
           </div>
               <div className="required field">
               <label>Bio</label>
-              <textarea type="text" placeholder="Bio" name="bio" onChange={this.handleChange}  ></textarea>
+              <textarea type="text" placeholder="Bio" name="bio" onChange={this.handleChange}></textarea>
               </div>
           <button className="ui button" style={{position:"relative", left: "45%", top: "1.5em"}} type="submit">Submit</button>
         </div>

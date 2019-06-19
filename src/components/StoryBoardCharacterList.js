@@ -10,7 +10,7 @@ class StoryBoardCharacterList extends Component {
       return charactersArray
     }
     else {
-      return <h1>No characters yet!</h1>
+      return <h3 style={{textAlign: "center", position: "relative", top: "5em"}}>No characters yet!</h3>
     }
   }
 render () {
