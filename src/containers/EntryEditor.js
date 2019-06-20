@@ -66,7 +66,7 @@ const linkifyPlugin = createLinkifyPlugin();
 const emojiPlugin = createEmojiPlugin();
 const { EmojiSuggestions} = emojiPlugin;
 
-const tabCharacter = "    ";
+const tabCharacter = "   ";
 
 
 
@@ -175,14 +175,14 @@ handleKeyCommand = (command, editorState) => {
  componentDidMount = () => {
   fetch("http://localhost:4000/api/v1/entries/".concat(`${this.props.match.params.id}`))
    .then(response => response.json())
-   .then(json => {
+   .then(entry => {
 
-     if(json) {
+     if(entry) {
     this.setState({
 
-      editorState: EditorState.createWithContent(convertFromRaw(JSON.parse(json.content))),
+      editorState: EditorState.createWithContent(convertFromRaw(JSON.parse(entry.content))),
       fetched: true,
-      entry: json
+      entry: entry
     })
     }
     else {
@@ -220,6 +220,13 @@ handleKeyCommand = (command, editorState) => {
       <h3 className="loading">Loading...</h3>
     );
   }
+  if(this.props.currentUser && this.state.entry.user){
+    if(this.props.currentUser.id !== this.state.entry.user.id){
+      alert("You do not have access to this page! You are being re-directed to a read-only version of this entry.")
+      history.push(`/total-entries/${this.state.entry.id}`)
+    }
+  }
+
     return (
 
     <div>
