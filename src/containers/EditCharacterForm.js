@@ -73,6 +73,9 @@ class EditCharacterForm extends Component {
 
 
   render(){
+    if (!this.props.currentEntry){
+      return <h3>Loading...</h3>
+    }
     return(
       <Fragment>
         <div className="ui raised card" style={{width: "32%", position: "relative", left: "34%", padding: "3%", height: "30em"}}>
