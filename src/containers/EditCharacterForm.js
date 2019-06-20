@@ -62,6 +62,11 @@ class EditCharacterForm extends Component {
     fetch("http://localhost:4000/api/v1/characters/".concat(`${this.props.match.params.id}`))
     .then(res=>res.json())
     .then(character => {
+      if(character.status===404){
+        alert("This is not a valid character.")
+        this.props.setCurrentEntry(null)
+        history.push('/entries')
+      }
       this.props.setCurrentEntry(character.entry)
       this.setState({
         name: character.name,
@@ -75,6 +80,13 @@ class EditCharacterForm extends Component {
   render(){
     if (!this.props.currentEntry){
       return <h3>Loading...</h3>
+    }
+     if (this.props.currentUser && this.state.character){
+      if(this.props.currentUser.id !== this.state.character.entry.user_id){
+        alert("You do not have access to this page!")
+        this.props.setCurrentEntry(null)
+        history.push(`/entries`)
+      }
     }
     return(
       <Fragment>

@@ -115,7 +115,7 @@ class EditCharacterSettingForm extends Component {
         <option label="Select a Character!"></option>
           {this.renderCharacterRows()}
         </select>
-        <div classNameß="required field">
+        <div className="required field">
         <label>Chapter</label>
         <input onChange={this.handleChange} type="number" name="chapter" value={this.state.chapter} min={0} placeholder="Chapter" required/>
         </div>
