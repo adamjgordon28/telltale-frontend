@@ -38,6 +38,7 @@ class StoryBoard extends Component {
    }
    if(this.props.currentEntry.status===404){
      alert("This is not a valid entry.")
+     this.props.setCurrentEntry(null)
      history.push('/entries')
    }
     if (this.props.currentUser && this.props.currentEntry.user){
