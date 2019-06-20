@@ -71,6 +71,12 @@ class EditCharacterSettingForm extends Component {
     fetch("http://localhost:4000/api/v1/character_settings/".concat(`${this.props.match.params.id}`))
     .then(res=>res.json())
     .then(charSet=>{
+      if(charSet.status===404){
+        alert("This is not a valid character-setting.")
+        this.props.setCurrentEntry(null)
+        history.push('/entries')
+      }
+      if (charSet.status!==404){
       this.props.setCurrentEntry(charSet.entry)
       this.setState({
         setting_id: charSet.setting_id,
@@ -83,6 +89,7 @@ class EditCharacterSettingForm extends Component {
       .then(entry=>{
       this.props.setCurrentEntry(entry)
       })
+      }
     })
 
   }
@@ -102,6 +109,21 @@ class EditCharacterSettingForm extends Component {
 
 
   render(){
+    if (!this.props.currentEntry || !this.props.currentUser){
+      return <h3>Loading...</h3>
+    }
+    if(this.props.currentEntry.status===404){
+      alert("This is not a valid entry.")
+      this.props.setCurrentEntry(null)
+      history.push('/entries')
+    }
+     if (this.props.currentUser && this.props.currentEntry.user){
+      if(this.props.currentUser.id !== this.props.currentEntry.user.id){
+        alert("You do not have access to this page!")
+        this.props.setCurrentEntry(null)
+        history.push(`/entries`)
+      }
+    }
     return(
       <Fragment>
       <div className="ui raised card" style={{width: "30%", position: "relative", left: "35%", padding: "4%", height: "40em"}}>
