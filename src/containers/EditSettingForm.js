@@ -62,6 +62,11 @@ class EditSettingForm extends Component {
     fetch("http://localhost:4000/api/v1/settings/".concat(`${this.props.match.params.id}`))
     .then(res=>res.json())
     .then(setting => {
+      if(setting.status===404){
+        alert("This is not a valid setting.")
+        this.props.setCurrentEntry(null)
+        history.push('/entries')
+      }
       this.props.setCurrentEntry(setting.entry)
       this.setState({
         name: setting.name,
@@ -73,6 +78,16 @@ class EditSettingForm extends Component {
 
 
   render(){
+    if (!this.props.currentEntry){
+      return <h3>Loading...</h3>
+    }
+     if (this.props.currentUser && this.state.setting){
+      if(this.props.currentUser.id !== this.state.setting.entry.user_id){
+        alert("You do not have access to this page!")
+        this.props.setCurrentEntry(null)
+        history.push(`/entries`)
+      }
+    }
     return(
       <Fragment>
         <div className="ui raised card" style={{width: "32%", position: "relative", left: "34%", padding: "3%", height: "30em"}}>
