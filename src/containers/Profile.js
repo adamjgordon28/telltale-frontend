@@ -67,11 +67,16 @@ renderProperFollowInfo = () => {
     fetch("http://localhost:4000/api/v1/users/".concat(`${this.props.match.params.id}`))
     .then(res=>res.json())
     .then(returnedUser => {
+      if(returnedUser.status===404){
+        alert("This is not a valid user.")
+        history.push('/entries')
+      }
       this.props.setProfileUser(returnedUser)
     })
   }
 
   componentDidMount = () => {
+
     this.fetchAndSetUser()
   }
 

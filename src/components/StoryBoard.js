@@ -37,6 +37,7 @@ class StoryBoard extends Component {
      return <h3>Loading...</h3>
    }
    if(this.props.currentEntry.status===404){
+     console.log(this.props.currentEntry)
      alert("This is not a valid entry.")
      this.props.setCurrentEntry(null)
      history.push('/entries')
