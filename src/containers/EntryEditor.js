@@ -176,7 +176,10 @@ handleKeyCommand = (command, editorState) => {
   fetch("http://localhost:4000/api/v1/entries/".concat(`${this.props.match.params.id}`))
    .then(response => response.json())
    .then(entry => {
-
+     if(entry.status === 404){
+       alert("This is not a valid entry.")
+       return history.push('/entries')
+     }
      if(entry) {
     this.setState({
 

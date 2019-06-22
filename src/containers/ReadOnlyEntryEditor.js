@@ -45,13 +45,17 @@ onChange =(editorState) => {
  componentDidMount = () => {
   fetch("http://localhost:4000/api/v1/entries/".concat(`${this.props.match.params.id}`))
    .then(response => response.json())
-   .then(json => {
-     if(json) {
+   .then(entry => {
+     if(entry.status === 404){
+       alert("This is not a valid entry.")
+       return history.push('/entries')
+     }
+     if(entry) {
     this.setState({
 
-      editorState: EditorState.createWithContent(convertFromRaw(JSON.parse(json.content))),
+      editorState: EditorState.createWithContent(convertFromRaw(JSON.parse(entry.content))),
       fetched: true,
-      entry: json
+      entry: entry
     })
     }
     else {

@@ -42,7 +42,7 @@ class Login extends React.Component {
 
   render(){
     return(
-      <div className="ui raised card" style={{width: "36%", position: "relative", left: "32%", padding:"5em", top: "5em"}}>
+      <div className="ui raised card" style={{width: "36%", minWidth:"30em", position: "relative", left: "32%", padding:"5em", top: "5em"}}>
       <div className="ui attached message" style={{position: "relative", bottom: "3em", textAlign: "center"}}>
         <div className="header">
 
