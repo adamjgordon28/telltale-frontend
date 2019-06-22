@@ -65,7 +65,7 @@ class EditCharacterForm extends Component {
       if(character.status===404){
         alert("This is not a valid character.")
         this.props.setCurrentEntry(null)
-        history.push('/entries')
+        history.push('/about')
       }
       this.props.setCurrentEntry(character.entry)
       this.setState({
@@ -85,7 +85,7 @@ class EditCharacterForm extends Component {
       if(this.props.currentUser.id !== this.state.character.entry.user_id){
         alert("You do not have access to this page!")
         this.props.setCurrentEntry(null)
-        history.push(`/entries`)
+        history.push(`/about`)
       }
     }
     return(

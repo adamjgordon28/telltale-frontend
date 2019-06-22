@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import  CPCreateCharacterSettingForm from './CPCreateCharacterSettingForm.js'
-import CPCharacterSettingList from './CPCharacterSettingList.js'
+import  CPCreateCharacterSettingForm from './CPCreateCharacterSettingForm.js';
+import CPCharacterSettingList from './CPCharacterSettingList.js';
+import history from '../history.js';
 
 
 class CharacterPage extends Component {
@@ -15,6 +16,11 @@ class CharacterPage extends Component {
     fetch("http://localhost:4000/api/v1/characters/".concat(`${this.props.match.params.id}`))
     .then(res=>res.json())
     .then(character => {
+      if(character.status===404){
+        alert("This is not a valid character.")
+        this.props.setCurrentEntry(null)
+        history.push('/about')
+      }
       this.setState({
         character: character
       }, () => {fetch("http://localhost:4000/api/v1/entries/".concat(`${this.state.character.entry.id}`))
@@ -30,9 +36,17 @@ class CharacterPage extends Component {
 
 
   render (){
+    console.log(this.props.currentUser)
     if (!this.state.character) {
       return <h1>Loading...</h1>
     }
+    if (this.props.currentUser && this.state.character){
+     if(this.props.currentUser.id !== this.state.character.entry.user_id){
+       alert("You do not have access to this page!")
+       this.props.setCurrentEntry(null)
+       history.push(`/about`)
+     }
+   }
 
     return (
       <div>

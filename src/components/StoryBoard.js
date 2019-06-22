@@ -40,13 +40,13 @@ class StoryBoard extends Component {
      console.log(this.props.currentEntry)
      alert("This is not a valid entry.")
      this.props.setCurrentEntry(null)
-     history.push('/entries')
+     history.push('/about')
    }
     if (this.props.currentUser && this.props.currentEntry.user){
      if(this.props.currentUser.id !== this.props.currentEntry.user.id){
        alert("You do not have access to this page!")
        this.props.setCurrentEntry(null)
-       history.push(`/entries`)
+       history.push(`/about`)
      }
    }
    return (

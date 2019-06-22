@@ -65,7 +65,7 @@ class EditSettingForm extends Component {
       if(setting.status===404){
         alert("This is not a valid setting.")
         this.props.setCurrentEntry(null)
-        history.push('/entries')
+        history.push('/about')
       }
       this.props.setCurrentEntry(setting.entry)
       this.setState({
@@ -85,7 +85,7 @@ class EditSettingForm extends Component {
       if(this.props.currentUser.id !== this.state.setting.entry.user_id){
         alert("You do not have access to this page!")
         this.props.setCurrentEntry(null)
-        history.push(`/entries`)
+        history.push(`/about`)
       }
     }
     return(

@@ -48,7 +48,7 @@ onChange =(editorState) => {
    .then(entry => {
      if(entry.status === 404){
        alert("This is not a valid entry.")
-       return history.push('/entries')
+       return history.push('/about')
      }
      if(entry) {
     this.setState({

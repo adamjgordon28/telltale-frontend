@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import  SPCreateCharacterSettingForm from './SPCreateCharacterSettingForm.js'
-import SPCharacterSettingList from './SPCharacterSettingList.js'
+import  SPCreateCharacterSettingForm from './SPCreateCharacterSettingForm.js';
+import SPCharacterSettingList from './SPCharacterSettingList.js';
+import history from '../history.js';
 
 
 class SettingPage extends Component {
@@ -15,6 +16,11 @@ class SettingPage extends Component {
     fetch("http://localhost:4000/api/v1/settings/".concat(`${this.props.match.params.id}`))
     .then(res=>res.json())
     .then(setting => {
+      if(setting.status===404){
+        alert("This is not a valid setting.")
+        this.props.setCurrentEntry(null)
+        history.push('/about')
+      }
       this.setState({
         setting: setting
       }, () => {fetch("http://localhost:4000/api/v1/entries/".concat(`${this.state.setting.entry.id}`))
@@ -33,7 +39,13 @@ class SettingPage extends Component {
     if (!this.state.setting) {
       return <h1>Loading...</h1>
     }
-
+    if (this.props.currentUser && this.state.setting){
+     if(this.props.currentUser.id !== this.state.setting.entry.user_id){
+       alert("You do not have access to this page!")
+       this.props.setCurrentEntry(null)
+       history.push(`/about`)
+     }
+   }
     return (
       <div>
       <h1>This is the page for {this.state.setting.name}</h1>

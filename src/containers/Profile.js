@@ -69,7 +69,7 @@ renderProperFollowInfo = () => {
     .then(returnedUser => {
       if(returnedUser.status===404){
         alert("This is not a valid user.")
-        history.push('/entries')
+        history.push('/about')
       }
       this.props.setProfileUser(returnedUser)
     })

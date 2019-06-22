@@ -60,19 +60,20 @@ class EditEntryForm extends Component {
 
 
   render(){
-  if (!this.props.currentEntry || !this.props.currentUser){
+  if (!this.props.currentEntry){
     return <h3>Loading...</h3>
   }
   if(this.props.currentEntry.status===404){
+    console.log("Hello!")
     alert("This is not a valid entry.")
     this.props.setCurrentEntry(null)
-    history.push('/entries')
+    history.push('/about')
   }
    if (this.props.currentUser && this.props.currentEntry.user){
     if(this.props.currentUser.id !== this.props.currentEntry.user.id){
       alert("You do not have access to this page!")
       this.props.setCurrentEntry(null)
-      history.push(`/entries`)
+      history.push(`/about`)
     }
   }
     return (

@@ -19,6 +19,7 @@ import EditSettingForm from './containers/EditSettingForm.js';
 import EditEntryForm from './containers/EditEntryForm.js';
 import TotalEntryContainer from './containers/TotalEntryContainer.js';
 import FollowingEntryContainer from './containers/FollowingEntryContainer.js';
+import About from './components/About.js';
 
 
 class App extends Component {
@@ -95,6 +96,10 @@ class App extends Component {
             </Route>
             <Route path='/following-entries' render={(props)=> {
               return <FollowingEntryContainer{...props}/>
+            }}>
+            </Route>
+            <Route path='/about' render={(props)=> {
+              return <About{...props}/>
             }}>
             </Route>
           </Router>

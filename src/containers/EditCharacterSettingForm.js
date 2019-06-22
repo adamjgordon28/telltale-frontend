@@ -74,7 +74,7 @@ class EditCharacterSettingForm extends Component {
       if(charSet.status===404){
         alert("This is not a valid character-setting.")
         this.props.setCurrentEntry(null)
-        history.push('/entries')
+        history.push('/about')
       }
       if (charSet.status!==404){
       this.props.setCurrentEntry(charSet.entry)
@@ -115,13 +115,13 @@ class EditCharacterSettingForm extends Component {
     if(this.props.currentEntry.status===404){
       alert("This is not a valid entry.")
       this.props.setCurrentEntry(null)
-      history.push('/entries')
+      history.push('/about')
     }
      if (this.props.currentUser && this.props.currentEntry.user){
       if(this.props.currentUser.id !== this.props.currentEntry.user.id){
         alert("You do not have access to this page!")
         this.props.setCurrentEntry(null)
-        history.push(`/entries`)
+        history.push(`/about`)
       }
     }
     return(
