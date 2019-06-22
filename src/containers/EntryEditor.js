@@ -214,7 +214,6 @@ handleKeyCommand = (command, editorState) => {
   render() {
 
 
-
     if(this.props.currentUser === -1){
       history.push("/login")
     }
