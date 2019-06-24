@@ -88,6 +88,7 @@ renderProperFollowInfo = () => {
 }
 
   render(){
+
     if(this.props.currentUser === -1){
       history.push("/login")
     }

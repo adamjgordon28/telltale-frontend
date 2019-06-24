@@ -33,14 +33,17 @@ class StoryBoard extends Component {
 
  render() {
 
-   if (!this.props.currentEntry || !this.props.currentUser){
+   if (!this.props.currentEntry){
      return <h3>Loading...</h3>
    }
    if(this.props.currentEntry.status===404){
-     console.log(this.props.currentEntry)
      alert("This is not a valid entry.")
      this.props.setCurrentEntry(null)
      history.push('/about')
+   }
+   if(!localStorage.token){
+     alert("You must be logged in to view this page!")
+     history.push('/login')
    }
     if (this.props.currentUser && this.props.currentEntry.user){
      if(this.props.currentUser.id !== this.props.currentEntry.user.id){

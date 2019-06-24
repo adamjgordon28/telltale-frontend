@@ -64,7 +64,6 @@ class EditEntryForm extends Component {
     return <h3>Loading...</h3>
   }
   if(this.props.currentEntry.status===404){
-    console.log("Hello!")
     alert("This is not a valid entry.")
     this.props.setCurrentEntry(null)
     history.push('/about')

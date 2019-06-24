@@ -36,7 +36,6 @@ class CharacterPage extends Component {
 
 
   render (){
-    console.log(this.props.currentUser)
     if (!this.state.character) {
       return <h1>Loading...</h1>
     }
