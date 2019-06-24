@@ -14,10 +14,13 @@ class StoryBoard extends Component {
   }
 
   componentDidMount = () => {
+    console.log("componentdidmount")
    fetch("http://localhost:4000/api/v1/entries/".concat(`${this.props.match.params.id}`))
     .then(response => response.json())
     .then(json => {
+      if(localStorage.token){
       this.props.setCurrentEntry(json)
+      }
     })
 
   }
@@ -32,26 +35,28 @@ class StoryBoard extends Component {
   }
 
  render() {
+   if(!localStorage.token){
+     alert("You must be logged in to view this page!")
+     history.push('/login')
+   }
 
    if (!this.props.currentEntry){
      return <h3>Loading...</h3>
    }
    if(this.props.currentEntry.status===404){
      alert("This is not a valid entry.")
-     this.props.setCurrentEntry(null)
      history.push('/about')
    }
-   if(!localStorage.token){
-     alert("You must be logged in to view this page!")
-     history.push('/login')
-   }
-    if (this.props.currentUser && this.props.currentEntry.user){
-     if(this.props.currentUser.id !== this.props.currentEntry.user.id){
-       alert("You do not have access to this page!")
-       this.props.setCurrentEntry(null)
-       history.push(`/about`)
-     }
-   }
+
+   if (this.props.currentUser && this.props.currentEntry.user){
+     console.log(this.props.currentUser, this.props.currentEntry.user)
+    if(this.props.currentUser.id !== this.props.currentEntry.user.id){
+      alert("You do not have access to this page!")
+      this.props.setCurrentEntry(null)
+      history.push(`/about`)
+    }
+  }
+
    return (
      <div style={{flex:"auto", flexWrap:"wrap"}}>
      <h1>Storyboard for "{this.props.currentEntry.title}"</h1>

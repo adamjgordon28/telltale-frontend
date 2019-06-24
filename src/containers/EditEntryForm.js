@@ -26,7 +26,9 @@ class EditEntryForm extends Component {
     fetch("http://localhost:4000/api/v1/entries/".concat(`${this.props.match.params.id}`))
     .then(res=>res.json())
     .then(entry => {
+      if (localStorage.token){
       this.props.setCurrentEntry(entry)
+      }
       this.setState({
         title: entry.title,
         genre: entry.genre,
@@ -60,6 +62,10 @@ class EditEntryForm extends Component {
 
 
   render(){
+  if(!localStorage.token){
+    alert("You must be logged in to view this page!")
+    history.push('/login')
+  }
   if (!this.props.currentEntry){
     return <h3>Loading...</h3>
   }

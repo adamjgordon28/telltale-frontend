@@ -40,6 +40,10 @@ class Login extends React.Component {
         })
   }
 
+  componentDidMount = () => {
+    console.log(this.props.currentEntry)
+  }
+
   render(){
     return(
       <div className="ui raised card" style={{width: "36%", minWidth:"30em", position: "relative", left: "32%", padding:"5em", top: "5em"}}>
@@ -78,15 +82,18 @@ class Login extends React.Component {
 function mapDispatchToProps(dispatch) {
   return {
     setCurrentUser: (user) => {
-      // dispatch is our new setState and it takes an object with a type and a payload
       dispatch({type: "SET_CURRENT_USER", payload: user})
+    },
+    setCurrentEntry: (entry) => {
+      dispatch({type: 'SET_CURRENT_ENTRY', payload: entry})
     }
   }
 }
 
 function mapStateToProps(state) {
   return {
-    currentUser: state.currentUser
+    currentUser: state.currentUser,
+    currentEntry: state.currentEntry
   }
 }
 

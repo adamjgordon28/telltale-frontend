@@ -67,7 +67,9 @@ class EditCharacterForm extends Component {
         this.props.setCurrentEntry(null)
         history.push('/about')
       }
+      if(localStorage.token){
       this.props.setCurrentEntry(character.entry)
+      }
       this.setState({
         name: character.name,
         description: character.description,
@@ -78,15 +80,19 @@ class EditCharacterForm extends Component {
 
 
   render(){
+    if(!localStorage.token){
+      alert("You must be logged in to view this page!")
+      history.push('/login')
+    }
+    if (this.props.currentUser && this.state.character){
+     if(this.props.currentUser.id !== this.state.character.entry.user_id){
+       alert("You do not have access to this page!")
+       this.props.setCurrentEntry(null)
+       history.push(`/about`)
+     }
+   }
     if (!this.props.currentEntry){
       return <h3>Loading...</h3>
-    }
-     if (this.props.currentUser && this.state.character){
-      if(this.props.currentUser.id !== this.state.character.entry.user_id){
-        alert("You do not have access to this page!")
-        this.props.setCurrentEntry(null)
-        history.push(`/about`)
-      }
     }
     return(
       <Fragment>

@@ -41,7 +41,12 @@ class CreateEntryForm extends React.Component {
 
   render(){
     if(this.props.currentUser === -1){
+      alert("You must be logged in to view this page!")
       history.push("/login")
+    }
+    if(!localStorage.token){
+      alert("You must be logged in to view this page!")
+      history.push('/login')
     }
     return(
       <div className="ui raised card" style={{width: "36%", position: "relative", left: "32%", padding:"5em", height: "50em"}}>

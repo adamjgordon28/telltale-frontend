@@ -12,18 +12,37 @@ componentDidMount = () => {
  fetch("http://localhost:4000/api/v1/entries/".concat(`${this.props.match.params.id}`))
   .then(response => response.json())
   .then(json => {
+    if(json.status===404){
+      alert("This is not a valid entry.")
+      history.push('/about')
+    }
+    else if (localStorage.token){
     this.props.setCurrentEntry(json)
+    }
   })
 }
 
 
   render() {
+    if(!localStorage.token){
+      alert("You must be logged in to view this page!")
+      history.push('/login')
+    }
     if(!this.props.currentEntry){
       return <h1>Loading...</h1>
     }
     if(this.props.currentUser === -1){
       history.push("/login")
     }
+
+    if (this.props.currentUser && this.props.currentEntry.user){
+      console.log(this.props.currentUser, this.props.currentEntry.user)
+     if(this.props.currentUser.id !== this.props.currentEntry.user.id){
+       alert("You do not have access to this page!")
+       this.props.setCurrentEntry(null)
+       history.push(`/about`)
+     }
+   }
     return (
 
   <div className="ui raised card"style={{ width: "80%", position: "relative", left: "10%"}} >

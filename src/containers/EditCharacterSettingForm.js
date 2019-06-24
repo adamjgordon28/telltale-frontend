@@ -76,7 +76,7 @@ class EditCharacterSettingForm extends Component {
         this.props.setCurrentEntry(null)
         history.push('/about')
       }
-      if (charSet.status!==404){
+      if (charSet.status!==404 && localStorage.token){
       this.props.setCurrentEntry(charSet.entry)
       this.setState({
         setting_id: charSet.setting_id,
@@ -109,7 +109,11 @@ class EditCharacterSettingForm extends Component {
 
 
   render(){
-    if (!this.props.currentEntry || !this.props.currentUser){
+    if(!localStorage.token){
+      alert("You must be logged in to view this page!")
+      history.push('/login')
+    }
+    if (!this.props.currentEntry){
       return <h3>Loading...</h3>
     }
     if(this.props.currentEntry.status===404){
@@ -124,6 +128,7 @@ class EditCharacterSettingForm extends Component {
         history.push(`/about`)
       }
     }
+
     return(
       <Fragment>
       <div className="ui raised card" style={{width: "30%", position: "relative", left: "35%", padding: "4%", height: "40em"}}>

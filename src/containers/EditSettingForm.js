@@ -67,7 +67,9 @@ class EditSettingForm extends Component {
         this.props.setCurrentEntry(null)
         history.push('/about')
       }
+      else if (localStorage.token){
       this.props.setCurrentEntry(setting.entry)
+      }
       this.setState({
         name: setting.name,
         description: setting.description,
@@ -78,6 +80,10 @@ class EditSettingForm extends Component {
 
 
   render(){
+    if(!localStorage.token){
+      alert("You must be logged in to view this page!")
+      history.push('/login')
+    }
     if (!this.props.currentEntry){
       return <h3>Loading...</h3>
     }

@@ -27,6 +27,7 @@ class App extends Component {
   logOut = () => {
     localStorage.removeItem("token")
     this.props.setCurrentUser(-1)
+    this.props.setCurrentEntry(null)
     history.push('/login')
   }
 
@@ -121,6 +122,10 @@ function mapDispatchToProps(dispatch) {
 
 
       dispatch({type: "SET_CURRENT_USER", payload: user})
+    },
+    setCurrentEntry: (entry) => {
+
+      dispatch({type: 'SET_CURRENT_ENTRY', payload: entry})
     }
   }
 }

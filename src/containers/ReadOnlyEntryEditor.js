@@ -67,6 +67,10 @@ onChange =(editorState) => {
  }
 
   render() {
+    if(!localStorage.token){
+      alert("You must be logged in to view this page!")
+      history.push('/login')
+    }
     if(this.props.currentUser === -1){
       history.push("/login")
     }

@@ -26,7 +26,9 @@ class SettingPage extends Component {
       }, () => {fetch("http://localhost:4000/api/v1/entries/".concat(`${this.state.setting.entry.id}`))
        .then(response => response.json())
        .then(json => {
+         if (localStorage.token){
          this.props.setCurrentEntry(json)
+         }
        })})
     })
 
@@ -36,6 +38,10 @@ class SettingPage extends Component {
 
 
   render (){
+    if(!localStorage.token){
+      alert("You must be logged in to view this page!")
+      history.push('/login')
+    }
     if (!this.state.setting) {
       return <h1>Loading...</h1>
     }

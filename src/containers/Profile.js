@@ -88,6 +88,7 @@ renderProperFollowInfo = () => {
 }
 
   render(){
+    console.log(this.props.currentEntry)
 
     if(this.props.currentUser === -1){
       history.push("/login")
@@ -165,7 +166,8 @@ function mapDispatchToProps(dispatch) {
 const mapStateToProps = (state) => {
   return {
     currentUser: state.currentUser,
-    profileUser: state.profileUser
+    profileUser: state.profileUser,
+    currentEntry: state.currentEntry
   }
 }
 
