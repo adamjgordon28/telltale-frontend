@@ -217,6 +217,10 @@ handleKeyCommand = (command, editorState) => {
     if(this.props.currentUser === -1){
       history.push("/login")
     }
+    if(!localStorage.token){
+      alert("You must be logged in to view this page!")
+      history.push('/login')
+    }
     if (!this.state.editorState || !this.state.entry) {
     return (
       <h3 className="loading">Loading...</h3>

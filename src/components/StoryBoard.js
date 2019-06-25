@@ -1,10 +1,10 @@
-import React, { Component } from 'react'
-import { connect } from 'react-redux'
-import history from "../history.js"
-import { Link } from 'react-router-dom'
-import StoryBoardCharacterList from './StoryBoardCharacterList.js'
-import StoryBoardSettingList from './StoryBoardSettingList.js'
-import StoryBoardCharacterSettingList from '../containers/StoryBoardCharacterSettingList.js'
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import history from "../history.js";
+import { Link } from 'react-router-dom';
+import StoryBoardCharacterList from './StoryBoardCharacterList.js';
+import StoryBoardSettingList from './StoryBoardSettingList.js';
+import StoryBoardCharacterSettingList from '../containers/StoryBoardCharacterSettingList.js';
 
 
 class StoryBoard extends Component {
