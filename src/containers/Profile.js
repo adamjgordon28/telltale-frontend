@@ -89,7 +89,6 @@ renderProperFollowInfo = () => {
 }
 
   render(){
-    console.log(this.props.currentEntry)
     if(!this.props.profileUser || !this.props.currentUser){
       return <h1>Loading...</h1>
     }

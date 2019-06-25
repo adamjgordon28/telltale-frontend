@@ -80,8 +80,8 @@ class EditCharacterSettingForm extends Component {
       else {
         this.props.setCurrentEntry(charSet.entry)
         this.setState({
-          setting_id: charSet.setting_id,
-          character_id: charSet.character_id,
+          setting_id: charSet.setting.id,
+          character_id: charSet.character.id,
           chapter: charSet.chapter,
           description: charSet.description
         })

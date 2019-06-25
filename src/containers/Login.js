@@ -40,10 +40,6 @@ class Login extends React.Component {
         })
   }
 
-  componentDidMount = () => {
-    console.log(this.props.currentEntry, this.props.currentUser)
-  }
-
   render(){
     return(
       <div className="ui raised card" style={{width: "36%", minWidth:"30em", position: "relative", left: "32%", padding:"5em", top: "5em"}}>

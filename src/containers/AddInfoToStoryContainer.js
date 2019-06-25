@@ -27,7 +27,6 @@ componentDidMount = () => {
       return <h1>Loading...</h1>
     }
     if (this.props.currentUser && this.props.currentEntry.user){
-      console.log(this.props.currentUser, this.props.currentEntry.user)
      if(this.props.currentUser.id !== this.props.currentEntry.user.id){
        alert("You do not have access to this page!")
        this.props.setCurrentEntry(null)

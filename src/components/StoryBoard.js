@@ -15,7 +15,6 @@ class StoryBoard extends Component {
   }
 
   componentDidMount = () => {
-    console.log("componentdidmount")
    fetch("http://localhost:4000/api/v1/entries/".concat(`${this.props.match.params.id}`))
     .then(response => response.json())
     .then(json => {
@@ -43,7 +42,6 @@ class StoryBoard extends Component {
      history.push('/about')
    }
    if (this.props.currentUser && this.props.currentEntry.user){
-     console.log(this.props.currentUser, this.props.currentEntry.user)
     if(this.props.currentUser.id !== this.props.currentEntry.user.id){
       alert("You do not have access to this page!")
       this.props.setCurrentEntry(null)
