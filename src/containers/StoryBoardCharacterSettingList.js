@@ -43,7 +43,7 @@ class StoryBoardCharacterSettingList extends Component {
   }
   render(){
     return(
-      <div className="ui raised card" style={{position:"relative", marginLeft:"5%", bottom:"1.5em", width: "40%", minHeight:"40.5em" , maxHeight: "40.5em", overflowY: "scroll", display: "inline-block"}}>
+      <div className="ui raised card" style={{position:"relative", marginLeft:"5%", bottom:"1.5em", width: "40%", minWidth:"42em", minHeight:"40.5em" , maxHeight: "40.5em", overflowY: "scroll", display: "inline-block"}}>
       <div style={{background:"silver", height:"5em"}}>
       <h3 style={{textAlign:"center", position:"absolute", top:"4.5%", left:"5%"}}>Notes on Characters in Settings</h3>
         <div className="ui search">

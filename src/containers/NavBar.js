@@ -11,7 +11,7 @@ class NavBar extends Component {
 
 
 
-  <div className="ui menu" >
+  <div className="ui menu">
     { logged_in && <Fragment>
       <Link to={"/create-entry"}>
         <div className = "item">
