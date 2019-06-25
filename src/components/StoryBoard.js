@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 import StoryBoardCharacterList from './StoryBoardCharacterList.js';
 import StoryBoardSettingList from './StoryBoardSettingList.js';
 import StoryBoardCharacterSettingList from '../containers/StoryBoardCharacterSettingList.js';
+import WithAuth from './WithAuth.js'
 
 
 class StoryBoard extends Component {
@@ -18,9 +19,7 @@ class StoryBoard extends Component {
    fetch("http://localhost:4000/api/v1/entries/".concat(`${this.props.match.params.id}`))
     .then(response => response.json())
     .then(json => {
-      if(localStorage.token){
       this.props.setCurrentEntry(json)
-      }
     })
 
   }
@@ -35,10 +34,6 @@ class StoryBoard extends Component {
   }
 
  render() {
-   if(!localStorage.token){
-     alert("You must be logged in to view this page!")
-     history.push('/login')
-   }
 
    if (!this.props.currentEntry){
      return <h3>Loading...</h3>
@@ -47,7 +42,6 @@ class StoryBoard extends Component {
      alert("This is not a valid entry.")
      history.push('/about')
    }
-
    if (this.props.currentUser && this.props.currentEntry.user){
      console.log(this.props.currentUser, this.props.currentEntry.user)
     if(this.props.currentUser.id !== this.props.currentEntry.user.id){
@@ -100,4 +94,4 @@ function mapDispatchToProps(dispatch) {
 
 
 
-export default connect(mapStateToProps, mapDispatchToProps)(StoryBoard)
+export default WithAuth(connect(mapStateToProps, mapDispatchToProps)(StoryBoard))

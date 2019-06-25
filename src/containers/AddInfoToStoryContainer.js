@@ -2,8 +2,9 @@ import React from 'react';
 import{ Link } from 'react-router-dom';
 import CreateCharacterForm from './CreateCharacterForm.js'
 import CreateSettingForm from './CreateSettingForm.js'
-import history from "../history.js"
+import history from "../history.js";
 import { connect } from 'react-redux';
+import WithAuth from '../components/WithAuth.js';
 
 class AddInfoToStoryContainer extends React.Component {
 
@@ -16,25 +17,15 @@ componentDidMount = () => {
       alert("This is not a valid entry.")
       history.push('/about')
     }
-    else if (localStorage.token){
     this.props.setCurrentEntry(json)
-    }
   })
 }
 
 
   render() {
-    if(!localStorage.token){
-      alert("You must be logged in to view this page!")
-      history.push('/login')
-    }
     if(!this.props.currentEntry){
       return <h1>Loading...</h1>
     }
-    if(this.props.currentUser === -1){
-      history.push("/login")
-    }
-
     if (this.props.currentUser && this.props.currentEntry.user){
       console.log(this.props.currentUser, this.props.currentEntry.user)
      if(this.props.currentUser.id !== this.props.currentEntry.user.id){
@@ -89,4 +80,4 @@ function mapDispatchToProps(dispatch) {
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(AddInfoToStoryContainer)
+export default WithAuth(connect(mapStateToProps, mapDispatchToProps)(AddInfoToStoryContainer))

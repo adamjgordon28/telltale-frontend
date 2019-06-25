@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import history from '../history.js'
+import history from '../history.js';
+import WithAuth from '../components/WithAuth.js';
 
 class EditEntryForm extends Component {
   state = {
@@ -26,15 +27,12 @@ class EditEntryForm extends Component {
     fetch("http://localhost:4000/api/v1/entries/".concat(`${this.props.match.params.id}`))
     .then(res=>res.json())
     .then(entry => {
-      if (localStorage.token){
       this.props.setCurrentEntry(entry)
-      }
       this.setState({
         title: entry.title,
         genre: entry.genre,
         description: entry.description,
         content: entry.content
-
       })
     })
   }
@@ -62,10 +60,6 @@ class EditEntryForm extends Component {
 
 
   render(){
-  if(!localStorage.token){
-    alert("You must be logged in to view this page!")
-    history.push('/login')
-  }
   if (!this.props.currentEntry){
     return <h3>Loading...</h3>
   }
@@ -143,4 +137,4 @@ const mapStateToProps = (state) => {
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(EditEntryForm)
+export default WithAuth(connect(mapStateToProps, mapDispatchToProps)(EditEntryForm))

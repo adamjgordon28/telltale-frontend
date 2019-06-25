@@ -2,6 +2,7 @@ import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
 import {Link} from 'react-router-dom';
 import history from '../history.js';
+import WithAuth from '../components/WithAuth.js';
 
 
 
@@ -76,19 +77,19 @@ class EditCharacterSettingForm extends Component {
         this.props.setCurrentEntry(null)
         history.push('/about')
       }
-      if (charSet.status!==404 && localStorage.token){
-      this.props.setCurrentEntry(charSet.entry)
-      this.setState({
-        setting_id: charSet.setting_id,
-        character_id: charSet.character_id,
-        chapter: charSet.chapter,
-        description: charSet.description
-      })
-      fetch("http://localhost:4000/api/v1/entries/".concat(`${charSet.entry.id}`))
-      .then(res=>res.json())
-      .then(entry=>{
-      this.props.setCurrentEntry(entry)
-      })
+      else {
+        this.props.setCurrentEntry(charSet.entry)
+        this.setState({
+          setting_id: charSet.setting_id,
+          character_id: charSet.character_id,
+          chapter: charSet.chapter,
+          description: charSet.description
+        })
+        fetch("http://localhost:4000/api/v1/entries/".concat(`${charSet.entry.id}`))
+        .then(res=>res.json())
+        .then(entry=>{
+        this.props.setCurrentEntry(entry)
+        })
       }
     })
 
@@ -109,10 +110,6 @@ class EditCharacterSettingForm extends Component {
 
 
   render(){
-    if(!localStorage.token){
-      alert("You must be logged in to view this page!")
-      history.push('/login')
-    }
     if (!this.props.currentEntry){
       return <h3>Loading...</h3>
     }
@@ -186,4 +183,4 @@ function mapStateToProps(state) {
 
 
 
-export default connect(mapStateToProps, mapDispatchToProps)(EditCharacterSettingForm)
+export default WithAuth(connect(mapStateToProps, mapDispatchToProps)(EditCharacterSettingForm))

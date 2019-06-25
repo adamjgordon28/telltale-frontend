@@ -41,7 +41,7 @@ class Login extends React.Component {
   }
 
   componentDidMount = () => {
-    console.log(this.props.currentEntry)
+    console.log(this.props.currentEntry, this.props.currentUser)
   }
 
   render(){

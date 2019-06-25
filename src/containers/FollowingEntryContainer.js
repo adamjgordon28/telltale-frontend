@@ -1,10 +1,9 @@
-import React, { Component, Fragment } from 'react'
-import ReadOnlyEntryCard from "../components/ReadOnlyEntryCard.js"
-import ReadOnlyEntryEditor from "./ReadOnlyEntryEditor.js"
-// import UserEntryFilter from "./UserEntryFilter.js"
-import { Route, Switch, Link } from 'react-router-dom'
-import { connect } from 'react-redux'
-import history from "../history.js"
+import React, { Component, Fragment } from 'react';
+import ReadOnlyEntryCard from "../components/ReadOnlyEntryCard.js";
+import ReadOnlyEntryEditor from "./ReadOnlyEntryEditor.js";
+import { Route, Switch, Link } from 'react-router-dom';
+import { connect } from 'react-redux';
+import WithAuth from '../components/WithAuth.js';
 
 
 class FollowingEntryContainer extends Component {
@@ -80,9 +79,6 @@ componentDidMount = () => {
 
 
   render(){
-    if(this.props.currentUser === -1){
-      history.push("/login")
-    }
     return (
      <Fragment>
       <Switch>
@@ -130,4 +126,4 @@ const mapStateToProps = (state) => {
   }
 }
 
-export default connect(mapStateToProps)(FollowingEntryContainer)
+export default WithAuth(connect(mapStateToProps)(FollowingEntryContainer))

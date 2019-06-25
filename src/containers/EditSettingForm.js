@@ -2,6 +2,7 @@ import React, { Component, Fragment} from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import history from '../history.js';
+import WithAuth from '../components/WithAuth.js';
 
 
 class EditSettingForm extends Component {
@@ -160,4 +161,4 @@ function mapStateToProps(state) {
 
 
 
-export default connect(mapStateToProps, mapDispatchToProps)(EditSettingForm)
+export default WithAuth(connect(mapStateToProps, mapDispatchToProps)(EditSettingForm))

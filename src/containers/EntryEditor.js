@@ -2,6 +2,7 @@ import React from 'react';
 import { EditorState, RichUtils, convertToRaw, convertFromRaw, Modifier} from 'draft-js';
 import { Link } from 'react-router-dom';
 import Editor from 'draft-js-plugins-editor';
+import WithAuth from '../components/WithAuth.js';
 import createHighlightPlugin from '../highlightPlugin';
 import createSideToolbarPlugin from 'draft-js-side-toolbar-plugin';
 import createToolbarPlugin from 'draft-js-static-toolbar-plugin';
@@ -214,13 +215,6 @@ handleKeyCommand = (command, editorState) => {
   render() {
 
 
-    if(this.props.currentUser === -1){
-      history.push("/login")
-    }
-    if(!localStorage.token){
-      alert("You must be logged in to view this page!")
-      history.push('/login')
-    }
     if (!this.state.editorState || !this.state.entry) {
     return (
       <h3 className="loading">Loading...</h3>
@@ -308,4 +302,4 @@ const mapStateToProps = (state) => {
   }
 }
 
-export default connect(mapStateToProps)(EntryEditor)
+export default WithAuth(connect(mapStateToProps)(EntryEditor))

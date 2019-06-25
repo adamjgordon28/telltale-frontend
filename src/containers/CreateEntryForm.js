@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import history from "../history.js"
+import history from "../history.js";
+import WithAuth from '../components/WithAuth.js';
 
 
 const emptyContent = "{\"blocks\":[{\"key\":\"dpilv\",\"text\":\"\",\"type\":\"unstyled\",\"depth\":0,\"inlineStyleRanges\":[],\"entityRanges\":[],\"data\":{}}],\"entityMap\":{}}"
@@ -40,14 +41,6 @@ class CreateEntryForm extends React.Component {
   }
 
   render(){
-    if(this.props.currentUser === -1){
-      alert("You must be logged in to view this page!")
-      history.push("/login")
-    }
-    if(!localStorage.token){
-      alert("You must be logged in to view this page!")
-      history.push('/login')
-    }
     return(
       <div className="ui raised card" style={{width: "36%", position: "relative", left: "32%", padding:"5em", height: "50em"}}>
       <div className="ui attached message" style={{position: "relative", bottom: "3em", textAlign: "center"}}>
@@ -108,4 +101,4 @@ const mapStateToProps = (state) => {
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(CreateEntryForm)
+export default WithAuth(connect(mapStateToProps, mapDispatchToProps)(CreateEntryForm))

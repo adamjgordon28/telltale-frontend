@@ -2,7 +2,7 @@ import React, { Component, Fragment} from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import history from '../history.js';
-
+import WithAuth from '../components/WithAuth.js';
 
 class EditCharacterForm extends Component {
 
@@ -67,9 +67,7 @@ class EditCharacterForm extends Component {
         this.props.setCurrentEntry(null)
         history.push('/about')
       }
-      if(localStorage.token){
       this.props.setCurrentEntry(character.entry)
-      }
       this.setState({
         name: character.name,
         description: character.description,
@@ -80,10 +78,6 @@ class EditCharacterForm extends Component {
 
 
   render(){
-    if(!localStorage.token){
-      alert("You must be logged in to view this page!")
-      history.push('/login')
-    }
     if (this.props.currentUser && this.state.character){
      if(this.props.currentUser.id !== this.state.character.entry.user_id){
        alert("You do not have access to this page!")
@@ -159,4 +153,4 @@ function mapStateToProps(state) {
 
 
 
-export default connect(mapStateToProps, mapDispatchToProps)(EditCharacterForm)
+export default WithAuth(connect(mapStateToProps, mapDispatchToProps)(EditCharacterForm))

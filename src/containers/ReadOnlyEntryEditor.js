@@ -6,6 +6,7 @@ import createHighlightPlugin from '../highlightPlugin';
 import createCounterPlugin from 'draft-js-counter-plugin';
 import '../App.css'
 import { connect } from 'react-redux'
+import WithAuth from '../components/WithAuth.js';
 import history from "../history.js"
 
 const highlightPlugin = createHighlightPlugin({
@@ -67,13 +68,6 @@ onChange =(editorState) => {
  }
 
   render() {
-    if(!localStorage.token){
-      alert("You must be logged in to view this page!")
-      history.push('/login')
-    }
-    if(this.props.currentUser === -1){
-      history.push("/login")
-    }
     if (!this.state.editorState || !this.state.entry) {
     return (
       <h3 className="loading">Loading...</h3>
@@ -109,4 +103,4 @@ const mapStateToProps = (state) => {
   }
 }
 
-export default connect(mapStateToProps)(ReadOnlyEntryEditor)
+export default WithAuth(connect(mapStateToProps)(ReadOnlyEntryEditor))

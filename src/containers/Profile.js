@@ -1,6 +1,7 @@
 import React, {Component, Fragment} from 'react';
 import { connect } from 'react-redux';
 import history from '../history.js';
+import WithAuth from '../components/WithAuth.js';
 
 
 class Profile extends Component {
@@ -89,10 +90,6 @@ renderProperFollowInfo = () => {
 
   render(){
     console.log(this.props.currentEntry)
-
-    if(this.props.currentUser === -1){
-      history.push("/login")
-    }
     if(!this.props.profileUser || !this.props.currentUser){
       return <h1>Loading...</h1>
     }
@@ -172,4 +169,4 @@ const mapStateToProps = (state) => {
 }
 
 
-export default connect(mapStateToProps, mapDispatchToProps)(Profile)
+export default WithAuth(connect(mapStateToProps, mapDispatchToProps)(Profile))

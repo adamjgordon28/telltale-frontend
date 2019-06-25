@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import  CPCreateCharacterSettingForm from './CPCreateCharacterSettingForm.js';
 import CPCharacterSettingList from './CPCharacterSettingList.js';
 import history from '../history.js';
+import WithAuth from '../components/WithAuth.js';
 
 
 class CharacterPage extends Component {
@@ -25,9 +26,7 @@ class CharacterPage extends Component {
       }, () => {fetch("http://localhost:4000/api/v1/entries/".concat(`${this.state.character.entry.id}`))
        .then(response => response.json())
        .then(json => {
-         if(localStorage.token){
          this.props.setCurrentEntry(json)
-         }
        })})
     })
 
@@ -37,10 +36,6 @@ class CharacterPage extends Component {
 
 
   render (){
-    if(!localStorage.token){
-      alert("You must be logged in to view this page!")
-      history.push('/login')
-    }
     if (!this.state.character) {
       return <h1>Loading...</h1>
     }
@@ -87,4 +82,4 @@ function mapDispatchToProps(dispatch) {
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(CharacterPage)
+export default WithAuth(connect(mapStateToProps, mapDispatchToProps)(CharacterPage))
