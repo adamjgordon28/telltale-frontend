@@ -97,7 +97,7 @@ renderProperFollowInfo = () => {
        {this.props.profileUser.id === this.props.currentUser.id ? <h1>Welcome back, {this.props.profileUser.username}!</h1> : <h1> {this.props.profileUser.username}'s Profile</h1> }
       {this.props.profileUser ?<Fragment> <div style={{textAlign:"center"}}>
       <img style={{border:".25em silver solid", borderRadius: "50%", height: "8.25em", margin:"0 auto"}} src={this.props.profileUser.img_url} alt=""/>
-      <div className="ui raised card" style={{position:"relative", width: "30%", height: "25em", left:"35%"}}>
+      <div className="ui raised card" style={{position:"relative", width: "30%", minWidth:"24em", height: "25em", left:"35%"}}>
       <div className="extra content" style={{color:"black"}}>
       <h3 style={{textAlign:"center"}}> {this.props.profileUser.name}</h3>
       </div>
