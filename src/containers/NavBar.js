@@ -11,7 +11,7 @@ class NavBar extends Component {
 
 
 
-  <div className="ui menu">
+  <div className="ui menu" >
     { logged_in && <Fragment>
       <Link to={"/create-entry"}>
         <div className = "item">
@@ -47,7 +47,7 @@ class NavBar extends Component {
       </div>
     </Link> }
     <Link to="/about"><div className="item"><h3>About</h3></div></Link>
-    <Fragment><img alt="" src={'/icons/TellTaleLogo.png'} style={{height: "45px", position: "absolute", right: "3em"}}/></Fragment>
+    <Fragment><img alt="" src={'/icons/TellTaleLogo.png'} style={{height: "45px", position: "relative", float:"right"}}/></Fragment>
   </div>
     )
   }
