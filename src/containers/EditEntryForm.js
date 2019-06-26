@@ -76,7 +76,7 @@ class EditEntryForm extends Component {
     }
   }
     return (
-      <div className="ui raised card" style={{width: "60%", position: "relative", left: "20%", padding:"5em"}}>
+      <div className="ui raised card" style={{width: "48%", minWidth:"45em", position: "relative", left: "26%", padding:"5em", top:"3em"}}>
       <div className="ui attached message" style={{position: "relative", bottom: "3em", textAlign: "center"}}>
         <div className="header">
           <h2>Edit Your Story Details Here!</h2>

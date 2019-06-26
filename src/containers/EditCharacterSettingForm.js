@@ -128,31 +128,42 @@ class EditCharacterSettingForm extends Component {
 
     return(
       <Fragment>
-      <div className="ui raised card" style={{width: "30%", position: "relative", left: "35%", padding: "4%", height: "40em"}}>
-      <h2>Edit This Character-Setting!</h2>
+      <div className="ui raised card" style={{width: "32%", minWidth:"35em", position: "relative", left: "35%", padding: "2.5%", height: "47em"}}>
+      <div className="ui attached message" style={{position: "relative", textAlign: "center"}}>
+        <div className="header">
+          <h2 style={{textAlign:"center"}}>Edit This Character-Setting!</h2>
+        </div>
+      </div>
       {<form className="ui form" style={{height: "32em", borderRadius: "2%", padding: "10%"}} onSubmit={this.handleSubmit}>
+      <div className = "required field">
+        <label>Setting</label>
         <select style={{marginBottom: "5%"}} onChange={this.handleChange} className="ui required dropdown" value={this.state.setting_id} name="setting_id" required>
         <option label="Select a Setting!"></option>
           {this.renderSettingRows()}
         </select>
-        <select style={{marginBottom: "5%"}} onChange={this.handleChange} className="ui required dropdown" value={this.state.character_id} name="character_id" required >
-        <option label="Select a Character!"></option>
-          {this.renderCharacterRows()}
-        </select>
-        <div className="required field">
+        </div>
+        <div className = "required field">
+          <label>Character</label>
+          <select style={{marginBottom: "5%"}} onChange={this.handleChange} className="ui required dropdown" value={this.state.character_id} name="character_id" required >
+          <option label="Select a Character!"></option>
+            {this.renderCharacterRows()}
+          </select>
+        </div>
+        <div className = "required field">
         <label>Chapter</label>
         <input onChange={this.handleChange} type="number" name="chapter" value={this.state.chapter} min={0} placeholder="Chapter" required/>
         </div>
-        <div className ="required field">
+        <div className = "required field">
           <label>Description</label>
           <textarea onChange={this.handleChange} name="description" placeholder="Description" value={this.state.description} required ></textarea >
         </div>
-        <button style={{position: "relative", left: "30%", top: "2em"}} className="ui button" type="submit">Submit</button>
+        <button style={{position: "relative", left: "35%"}} className="ui button" type="submit">Submit</button>
       </form>}
-
+        <div style={{position:"absolute", left:"39%"}}>
+          {this.props.currentEntry && <Link to={"/storyboards/".concat(`${this.props.currentEntry.id}`)}><button style={{position:"relative", right:"57.5%", top:"40.5em"}} className="ui button blue">Return to StoryBoard</button></Link>}
+          <button style={{position:"relative", left:"27.5%", top:"37.75em"}} onClick={(e) => { if (window.confirm('Are you sure you wish to delete this item?')) this.deleteCharacterSetting(e) } }className="ui button negative">Delete Character Setting</button>
+        </div>
       </div>
-      {this.props.currentEntry && <Link to={"/storyboards/".concat(`${this.props.currentEntry.id}`)}><button style={{position: "relative", top: "87.5%", left: "35%"}} className="ui button positive">Return to StoryBoard</button></Link>}
-      <button style={{left:"37.25%"}} onClick={(e) => { if (window.confirm('Are you sure you wish to delete this item?')) this.deleteCharacterSetting(e) } }className="ui button negative">Delete Character Setting</button>
       </Fragment>
     )
   }

@@ -90,11 +90,13 @@ class EditCharacterForm extends Component {
     }
     return(
       <Fragment>
-        <div className="ui raised card" style={{width: "32%", position: "relative", left: "34%", padding: "3%", height: "30em"}}>
-
-        <h2 style={{position:"relative", bottom:"3.5%", textAlign:"center"}}> Edit This Character!</h2>
-
-        <form onSubmit={this.handleSubmit}>
+        <div className="ui raised card" style={{width: "32%", minWidth:"35em", position: "relative", left: "34%", padding: "3%", height: "38em"}}>
+        <div className="ui attached message" style={{position: "relative", bottom: ".25em", textAlign: "center"}}>
+          <div className="header">
+            <h2 style={{position:"relative", bottom:"3.5%", textAlign:"center"}}> Edit This Character!</h2>
+          </div>
+        </div>
+        <form style={{position:"relative", top:"1.5em"}} onSubmit={this.handleSubmit}>
         <div className="ui form" >
           <div className="required field">
             <label>Name</label>
@@ -104,12 +106,15 @@ class EditCharacterForm extends Component {
             <label>Description</label>
             <textarea type="text" placeholder="Description" name="description" onChange={this.handleChange} value ={this.state.description} required ></textarea>
             </div>
-        <button style={{position: "relative", left:"37.5%"}} className="ui button" type="submit">Submit</button>
+        <button style={{position: "relative", left: "40%"}} className="ui button" type="submit">Submit</button>
       </div>
       </form>
+      <div style={{position:"absolute", left:"39%"}}>
+      {this.props.currentEntry && <Link to={"/storyboards/".concat(`${this.props.currentEntry.id}`)}><button style={{position:"relative", right:"57.5%", top:"30.5em"}} className="ui button blue">Return to StoryBoard</button></Link>}
+      <button style={{position:"relative", left:"40%", top:"27.5em"}} onClick={(e) => { if (window.confirm('Are you sure you wish to delete this item?')) this.deleteCharacter(e) } }className="ui button negative">Delete Character</button>
+      </div>
     </div>
-    {this.props.currentEntry && <Link to={"/storyboards/".concat(`${this.props.currentEntry.id}`)}><button style={{position: "relative", left:"34%", top:"1.5em"}} className="ui button positive">Return to StoryBoard</button></Link>}
-    <button style={{position:"relative", left:"41.75%", top:"1.5em"}} onClick={(e) => { if (window.confirm('Are you sure you wish to delete this item?')) this.deleteCharacter(e) } }className="ui button negative">Delete Character</button>
+
     </Fragment>
     )
   }
