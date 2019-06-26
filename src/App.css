@@ -38,6 +38,7 @@ h1 {
 div.DraftEditor-root {
   background-color: #fffef7;
   width:85%;
+  min-width:50em;
   margin:auto;
   box-shadow: 0px 0px 6px 1px rgba(0,0,0,0.5);
   height: 25em;
@@ -52,6 +53,7 @@ div.DraftEditor-root {
 div.toolbar {
   position: relative;
   width: 80%;
+  min-width:50em;
   padding: 10px 20px;
   margin: auto;
   top: .25em;
