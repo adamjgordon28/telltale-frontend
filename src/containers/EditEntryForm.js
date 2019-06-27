@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import history from '../history.js';
-import WithAuth from '../components/WithAuth.js';
+import HOCWithAuth from '../components/HOCWithAuth.js';
 
 class EditEntryForm extends Component {
   state = {
@@ -159,4 +159,4 @@ const mapStateToProps = (state) => {
   }
 }
 
-export default WithAuth(connect(mapStateToProps, mapDispatchToProps)(EditEntryForm))
+export default HOCWithAuth(connect(mapStateToProps, mapDispatchToProps)(EditEntryForm))

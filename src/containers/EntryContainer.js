@@ -4,7 +4,7 @@ import EntryEditor from "./EntryEditor.js";
 // import UserEntryFilter from "./UserEntryFilter.js"
 import { Route, Switch, Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import WithAuth from '../components/WithAuth.js';
+import HOCWithAuth from '../components/HOCWithAuth.js';
 
 
 
@@ -95,4 +95,4 @@ const mapStateToProps = (state) => {
   }
 }
 
-export default WithAuth(connect(mapStateToProps)(EntryContainer))
+export default HOCWithAuth(connect(mapStateToProps)(EntryContainer))

@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import history from "../history.js";
-import WithAuth from '../components/WithAuth.js';
+import HOCWithAuth from '../components/HOCWithAuth.js';
 
 
 const emptyContent = "{\"blocks\":[{\"key\":\"dpilv\",\"text\":\"\",\"type\":\"unstyled\",\"depth\":0,\"inlineStyleRanges\":[],\"entityRanges\":[],\"data\":{}}],\"entityMap\":{}}"
@@ -101,4 +101,4 @@ const mapStateToProps = (state) => {
   }
 }
 
-export default WithAuth(connect(mapStateToProps, mapDispatchToProps)(CreateEntryForm))
+export default HOCWithAuth(connect(mapStateToProps, mapDispatchToProps)(CreateEntryForm))

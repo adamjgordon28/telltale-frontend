@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Redirect, Link } from 'react-router-dom';
 import history from '../history.js';
-import WithAuth from '../components/WithAuth.js';
+import HOCWithAuth from '../components/HOCWithAuth.js';
 
 
 
@@ -168,4 +168,4 @@ function mapStateToProps(state) {
   }
 }
 
-export default WithAuth(connect(mapStateToProps, mapDispatchToProps )(EditUserForm))
+export default HOCWithAuth(connect(mapStateToProps, mapDispatchToProps )(EditUserForm))

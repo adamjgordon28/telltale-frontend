@@ -6,7 +6,7 @@ import createHighlightPlugin from '../highlightPlugin';
 import createCounterPlugin from 'draft-js-counter-plugin';
 import '../App.css'
 import { connect } from 'react-redux'
-import WithAuth from '../components/WithAuth.js';
+import HOCWithAuth from '../components/HOCWithAuth.js';
 import history from "../history.js"
 
 const highlightPlugin = createHighlightPlugin({
@@ -103,4 +103,4 @@ const mapStateToProps = (state) => {
   }
 }
 
-export default WithAuth(connect(mapStateToProps)(ReadOnlyEntryEditor))
+export default HOCWithAuth(connect(mapStateToProps)(ReadOnlyEntryEditor))

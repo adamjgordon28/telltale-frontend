@@ -3,16 +3,16 @@ import { Redirect } from 'react-router-dom'
 import { connect } from 'react-redux'
 
 
-function withAuth(MyComponent){
+function HOCWithAuth(MyComponent){
 
-    class WithAuth extends React.Component{
+    class HOCWithAuth extends React.Component{
 
       renderPage = () => {
 
             if (this.props.currentUser || !!localStorage.token){
           return <MyComponent {...this.props}/>
             } else {
-            alert("HOC - you must be logged in to see this page!")
+            alert("You must be logged in to see this page!")
           return <Redirect to="/login" />
         }
       }
@@ -39,8 +39,8 @@ function withAuth(MyComponent){
     //   }
     // }
 
-    return connect(mapStateToProps)(WithAuth)
+    return connect(mapStateToProps)(HOCWithAuth)
 }
 
 
-export default withAuth
+export default HOCWithAuth

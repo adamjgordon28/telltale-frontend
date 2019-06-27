@@ -4,7 +4,7 @@ import CreateCharacterForm from './CreateCharacterForm.js'
 import CreateSettingForm from './CreateSettingForm.js'
 import history from "../history.js";
 import { connect } from 'react-redux';
-import WithAuth from '../components/WithAuth.js';
+import HOCWithAuth from '../components/HOCWithAuth.js';
 
 class AddInfoToStoryContainer extends React.Component {
 
@@ -79,4 +79,4 @@ function mapDispatchToProps(dispatch) {
   }
 }
 
-export default WithAuth(connect(mapStateToProps, mapDispatchToProps)(AddInfoToStoryContainer))
+export default HOCWithAuth(connect(mapStateToProps, mapDispatchToProps)(AddInfoToStoryContainer))

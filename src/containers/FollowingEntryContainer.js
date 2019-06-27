@@ -3,7 +3,7 @@ import ReadOnlyEntryCard from "../components/ReadOnlyEntryCard.js";
 import ReadOnlyEntryEditor from "./ReadOnlyEntryEditor.js";
 import { Route, Switch, Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import WithAuth from '../components/WithAuth.js';
+import HOCWithAuth from '../components/HOCWithAuth.js';
 
 
 class FollowingEntryContainer extends Component {
@@ -126,4 +126,4 @@ const mapStateToProps = (state) => {
   }
 }
 
-export default WithAuth(connect(mapStateToProps)(FollowingEntryContainer))
+export default HOCWithAuth(connect(mapStateToProps)(FollowingEntryContainer))

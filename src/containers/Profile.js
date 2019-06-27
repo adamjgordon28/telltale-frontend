@@ -1,7 +1,7 @@
 import React, {Component, Fragment} from 'react';
 import { connect } from 'react-redux';
 import history from '../history.js';
-import WithAuth from '../components/WithAuth.js';
+import HOCWithAuth from '../components/HOCWithAuth.js';
 import { Link } from 'react-router-dom';
 
 
@@ -173,4 +173,4 @@ const mapStateToProps = (state) => {
 }
 
 
-export default WithAuth(connect(mapStateToProps, mapDispatchToProps)(Profile))
+export default HOCWithAuth(connect(mapStateToProps, mapDispatchToProps)(Profile))

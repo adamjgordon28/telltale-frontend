@@ -2,7 +2,7 @@ import React from 'react';
 import { EditorState, RichUtils, convertToRaw, convertFromRaw, Modifier} from 'draft-js';
 import { Link } from 'react-router-dom';
 import Editor from 'draft-js-plugins-editor';
-import WithAuth from '../components/WithAuth.js';
+import HOCWithAuth from '../components/HOCWithAuth.js';
 import createHighlightPlugin from '../highlightPlugin';
 import createSideToolbarPlugin from 'draft-js-side-toolbar-plugin';
 import createToolbarPlugin from 'draft-js-static-toolbar-plugin';
@@ -302,4 +302,4 @@ const mapStateToProps = (state) => {
   }
 }
 
-export default WithAuth(connect(mapStateToProps)(EntryEditor))
+export default HOCWithAuth(connect(mapStateToProps)(EntryEditor))

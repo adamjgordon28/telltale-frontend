@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 import StoryBoardCharacterList from './StoryBoardCharacterList.js';
 import StoryBoardSettingList from './StoryBoardSettingList.js';
 import StoryBoardCharacterSettingList from '../containers/StoryBoardCharacterSettingList.js';
-import WithAuth from './WithAuth.js'
+import HOCWithAuth from './HOCWithAuth.js'
 
 
 class StoryBoard extends Component {
@@ -18,7 +18,12 @@ class StoryBoard extends Component {
    fetch("http://localhost:4000/api/v1/entries/".concat(`${this.props.match.params.id}`))
     .then(response => response.json())
     .then(json => {
+        alert("You do not have access to this page!")
+        this.props.setCurrentEntry(null)
+        history.push(`/about`)
+
       this.props.setCurrentEntry(json)
+
     })
 
   }
@@ -80,4 +85,4 @@ function mapDispatchToProps(dispatch) {
 
 
 
-export default WithAuth(connect(mapStateToProps, mapDispatchToProps)(StoryBoard))
+export default HOCWithAuth(connect(mapStateToProps, mapDispatchToProps)(StoryBoard))

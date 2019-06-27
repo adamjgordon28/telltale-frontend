@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import  CPCreateCharacterSettingForm from './CPCreateCharacterSettingForm.js';
 import CPCharacterSettingList from './CPCharacterSettingList.js';
 import history from '../history.js';
-import WithAuth from '../components/WithAuth.js';
+import HOCWithAuth from '../components/HOCWithAuth.js';
 
 
 class CharacterPage extends Component {
@@ -82,4 +82,4 @@ function mapDispatchToProps(dispatch) {
   }
 }
 
-export default WithAuth(connect(mapStateToProps, mapDispatchToProps)(CharacterPage))
+export default HOCWithAuth(connect(mapStateToProps, mapDispatchToProps)(CharacterPage))

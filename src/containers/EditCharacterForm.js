@@ -2,7 +2,7 @@ import React, { Component, Fragment} from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import history from '../history.js';
-import WithAuth from '../components/WithAuth.js';
+import HOCWithAuth from '../components/HOCWithAuth.js';
 
 class EditCharacterForm extends Component {
 
@@ -158,4 +158,4 @@ function mapStateToProps(state) {
 
 
 
-export default WithAuth(connect(mapStateToProps, mapDispatchToProps)(EditCharacterForm))
+export default HOCWithAuth(connect(mapStateToProps, mapDispatchToProps)(EditCharacterForm))
