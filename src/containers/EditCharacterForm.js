@@ -78,16 +78,19 @@ class EditCharacterForm extends Component {
 
 
   render(){
-    if (this.props.currentUser && this.state.character){
-     if(this.props.currentUser.id !== this.state.character.entry.user_id){
-       alert("You do not have access to this page!")
-       this.props.setCurrentEntry(null)
-       history.push(`/about`)
-     }
-   }
-    if (!this.props.currentEntry){
-      return <h3>Loading...</h3>
+    if (!this.state.character || !this.props.currentUser||!this.props.currentEntry) {
+      return <h1>Loading...</h1>
     }
+    else if (this.props.currentUser && this.state.character){
+      if(this.props.currentUser.id !== this.state.character.entry.user_id){
+         alert("You do not have access to this page!")
+         this.props.setCurrentEntry(null)
+         history.push(`/about`)
+         return null
+       }
+
+       else {
+
     return(
       <Fragment>
         <div className="ui raised card" style={{width: "32%", minWidth:"35em", position: "relative", left: "34%", padding: "3%", height: "38em"}}>
@@ -117,6 +120,12 @@ class EditCharacterForm extends Component {
 
     </Fragment>
     )
+
+      }
+    }
+    else {
+      return null
+    }
   }
 
 

@@ -78,48 +78,53 @@ class EditSettingForm extends Component {
 
 
   render(){
-    if (!this.props.currentEntry){
-      return <h3>Loading...</h3>
+    if (!this.state.setting || !this.props.currentUser || !this.props.currentEntry){
+      return <h1>Loading...</h1>
     }
-     if (this.props.currentUser && this.state.setting){
+    else if (this.props.currentUser && this.state.setting){
       if(this.props.currentUser.id !== this.state.setting.entry.user_id){
         alert("You do not have access to this page!")
         this.props.setCurrentEntry(null)
         history.push(`/about`)
+        return null
       }
-    }
-    return(
-      <Fragment>
-        <div className="ui raised card" style={{width: "32%", minWidth:"35em", position: "relative", left: "34%", padding: "3%", height: "38em"}}>
-        <div className="ui attached message" style={{position: "relative", bottom: ".25em", textAlign: "center"}}>
-          <div className="header">
-            <h2 style={{position:"relative", bottom:"3.5%", textAlign:"center"}}> Edit This Setting!</h2>
+
+      else {
+        return(
+          <Fragment>
+            <div className="ui raised card" style={{width: "32%", minWidth:"35em", position: "relative", left: "34%", padding: "3%", height: "38em"}}>
+            <div className="ui attached message" style={{position: "relative", bottom: ".25em", textAlign: "center"}}>
+              <div className="header">
+                <h2 style={{position:"relative", bottom:"3.5%", textAlign:"center"}}> Edit This Setting!</h2>
+              </div>
+            </div>
+            <form style={{position:"relative", top:"1.5em"}} onSubmit={this.handleSubmit}>
+            <div className="ui form" >
+              <div className="required field">
+                <label>Name</label>
+                <input type="text" placeholder="Name" name="name" onChange={this.handleChange} value = {this.state.name} maxLength="32" required/>
+                </div>
+                <div className="required field">
+                <label>Description</label>
+                <textarea type="text" placeholder="Description" name="description" onChange={this.handleChange} value ={this.state.description} required ></textarea>
+                </div>
+            <button style={{position: "relative", left: "40%"}} className="ui button" type="submit">Submit</button>
+          </div>
+          </form>
+          <div style={{position:"absolute", left:"39%"}}>
+            {this.props.currentEntry && <Link to={"/storyboards/".concat(`${this.props.currentEntry.id}`)}><button style={{position:"relative", right:"57.5%", top:"30.5em"}} className="ui button blue">Return to StoryBoard</button></Link>}
+            <button style={{position:"relative", left:"45%", top:"27.5em"}} onClick={(e) => { if (window.confirm('Are you sure you wish to delete this setting? This cannot be undone.')) this.deleteSetting(e) } }className="ui button negative">Delete Setting</button>
           </div>
         </div>
-        <form style={{position:"relative", top:"1.5em"}} onSubmit={this.handleSubmit}>
-        <div className="ui form" >
-          <div className="required field">
-            <label>Name</label>
-            <input type="text" placeholder="Name" name="name" onChange={this.handleChange} value = {this.state.name} maxLength="32" required/>
-            </div>
-            <div className="required field">
-            <label>Description</label>
-            <textarea type="text" placeholder="Description" name="description" onChange={this.handleChange} value ={this.state.description} required ></textarea>
-            </div>
-        <button style={{position: "relative", left: "40%"}} className="ui button" type="submit">Submit</button>
-      </div>
-      </form>
-      <div style={{position:"absolute", left:"39%"}}>
-        {this.props.currentEntry && <Link to={"/storyboards/".concat(`${this.props.currentEntry.id}`)}><button style={{position:"relative", right:"57.5%", top:"30.5em"}} className="ui button blue">Return to StoryBoard</button></Link>}
-        <button style={{position:"relative", left:"45%", top:"27.5em"}} onClick={(e) => { if (window.confirm('Are you sure you wish to delete this setting? This cannot be undone.')) this.deleteSetting(e) } }className="ui button negative">Delete Setting</button>
-      </div>
-    </div>
 
-    </Fragment>
-    )
+        </Fragment>
+        )
+      }
+    }
+    else {
+      return null
+    }
   }
-
-
 }
 
 

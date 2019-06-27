@@ -87,62 +87,70 @@ class EditUserForm extends Component {
       return <h1>Loading...</h1>
     }
 
-    if(this.props.currentUser.id !== parseInt(this.props.match.params.id)){
-      alert("You do not have access to this page!")
-      return <Redirect to="/about"/>
-    }
+    else if(this.props.currentUser.id && parseInt(this.props.match.params.id)){
+      if (this.props.currentUser.id !== parseInt(this.props.match.params.id)){
+        alert("You do not have access to this page!")
+        return <Redirect to="/about"/>
+      }
 
-    return(
-      <div className="ui raised card" style={{width:"40%", minWidth:"40em", position:"relative", left:"30%", padding:"2.5%", height:"52.5em"}}>
-        <div className="ui attached message" style={{position: "relative", bottom: ".25em", textAlign: "center"}}>
-          <div className="header">
-            <h2>Edit Your Account Info Here!</h2>
-          </div>
-        </div>
-          <form style={{position:"relative", top:"2em"}} onSubmit={this.handleSubmit}>
-          <div className="ui form" >
-              <div className="required field">
-                <label>Username</label>
-                <input type="text" placeholder="Username" name="username" onChange={this.handleChange} value = {this.state.username} maxLength="32" required/>
+      else {
+        return(
+          <div className="ui raised card" style={{width:"40%", minWidth:"40em", position:"relative", left:"30%", padding:"2.5%", height:"52.5em"}}>
+            <div className="ui attached message" style={{position: "relative", bottom: ".25em", textAlign: "center"}}>
+              <div className="header">
+                <h2>Edit Your Account Info Here!</h2>
               </div>
-              <div className="required field">
-                <label>Image URL</label>
-                <input onChange={this.handleChange} placeholder="Image URL" name="img_url" type="url" value={this.state.img_url} />
-              </div>
-              <div className="required field">
-                <label>Name</label>
-                <input onChange={this.handleChange} placeholder="Name" name="name" type="text" value={this.state.name} maxLength="50" />
-              </div>
-              <div className="required field">
-                <label>Age</label>
-                <input onChange={this.handleChange} placeholder="Age" name="age" type="number" value={this.state.age}/>
-              </div>
-              <div className="required field">
-                <label>Location</label>
-                <input onChange={this.handleChange} placeholder="Location" name="location" type="text" value={this.state.location} maxLength="50" />
-              </div>
-              <div className="required field">
-                <label>Bio</label>
-                <textarea onChange={this.handleChange} placeholder="Bio" name="bio" type="text" value={this.state.bio} maxLength="1000" style={{height:"5em"}}></textarea>
-              </div>
-
-
-
-          <button style={{position: "relative", left: "40%"}} className="ui button" type="submit">Submit</button>
-          {this.props.currentUser &&
-            <div className="button-div" style={{position:"absolute"}}>
-              <Link to={`/profiles/${this.props.currentUser.id}`}>
-              <button className="ui button blue" style={{position:'relative', top:"1.25em"}}>Return to Profile</button>
-              </Link>
-              <Link to={`/profiles/${this.props.currentUser.id}`}>
-              <button style={{position:'relative', top:"1.25em", left:"72.5%"}} className="ui button negative" onClick={(e) => { if (window.confirm('Are you sure you wish to delete your account? This cannot be undone.')) this.deleteUser(e) } }>Delete Account</button>
-              </Link>
             </div>
-          }
+              <form style={{position:"relative", top:"2em"}} onSubmit={this.handleSubmit}>
+              <div className="ui form" >
+                  <div className="required field">
+                    <label>Username</label>
+                    <input type="text" placeholder="Username" name="username" onChange={this.handleChange} value = {this.state.username} maxLength="32" required/>
+                  </div>
+                  <div className="required field">
+                    <label>Image URL</label>
+                    <input onChange={this.handleChange} placeholder="Image URL" name="img_url" type="url" value={this.state.img_url} />
+                  </div>
+                  <div className="required field">
+                    <label>Name</label>
+                    <input onChange={this.handleChange} placeholder="Name" name="name" type="text" value={this.state.name} maxLength="50" />
+                  </div>
+                  <div className="required field">
+                    <label>Age</label>
+                    <input onChange={this.handleChange} placeholder="Age" name="age" type="number" value={this.state.age}/>
+                  </div>
+                  <div className="required field">
+                    <label>Location</label>
+                    <input onChange={this.handleChange} placeholder="Location" name="location" type="text" value={this.state.location} maxLength="50" />
+                  </div>
+                  <div className="required field">
+                    <label>Bio</label>
+                    <textarea onChange={this.handleChange} placeholder="Bio" name="bio" type="text" value={this.state.bio} maxLength="1000" style={{height:"5em"}}></textarea>
+                  </div>
 
-        </div>
-        </form>
-      </div>)
+
+
+              <button style={{position: "relative", left: "40%"}} className="ui button" type="submit">Submit</button>
+              {this.props.currentUser &&
+                <div className="button-div" style={{position:"absolute"}}>
+                  <Link to={`/profiles/${this.props.currentUser.id}`}>
+                  <button className="ui button blue" style={{position:'relative', top:"1.25em"}}>Return to Profile</button>
+                  </Link>
+                  <Link to={`/profiles/${this.props.currentUser.id}`}>
+                  <button style={{position:'relative', top:"1.25em", left:"72.5%"}} className="ui button negative" onClick={(e) => { if (window.confirm('Are you sure you wish to delete your account? This cannot be undone.')) this.deleteUser(e) } }>Delete Account</button>
+                  </Link>
+                </div>
+              }
+
+            </div>
+            </form>
+          </div>
+        )
+      }
+    }
+    else {
+      return null
+    }
   }
 
 

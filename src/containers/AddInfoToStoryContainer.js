@@ -23,17 +23,18 @@ componentDidMount = () => {
 
 
   render() {
-    if(!this.props.currentEntry){
+    if(!this.props.currentUser|| !this.props.currentEntry){
       return <h1>Loading...</h1>
     }
-    if (this.props.currentUser && this.props.currentEntry.user){
-     if(this.props.currentUser.id !== this.props.currentEntry.user.id){
-       alert("You do not have access to this page!")
-       this.props.setCurrentEntry(null)
-       history.push(`/about`)
-     }
-   }
-    return (
+    else if(this.props.currentUser &&  this.props.currentEntry.user) {
+      if(this.props.currentUser.id!== this.props.currentEntry.user.id){
+      alert("You do not have access to this page!")
+      this.props.setCurrentEntry(null)
+      history.push(`/about`)
+      return null
+      }
+      else {
+        return (
 
   <div className="ui raised card"style={{ width: "80%", minWidth:"80em", position: "relative", left: "10%"}} >
 
@@ -59,7 +60,13 @@ Return to StoryBoard
 </div>
   </div>
     </div>
-  )};
+        )
+      }
+    }
+  else {
+    return null
+  }
+  };
 
 }
 

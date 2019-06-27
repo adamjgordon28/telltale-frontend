@@ -217,81 +217,86 @@ handleKeyCommand = (command, editorState) => {
 
     if (!this.state.editorState || !this.state.entry) {
     return (
-      <h3 className="loading">Loading...</h3>
+      <h1 className="loading">Loading...</h1>
     );
   }
   if(this.props.currentUser && this.state.entry.user){
     if(this.props.currentUser.id !== this.state.entry.user.id){
       alert("You do not have access to this page! You are being re-directed to a read-only version of this entry.")
       history.push(`/total-entries/${this.state.entry.id}`)
+      return null
+    }
+    else {
+      return (
+
+      <div>
+        <h1>Welcome back, "{this.state.entry.title}" has been waiting for you!</h1>
+        <div>
+        <div className="toolbar">
+
+        <Toolbar>
+                {
+
+                  (externalProps) => (
+                    <div className = "middle-toolbar">
+                      <div className="mini-toolbar">
+
+                        <UndoButton />
+                        <RedoButton />
+
+                        <button onClick={() => {this.makeHighlighted()}}>Highlight</button>
+                      </div>
+                      <BoldButton {...externalProps} />
+                      <ItalicButton {...externalProps} />
+                      <UnderlineButton {...externalProps} />
+                      <CodeButton {...externalProps} />
+                      <UnorderedListButton {...externalProps} />
+                      <OrderedListButton {...externalProps} />
+                      <BlockquoteButton {...externalProps} />
+                      <CodeBlockButton {...externalProps} />
+
+
+                    </div>
+
+                  )
+
+                }
+
+              </Toolbar>
+
+        </div>
+      <div onKeyDown={this.onKeyPressed}>
+      <Editor
+      onChange={(editorState) => {this.onChange(editorState)}}
+      editorState={this.state.editorState}
+      handleKeyCommand={this.handleKeyCommand}
+      plugins={[highlightPlugin, sideToolbarPlugin, toolbarPlugin, undoPlugin, counterPlugin, linkifyPlugin, emojiPlugin]}
+      onTab={this.onTab}
+      placeholder="Write your story here..."
+      spellCheck={true}
+
+      />
+      <EmojiSuggestions />
+
+      <div style={{position: "relative", left: "82.5%", bottom:"1.5em", fontWeight: "bold", width:"10%", display: "inline"}}>
+        <div style={{display: "inline", position: "relative", right:"12.5%", top:"1em"}}><CharCounter /> characters</div>
+            <div style={{display: "inline", position: "relative", right:"10%", top:"1em"}}><WordCounter /> words</div>
+            <div style={{display: "inline", position: "relative", right:"7.5%", top:"1em"}}><LineCounter /> lines</div>
+
+        </div>
+      </div>
+
+      <Link key={Math.random()} to={`/storyboards/${this.state.entry.id}`}><button style = {{position: "relative", left:"7.5%", bottom:"2em"}} className="ui blue button">View Storyboard</button></Link>
+      </div>
+
+      </div>
+        )
+      }
+    }
+    else {
+      return null
     }
   }
-
-    return (
-
-    <div>
-      <h1>Welcome back, "{this.state.entry.title}" has been waiting for you!</h1>
-      <div>
-      <div className="toolbar">
-
-      <Toolbar>
-              {
-
-                (externalProps) => (
-                  <div className = "middle-toolbar">
-                    <div className="mini-toolbar">
-
-                      <UndoButton />
-                      <RedoButton />
-
-                      <button onClick={() => {this.makeHighlighted()}}>Highlight</button>
-                    </div>
-                    <BoldButton {...externalProps} />
-                    <ItalicButton {...externalProps} />
-                    <UnderlineButton {...externalProps} />
-                    <CodeButton {...externalProps} />
-                    <UnorderedListButton {...externalProps} />
-                    <OrderedListButton {...externalProps} />
-                    <BlockquoteButton {...externalProps} />
-                    <CodeBlockButton {...externalProps} />
-
-
-                  </div>
-
-                )
-
-              }
-
-            </Toolbar>
-
-      </div>
-    <div onKeyDown={this.onKeyPressed}>
-    <Editor
-    onChange={(editorState) => {this.onChange(editorState)}}
-    editorState={this.state.editorState}
-    handleKeyCommand={this.handleKeyCommand}
-    plugins={[highlightPlugin, sideToolbarPlugin, toolbarPlugin, undoPlugin, counterPlugin, linkifyPlugin, emojiPlugin]}
-    onTab={this.onTab}
-    placeholder="Write your story here..."
-    spellCheck={true}
-
-    />
-    <EmojiSuggestions />
-
-    <div style={{position: "relative", left: "82.5%", bottom:"1.5em", fontWeight: "bold", width:"10%", display: "inline"}}>
-      <div style={{display: "inline", position: "relative", right:"12.5%", top:"1em"}}><CharCounter /> characters</div>
-          <div style={{display: "inline", position: "relative", right:"10%", top:"1em"}}><WordCounter /> words</div>
-          <div style={{display: "inline", position: "relative", right:"7.5%", top:"1em"}}><LineCounter /> lines</div>
-
-      </div>
-    </div>
-
-    <Link key={Math.random()} to={`/storyboards/${this.state.entry.id}`}><button style = {{position: "relative", left:"7.5%", bottom:"2em"}} className="ui blue button">View Storyboard</button></Link>
-    </div>
-
-    </div>
-  )};
-
 }
 
 

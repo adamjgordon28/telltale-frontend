@@ -71,21 +71,25 @@ class EditEntryForm extends Component {
 
 
   render(){
-  if (!this.props.currentEntry){
-    return <h3>Loading...</h3>
+
+  if (!this.props.currentUser|| !this.props.currentEntry){
+    return <h1>Loading...</h1>
   }
-  if(this.props.currentEntry.status===404){
+  else if(this.props.currentEntry.status===404){
     alert("This is not a valid entry.")
     this.props.setCurrentEntry(null)
     history.push('/about')
+    return null
   }
-   if (this.props.currentUser && this.props.currentEntry.user){
-    if(this.props.currentUser.id !== this.props.currentEntry.user.id){
-      alert("You do not have access to this page!")
-      this.props.setCurrentEntry(null)
-      history.push(`/about`)
+  else if(this.props.currentUser &&  this.props.currentEntry.user) {
+    if(this.props.currentUser.id!== this.props.currentEntry.user.id){
+    alert("You do not have access to this page!")
+    this.props.setCurrentEntry(null)
+    history.push(`/about`)
+    return null
     }
-  }
+
+    else {
     return (
       <div className="ui raised card" style={{width: "48%", minWidth:"50em", position: "relative", left: "26%", padding:"3em", height:"43em"}}>
       <div className="ui attached message" style={{position: "relative", bottom: "1em", textAlign: "center"}}>
@@ -134,7 +138,12 @@ class EditEntryForm extends Component {
 
 
       </div>
-    )
+        )
+      }
+    }
+    else {
+      return null
+    }
   }
 }
 

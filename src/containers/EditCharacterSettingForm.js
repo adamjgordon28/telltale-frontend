@@ -110,22 +110,25 @@ class EditCharacterSettingForm extends Component {
 
 
   render(){
-    if (!this.props.currentEntry){
-      return <h3>Loading...</h3>
+    if (!this.props.currentUser ||!this.props.currentEntry ){
+      return <h1>Loading...</h1>
     }
-    if(this.props.currentEntry.status===404){
+    else if(this.props.currentEntry.status===404){
       alert("This is not a valid entry.")
       this.props.setCurrentEntry(null)
       history.push('/about')
-    }
-     if (this.props.currentUser && this.props.currentEntry.user){
-      if(this.props.currentUser.id !== this.props.currentEntry.user.id){
-        alert("You do not have access to this page!")
-        this.props.setCurrentEntry(null)
-        history.push(`/about`)
-      }
+      return null
     }
 
+    else if(this.props.currentUser &&  this.props.currentEntry.user) {
+      if(this.props.currentUser.id!== this.props.currentEntry.user.id){
+      alert("You do not have access to this page!")
+      this.props.setCurrentEntry(null)
+      history.push(`/about`)
+      return null
+      }
+
+      else {
     return(
       <Fragment>
       <div className="ui raised card" style={{width: "32%", minWidth:"35em", position: "relative", left: "35%", padding: "2.5%", height: "47em"}}>
@@ -165,7 +168,13 @@ class EditCharacterSettingForm extends Component {
         </div>
       </div>
       </Fragment>
-    )
+      )
+    }
+  }
+
+  else {
+    return null
+  }
   }
 }
 
