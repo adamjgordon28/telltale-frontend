@@ -38,7 +38,7 @@ class CreateCharacterForm extends React.Component {
       <h1 style={{position:"relative", right:"12.5%"}}>Add a New Character</h1>
       <img alt="" src={'/icons/character.png'} style={{position: "absolute", bottom:"87%", left: "77.5%", height:"4em"}}/>
           <form onSubmit={this.handleSubmit}>
-          <div className="ui form" >
+          <div className="ui form">
             <div className="required field">
               <label>Name</label>
               <input type="text" placeholder="Name" value={this.state.name} name="name" onChange={this.handleChange} maxLength="32" required/>

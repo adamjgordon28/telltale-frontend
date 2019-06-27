@@ -35,7 +35,7 @@ componentDidMount = () => {
    }
     return (
 
-  <div className="ui raised card"style={{ width: "80%", position: "relative", left: "10%"}} >
+  <div className="ui raised card"style={{ width: "80%", minWidth:"80em", position: "relative", left: "10%"}} >
 
 
   <div className="ui attached message">
