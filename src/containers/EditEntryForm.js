@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 import history from '../history.js';
 import WithAuth from '../components/WithAuth.js';
 
@@ -59,6 +60,16 @@ class EditEntryForm extends Component {
   }
 
 
+  deleteEntry = () => {
+    fetch("http://localhost:4000/api/v1/entries/".concat(`${this.props.currentEntry.id}`),
+  {
+    method: 'DELETE'
+  })
+  this.props.removePostFromUser(this.props.currentEntry.id)
+  history.push("/entries")
+  }
+
+
   render(){
   if (!this.props.currentEntry){
     return <h3>Loading...</h3>
@@ -76,8 +87,8 @@ class EditEntryForm extends Component {
     }
   }
     return (
-      <div className="ui raised card" style={{width: "48%", minWidth:"45em", position: "relative", left: "26%", padding:"5em", top:"3em"}}>
-      <div className="ui attached message" style={{position: "relative", bottom: "3em", textAlign: "center"}}>
+      <div className="ui raised card" style={{width: "48%", minWidth:"50em", position: "relative", left: "26%", padding:"3em", height:"43em"}}>
+      <div className="ui attached message" style={{position: "relative", bottom: "1em", textAlign: "center"}}>
         <div className="header">
           <h2>Edit Your Story Details Here!</h2>
         </div>
@@ -114,6 +125,14 @@ class EditEntryForm extends Component {
           <button className="ui button" style={{position:"relative", left: "42.5%", top: "1.5em"}} type="submit">Submit</button>
         </div>
         </form>
+        <div className="button-div" style={{position:"absolute", top:"80%"}}>
+        <Link to={`/storyboards/${this.props.currentEntry.id}`}>
+          <button style={{position:"relative", top:"4.25em", left:"2.5%"}} className="ui button blue">Return to Storyboard</button>
+        </Link>
+        <button className="ui button red" style={{position:"relative", top:"4.25em", left:"100%"}} onClick={(e) => { if (window.confirm('Are you sure you wish to delete this entry? This cannot be undone.')) this.deleteEntry(e) } }>Delete Entry</button>
+        </div>
+
+
       </div>
     )
   }
@@ -126,6 +145,9 @@ function mapDispatchToProps(dispatch) {
     },
     updateEntryInfo: (entry) => {
       dispatch({type: 'UPDATE_ENTRY_INFO', payload: entry})
+    },
+    removePostFromUser: (entryId) => {
+      dispatch({type: 'REMOVE_POST_FROM_USER', payload: entryId})
     }
   }
 }
