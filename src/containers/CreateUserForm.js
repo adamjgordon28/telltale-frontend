@@ -57,7 +57,7 @@ class CreateUserForm extends React.Component {
           <div className="ui form">
             <div className="required field">
               <label>Username</label>
-              <input type="text" placeholder="Username" name="username" onChange={this.handleChange} />
+              <input type="text" placeholder="Username" name="username" onChange={this.handleChange} maxLength="32"/>
               </div>
             <div className="required field">
               <label>Password</label>
@@ -66,7 +66,7 @@ class CreateUserForm extends React.Component {
           <div className="fields">
             <div className="eight wide required field">
               <label>Name</label>
-              <input type="text" placeholder="Name" name="name" onChange={this.handleChange}  />
+              <input type="text" placeholder="Name" name="name" onChange={this.handleChange}  maxLength="50"/>
               </div>
               <div className="eight wide required field">
                 <label>Age</label>
@@ -76,7 +76,7 @@ class CreateUserForm extends React.Component {
           <div className="fields">
               <div className="eight wide required field">
                 <label>Location</label>
-                <input type="text" placeholder="Location" name="location" onChange={this.handleChange}  />
+                <input type="text" placeholder="Location" name="location" onChange={this.handleChange} maxLength="50" />
                 </div>
               <div className="eight wide required field">
                 <label>Image URL</label>
@@ -85,7 +85,7 @@ class CreateUserForm extends React.Component {
           </div>
               <div className="required field">
               <label>Bio</label>
-              <textarea type="text" placeholder="Bio" name="bio" onChange={this.handleChange}></textarea>
+              <textarea type="text" placeholder="Bio" name="bio" onChange={this.handleChange} maxLength="1000"></textarea>
               </div>
           <button className="ui button" style={{position:"relative", left: "45%", top: "1.5em"}} type="submit">Submit</button>
         </div>

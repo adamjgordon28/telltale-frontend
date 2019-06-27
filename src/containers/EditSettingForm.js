@@ -111,7 +111,7 @@ class EditSettingForm extends Component {
       </form>
       <div style={{position:"absolute", left:"39%"}}>
         {this.props.currentEntry && <Link to={"/storyboards/".concat(`${this.props.currentEntry.id}`)}><button style={{position:"relative", right:"57.5%", top:"30.5em"}} className="ui button blue">Return to StoryBoard</button></Link>}
-        <button style={{position:"relative", left:"45%", top:"27.5em"}} onClick={(e) => { if (window.confirm('Are you sure you wish to delete this item?')) this.deleteSetting(e) } }className="ui button negative">Delete Setting</button>
+        <button style={{position:"relative", left:"45%", top:"27.5em"}} onClick={(e) => { if (window.confirm('Are you sure you wish to delete this setting? This cannot be undone.')) this.deleteSetting(e) } }className="ui button negative">Delete Setting</button>
       </div>
     </div>
 

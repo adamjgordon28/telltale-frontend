@@ -161,7 +161,7 @@ class EditCharacterSettingForm extends Component {
       </form>}
         <div style={{position:"absolute", left:"39%"}}>
           {this.props.currentEntry && <Link to={"/storyboards/".concat(`${this.props.currentEntry.id}`)}><button style={{position:"relative", right:"57.5%", top:"40.5em"}} className="ui button blue">Return to StoryBoard</button></Link>}
-          <button style={{position:"relative", left:"27.5%", top:"37.75em"}} onClick={(e) => { if (window.confirm('Are you sure you wish to delete this item?')) this.deleteCharacterSetting(e) } }className="ui button negative">Delete Character Setting</button>
+          <button style={{position:"relative", left:"27.5%", top:"37.75em"}} onClick={(e) => { if (window.confirm('Are you sure you wish to delete this item? This cannot be undone.')) this.deleteCharacterSetting(e) } }className="ui button negative">Delete Character Setting</button>
         </div>
       </div>
       </Fragment>

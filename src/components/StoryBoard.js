@@ -63,7 +63,7 @@ class StoryBoard extends Component {
        <Link to={`/add-entry-info/${this.props.currentEntry.id}`}><button className="positive ui button" style={{marginRight:"1.5%"}}>Add a Character or Setting!</button></Link>
        <Link key={Math.random()} to={`/entries/${this.props.currentEntry.id}`}><button className="ui button blue" style={{marginRight:"1.5%"}}>Keep Writing </button></Link>
        <Link to={`/edit-entry/${this.props.currentEntry.id}`}><button className="ui button black" style={{marginRight:"1.5%"}}>Edit Entry</button></Link>
-       <button className="ui button red" style={{marginRight:"1.5%"}} onClick={(e) => { if (window.confirm('Are you sure you wish to delete this item?')) this.deleteEntry(e) } }>Delete Entry</button>
+       <button className="ui button red" style={{marginRight:"1.5%"}} onClick={(e) => { if (window.confirm('Are you sure you wish to delete this entry? This cannot be undone.')) this.deleteEntry(e) } }>Delete Entry</button>
        </div>
      </div>
    )

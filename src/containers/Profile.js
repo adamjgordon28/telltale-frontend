@@ -2,6 +2,7 @@ import React, {Component, Fragment} from 'react';
 import { connect } from 'react-redux';
 import history from '../history.js';
 import WithAuth from '../components/WithAuth.js';
+import { Link } from 'react-router-dom';
 
 
 class Profile extends Component {
@@ -93,6 +94,7 @@ renderProperFollowInfo = () => {
       return <h1>Loading...</h1>
     }
     return (
+    <Fragment>
       <div>
        {this.props.profileUser.id === this.props.currentUser.id ? <h1>Welcome back, {this.props.profileUser.username}!</h1> : <h1> {this.props.profileUser.username}'s Profile</h1> }
       {this.props.profileUser ?<Fragment> <div style={{textAlign:"center"}}>
@@ -128,7 +130,10 @@ renderProperFollowInfo = () => {
           <div>
           {this.renderProperFollowInfo()}
           </div></div></Fragment>: null}
+
       </div>
+      {this.props.profileUser.id === this.props.currentUser.id ? <Link to={`/edit-user/${this.props.currentUser.id}`}><button style={{position:"relative", left:"45%", top:"1.25em"}} className="positive ui button">Edit Account Info</button></Link> : null}
+    </Fragment>
     )
   }
 }

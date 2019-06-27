@@ -20,6 +20,7 @@ import EditEntryForm from './containers/EditEntryForm.js';
 import TotalEntryContainer from './containers/TotalEntryContainer.js';
 import FollowingEntryContainer from './containers/FollowingEntryContainer.js';
 import About from './components/About.js';
+import EditUserForm from './containers/EditUserForm.js';
 
 
 class App extends Component {
@@ -101,6 +102,10 @@ class App extends Component {
             </Route>
             <Route path='/about' render={(props)=> {
               return <About{...props}/>
+            }}>
+            </Route>
+            <Route path='/edit-user/:id' render={(props)=> {
+              return <EditUserForm{...props}/>
             }}>
             </Route>
           </Router>
