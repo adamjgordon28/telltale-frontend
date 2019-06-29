@@ -118,7 +118,7 @@ renderProperFollowInfo = () => {
 
 
       <div className="extra content" style={{color:"black"}}>
-      <h3>Follows: {this.props.profileUser.follows.length}</h3>
+      <h3>Followers: {this.props.profileUser.follows.length}</h3>
       <div>
       <div className="extra content" style={{color:"black"}}>
       <h3>Following: {this.props.profileUser.followings.length}</h3>

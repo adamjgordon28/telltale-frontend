@@ -12,7 +12,8 @@ class EntryContainer extends Component {
 
   state = {
     typeSearch: "",
-    genreSearch: ""
+    genreSearch: "",
+    publishedSearch: ""
   }
 
   handleChange = (e) => {
@@ -25,8 +26,11 @@ class EntryContainer extends Component {
     let singleFilteredArray = array.filter((entry)=> {
       return entry.title.toLowerCase().includes(this.state.typeSearch.toLowerCase())
     })
-    let fullFilteredArray = singleFilteredArray.filter((entry1)=> {
+    let secondFilteredArray = singleFilteredArray.filter((entry1)=> {
       return entry1.genre.includes(this.state.genreSearch)
+    })
+    let fullFilteredArray = secondFilteredArray.filter((entry2)=> {
+      return entry2.published.toString().includes(this.state.publishedSearch)
     })
     return fullFilteredArray
   }
@@ -55,22 +59,27 @@ class EntryContainer extends Component {
           return <EntryEditor {...props}/>}}>
         </Route>
         <Route path='/entries' render={()=><Fragment><div style={{ background:"lightgray", position:"relative", width:"100%", height:"3em", bottom:"1em"}}>
+        <select style={{position:"absolute", right: "55%",top: "10%", background:"white", color:"gray", height: "80%", width:"15%"}} onChange={this.handleChange} name = "publishedSearch" >
+                <option label="Published?"></option>
+                <option value="true">Yes</option>
+                <option value="false">No</option>
+            </select>
+        <select style={{position:"absolute", right: "35%",top: "10%", background:"white", color:"gray", height: "80%", width:"15%"}} onChange={this.handleChange} name = "genreSearch" >
+                <option label="Genre"></option>
+                <option value="adventure">Adventure</option>
+                <option value="comedy">Comedy</option>
+                <option value="drama">Drama</option>
+                <option value="fantasy">Fantasy</option>
+                <option value="historical-fiction">Historical Fiction</option>
+                <option value="horror">Horror</option>
+                <option value="mystery">Mystery</option>
+                <option value="non-fiction">Non-Fiction</option>
+                <option value="romance">Romance</option>
+                <option value="science-fiction">Science Fiction</option>
+                <option value="western">Western</option>
+                <option value="other">Other</option>
+            </select>
          <input style={{position:"absolute", right:"10%", top: "10%", width:"22.5%", height: "80%"}} placeholder="Search Your Entries..." value={this.state.search} onChange={this.handleChange} name="typeSearch"/>
-         <select style={{position:"absolute", right: "35%",top: "10%", background:"white", color:"gray", height: "80%", width:"15%"}} onChange={this.handleChange} name = "genreSearch" >
-                 <option label="Genre"></option>
-                 <option value="adventure">Adventure</option>
-                 <option value="comedy">Comedy</option>
-                 <option value="drama">Drama</option>
-                 <option value="fantasy">Fantasy</option>
-                 <option value="historical-fiction">Historical Fiction</option>
-                 <option value="horror">Horror</option>
-                 <option value="mystery">Mystery</option>
-                 <option value="non-fiction">Non-Fiction</option>
-                 <option value="romance">Romance</option>
-                 <option value="science-fiction">Science Fiction</option>
-                 <option value="western">Western</option>
-                 <option value="other">Other</option>
-             </select>
              {this.renderEntryCards()}
            </div> </Fragment>} >
         </Route>
