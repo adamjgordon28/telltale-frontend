@@ -63,6 +63,18 @@ renderProperFollowInfo = () => {
   }
 }
 
+calculatePublishedEntriesLength = () => {
+  if(this.props.profileUser){
+  let publishedEntriesArray = this.props.profileUser.entries.filter((entry)=> {
+    return entry.published === true
+    })
+    return publishedEntriesArray.length
+  }
+  else {
+    return null
+  }
+}
+
 
 
   fetchAndSetUser = () => {
@@ -110,7 +122,7 @@ renderProperFollowInfo = () => {
       <h3 style={{textAlign:"center"}}> {this.props.profileUser.location} </h3>
       </div>
       <div className="extra content" style={{color:"black"}}>
-      <h3 style={{textAlign:"center"}}> Number of Entries: {this.props.profileUser.entries.length} </h3>
+      <h3 style={{textAlign:"center"}}> Number of Entries:  {this.props.profileUser.entries.length} Total ({this.calculatePublishedEntriesLength()} Published)</h3>
       </div>
       <div className="extra content" style={{color:"black", maxHeight:"7.5em", minHeight:"7.5em", height:"7.5em", width:"100%", maxWidth: "100%", overflowWrap:"break-word", overflowY:"scroll"}}>
       <h3 style={{textAlign:"center", color:"black"}}>Bio: </h3>{} {this.props.profileUser.bio}
