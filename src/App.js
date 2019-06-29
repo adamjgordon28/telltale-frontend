@@ -1,4 +1,4 @@
-import React, { Fragment, Component} from 'react';
+import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Route, Router } from 'react-router-dom'
 import history from './history';
@@ -57,7 +57,7 @@ class App extends Component {
 
   render() {
     return (
-      <Fragment>
+      <div style={{minWidth:"100em"}}>
 
           <Router history={history}>
             <NavBar/>
@@ -109,7 +109,7 @@ class App extends Component {
             }}>
             </Route>
           </Router>
-      </Fragment>
+      </div>
   )};
 
 }

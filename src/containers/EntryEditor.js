@@ -125,6 +125,23 @@ saveContent = (noteContent) => {
     }
   }
 
+  togglePublished = () => {
+    if (this.state.fetched){
+     fetch("http://localhost:4000/api/v1/entries/".concat(`${this.props.match.params.id}`), {
+      method: "PATCH",
+      headers: { "Content-Type": "application/json", "Accepts": "application/json" },
+      body: JSON.stringify({ published:!this.state.entry.published })
+     })
+      .then(response => response.json())
+      .then(json => {
+          this.setState({
+            entry:json
+          })
+        this.props.updateEntryInfo(json)
+      })
+      }
+    }
+
 
 
   onChange =(editorState) => {
@@ -182,6 +199,7 @@ handleKeyCommand = (command, editorState) => {
        return history.push('/about')
      }
      if(entry) {
+       console.log (entry.published)
     this.setState({
 
       editorState: EditorState.createWithContent(convertFromRaw(JSON.parse(entry.content))),
@@ -215,12 +233,13 @@ handleKeyCommand = (command, editorState) => {
   render() {
 
 
-    if (!this.state.editorState || !this.state.entry) {
-    return (
-      <h1 className="loading">Loading...</h1>
-    );
+  if (!this.state.editorState || !this.state.entry) {
+  return (
+
+    <h1 className="loading">Loading...</h1>
+  );
   }
-  if(this.props.currentUser && this.state.entry.user){
+  else if(this.props.currentUser && this.state.entry.user){
     if(this.props.currentUser.id !== this.state.entry.user.id){
       alert("You do not have access to this page! You are being re-directed to a read-only version of this entry.")
       history.push(`/total-entries/${this.state.entry.id}`)
@@ -229,7 +248,7 @@ handleKeyCommand = (command, editorState) => {
     else {
       return (
 
-      <div>
+      <div style={{minWidth:"100em"}}>
         <h1>Welcome back, "{this.state.entry.title}" has been waiting for you!</h1>
         <div>
         <div className="toolbar">
@@ -287,6 +306,7 @@ handleKeyCommand = (command, editorState) => {
       </div>
 
       <Link key={Math.random()} to={`/storyboards/${this.state.entry.id}`}><button style = {{position: "relative", left:"7.5%", bottom:"2em"}} className="ui blue button">View Storyboard</button></Link>
+      <button style = {{position: "relative", left:"10%", bottom:"2em"}} className="ui button positive" onClick={this.togglePublished}>{this.state.entry && this.state.entry.published ? "Unpublish Entry" : "Publish Entry"}</button>
       </div>
 
       </div>
@@ -299,6 +319,15 @@ handleKeyCommand = (command, editorState) => {
   }
 }
 
+function mapDispatchToProps(dispatch) {
+  return {
+    updateEntryInfo: (entry) => {
+      dispatch({type: 'UPDATE_ENTRY_INFO', payload: entry})
+    }
+  }
+}
+
+
 
 
 const mapStateToProps = (state) => {
@@ -307,4 +336,4 @@ const mapStateToProps = (state) => {
   }
 }
 
-export default HOCWithAuth(connect(mapStateToProps)(EntryEditor))
+export default HOCWithAuth(connect(mapStateToProps, mapDispatchToProps)(EntryEditor))

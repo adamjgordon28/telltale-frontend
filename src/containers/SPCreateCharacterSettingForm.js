@@ -71,7 +71,7 @@ class SPCreateCharacterSettingForm extends Component {
               </div>
               <button style={{position:"relative", left:"35%", top:"2.5em"}} className="ui button" type="submit">Submit</button>
             </form>
-        </Fragment>: <h3 style={{textAlign:"center"}}>No characters have been detailed yet for this entry. If you're interesting in creating one, you can do so <Link key={Math.random()} to={`/add-entry-info/${this.props.currentEntry.id}`}>here</Link>!</h3>}
+        </Fragment>: <h3 style={{textAlign:"center", margin:"5%"}}>No characters have been detailed yet for this entry. If you're interesting in creating one, you can do so <Link key={Math.random()} to={`/add-entry-info/${this.props.currentEntry.id}`}>here</Link>!</h3>}
       </div>
     )
   }

@@ -9,9 +9,8 @@ import HOCWithAuth from '../components/HOCWithAuth.js';
 class EditUserForm extends Component {
 
   state = {
-    username:"",
-    img_url:"",
     name:"",
+    img_url:"",
     bio:"",
     location:"",
     age:""
@@ -98,22 +97,18 @@ class EditUserForm extends Component {
           <div className="ui raised card" style={{width:"40%", minWidth:"40em", position:"relative", left:"30%", padding:"2.5%", height:"52.5em"}}>
             <div className="ui attached message" style={{position: "relative", bottom: ".25em", textAlign: "center"}}>
               <div className="header">
-                <h2>Edit Your Account Info Here!</h2>
+                <h2>Edit Your Account Info Here, {this.props.currentUser.username}!</h2>
               </div>
             </div>
               <form style={{position:"relative", top:"2em"}} onSubmit={this.handleSubmit}>
               <div className="ui form" >
                   <div className="required field">
-                    <label>Username</label>
-                    <input type="text" placeholder="Username" name="username" onChange={this.handleChange} value = {this.state.username} maxLength="32" required/>
+                    <label>Name</label>
+                    <input onChange={this.handleChange} placeholder="Name" name="name" type="text" value={this.state.name} maxLength="50" />
                   </div>
                   <div className="required field">
                     <label>Image URL</label>
                     <input onChange={this.handleChange} placeholder="Image URL" name="img_url" type="url" value={this.state.img_url} />
-                  </div>
-                  <div className="required field">
-                    <label>Name</label>
-                    <input onChange={this.handleChange} placeholder="Name" name="name" type="text" value={this.state.name} maxLength="50" />
                   </div>
                   <div className="required field">
                     <label>Age</label>

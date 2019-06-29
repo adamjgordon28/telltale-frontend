@@ -37,7 +37,7 @@ class CPCharacterSettingList extends Component {
     return charSetArray
     }
     else {
-      return <h4 style={{textAlign:"center"}}>This character hasn't been detailed at any settings yet!</h4>
+      return <h3 style={{textAlign:"center"}}>This character hasn't been detailed at any settings yet!</h3>
     }
   }
   render(){

@@ -11,7 +11,7 @@ class FollowingEntryContainer extends Component {
   state = {
     typeSearch: "",
     genreSearch: "",
-    totalEntries: []
+    totalPublishedEntries: []
   }
 
   handleChange = (e) => {
@@ -38,8 +38,8 @@ class FollowingEntryContainer extends Component {
       return following.user_id
 
     })
-    if(this.state.totalEntries){
-      let followedEntryArray = this.state.totalEntries.filter((entry)=> {
+    if(this.state.totalPublishedEntries){
+      let followedEntryArray = this.state.totalPublishedEntries.filter((entry)=> {
         return followedArray.includes(entry.user.id)
       })
       followingEntryArray = followedEntryArray
@@ -53,7 +53,7 @@ class FollowingEntryContainer extends Component {
 
 
   renderEntryCards = () => {
-    if (this.state.totalEntries){
+    if (this.state.totalPublishedEntries){
     let entryCardComponentArray = this.filterEntries(this.filterForFollowing()).map((entry)=>{
       return <ReadOnlyEntryCard key={Math.random()} entry={entry}/>
     })
@@ -70,8 +70,11 @@ componentDidMount = () => {
   fetch("http://localhost:4000/api/v1/entries")
   .then(res=>res.json())
   .then(entries=>{
+    let publishedEntries = entries.filter((entry)=> {
+      return entry.published === true
+    })
     this.setState({
-      totalEntries:entries
+      totalPublishedEntries:publishedEntries
     })
   })
 }
@@ -86,7 +89,7 @@ componentDidMount = () => {
           return <ReadOnlyEntryEditor {...props}/>}}>
         </Route>
         <Route path='/following-entries' render={()=><Fragment><div style={{ background:"lightgray", position:"relative", width:"100%", height:"3em", bottom:"1em"}}>
-         <input style={{position:"absolute", right:"10%", top: "10%", width:"22.5%", height: "80%"}} placeholder="Search Your Entries..." value={this.state.search} onChange={this.handleChange} name="typeSearch"/>
+         <input style={{position:"absolute", right:"10%", top: "10%", width:"22.5%", height: "80%"}} placeholder="Search These Entries..." value={this.state.search} onChange={this.handleChange} name="typeSearch"/>
          <select style={{position:"absolute", right: "35%",top: "10%", background:"white", color:"gray", height: "80%", width:"15%"}} onChange={this.handleChange} name = "genreSearch" >
                  <option label="Genre"></option>
                  <option value="adventure">Adventure</option>

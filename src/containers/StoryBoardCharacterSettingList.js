@@ -39,6 +39,7 @@ class StoryBoardCharacterSettingList extends Component {
       return charSetArray
     }
     else {
+      return <h2 style={{textAlign: "center", position: "relative", top:"5em"}}>No notes on characters in settings yet!</h2>
     }
   }
   render(){

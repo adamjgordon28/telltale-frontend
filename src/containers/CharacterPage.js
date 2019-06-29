@@ -51,7 +51,7 @@ class CharacterPage extends Component {
 
        else {
            return (
-             <div>
+             <div style={{minWidth:"100em"}}>
              <h1>This is the page for {this.state.character.name}</h1>
                <div className="ui raised card" style={{position: "relative", left: "2.5%", minHeight: "72.5%", height:"38em", maxHeight: "66.5%", width: "20%", minWidth:"20em", display:"inline-block", float:"left"}}>
                <div style={{position:"relative", background:"silver", height:"5em", width:"100%"}}>

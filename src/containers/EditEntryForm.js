@@ -10,7 +10,7 @@ class EditEntryForm extends Component {
     genre: "",
     description: "",
     content: "",
-
+    published: ""
   }
 
   handleChange = (e) => {
@@ -33,7 +33,8 @@ class EditEntryForm extends Component {
         title: entry.title,
         genre: entry.genre,
         description: entry.description,
-        content: entry.content
+        content: entry.content,
+        published: entry.published
       })
     })
   }
@@ -49,7 +50,8 @@ class EditEntryForm extends Component {
         title: entry.title,
         genre: entry.genre,
         description: entry.description,
-        content: entry.content
+        content: entry.content,
+        published: entry.published
       })
     })
     .then(res=>res.json())
@@ -125,6 +127,14 @@ class EditEntryForm extends Component {
               <div className="required field">
               <label>Description</label>
               <textarea type="text" placeholder="Description" name="description" value={this.state.description} onChange={this.handleChange} required ></textarea>
+              </div>
+              <div className="required field">
+                  <label>Published? (Visible to Others)</label>
+                  <select onChange={this.handleChange} name = "published" value={this.state.published} required >
+                          <option label="Published? (Visible to Others)"></option>
+                          <option value={true}>Yes</option>
+                          <option value={false}>No</option>
+                      </select>
               </div>
           <button className="ui button" style={{position:"relative", left: "42.5%", top: "1.5em"}} type="submit">Submit</button>
         </div>

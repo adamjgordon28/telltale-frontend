@@ -31,7 +31,7 @@ class CreateEntryForm extends React.Component {
        fetch("http://localhost:4000/api/v1/entries", {
         method: "POST",
         headers: { "Content-Type": "application/json", "Accepts": "application/json" },
-        body: JSON.stringify({title: info.title, description: info.description, genre: info.genre, content: emptyContent, user_id: `${this.props.currentUser.id}`})
+        body: JSON.stringify({title: info.title, description: info.description, genre: info.genre, content: emptyContent, user_id: `${this.props.currentUser.id}`, published:false})
        })
         .then(response => response.json())
         .then(json => {

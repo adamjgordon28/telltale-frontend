@@ -19,12 +19,12 @@ const logoMatcher = {
 
 
 
+
 class EntryCard extends React.Component {
 
 
 
   render() {
-
     return (
       <div style={{width: "40%", minWidth: "40em", height: "18em", position: "relative", top:"5em", marginLeft: "5%", marginTop: "2.5em", display: "inline-block"}} className="ui card">
   <div className="content">
@@ -40,6 +40,7 @@ class EntryCard extends React.Component {
 
   <Link key={Math.random()} to={`/storyboards/${this.props.entry.id}`}><button style = {{position: "absolute", left: "2%", top: "80%"}} className="ui blue button">View Storyboard</button></Link>
   </div>
+  {this.props.entry.published ? <div><img style={{height:"16.875%", width: "7.5%", position:"absolute", right: "1.75%", top:"80%", border:".1125em silver solid", borderRadius: "50%", background:"lightgreen", padding:".75%"}} src="/icons/Published-2.png"  alt=""/></div>: null}
 </div>
 
     )

@@ -37,7 +37,7 @@ class SPCharacterSettingList extends Component {
     return charSetArray
     }
     else {
-      return <h4 style={{textAlign:"center"}}>No characters have been detailed at this setting yet!</h4>
+      return <h3 style={{textAlign:"center"}}>No characters have been detailed at this setting yet!</h3>
     }
   }
   render(){
