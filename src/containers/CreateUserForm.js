@@ -34,12 +34,15 @@ class CreateUserForm extends React.Component {
        })
         .then(response => response.json())
         .then(json => {
-          if (json.errors){
-            alert(json.errors)
+          console.log(json)
+          if (json.error){
+            alert(json.error)
           }
+          else if(!json.error) {
           this.props.setCurrentUser(json)
           localStorage.setItem("token", json.token)
           history.push(`/profiles/${json.user.id}`)
+          }
         })
   }
 

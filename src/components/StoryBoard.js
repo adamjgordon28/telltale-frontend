@@ -48,7 +48,7 @@ class StoryBoard extends Component {
 
     return (
       <div style={{flex:"auto", flexWrap:"wrap", minWidth:"100em"}}>
-      <h1>Storyboard for "{this.props.currentEntry.title}"</h1>
+      <h1>Storyboard for "{this.props.currentEntry.title}" <span style={{color:"gray"}}>({this.props.currentEntry.published ? "Published" : "Not Published"})</span></h1>
      <div style={{width:"100%", position:"relative"}}>
 
         <StoryBoardSettingList entry={this.props.currentEntry} />
