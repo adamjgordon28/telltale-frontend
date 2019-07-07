@@ -33,7 +33,7 @@ class SPCreateCharacterSettingForm extends Component {
   }
 
   createCharacterSetting = (info) => {
-    fetch("http://localhost:4000/api/v1/character_settings", {
+    fetch(`${process.env.REACT_APP_BASE_URL}`.concat("/api/v1/character_settings"), {
       method: "POST",
       headers: { "Content-Type": "application/json", "Accepts": "application/json" },
       body: JSON.stringify({setting_id:`${this.props.setting.id}`, character_id: info.character_id, description: info.description, chapter:info.chapter})

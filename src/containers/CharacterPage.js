@@ -14,7 +14,7 @@ class CharacterPage extends Component {
   }
 
   componentDidMount = () => {
-    fetch("http://localhost:4000/api/v1/characters/".concat(`${this.props.match.params.id}`))
+    fetch(`${process.env.REACT_APP_BASE_URL}`.concat("/api/v1/characters/").concat(`${this.props.match.params.id}`))
     .then(res=>res.json())
     .then(character => {
       if(character.status===404){
@@ -23,7 +23,7 @@ class CharacterPage extends Component {
       }
       this.setState({
         character: character
-      }, () => {fetch("http://localhost:4000/api/v1/entries/".concat(`${this.state.character.entry.id}`))
+      }, () => {fetch(`${process.env.REACT_APP_BASE_URL}`.concat("/api/v1/entries/").concat(`${this.state.character.entry.id}`))
        .then(response => response.json())
        .then(json => {
          this.props.setCurrentEntry(json)

@@ -36,7 +36,7 @@ class EditCharacterSettingForm extends Component {
 
 
   updateCharacterSetting = (charSet) => {
-    fetch("http://localhost:4000/api/v1/character_settings/".concat(`${this.props.match.params.id}`), {
+    fetch(`${process.env.REACT_APP_BASE_URL}`.concat("/api/v1/character_settings/").concat(`${this.props.match.params.id}`), {
       method: "PATCH",
       headers: {
             'Content-Type': 'application/json'
@@ -56,7 +56,7 @@ class EditCharacterSettingForm extends Component {
   }
 
   deleteCharacterSetting = () => {
-      fetch("http://localhost:4000/api/v1/character_settings/".concat(`${this.props.match.params.id}`),
+      fetch(`${process.env.REACT_APP_BASE_URL}`.concat("/api/v1/character_settings/").concat(`${this.props.match.params.id}`),
     {
       method: 'DELETE'
     })
@@ -69,7 +69,7 @@ class EditCharacterSettingForm extends Component {
 
 
   componentDidMount = () => {
-    fetch("http://localhost:4000/api/v1/character_settings/".concat(`${this.props.match.params.id}`))
+    fetch(`${process.env.REACT_APP_BASE_URL}`.concat("/api/v1/character_settings/").concat(`${this.props.match.params.id}`))
     .then(res=>res.json())
     .then(charSet=>{
       if(charSet.status===404){
@@ -85,7 +85,7 @@ class EditCharacterSettingForm extends Component {
           chapter: charSet.chapter,
           description: charSet.description
         })
-        fetch("http://localhost:4000/api/v1/entries/".concat(`${charSet.entry.id}`))
+        fetch(`${process.env.REACT_APP_BASE_URL}`.concat("/api/v1/entries/").concat(`${charSet.entry.id}`))
         .then(res=>res.json())
         .then(entry=>{
         this.props.setCurrentEntry(entry)

@@ -113,7 +113,7 @@ class EntryEditor extends React.Component {
 
 saveContent = (noteContent) => {
   if (this.state.fetched){
-   fetch("http://localhost:4000/api/v1/entries/".concat(`${this.props.match.params.id}`), {
+   fetch(`${process.env.REACT_APP_BASE_URL}`.concat("/api/v1/entries/").concat(`${this.props.match.params.id}`), {
     method: "PATCH",
     headers: { "Content-Type": "application/json", "Accepts": "application/json" },
     body: JSON.stringify({ id:`${this.props.match.params.id}`, content: JSON.stringify(convertToRaw(this.state.editorState.getCurrentContent())) })
@@ -127,7 +127,7 @@ saveContent = (noteContent) => {
 
   togglePublished = () => {
     if (this.state.fetched){
-     fetch("http://localhost:4000/api/v1/entries/".concat(`${this.props.match.params.id}`), {
+     fetch(`${process.env.REACT_APP_BASE_URL}`.concat("/api/v1/entries/").concat(`${this.props.match.params.id}`), {
       method: "PATCH",
       headers: { "Content-Type": "application/json", "Accepts": "application/json" },
       body: JSON.stringify({ published:!this.state.entry.published })
@@ -191,7 +191,7 @@ handleKeyCommand = (command, editorState) => {
 
 
  componentDidMount = () => {
-  fetch("http://localhost:4000/api/v1/entries/".concat(`${this.props.match.params.id}`))
+  fetch(`${process.env.REACT_APP_BASE_URL}`.concat("/api/v1/entries/").concat(`${this.props.match.params.id}`))
    .then(response => response.json())
    .then(entry => {
      if(entry.status === 404){
@@ -248,7 +248,7 @@ handleKeyCommand = (command, editorState) => {
     else {
       return (
 
-      <div style={{minWidth:"100em"}}>
+      <div>
         <h1>Welcome back, "{this.state.entry.title}" has been waiting for you!</h1>
         <div>
         <div className="toolbar">

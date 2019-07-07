@@ -20,7 +20,7 @@ class CreateSettingForm extends React.Component {
   }
 
   createSetting = (info) => {
-       fetch("http://localhost:4000/api/v1/settings", {
+       fetch(`${process.env.REACT_APP_BASE_URL}`.concat("/api/v1/settings"), {
         method: "POST",
         headers: { "Content-Type": "application/json", "Accepts": "application/json" },
         body: JSON.stringify({name: info.name, description: info.description, entry_id: `${this.props.currentEntry.id}`})

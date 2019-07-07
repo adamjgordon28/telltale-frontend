@@ -6,6 +6,7 @@ class About extends Component {
 
 
 render(){
+  console.log(process.env.NODE_ENV)
   return (
     <div className="ui raised card" style={{width:"56%", minWidth:"50em", position:"relative", left:"22%", padding:"3em", top:"1em", height:"35em"}}>
       <div className="ui attached message" style={{position: "relative", bottom: "2em", paddingBottom:"2.5em",textAlign: "center"}}>

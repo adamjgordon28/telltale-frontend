@@ -28,7 +28,7 @@ class CreateEntryForm extends React.Component {
   }
 
   createEntry = (info) => {
-       fetch("http://localhost:4000/api/v1/entries", {
+       fetch(`${process.env.REACT_APP_BASE_URL}`.concat("/api/v1/entries"), {
         method: "POST",
         headers: { "Content-Type": "application/json", "Accepts": "application/json" },
         body: JSON.stringify({title: info.title, description: info.description, genre: info.genre, content: emptyContent, user_id: `${this.props.currentUser.id}`, published:false})

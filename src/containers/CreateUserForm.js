@@ -27,14 +27,15 @@ class CreateUserForm extends React.Component {
   }
 
   createUser = (info) => {
-       fetch("http://localhost:4000/api/v1/users", {
+    console.log(`${process.env.REACT_APP_BASE_URL}`.concat("/api/v1/users"))
+
+       fetch(`${process.env.REACT_APP_BASE_URL}`.concat("/api/v1/users"), {
         method: "POST",
         headers: { "Content-Type": "application/json", "Accepts": "application/json" },
         body: JSON.stringify({username: info.username, password: info.password, name: info.name, bio: info.bio, location: info.location, age: info.age, img_url: info.img_url})
        })
         .then(response => response.json())
         .then(json => {
-          console.log(json)
           if (json.error){
             alert(json.error)
           }

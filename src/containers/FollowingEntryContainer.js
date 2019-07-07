@@ -67,7 +67,7 @@ class FollowingEntryContainer extends Component {
 }
 
 componentDidMount = () => {
-  fetch("http://localhost:4000/api/v1/entries")
+  fetch(`${process.env.REACT_APP_BASE_URL}`.concat("/api/v1/entries"))
   .then(res=>res.json())
   .then(entries=>{
     let publishedEntries = entries.filter((entry)=> {

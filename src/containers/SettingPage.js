@@ -14,7 +14,7 @@ class SettingPage extends Component {
   }
 
   componentDidMount = () => {
-    fetch("http://localhost:4000/api/v1/settings/".concat(`${this.props.match.params.id}`))
+    fetch(`${process.env.REACT_APP_BASE_URL}`.concat("/api/v1/settings/").concat(`${this.props.match.params.id}`))
     .then(res=>res.json())
     .then(setting => {
       if(setting.status===404){
@@ -23,7 +23,7 @@ class SettingPage extends Component {
       }
       this.setState({
         setting: setting
-      }, () => {fetch("http://localhost:4000/api/v1/entries/".concat(`${this.state.setting.entry.id}`))
+      }, () => {fetch(`${process.env.REACT_APP_BASE_URL}`.concat("/api/v1/entries/").concat(`${this.state.setting.entry.id}`))
        .then(response => response.json())
        .then(json => {
          this.props.setCurrentEntry(json)

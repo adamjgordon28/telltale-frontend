@@ -15,7 +15,7 @@ class StoryBoard extends Component {
   }
 
   componentDidMount = () => {
-   fetch("http://localhost:4000/api/v1/entries/".concat(`${this.props.match.params.id}`))
+   fetch(`${process.env.REACT_APP_BASE_URL}`.concat("/api/v1/entries/").concat(`${this.props.match.params.id}`))
     .then(response => response.json())
     .then(json => {
 

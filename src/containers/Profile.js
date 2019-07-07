@@ -12,7 +12,7 @@ class Profile extends Component {
     let deletedFollow = this.props.profileUser.follows.find((follow)=> {
       return follow.following_id === this.props.currentUser.id
     })
-    fetch("http://localhost:4000/api/v1/follows/".concat( `${deletedFollow.id}`), {
+    fetch(`${process.env.REACT_APP_BASE_URL}`.concat("/api/v1/follows/").concat( `${deletedFollow.id}`), {
     method: 'DELETE'
   })
   .then(res=>res.json())
@@ -35,7 +35,7 @@ followingThisUser = () => {
 }
 
 followAuthor = () => {
-       fetch("http://localhost:4000/api/v1/follows", {
+       fetch(`${process.env.REACT_APP_BASE_URL}`.concat("/api/v1/follows"), {
         method: "POST",
         headers: { "Content-Type": "application/json", "Accepts": "application/json" },
         body: JSON.stringify({user_id: this.props.profileUser.id, following_id: this.props.currentUser.id })
@@ -78,7 +78,7 @@ calculatePublishedEntriesLength = () => {
 
 
   fetchAndSetUser = () => {
-    fetch("http://localhost:4000/api/v1/users/".concat(`${this.props.match.params.id}`))
+    fetch(`${process.env.REACT_APP_BASE_URL}`.concat("/api/v1/users/").concat(`${this.props.match.params.id}`))
     .then(res=>res.json())
     .then(returnedUser => {
       if(returnedUser.status===404){

@@ -20,7 +20,7 @@ class CreateCharacterForm extends React.Component {
   }
 
   createCharacter = (info) => {
-       fetch("http://localhost:4000/api/v1/characters", {
+       fetch(`${process.env.REACT_APP_BASE_URL}`.concat("/api/v1/characters"), {
         method: "POST",
         headers: { "Content-Type": "application/json", "Accepts": "application/json" },
         body: JSON.stringify({name: info.name, description: info.description, entry_id: `${this.props.currentEntry.id}`})

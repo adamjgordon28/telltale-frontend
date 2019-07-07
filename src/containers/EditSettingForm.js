@@ -25,7 +25,7 @@ class EditSettingForm extends Component {
   }
 
   updateSetting = (setting) => {
-    fetch("http://localhost:4000/api/v1/settings/".concat(`${this.props.match.params.id}`),{
+    fetch(`${process.env.REACT_APP_BASE_URL}`.concat("/api/v1/settings/").concat(`${this.props.match.params.id}`),{
       method: "PATCH",
       headers: {
             'Content-Type': 'application/json'
@@ -44,7 +44,7 @@ class EditSettingForm extends Component {
   }
 
   deleteSetting = () => {
-      fetch("http://localhost:4000/api/v1/settings/".concat(`${this.props.match.params.id}`),
+      fetch(`${process.env.REACT_APP_BASE_URL}`.concat("/api/v1/settings/").concat(`${this.props.match.params.id}`),
     {
       method: 'DELETE'
     })
@@ -59,7 +59,7 @@ class EditSettingForm extends Component {
   }
 
   componentDidMount = () => {
-    fetch("http://localhost:4000/api/v1/settings/".concat(`${this.props.match.params.id}`))
+    fetch(`${process.env.REACT_APP_BASE_URL}`.concat("/api/v1/settings/").concat(`${this.props.match.params.id}`))
     .then(res=>res.json())
     .then(setting => {
       if(setting.status===404){

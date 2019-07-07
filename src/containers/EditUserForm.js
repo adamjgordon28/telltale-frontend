@@ -26,7 +26,7 @@ class EditUserForm extends Component {
 
 
   componentDidMount = () => {
-    fetch ("http://localhost:4000/api/v1/users/".concat(`${this.props.match.params.id}`))
+    fetch (`${process.env.REACT_APP_BASE_URL}`.concat("/api/v1/users/").concat(`${this.props.match.params.id}`))
     .then(response => response.json())
     .then(fetchedUser => {
       this.setState({
@@ -52,7 +52,7 @@ class EditUserForm extends Component {
   }
 
   updateUser = (info) => {
-    fetch("http://localhost:4000/api/v1/users/".concat(`${this.props.match.params.id}`), {
+    fetch(`${process.env.REACT_APP_BASE_URL}`.concat("/api/v1/users/").concat(`${this.props.match.params.id}`), {
      method: "PATCH",
      headers: { "Content-Type": "application/json", "Accepts": "application/json" },
      body: JSON.stringify({username: info.username, img_url: info.img_url, name: info.name, location: info.location, age: info.age, bio: info.bio})
@@ -73,7 +73,7 @@ class EditUserForm extends Component {
 
   deleteUser = (e) => {
       e.preventDefault()
-      fetch("http://localhost:4000/api/v1/users/".concat(`${this.props.match.params.id}`),
+      fetch(`${process.env.REACT_APP_BASE_URL}`.concat("/api/v1/users/").concat(`${this.props.match.params.id}`),
     {
       method: 'DELETE'
     })

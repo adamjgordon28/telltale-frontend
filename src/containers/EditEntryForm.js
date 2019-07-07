@@ -25,7 +25,7 @@ class EditEntryForm extends Component {
   }
 
   componentDidMount = () => {
-    fetch("http://localhost:4000/api/v1/entries/".concat(`${this.props.match.params.id}`))
+    fetch(`${process.env.REACT_APP_BASE_URL}`.concat("/api/v1/entries/").concat(`${this.props.match.params.id}`))
     .then(res=>res.json())
     .then(entry => {
       this.props.setCurrentEntry(entry)
@@ -41,7 +41,7 @@ class EditEntryForm extends Component {
 
 
   updateEntry = (entry) => {
-    fetch("http://localhost:4000/api/v1/entries/".concat(`${this.props.currentEntry.id}`),{
+    fetch(`${process.env.REACT_APP_BASE_URL}`.concat("/api/v1/entries/").concat(`${this.props.currentEntry.id}`),{
       method: "PATCH",
       headers: {
             'Content-Type': 'application/json'
@@ -63,7 +63,7 @@ class EditEntryForm extends Component {
 
 
   deleteEntry = () => {
-    fetch("http://localhost:4000/api/v1/entries/".concat(`${this.props.currentEntry.id}`),
+    fetch(`${process.env.REACT_APP_BASE_URL}`.concat("/api/v1/entries/").concat(`${this.props.currentEntry.id}`),
   {
     method: 'DELETE'
   })

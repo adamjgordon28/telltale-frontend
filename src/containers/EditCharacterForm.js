@@ -25,7 +25,7 @@ class EditCharacterForm extends Component {
   }
 
   updateCharacter = (character) => {
-    fetch("http://localhost:4000/api/v1/characters/".concat(`${this.props.match.params.id}`),{
+    fetch(`${process.env.REACT_APP_BASE_URL}`.concat("/api/v1/characters/").concat(`${this.props.match.params.id}`),{
       method: "PATCH",
       headers: {
             'Content-Type': 'application/json'
@@ -44,7 +44,7 @@ class EditCharacterForm extends Component {
   }
 
   deleteCharacter = () => {
-      fetch("http://localhost:4000/api/v1/characters/".concat(`${this.props.match.params.id}`),
+      fetch(`${process.env.REACT_APP_BASE_URL}`.concat("/api/v1/characters/").concat(`${this.props.match.params.id}`),
     {
       method: 'DELETE'
     })
@@ -59,7 +59,7 @@ class EditCharacterForm extends Component {
   }
 
   componentDidMount = () => {
-    fetch("http://localhost:4000/api/v1/characters/".concat(`${this.props.match.params.id}`))
+    fetch(`${process.env.REACT_APP_BASE_URL}`.concat("/api/v1/characters/").concat(`${this.props.match.params.id}`))
     .then(res=>res.json())
     .then(character => {
       if(character.status===404){
