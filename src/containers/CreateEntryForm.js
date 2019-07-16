@@ -63,6 +63,7 @@ class CreateEntryForm extends React.Component {
                           <option value="adventure">Adventure</option>
                           <option value="comedy">Comedy</option>
                           <option value="drama">Drama</option>
+                          <option value="dungeons-and-dragons">Dungeons & Dragons</option>
                           <option value="fantasy">Fantasy</option>
                           <option value="historical-fiction">Historical Fiction</option>
                           <option value="horror">Horror</option>
