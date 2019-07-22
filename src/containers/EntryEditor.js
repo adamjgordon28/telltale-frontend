@@ -199,7 +199,6 @@ handleKeyCommand = (command, editorState) => {
        return history.push('/about')
      }
      if(entry) {
-       console.log (entry.published)
     this.setState({
 
       editorState: EditorState.createWithContent(convertFromRaw(JSON.parse(entry.content))),

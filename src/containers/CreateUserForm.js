@@ -27,8 +27,6 @@ class CreateUserForm extends React.Component {
   }
 
   createUser = (info) => {
-    console.log(`${process.env.REACT_APP_BASE_URL}`.concat("/api/v1/users"))
-
        fetch(`${process.env.REACT_APP_BASE_URL}`.concat("/api/v1/users"), {
         method: "POST",
         headers: { "Content-Type": "application/json", "Accepts": "application/json" },

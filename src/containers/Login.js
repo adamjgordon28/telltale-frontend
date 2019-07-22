@@ -22,9 +22,6 @@ class Login extends React.Component {
   }
 
   createAuth = (info) => {
-    console.log(process.env)
-    console.log(process.env.NODE_ENV === 'production')
-    console.log(process.env.REACT_APP_BASE_URL)
        fetch(`${process.env.REACT_APP_BASE_URL}`.concat("/api/v1/login"), {
         method: "POST",
         headers: { "Content-Type": "application/json", "Accepts": "application/json" },
