@@ -13,7 +13,18 @@ class SPCreateCharacterSettingForm extends Component {
 
   renderRows = () => {
     if(this.props.currentEntry){
-    let characterOptionsArray = this.props.currentEntry.characters.map((character)=>{
+      let sortedCharacters = this.props.currentEntry.characters.sort(function(a, b) {
+        var nameA = a.name.toUpperCase();
+        var nameB = b.name.toUpperCase();
+        if (nameA < nameB) {
+          return -1;
+        }
+        if (nameA > nameB) {
+          return 1;
+        }
+        return 0;
+      })
+    let characterOptionsArray = sortedCharacters.map((character)=>{
       return (<option key={Math.random()} value={character.id}>{character.name}</option>)
     })
     return characterOptionsArray

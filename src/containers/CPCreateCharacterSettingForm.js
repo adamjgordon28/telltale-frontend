@@ -13,7 +13,18 @@ class CPCreateCharacterSettingForm extends Component {
 
   renderRows = () => {
     if(this.props.currentEntry){
-    let settingOptionsArray = this.props.currentEntry.settings.map((setting)=>{
+      let sortedSettings = this.props.currentEntry.settings.sort(function(a, b) {
+        var nameA = a.name.toUpperCase();
+        var nameB = b.name.toUpperCase();
+        if (nameA < nameB) {
+          return -1;
+        }
+        if (nameA > nameB) {
+          return 1;
+        }
+        return 0;
+      })
+    let settingOptionsArray = sortedSettings.map((setting)=>{
       return (<option key={Math.random()} value={setting.id}>{setting.name}</option>)
     })
     return settingOptionsArray
