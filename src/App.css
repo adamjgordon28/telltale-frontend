@@ -1,92 +1,89 @@
 .App {
-  text-align: center;
+    text-align: center;
 }
 
 .App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 40vmin;
-  pointer-events: none;
+    animation: App-logo-spin infinite 20s linear;
+    height: 40vmin;
+    pointer-events: none;
 }
 
 .App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+    background-color: #282c34;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: calc(10px + 2vmin);
+    color: white;
 }
 
 .App-link {
-  color: #61dafb;
+    color: #61dafb;
 }
 
 @keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
 }
 h1 {
-  text-align: center;
+    text-align: center;
 }
 
 div.DraftEditor-root {
-  background-color: #fffef7;
-  width:85%;
-  min-width:50em;
-  margin:auto;
-  box-shadow: 0px 0px 6px 1px rgba(0,0,0,0.5);
-  height: 25em;
-  overflow-y: scroll;
-  padding:4em;
-  font-size: 18px;
-  font-family: 'calibri', sans-serif;
-  position:relative;
-  bottom:1.25em
+    background-color: #fffef7;
+    width: 85%;
+    min-width: 50em;
+    margin: auto;
+    box-shadow: 0px 0px 6px 1px rgba(0, 0, 0, 0.5);
+    height: 25em;
+    overflow-y: scroll;
+    padding: 4em;
+    font-size: 18px;
+    font-family: 'calibri', sans-serif;
+    position: relative;
+    bottom: 1.25em;
 }
 
 div.toolbar {
-  position: relative;
-  width: 80%;
-  min-width:50em;
-  padding: 10px 20px;
-  margin: auto;
-  top: .25em;
-  text-align: right;
+    position: relative;
+    width: 80%;
+    min-width: 50em;
+    padding: 10px 20px;
+    margin: auto;
+    top: 0.25em;
+    text-align: right;
 }
 
 div.toolbar button {
-  border: 1px solid black;
-  padding:5px;
-  margin-right:4px;
-  background-color:black;
-  color:white;
-  position: relative;
-  bottom:.75em;
-  right: .25em;
+    border: 1px solid black;
+    padding: 5px;
+    margin-right: 4px;
+    background-color: black;
+    color: white;
+    position: relative;
+    bottom: 0.75em;
+    right: 0.25em;
 }
 
 div.mini-toolbar button {
-  background: black;
-  color: lightgray;
-  position: relative;
-  right: 25em;
-  top: 1.35em;
-  display: inline-block;
+    background: black;
+    color: lightgray;
+    position: relative;
+    right: 25em;
+    top: 1.35em;
+    display: inline-block;
 }
 
-
-
-
 div.draftJsToolbar__toolbar__dNtBH {
-  background: lightsteelblue;
-  width: 110.5%;
-  position: relative;
-  right: 5.25%;
-  bottom: 1em;
+    background: lightsteelblue;
+    width: 110.5%;
+    position: relative;
+    right: 5.25%;
+    bottom: 1em;
 }

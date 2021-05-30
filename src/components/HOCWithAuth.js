@@ -2,32 +2,26 @@ import React from 'react'
 import { Redirect } from 'react-router-dom'
 import { connect } from 'react-redux'
 
-
-function HOCWithAuth(MyComponent){
-
-    class HOCWithAuth extends React.Component{
-
-      renderPage = () => {
-
-            if (this.props.currentUser || !!localStorage.token){
-          return <MyComponent {...this.props}/>
+function HOCWithAuth(MyComponent) {
+    class HOCWithAuth extends React.Component {
+        renderPage = () => {
+            if (this.props.currentUser || !!localStorage.token) {
+                return <MyComponent {...this.props} />
             } else {
-            alert("You must be logged in to see this page!")
-          return <Redirect to="/login" />
+                alert('You must be logged in to see this page!')
+                return <Redirect to="/login" />
+            }
         }
-      }
 
-      render() {
-        return (
-          this.renderPage()
-        )
-      }
+        render() {
+            return this.renderPage()
+        }
     }
 
     function mapStateToProps(state) {
-      return {
-        currentUser: state.currentUser,
-      }
+        return {
+            currentUser: state.currentUser,
+        }
     }
 
     // function mapDispatchToProps(dispatch) {
@@ -41,6 +35,5 @@ function HOCWithAuth(MyComponent){
 
     return connect(mapStateToProps)(HOCWithAuth)
 }
-
 
 export default HOCWithAuth
